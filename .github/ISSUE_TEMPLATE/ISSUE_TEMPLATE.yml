@@ -1,11 +1,11 @@
 name: "💎 Issue Template"
 description: AlgoHub FE 이슈 템플릿
-title: "[ Feat ] "
+title: ""
 body:
   - type: markdown
     attributes:
       value: |
-        작성 예시 : "🚀[ Feat ] 카드 컴포넌트 구현"
+        작성 예시 : "카드 컴포넌트 구현"
   - type: textarea
     id: issue-description
     attributes:
