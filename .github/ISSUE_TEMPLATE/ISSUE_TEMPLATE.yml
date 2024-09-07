@@ -1,6 +1,6 @@
 name: "💎 Issue Template"
 description: AlgoHub FE 이슈 템플릿
-title: " "
+title: "."
 body:
   - type: markdown
     attributes:
