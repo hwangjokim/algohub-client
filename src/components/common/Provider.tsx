@@ -5,7 +5,11 @@ import { PropsWithChildren } from "react";
 
 type ProviderProps = PropsWithChildren;
 
-/** Context와 동일한 역할을 하는 Provider 입니다. Context 대신 사용 가능합니다. */
+/**
+ * https://jotai.org/docs/core/store
+ * store을 생성하여 Provider의 store prop으로 전달하여 Context 대신 사용 가능
+ */
+
 const Providers = ({ children }: ProviderProps) => {
   return <Provider>{children}</Provider>;
 };
