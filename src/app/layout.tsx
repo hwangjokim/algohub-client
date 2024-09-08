@@ -1,3 +1,4 @@
+import Providers from "@/components/common/Provider";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        {/** NextJS의 SSR 시 global state의 범위를 제한시키기 위한 Providers */}
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
