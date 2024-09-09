@@ -16,6 +16,9 @@
 				"noExcessiveCognitiveComplexity": "off",
 				"useArrowFunction": "error"
 			},
+			"a11y": {
+				"useButtonType": "off"
+			},
 			"style": {
 				"useSingleVarDeclarator": "off",
 				"noParameterAssign": "off",
@@ -39,7 +42,9 @@
 				"noUnusedImports": "warn"
 			},
 			"performance": {
-				"noAccumulatingSpread": "off"
+				"noAccumulatingSpread": "off",
+				"noBarrelFile": "off",
+				"noReExportAll": "off"
 			},
 			"nursery": {
 				"all": false

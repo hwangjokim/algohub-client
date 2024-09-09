@@ -1,9 +1,11 @@
 import { buttonStyle } from "@/components/common/Button/Button.css";
 
-interface ButtonProps {}
+interface ButtonProps {
+  text: string;
+}
 
-const Button = ({}: ButtonProps) => {
-  return <button className={buttonStyle}>Button</button>;
+const Button = ({ text }: ButtonProps) => {
+  return <button className={buttonStyle}>{text}</button>;
 };
 
 export default Button;
