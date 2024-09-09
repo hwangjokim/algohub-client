@@ -3,6 +3,11 @@
 	"organizeImports": {
 		"enabled": true
 	},
+	"javascript": {
+		"globals": [
+			"React"
+		]
+	},
 	"linter": {
 		"enabled": true,
 		"ignore": [
