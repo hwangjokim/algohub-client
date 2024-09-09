@@ -55,6 +55,6 @@
 		"indentWidth": 2
 	},
 	"files": {
-		"include": ["**/*.ts?(x)"]
+		"include": ["**/*.ts", "**/*.tsx"]
 	}
 }
