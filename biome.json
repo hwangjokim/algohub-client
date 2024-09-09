@@ -36,16 +36,22 @@
 				"noArrayIndexKey": "off",
 				"noEmptyBlockStatements": "off",
 				"noConsoleLog": "off",
-				"useAwait": "off"
+				"useAwait": "off",
+				"noCommentText": "error",
+				"noDuplicateJsxProps": "error"
 			},
 			"correctness": {
-				"useExhaustiveDependencies": "off"
+				"useExhaustiveDependencies": "off",
+				"noUnusedImports": "warn"
 			},
 			"performance": {
 				"noAccumulatingSpread": "off"
 			},
 			"nursery": {
 				"all": false
+			},
+			"security": {
+				"noDangerouslySetInnerHtmlWithChildren": "error"
 			}
 		}
 	},
@@ -56,10 +62,7 @@
 	},
 	"files": {
 		"include": [
-			"**/*.ts",
-			"**/*.tsx",
-			"**/*.js",
-			"**/*.jsx"
+			"**/*.ts?(x)"
 		]
 	}
 }
