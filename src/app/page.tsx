@@ -1,11 +1,11 @@
-import Alarm from '@/assets/svgs/IconRaws/icn_alarm.svg';
-import AlarmUrl from '@/assets/svgs/IconRaws/icn_alarm.svg?url';
+import { IcnAlarm } from '@/assets/svgs';
+import AlarmUrl from '@/assets/svgs/icn_alarm.svg?url';
 import Image from 'next/image';
 
 export default function Home() {
   return (
     <div className="text-purple">
-      <Alarm width={50} height={50} />
+      <IcnAlarm width={50} height={50} />
       <Image width={50} height={50} src={AlarmUrl} alt='alarm' priority />
       <img width={50} height={50} src={AlarmUrl.src} alt="alarm" />
       <div
