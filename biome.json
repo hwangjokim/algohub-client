@@ -4,17 +4,11 @@
 		"enabled": true
 	},
 	"javascript": {
-		"globals": [
-			"React"
-		]
+		"globals": ["React"]
 	},
 	"linter": {
 		"enabled": true,
-		"ignore": [
-			"node_modules",
-			"static",
-			".next"
-		],
+		"ignore": ["node_modules", "static", ".next"],
 		"rules": {
 			"all": true,
 			"complexity": {
@@ -35,7 +29,7 @@
 			"suspicious": {
 				"noArrayIndexKey": "off",
 				"noEmptyBlockStatements": "off",
-				"noConsoleLog": "off",
+				"noConsoleLog": "warn",
 				"useAwait": "off",
 				"noCommentText": "error",
 				"noDuplicateJsxProps": "error"
@@ -61,8 +55,6 @@
 		"indentWidth": 2
 	},
 	"files": {
-		"include": [
-			"**/*.ts?(x)"
-		]
+		"include": ["**/*.ts?(x)"]
 	}
 }
