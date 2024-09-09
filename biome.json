@@ -14,7 +14,8 @@
 			"all": true,
 			"complexity": {
 				"noUselessFragments": "off",
-				"noExcessiveCognitiveComplexity": "off"
+				"noExcessiveCognitiveComplexity": "off",
+				"useArrowFunction": "error"
 			},
 			"style": {
 				"useSingleVarDeclarator": "off",
