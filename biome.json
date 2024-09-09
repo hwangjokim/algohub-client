@@ -29,7 +29,7 @@
 			"suspicious": {
 				"noArrayIndexKey": "off",
 				"noEmptyBlockStatements": "off",
-				"noConsoleLog": "error",
+				"noConsoleLog": "warn",
 				"useAwait": "off",
 				"noCommentText": "error",
 				"noDuplicateJsxProps": "error"
