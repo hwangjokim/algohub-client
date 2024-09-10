@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin';
+const withVanillaExtract = createVanillaExtractPlugin();
+
 const nextConfig = {
   webpack(config) {
     // SVG imports를 처리하는 기존 규칙 가져오기
@@ -17,7 +20,7 @@ const nextConfig = {
         issuer: fileLoaderRule.issuer,
         resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
         use: ['@svgr/webpack'],
-      },
+      }
     );
 
     // 처리가 완료된 *.svg를 무시하도록 파일 로더 규칙을 수정
