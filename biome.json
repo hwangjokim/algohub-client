@@ -60,6 +60,7 @@
 		"indentWidth": 2
 	},
 	"files": {
+		"ignore": [".next/*"],
 		"include": ["**/*.ts", "**/*.tsx"]
 	}
 }

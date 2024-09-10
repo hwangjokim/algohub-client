@@ -9,7 +9,7 @@
     "generate-icon-export": "node ./generateIconExport.js",
     "lint": "biome lint",
     "typecheck": "tsc --noEmit",
-    "check": "concurrently \"pnpm lint\" \"pnpm typecheck\""
+    "check": "concurrently \"pnpm biome ci --formatter-enabled=false\" \"pnpm typecheck\""
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.15.5",
