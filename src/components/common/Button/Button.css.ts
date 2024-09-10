@@ -3,12 +3,13 @@
  * 공식문서 참고해주세요 !
  * */
 
-import { colors, typography } from "@/styles/themes";
+import { theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
 
 export const buttonStyle = style({
   borderRadius: "10px",
-  backgroundColor: colors.background,
+  backgroundColor: theme.color.purple,
+  // backgroundColor: 'red',
 
-  ...typography.fontSize["head1-b-20"]
+  // ...theme.font["body1-m-16"]
 });
