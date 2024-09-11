@@ -1,7 +1,7 @@
 "use client";
 
 import { Provider } from "jotai";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 type ProviderProps = PropsWithChildren;
 

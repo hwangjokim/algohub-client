@@ -6,8 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "generate-icon-export": "node ./generateIconExport.js"
+    "generate-icon-export": "node ./generateIconExport.js",
+    "lint": "biome lint",
+    "typecheck": "tsc --noEmit",
+    "check": "concurrently \"pnpm biome ci --formatter-enabled=false\" \"pnpm typecheck\""
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.15.5",
@@ -23,6 +25,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@vanilla-extract/next-plugin": "^2.4.5",
+    "concurrently": "^9.0.0",
     "typescript": "^5"
   }
 }

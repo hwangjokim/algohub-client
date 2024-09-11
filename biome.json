@@ -4,23 +4,20 @@
 		"enabled": true
 	},
 	"javascript": {
-		"globals": [
-			"React"
-		]
+		"globals": ["React"]
 	},
 	"linter": {
 		"enabled": true,
-		"ignore": [
-			"node_modules",
-			"static",
-			".next"
-		],
+		"ignore": ["node_modules", "static", ".next"],
 		"rules": {
 			"all": true,
 			"complexity": {
 				"noUselessFragments": "off",
 				"noExcessiveCognitiveComplexity": "off",
 				"useArrowFunction": "error"
+			},
+			"a11y": {
+				"useButtonType": "off"
 			},
 			"style": {
 				"useSingleVarDeclarator": "off",
@@ -45,7 +42,9 @@
 				"noUnusedImports": "warn"
 			},
 			"performance": {
-				"noAccumulatingSpread": "off"
+				"noAccumulatingSpread": "off",
+				"noBarrelFile": "off",
+				"noReExportAll": "off"
 			},
 			"nursery": {
 				"all": false
@@ -61,9 +60,7 @@
 		"indentWidth": 2
 	},
 	"files": {
-		"include": [
-			"**/*.ts",
-			"**/*.tsx"
-		]
+		"ignore": [".next/*"],
+		"include": ["**/*.ts", "**/*.tsx"]
 	}
 }
