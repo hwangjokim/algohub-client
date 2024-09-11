@@ -1,6 +1,5 @@
 import { IcnPlus } from "@/assets/svgs";
 import { buttonStyle } from "@/components/common/Button/Button.css";
-import { theme } from "@/styles/themes.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
