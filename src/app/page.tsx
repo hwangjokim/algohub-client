@@ -1,10 +1,12 @@
 import { IcnAlarm } from "@/assets/svgs";
 import AlarmUrl from "@/assets/svgs/icn_alarm.svg?url";
+import Button from "@/components/common/Button/Button";
 import Image from "next/image";
+import "@/styles/globalStyles.css";
 
 export default function Home() {
   return (
-    <div className="text-purple">
+    <div>
       <IcnAlarm width={50} height={50} />
       <Image width={50} height={50} src={AlarmUrl} alt="alarm" priority />
       <img width={50} height={50} src={AlarmUrl.src} alt="alarm" />
@@ -17,6 +19,7 @@ export default function Home() {
           backgroundSize: "cover",
         }}
       />
+      <Button text="버튼" />
     </div>
   );
 }
