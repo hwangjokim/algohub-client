@@ -1,6 +1,23 @@
 import { createGlobalTheme, } from '@vanilla-extract/css';
 
 export const theme = createGlobalTheme(':root', {
+  zIndex: {
+    bottom: '1',
+    middle: '2',
+    high: '3',
+    top: '4',
+  },
+  // spacing: {
+  //   none: '0',
+  //   xxs: '1rem',
+  //   xs: '1.2rem',
+  //   s: '1.4rem',
+  //   m: '1.6rem',
+  //   xxl: '2rem',
+  //   xl: '2.2rem',
+  //   l: '2.4rem',
+  //   ll: '2.6rem',
+  // },
   color: {
     background: 'background',
     foreground: 'foreground',
