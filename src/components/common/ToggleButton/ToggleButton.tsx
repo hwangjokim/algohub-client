@@ -1,5 +1,3 @@
-"use client";
-
 import { buttonStyle } from "@/components/common/ToggleButton/ToggleButton.css";
 import type { ComponentPropsWithoutRef } from "react";
 
