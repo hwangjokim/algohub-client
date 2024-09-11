@@ -1,21 +1,16 @@
-import { IcnAlarm } from "@/assets/svgs";
-import AlarmUrl from "@/assets/svgs/icn_alarm.svg?url";
-import Image from "next/image";
+"use client";
+
+import ToggleButton from "@/components/common/ToggleButton/ToggleButton";
+import { useState } from "react";
 
 export default function Home() {
+  const [isClicked, setIsClicked] = useState(false);
+
   return (
     <div className="text-purple">
-      <IcnAlarm width={50} height={50} />
-      <Image width={50} height={50} src={AlarmUrl} alt="alarm" priority />
-      <img width={50} height={50} src={AlarmUrl.src} alt="alarm" />
-      <div
-        style={{
-          width: 50,
-          height: 50,
-          backgroundImage: `url(${AlarmUrl.src})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
+      <ToggleButton
+        isSelected={isClicked}
+        onChange={() => setIsClicked((prev) => !prev)}
       />
     </div>
   );
