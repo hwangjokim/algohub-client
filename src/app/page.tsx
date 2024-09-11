@@ -3,6 +3,7 @@ import AlarmUrl from "@/assets/svgs/icn_alarm.svg?url";
 import Button from "@/components/common/Button/Button";
 import { themeClass } from "@/styles/themes.css";
 import Image from "next/image";
+import "@/styles/globalStyles.css";
 
 export default function Home() {
   return (
