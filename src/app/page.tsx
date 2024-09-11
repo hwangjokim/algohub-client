@@ -1,25 +1,15 @@
-import { IcnAlarm } from "@/assets/svgs";
-import AlarmUrl from "@/assets/svgs/icn_alarm.svg?url";
-import Button from "@/components/common/Button/Button";
-import Image from "next/image";
+import avatarSrc from "@/assets/imgs/alogohub_icon.png";
 import "@/styles/globalStyles.css";
+import Avatar from "@/components/common/Avatar";
 
 export default function Home() {
   return (
     <div>
-      <IcnAlarm width={50} height={50} />
-      <Image width={50} height={50} src={AlarmUrl} alt="alarm" priority />
-      <img width={50} height={50} src={AlarmUrl.src} alt="alarm" />
-      <div
-        style={{
-          width: 50,
-          height: 50,
-          backgroundImage: `url(${AlarmUrl.src})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
-      />
-      <Button text="버튼" />
+      <Avatar src={avatarSrc} alt="algoHub 로고" size="small" />
+      <Avatar src={avatarSrc} alt="algoHub 로고" size="medium" />
+      <Avatar src={avatarSrc} alt="algoHub 로고" size="large" />
+      <Avatar src={avatarSrc} alt="algoHub 로고" size="mini" isShadow />
+      <Avatar src={avatarSrc} alt="algoHub 로고" size="mini" />
     </div>
   );
 }
