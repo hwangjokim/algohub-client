@@ -1,6 +1,6 @@
 import { createTheme, createThemeContract } from '@vanilla-extract/css';
 
-export const vars = createThemeContract({
+export const theme = createThemeContract({
   color: {
     background: '',
     foreground: '',
@@ -107,7 +107,7 @@ export const vars = createThemeContract({
   }
 })
 
-export const [themeClass, theme] = createTheme({
+export const themeClass = createTheme(theme, {
   color: {
     background: 'background',
     foreground: 'foreground',

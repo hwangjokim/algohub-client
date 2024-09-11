@@ -9,7 +9,6 @@ import { style } from "@vanilla-extract/css";
 export const buttonStyle = style({
   borderRadius: "10px",
   backgroundColor: theme.color.purple,
-  // backgroundColor: 'red',
 
-  // ...theme.font["body1-m-16"]
+  ...theme.font["body1-m-16"]
 });
