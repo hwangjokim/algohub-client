@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
-import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin';
+import { createVanillaExtractPlugin } from "@vanilla-extract/next-plugin";
 const withVanillaExtract = createVanillaExtractPlugin();
 
 const nextConfig = {
   webpack(config) {
     // SVG imports를 처리하는 기존 규칙 가져오기
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'));
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test?.test?.(".svg")
+    );
 
     config.module.rules.push(
       // svg imports 중 ?url로 끝나는 것에 대해서만 기존 규칙을 재적용
@@ -19,7 +21,7 @@ const nextConfig = {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
         resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
-        use: ['@svgr/webpack'],
+        ["@svgr/webpack"],
       }
     );
 
