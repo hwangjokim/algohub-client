@@ -5,6 +5,13 @@ import Avatar from "@/components/common/Avatar";
 export default function Home() {
   return (
     <div>
+      <Avatar
+        src={avatarSrc}
+        alt="algoHub 로고"
+        size="small"
+        isGroupIc
+        isShadow
+      />
       <Avatar src={avatarSrc} alt="algoHub 로고" size="small" />
       <Avatar src={avatarSrc} alt="algoHub 로고" size="medium" />
       <Avatar src={avatarSrc} alt="algoHub 로고" size="large" />

@@ -2,6 +2,11 @@ import { theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
+export const wrapperStyle = style({
+  position: 'relative',
+  width: 'fit-content'
+})
+
 export const avatarStyle = recipe({
   base: {
     borderRadius: '50%',
@@ -10,8 +15,8 @@ export const avatarStyle = recipe({
   variants: {
     size: {
       mini: {
-        width: '2rem',
-        height: '2rem'
+        width: '2.5rem',
+        height: '2.5rem'
       },
       small: {
         width: '3.9rem',
@@ -34,8 +39,21 @@ export const avatarStyle = recipe({
     }
   }
 })
+
 export const imageStyle = style({
   width: '100%',
   height: '100%',
   objectFit: 'cover'
+})
+
+export const iconStyle = style({
+  zIndex: theme.zIndex.bottom,
+  position: 'absolute',
+  right: '2px',
+  bottom: 0,
+
+  width: '9px',
+  height: '13px',
+
+  opacity: 0.7,
 })
