@@ -28,6 +28,7 @@ const Avatar = ({
     <div className={wrapperStyle}>
       {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
       <div
+        role="img"
         className={avatarStyle({ size: size, isShadow: isShadow })}
         onClick={handleClick}
       >
