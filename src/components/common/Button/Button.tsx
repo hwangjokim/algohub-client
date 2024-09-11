@@ -1,6 +1,8 @@
+import { IcnPlus } from "@/assets/svgs";
 import { buttonStyle } from "@/components/common/Button/Button.css";
+import { theme } from "@/styles/themes.css";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
   isActive?: boolean;
   handleClick: () => void;
@@ -16,6 +18,7 @@ const Button = ({
   size = "small",
   color = "purple",
   isLeftIc = false,
+  ...props
 }: ButtonProps) => {
   return (
     <button
@@ -28,8 +31,9 @@ const Button = ({
         color: color,
       })}
       onClick={handleClick}
+      {...props}
     >
-      {isLeftIc && <div>ㅎㅇ</div>}
+      {isLeftIc && <IcnPlus width="24" height="24" />}
       {text}
     </button>
   );

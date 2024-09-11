@@ -30,7 +30,7 @@ export const buttonStyle = recipe({
         height: "5.3rem",
         padding: "1.5rem 0",
 
-        borderRadius: "6px",
+        borderRadius: "5px",
         ...theme.font.Title1_SB_16
       },
       large: {
@@ -38,7 +38,7 @@ export const buttonStyle = recipe({
         height: "5.5rem",
         padding: "1.5rem 0",
 
-        borderRadius: "6px",
+        borderRadius: "5px",
         ...theme.font.Head2_SB_18
       }
     },
