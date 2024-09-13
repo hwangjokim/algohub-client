@@ -1,19 +1,23 @@
-import avatarSrc from "@/assets/imgs/alogohub_icon.png";
+import { IcnAlarm } from "@/assets/svgs";
+import AlarmUrl from "@/assets/svgs/icn_alarm.svg?url";
 import "@/styles/globalStyles.css";
-import Avatar from "@/components/common/Avatar";
-import MemberAvatar from "@/components/group/MemberAvatar";
+import Image from "next/image";
 
 export default function Home() {
-  return (
-    <div>
-      <Avatar src={avatarSrc} size="small" isShadow />
-      <Avatar src={avatarSrc} size="small" />
-      <Avatar src={avatarSrc} size="medium" />
-      <Avatar src={avatarSrc} size="large" />
-      <Avatar src={avatarSrc} size="mini" isShadow />
-      <Avatar src={avatarSrc} size="mini" />
-      <MemberAvatar isLeader={true} src={avatarSrc} />
-      <MemberAvatar isLeader={false} src={avatarSrc} />
-    </div>
-  );
+	return (
+		<div>
+			<IcnAlarm width={50} height={50} />
+			<Image width={50} height={50} src={AlarmUrl} alt="alarm" priority />
+			<img width={50} height={50} src={AlarmUrl.src} alt="alarm" />
+			<div
+				style={{
+					width: 50,
+					height: 50,
+					backgroundImage: `url(${AlarmUrl.src})`,
+					backgroundRepeat: "no-repeat",
+					backgroundSize: "cover",
+				}}
+			/>
+		</div>
+	);
 }
