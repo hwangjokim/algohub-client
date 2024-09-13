@@ -1,7 +1,5 @@
-import { IcnUser2 } from "@/assets/svgs";
 import {
   avatarStyle,
-  iconStyle,
   imageStyle,
   wrapperStyle,
 } from "@/components/common/Avatar/index.css";
@@ -9,32 +7,29 @@ import Image, { type StaticImageData } from "next/image";
 
 interface AvatarProps {
   src: StaticImageData;
-  alt: string;
   size?: "mini" | "small" | "medium" | "large";
   isShadow?: boolean;
-  isGroupIc?: boolean;
   handleClick?: () => void;
+  children?: React.ReactNode;
 }
 
 const Avatar = ({
   src,
-  alt,
   size = "medium",
   isShadow = false,
-  isGroupIc = false,
   handleClick,
+  children,
 }: AvatarProps) => {
   return (
     <div className={wrapperStyle}>
-      {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
-      <div
-        role="img"
+      <button
+        type="button"
         className={avatarStyle({ size: size, isShadow: isShadow })}
         onClick={handleClick}
       >
-        <Image src={src} alt={alt} className={imageStyle} />
-      </div>
-      {isGroupIc && <IcnUser2 className={iconStyle} />}
+        <Image src={src} alt="프로필 이미지" className={imageStyle} />
+      </button>
+      {children}
     </div>
   );
 };

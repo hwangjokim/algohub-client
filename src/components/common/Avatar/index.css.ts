@@ -45,15 +45,3 @@ export const imageStyle = style({
   height: '100%',
   objectFit: 'cover'
 })
-
-export const iconStyle = style({
-  zIndex: theme.zIndex.bottom,
-  position: 'absolute',
-  right: '2px',
-  bottom: 0,
-
-  width: '9px',
-  height: '13px',
-
-  opacity: 0.7,
-})
