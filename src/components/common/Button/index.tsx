@@ -19,8 +19,8 @@ const Button = ({
     <button
       type="button"
       aria-disabled={isActive}
+      disabled={!isActive}
       className={buttonStyle({
-        isActive: isActive,
         size: size,
         color: color,
       })}

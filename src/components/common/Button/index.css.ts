@@ -7,14 +7,12 @@ export const buttonStyle = recipe({
     gap: "1rem",
     justifyContent: 'center',
     alignItems: 'center',
-
+    ':disabled': {
+      opacity: "0.7",
+      cursor: 'not-allowed',
+    },
   },
   variants: {
-    isActive: {
-      false: {
-        opacity: "0.7",
-      }
-    },
     size: {
       small: {
         width: "8.4rem",
