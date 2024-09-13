@@ -10,7 +10,6 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({
   children,
-  isActive = false,
   size = "small",
   color = "purple",
   ...props
@@ -18,8 +17,6 @@ const Button = ({
   return (
     <button
       type="button"
-      aria-disabled={isActive}
-      disabled={!isActive}
       className={buttonStyle({
         size: size,
         color: color,
