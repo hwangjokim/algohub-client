@@ -42,7 +42,9 @@ const UserMenu = () => {
 	const notificationRef = useRef<HTMLUListElement | null>(null);
 	const profileBtnRef = useRef<HTMLButtonElement | null>(null);
 	const profileMenuRef = useRef<HTMLDivElement | null>(null);
+	// TODO: 알림 기능 구현 시 수정
 	const count = 10;
+
 	const handleNotificationClick = useCallback(() => {
 		setShowNotifications(!showNotifications);
 		// 스크린 리더로 열 때 옆 메뉴 닫기
