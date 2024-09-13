@@ -16,7 +16,6 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      type="button"
       className={buttonStyle({
         size: size,
         color: color,
