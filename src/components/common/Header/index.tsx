@@ -2,9 +2,7 @@
 
 import { IcnBellHeader, IcnLogo } from "@/assets/svgs";
 import IcnNew from "@/assets/svgs/icn_new.svg?url";
-import { authAtom } from "@/store";
 import { checkContains } from "@/utils/domUtils";
-import { useAtomValue } from "jotai";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -22,7 +20,8 @@ import {
 } from "./Header.css";
 
 const Header = () => {
-  const { isLoggedIn } = useAtomValue(authAtom);
+  // const { isLoggedIn } = useAtomValue(authAtom);
+  const isLoggedIn = true;
 
   return (
     <header className={headerStyle}>
@@ -30,7 +29,7 @@ const Header = () => {
         <IcnLogo className={logoStyle} />
       </Link>
       {/* TODO: 로그인 api 부착 후 isLoggedIn으로 교체 */}
-      {true ? <UserMenu /> : <LoginMenu />}
+      {isLoggedIn ? <UserMenu /> : <LoginMenu />}
     </header>
   );
 };
