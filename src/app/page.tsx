@@ -1,49 +1,23 @@
-import { icnPlusStyle } from "@/app/style.css";
-import { IcnPlus } from "@/assets/svgs";
-import Button from "@/components/common/Button";
+import { IcnAlarm } from "@/assets/svgs";
+import AlarmUrl from "@/assets/svgs/icn_alarm.svg?url";
 import "@/styles/globalStyles.css";
+import Image from "next/image";
 
 export default function Home() {
-  return (
-    <>
-      <Button isActive size="small" color="purple">
-        로그인
-      </Button>
-      <Button size="small" color="purple">
-        로그인
-      </Button>
-      <Button isActive size="small" color="gray">
-        로그인
-      </Button>
-      <Button size="small" color="gray">
-        로그인
-      </Button>
-      <Button isActive size="large" color="purple">
-        로그인하기
-      </Button>
-      <Button size="large" color="purple">
-        로그인하기
-      </Button>
-      <Button isActive size="large" color="purple">
-        <IcnPlus width="24" height="24" className={icnPlusStyle} />
-        스터디 만들기
-      </Button>
-      <Button size="large" color="purple">
-        <IcnPlus width="24" height="24" className={icnPlusStyle} />
-        스터디 만들기
-      </Button>
-      <Button size="medium" color="purple">
-        나가기
-      </Button>
-      <Button isActive size="medium" color="purple">
-        나가기
-      </Button>
-      <Button size="medium" color="lg">
-        나가기
-      </Button>
-      <Button isActive size="medium" color="lg">
-        나가기
-      </Button>
-    </>
-  );
+	return (
+		<div>
+			<IcnAlarm width={50} height={50} />
+			<Image width={50} height={50} src={AlarmUrl} alt="alarm" priority />
+			<img width={50} height={50} src={AlarmUrl.src} alt="alarm" />
+			<div
+				style={{
+					width: 50,
+					height: 50,
+					backgroundImage: `url(${AlarmUrl.src})`,
+					backgroundRepeat: "no-repeat",
+					backgroundSize: "cover",
+				}}
+			/>
+		</div>
+	);
 }
