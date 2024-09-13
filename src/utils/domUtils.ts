@@ -15,8 +15,8 @@ import type { MutableRefObject } from "react";
 		);
  */
 export const checkContains = (
-	target: EventTarget,
-	...refs: MutableRefObject<HTMLElement | null>[]
+  target: EventTarget,
+  ...refs: MutableRefObject<HTMLElement | null>[]
 ) => {
-	return refs.map((ref) => ref.current?.contains(target as Node));
+  return refs.map((ref) => ref.current?.contains(target as Node));
 };
