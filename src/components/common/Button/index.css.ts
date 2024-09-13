@@ -7,6 +7,9 @@ export const buttonStyle = recipe({
     gap: "1rem",
     justifyContent: 'center',
     alignItems: 'center',
+
+    width: '100%',
+
     ':disabled': {
       opacity: "0.7",
       cursor: 'not-allowed',
@@ -15,27 +18,17 @@ export const buttonStyle = recipe({
   variants: {
     size: {
       small: {
-        width: "8.4rem",
-        height: "4rem",
-
         padding: "1rem 0",
-
         borderRadius: "6px",
         ...theme.font.Body3_SB_14,
       },
       medium: {
-        width: "24rem",
-        height: "5.3rem",
         padding: "1.5rem 0",
-
         borderRadius: "5px",
         ...theme.font.Title1_SB_16
       },
       large: {
-        width: "33.5rem",
-        height: "5.5rem",
         padding: "1.5rem 0",
-
         borderRadius: "5px",
         ...theme.font.Head2_SB_18
       }
