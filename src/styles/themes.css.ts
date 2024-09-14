@@ -34,10 +34,10 @@ export const theme = createGlobalTheme(':root', {
     wg2: '#d7d7d7',
     lg1: '#f3f4f6',
     lg2: '#e7eaf2',
-    mg1: '#b6b6b6',
+    mg1: '#bcc0cd',
     mg2: '#9ba1b4',
-    mg3: '#a2a7b0',
-    mg4: '#797979',
+    mg3: '#79829a',
+    mg4: '#464f67',
     mg5: '#222734',
     mg6: '#161c24',
     dg: '#2a2a2a',
@@ -49,77 +49,89 @@ export const theme = createGlobalTheme(':root', {
     gradi_BG: 'radial-gradient(96.85% 96.85% at 50% 3.15%, rgba(163, 156, 255, 0.80) 0%, rgba(16, 18, 23, 0.00) 100%)',
   },
   font: {
-    'head1-b-20': {
+    'Head1_B_20': {
       fontSize: '20px',
       fontWeight: '700',
       lineHeight: '28px',
       letterSpacing: '-0.2px',
     },
-    'head1-sb-20': {
+    'Head1_SB_20': {
       fontSize: '20px',
       fontWeight: '600',
       lineHeight: '28px',
       letterSpacing: '-0.3px',
     },
-    'head1-m-20': {
+    'Head1_M_20': {
       fontSize: '20px',
       fontWeight: '500',
       lineHeight: '28px',
       letterSpacing: '-0.2px',
     },
-    'head2-b-18': {
+    'Head2_B_18': {
       fontSize: '18px',
       fontWeight: '700',
-      lineHeight: '26px',
-      letterSpacing: '-0.1px',
+      lineHeight: '28px',
+      letterSpacing: '-0.18px',
     },
-    'head2-sb-18': {
+    'Head2_SB_18': {
       fontSize: '18px',
       fontWeight: '600',
-      lineHeight: '26px',
-      letterSpacing: '-0.1px',
+      lineHeight: '28px',
+      letterSpacing: '-0.18px',
     },
-    'head2-m-18': {
-      fontSize: '18px',
-      fontWeight: '500',
-      lineHeight: '26px',
-      letterSpacing: '-0.1px',
-    },
-    'body1-r-16': {
+    'Title1_SB_16': {
       fontSize: '16px',
-      fontWeight: '400',
-      lineHeight: '24px',
-      letterSpacing: '-0.2px',
+      fontWeight: '600',
+      lineHeight: '23.2px',
+      letterSpacing: '-0.16px',
     },
-    'body1-m-16': {
+    'Title2_M_16': {
       fontSize: '16px',
       fontWeight: '500',
-      lineHeight: '24px',
-      letterSpacing: '-0.2px',
+      lineHeight: '24.8px',
+      letterSpacing: '-0.4px',
     },
-    'body2-r-14': {
-      fontSize: '14px',
+    'Title2_R_16': {
+      fontSize: '16px',
       fontWeight: '400',
-      lineHeight: '22px',
-      letterSpacing: '-0.2px',
+      lineHeight: '24.8px',
+      letterSpacing: '-0.4px',
     },
-    'body2-m-14': {
+    'Body1_M_14': {
       fontSize: '14px',
       fontWeight: '500',
-      lineHeight: '22px',
-      letterSpacing: '-0.2px',
+      lineHeight: '21.7px',
+      letterSpacing: '-0.21px',
     },
-    'caption-r-12': {
+    'Body2_R_14': {
+      fontSize: '14px',
+      fontWeight: '400',
+      lineHeight: '20.3px',
+      letterSpacing: '-0.35px',
+    },
+    'Body3_SB_14': {
+      fontSize: '14px',
+      fontWeight: '600',
+      lineHeight: '20.3px',
+      letterSpacing: '-0.35px',
+    },
+    'Caption1_R_12': {
       fontSize: '12px',
       fontWeight: '400',
-      lineHeight: '18px',
-      letterSpacing: '-0.1px',
+      lineHeight: '16.8px',
+      letterSpacing: '-0.3px',
     },
-    'caption-m-12': {
+    'Caption2_SB_12': {
+      fontSize: '12px',
+      fontWeight: '600',
+      lineHeight: '16.8px',
+      letterSpacing: '-0.3px',
+    },
+    'Caption3_M_12': {
       fontSize: '12px',
       fontWeight: '500',
-      lineHeight: '18px',
-      letterSpacing: '-0.1px',
+      lineHeight: 'normal',
+      letterSpacing: '-0.3px',
     },
   },
 });
