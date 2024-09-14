@@ -3,7 +3,6 @@ import type { ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  isActive?: boolean;
   size?: "small" | "medium" | "large";
   color?: "purple" | "gray" | "lg";
 }
