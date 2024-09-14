@@ -1,5 +1,6 @@
 import { IcnBellHeader } from "@/assets/svgs";
-import { countStyle, iconStyle, notificationContainer } from "./Header.css";
+import { countStyle, notificationContainer } from "./Notification.css";
+import { iconStyle } from "./index.css";
 
 const Notification = () => {
   return (

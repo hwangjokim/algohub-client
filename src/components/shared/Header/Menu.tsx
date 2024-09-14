@@ -2,7 +2,7 @@ import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { camelToKebab } from "@/utils/string";
 import type React from "react";
 import { useMemo, useState } from "react";
-import { buttonStyle } from "./Header.css";
+import { buttonStyle } from "./Menu.css";
 
 type MenuProps = {
   label: string;

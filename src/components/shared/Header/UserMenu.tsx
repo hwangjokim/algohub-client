@@ -1,7 +1,7 @@
-import { buttonContainer } from "./Header.css";
 import Menu from "./Menu";
 import Notification from "./Notification";
 import Profile from "./Profile";
+import { buttonContainer } from "./index.css";
 
 const UserMenu = () => {
   // TODO: 알림 기능 구현 시 수정
