@@ -31,7 +31,7 @@ export const avatarStyle = recipe({
         height: '12rem'
       }
     },
-    isShadow: {
+    hasShadow: {
       true: {
         border: `0.5px solid ${theme.color.purple}`,
         boxShadow: `0px 0px 4px 0px ${theme.color.purple}`

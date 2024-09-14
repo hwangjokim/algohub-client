@@ -3,20 +3,18 @@ import {
   imageStyle,
   wrapperStyle,
 } from "@/components/common/Avatar/index.css";
-import Image, { type StaticImageData } from "next/image";
+import Image, { type ImageProps } from "next/image";
 
-interface AvatarProps {
-  src: StaticImageData;
+interface AvatarProps extends ImageProps {
   size?: "mini" | "small" | "medium" | "large";
-  isShadow?: boolean;
+  hasShadow?: boolean;
   handleClick?: () => void;
-  children?: React.ReactNode;
 }
 
 const Avatar = ({
   src,
   size = "medium",
-  isShadow = false,
+  hasShadow = false,
   handleClick,
   children,
 }: AvatarProps) => {
@@ -24,7 +22,7 @@ const Avatar = ({
     <div className={wrapperStyle}>
       <button
         type="button"
-        className={avatarStyle({ size: size, isShadow: isShadow })}
+        className={avatarStyle({ size: size, hasShadow: hasShadow })}
         onClick={handleClick}
       >
         <Image src={src} alt="프로필 이미지" className={imageStyle} />
