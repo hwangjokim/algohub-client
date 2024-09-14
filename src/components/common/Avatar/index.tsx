@@ -22,7 +22,7 @@ const Avatar = ({
     <div className={wrapperStyle}>
       <button
         type="button"
-        className={avatarStyle({ size: size, hasShadow: hasShadow })}
+        className={avatarStyle({ size, hasShadow })}
         onClick={handleClick}
       >
         <Image src={src} alt="프로필 이미지" className={imageStyle} />
