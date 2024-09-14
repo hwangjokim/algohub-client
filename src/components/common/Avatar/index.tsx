@@ -7,13 +7,11 @@ import Image, { type ImageProps } from "next/image";
 interface AvatarProps extends ImageProps {
   size?: "mini" | "small" | "medium" | "large";
   hasShadow?: boolean;
-  handleClick?: () => void;
 }
 
 const Avatar = ({
   size = "medium",
   hasShadow = false,
-  handleClick,
   children,
   ...imageProps
 }: AvatarProps) => {
