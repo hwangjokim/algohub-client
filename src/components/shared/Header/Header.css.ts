@@ -93,6 +93,7 @@ export const profileMenuContainer = style({
   gap: "1rem",
   position: "absolute",
   top: "6.5rem",
+  right: "6rem",
 
   width: "13.2rem",
   height: "8.8rem",
