@@ -33,7 +33,7 @@ export const avatarStyle = recipe({
     },
     hasShadow: {
       true: {
-        border: `0.5px solid ${theme.color.purple}`,
+        border: `inset 0.5px solid ${theme.color.purple}`,
         boxShadow: `0px 0px 4px 0px ${theme.color.purple}`
       }
     }
