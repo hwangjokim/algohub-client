@@ -1,6 +1,5 @@
 import {
   avatarStyle,
-  imageStyle,
   wrapperStyle,
 } from "@/components/common/Avatar/index.css";
 import Image, { type ImageProps } from "next/image";
@@ -20,13 +19,11 @@ const Avatar = ({
 }: AvatarProps) => {
   return (
     <div className={wrapperStyle}>
-      <button
-        type="button"
+      <Image
+        {...imageProps}
+        alt="프로필 이미지"
         className={avatarStyle({ size, hasShadow })}
-        onClick={handleClick}
-      >
-        <Image {...imageProps} alt="프로필 이미지" className={imageStyle} />
-      </button>
+      />
       {children}
     </div>
   );

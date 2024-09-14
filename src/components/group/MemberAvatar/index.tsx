@@ -9,7 +9,7 @@ interface MemberAvatarProps {
 }
 const MemberAvatar = ({ isLeader, src }: MemberAvatarProps) => {
   return (
-    <Avatar src={src} size="small" isShadow>
+    <Avatar src={src} size="small" hasShadow alt="멤버 프로필">
       {isLeader && <IcnUser2 className={iconStyle} />}
     </Avatar>
   );

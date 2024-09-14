@@ -39,9 +39,3 @@ export const avatarStyle = recipe({
     }
   }
 })
-
-export const imageStyle = style({
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover'
-})
