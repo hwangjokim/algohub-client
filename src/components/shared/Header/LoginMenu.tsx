@@ -1,3 +1,5 @@
+import Button from "@/components/common/Button";
+import { LoginButtonStyle } from "./LoginMenu.css";
 import { buttonContainer } from "./index.css";
 
 const LoginMenu = () => {
@@ -6,15 +8,15 @@ const LoginMenu = () => {
   };
 
   return (
-    <div className={buttonContainer}>
+    <div className={`${buttonContainer} ${LoginButtonStyle}`}>
       {/** 임시 버튼 */}
-      <button
-        style={{ backgroundColor: "violet", width: "4rem", height: "2.5rem" }}
+      <Button
         aria-label="Login"
+        size="small"
         onClick={handleProfileClick}
       >
         로그인
-      </button>
+      </Button>
     </div>
   );
 };

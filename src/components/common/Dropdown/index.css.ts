@@ -29,7 +29,7 @@ export const dropdownItemStyle = style({
 
   color: theme.color.white,
   textAlign: "left",
-  ...theme.font["caption-m-12"],
+  ...theme.font.Caption3_M_12,
 
   selectors: {
     "&:hover": {
