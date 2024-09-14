@@ -12,11 +12,11 @@ interface AvatarProps extends ImageProps {
 }
 
 const Avatar = ({
-  src,
   size = "medium",
   hasShadow = false,
   handleClick,
   children,
+  ...imageProps
 }: AvatarProps) => {
   return (
     <div className={wrapperStyle}>
@@ -25,7 +25,7 @@ const Avatar = ({
         className={avatarStyle({ size, hasShadow })}
         onClick={handleClick}
       >
-        <Image src={src} alt="프로필 이미지" className={imageStyle} />
+        <Image {...imageProps} alt="프로필 이미지" className={imageStyle} />
       </button>
       {children}
     </div>
