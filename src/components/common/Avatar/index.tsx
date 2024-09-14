@@ -19,7 +19,7 @@ const Avatar = ({
     <div className={wrapperStyle}>
       <Image
         {...imageProps}
-        alt="프로필 이미지"
+        role="button"
         className={avatarStyle({ size, hasShadow })}
       />
       {children}
