@@ -1,28 +1,19 @@
-import { useEffect } from "react";
+import { checkContains } from "@/utils/dom";
+import { useCallback, useEffect, useRef } from "react";
 
-/** 
- * @param handleOutsideClick 클릭한 요소가 ref인지 확인하여 setState를 호출하는 이벤트 핸들러
- * @example
- * // 다수의 ref와 setState를 사용할 때
- * const handleOutsideClick = ({ target }: MouseEvent) => {
- *   const refs = [ref1, ref2];
- *   const setStates = [setState1, setState2];
- *   const checks = checkContains(target!, ...refs);
- *   checks.forEach((check, index) => {
- *     if (!check) setStates[index](false);
- *   });
- * };
- *
- * @example
- * // 하나의 ref와 setState만 사용할 때
- * const handleOutsideClick = ({ target }: MouseEvent) => {
- *   const [check] = checkContains(target!, ref);
- *   if (!check) setState(false);
- * };
+/**
+ * @param setState toggle 관리용 setState
  */
-export const useOutsideClick = (
-  handleOutsideClick: (e: MouseEvent) => void,
+export const useOutsideClick = <
+  T extends React.Dispatch<React.SetStateAction<boolean>>,
+>(
+  setState: T,
 ) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const handleOutsideClick = useCallback(({ target }: MouseEvent) => {
+    const [check] = checkContains(target!, ref);
+    if (!check) setState(false);
+  }, []);
   useEffect(() => {
     // click대신 mousedown으로 빠르게 진행
     document.addEventListener("mousedown", handleOutsideClick);
@@ -31,4 +22,6 @@ export const useOutsideClick = (
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, [handleOutsideClick]);
+
+  return ref;
 };

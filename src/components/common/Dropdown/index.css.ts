@@ -10,6 +10,7 @@ export const dropdownContainer = style({
   width: "13.2rem",
   height: "fit-content",
   padding: "0.8rem 1rem",
+
   borderRadius: "0.8rem",
   backdropFilter: "blur(2px)",
   backgroundColor: theme.color.mg6,
@@ -22,8 +23,9 @@ export const dropdownDefaultStyle = style({
 export const dropdownItemStyle = style({
   width: "11.2rem",
   height: "3.4rem",
-  borderRadius: "0.8rem",
   padding: "0.5rem 0.8rem",
+  
+  borderRadius: "0.8rem",
 
   color: theme.color.white,
   textAlign: "left",

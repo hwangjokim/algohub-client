@@ -11,6 +11,7 @@ export const headerStyle = style({
   height: "7.2rem",
   margin: 0,
   padding: "0 6.4rem",
+
   backgroundColor: theme.color.bg,
 });
 
@@ -19,6 +20,7 @@ export const logoContainer = style({
   justifyContent: "flex-start",
 
   margin: 0,
+
   cursor: "pointer",
 });
 
@@ -38,10 +40,14 @@ export const buttonContainer = style({
 
 export const buttonStyle = style({
   position: "relative",
+
   width: "2.5rem",
   height: "2.5rem",
+
   borderRadius: "5rem",
+
   cursor: "pointer",
+
   ":hover": {
     backgroundColor: theme.color.mg5,
   },
@@ -55,17 +61,20 @@ export const iconStyle = style({
 export const countStyle = style({
   position: "absolute",
   right: 0,
+
   width: "1.2rem",
   height: "1.2rem",
   borderRadius: "1rem",
+
   backgroundColor: theme.color.purple2,
+
   color: theme.color.white,
-  alignContent: "center",
   fontSize: "0.8rem",
   fontWeight: 500,
   lineHeight: "5.6px",
   letterSpacing: "-0.025em",
   textAlign: "center",
+  alignContent: "center",
 });
 
 export const notificationContainer = style({
@@ -73,6 +82,7 @@ export const notificationContainer = style({
   flexDirection: "column",
   alignItems: "flex-start",
   gap: "1rem",
+
   position: "absolute",
   top: "7.2rem",
   right: "8rem",
@@ -80,8 +90,9 @@ export const notificationContainer = style({
   width: "26.9rem",
   height: "27.4rem",
   padding: "0.8rem",
-  opacity: "0.9",
+  
   borderRadius: "2rem",
+  opacity: "0.9",
   backdropFilter: "blur(2px)",
   backgroundColor: theme.color.mg6,
 });
