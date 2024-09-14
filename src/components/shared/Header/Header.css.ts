@@ -86,37 +86,8 @@ export const notificationContainer = style({
   backgroundColor: theme.color.mg6,
 });
 
-export const profileMenuContainer = style({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
-  gap: "1rem",
+export const dropdownStyle = style({
   position: "absolute",
   top: "6.5rem",
   right: "6rem",
-
-  width: "13.2rem",
-  height: "8.8rem",
-  padding: "0.8rem 1rem",
-  borderRadius: "0.8rem",
-  backdropFilter: "blur(2px)",
-  backgroundColor: theme.color.mg6,
-});
-
-export const profileMenuItemStyle = style({
-  listStyle: "none",
-  width: "11.2rem",
-  height: "3.4rem",
-  borderRadius: "0.8rem",
-  padding: "0.5rem 0.8rem",
-
-  color: theme.color.white,
-  textAlign: "left",
-  ...theme.font["caption-m-12"],
-
-  selectors: {
-    "&:hover": {
-      backgroundColor: theme.color.mg5,
-    },
-  },
 });

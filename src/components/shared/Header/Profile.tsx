@@ -1,25 +1,14 @@
 import IcnNew from "@/assets/svgs/icn_new.svg?url";
+import Dropdown from "@/components/common/Dropdown";
 import Image from "next/image";
-import {
-  iconStyle,
-  profileMenuContainer,
-  profileMenuItemStyle,
-} from "./Header.css";
+import { dropdownStyle, iconStyle } from "./Header.css";
+
 const Profile = () => {
   return (
-    <nav
-      className={profileMenuContainer}
-      id="profile"
-      aria-label="profile"
-      role="menu"
-    >
-      <button className={profileMenuItemStyle} role="menuitem">
-        내 프로필
-      </button>
-      <button className={profileMenuItemStyle} role="menuitem">
-        로그아웃
-      </button>
-    </nav>
+    <Dropdown label="profile" className={dropdownStyle}>
+      <button>내 프로필</button>
+      <button>로그아웃</button>
+    </Dropdown>
   );
 };
 

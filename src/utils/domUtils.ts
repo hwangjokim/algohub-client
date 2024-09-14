@@ -5,14 +5,16 @@ import type { MutableRefObject } from "react";
  * @param target MouseEvent.target
  * @param refs
  * @returns {boolean[]} refs 순서대로 HTMLElement.contains() 결과 boolean[]
- * @example ({ target }: MouseEvent) => {
-		const [notiBtn, noti, profileBtn, profile] = checkContains(
-			target!,
-			notificationBtnRef,
-			notificationRef,
-			profileBtnRef,
-			profileMenuRef,
-		);
+ * @example 
+ * 
+ * ({ target }: MouseEvent) => {
+    const [notiBtn, noti, profileBtn, profile] = checkContains(
+      target!,
+      notificationBtnRef,
+      notificationRef,
+      profileBtnRef,
+      profileMenuRef,
+    );
  */
 export const checkContains = (
   target: EventTarget,
