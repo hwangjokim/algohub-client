@@ -1,4 +1,4 @@
-import { buttonStyle } from "@/common/component/toggleButton/index.css";
+import { buttonStyle } from "@/common/component/ToggleButton/index.css";
 import type { ComponentPropsWithoutRef } from "react";
 
 interface ToggleButtonProps extends ComponentPropsWithoutRef<"input"> {

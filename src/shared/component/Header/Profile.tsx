@@ -1,7 +1,7 @@
 import IcnNew from "@/asset/svg/icn_new.svg?url";
-import Dropdown from "@/common/component/dropdown";
-import { iconStyle } from "@/shared/component/header/index.css";
-import { dropdownStyle } from "@/shared/component/header/profile.css";
+import Dropdown from "@/common/component/Dropdown";
+import { dropdownStyle } from "@/shared/component/Header/Profile.css";
+import { iconStyle } from "@/shared/component/Header/index.css";
 import Image from "next/image";
 
 const Profile = () => {

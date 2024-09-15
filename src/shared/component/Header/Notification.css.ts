@@ -33,7 +33,7 @@ export const notificationContainer = style({
   width: "26.9rem",
   height: "27.4rem",
   padding: "0.8rem",
-  
+
   borderRadius: "2rem",
   opacity: "0.9",
   backdropFilter: "blur(2px)",

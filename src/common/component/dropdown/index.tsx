@@ -2,7 +2,7 @@ import {
   dropdownContainer,
   dropdownDefaultStyle,
   dropdownItemStyle,
-} from "@/common/component/dropdown/index.css";
+} from "@/common/component/Dropdown/index.css";
 import { camelToKebab } from "@/common/util/string";
 import type { PropsWithChildren } from "react";
 import React from "react";

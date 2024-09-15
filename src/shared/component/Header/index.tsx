@@ -1,13 +1,13 @@
 "use client";
 
 import { IcnLogo } from "@/asset/svg";
+import LoginMenu from "@/shared/component/Header/LoginMenu";
+import UserMenu from "@/shared/component/Header/UserMenu";
 import {
   headerStyle,
   logoContainer,
   logoStyle,
-} from "@/shared/component/header/index.css";
-import LoginMenu from "@/shared/component/header/loginMenu";
-import UserMenu from "@/shared/component/header/userMenu";
+} from "@/shared/component/Header/index.css";
 import Link from "next/link";
 
 const Header = () => {
