@@ -1,6 +1,6 @@
 import { useOutsideClick } from "@/common/hook/useOutsideClick";
 import { camelToKebab } from "@/common/util/string";
-import { buttonStyle } from "@/shared/component/header/Menu.css";
+import { buttonStyle } from "@/shared/component/header/menu.css";
 import type React from "react";
 import { useState } from "react";
 

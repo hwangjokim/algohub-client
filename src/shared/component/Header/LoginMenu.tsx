@@ -1,6 +1,6 @@
 import Button from "@/common/component/button";
-import { LoginButtonStyle } from "@/shared/component/header/LoginMenu.css";
 import { buttonContainer } from "@/shared/component/header/index.css";
+import { LoginButtonStyle } from "@/shared/component/header/loginMenu.css";
 
 const LoginMenu = () => {
   const handleProfileClick = () => {

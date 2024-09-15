@@ -1,5 +1,6 @@
 import { buttonContainer } from "@/shared/component/header/index.css";
 import Menu from "@/shared/component/header/menu";
+import Notification from "@/shared/component/header/notification";
 import Profile from "@/shared/component/header/profile";
 
 const UserMenu = () => {
