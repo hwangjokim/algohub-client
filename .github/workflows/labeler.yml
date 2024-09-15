@@ -27,7 +27,7 @@ jobs:
           message_if_xl: >
             PR이 1000줄을 넘었는데 진정 이것이 PR인지 다시 생각해보세오
             이슈를 여러개 파서 PR을 분리하는게 어떠싱지 ㅋ
-          excluded_files: |
+          files_to_ignore: |
             "package-lock.json"
             "*.lock"
             "docs/*"
