@@ -1,7 +1,4 @@
-import {
-  avatarStyle,
-  wrapperStyle,
-} from "@/components/common/Avatar/index.css";
+import { avatarStyle, wrapperStyle } from "@/common/component/avatar/index.css";
 import Image, { type ImageProps } from "next/image";
 
 interface AvatarProps extends ImageProps {
