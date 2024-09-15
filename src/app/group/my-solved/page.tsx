@@ -1,5 +1,5 @@
-const GroupDashBoardPage = () => {
-  return <h1>GroupDashBoardPage</h1>;
+const MySolvedPage = () => {
+  return <div>MySolvedPage</div>;
 };
 
-export default GroupDashBoardPage;
+export default MySolvedPage;

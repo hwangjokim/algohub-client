@@ -1,5 +1,7 @@
 import "@/styles/globalStyles.css";
 
-export default function Home() {
-  return <div>AlgoHub</div>;
-}
+const OnboardingPage = () => {
+  return <div>OnboardingPage</div>;
+};
+
+export default OnboardingPage;

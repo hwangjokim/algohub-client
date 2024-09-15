@@ -1,5 +1,5 @@
-const UserPage = () => {
-  return <h1>UserPage</h1>;
+const UserDashboardPage = () => {
+  return <div>UserDashboardPage</div>;
 };
 
-export default UserPage;
+export default UserDashboardPage;
