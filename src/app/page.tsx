@@ -6,13 +6,13 @@ const OnboardingPage = () => {
   return (
     <div>
       OnboardingPage
-      <Animation size={""} animationJson={undefined} />
+      {/* <Animation size={""} animationJson={undefined} />
       <ToggleButton
         isSelected={false}
         onChange={function (): void {
           throw new Error("Function not implemented.");
         }}
-      />
+      /> */}
     </div>
   );
 };
