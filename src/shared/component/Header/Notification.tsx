@@ -1,6 +1,9 @@
-import { IcnBellHeader } from "@/asset/svgs";
-import { countStyle, notificationContainer } from "./Notification.css";
-import { iconStyle } from "./index.css";
+import { IcnBellHeader } from "@/asset/svg";
+import {
+  countStyle,
+  notificationContainer,
+} from "@/shared/component/header/Notification.css";
+import { iconStyle } from "@/shared/component/header/index.css";
 
 const Notification = () => {
   return (

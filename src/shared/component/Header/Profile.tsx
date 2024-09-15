@@ -1,8 +1,8 @@
-import IcnNew from "@/assets/svgs/icn_new.svg?url";
+import IcnNew from "@/asset/svg/icn_new.svg?url";
 import Dropdown from "@/common/component/dropdown";
+import { iconStyle } from "@/shared/component/header/index.css";
+import { dropdownStyle } from "@/shared/component/header/profile.css";
 import Image from "next/image";
-import { dropdownStyle } from "./Profile.css";
-import { iconStyle } from "./index.css";
 
 const Profile = () => {
   return (

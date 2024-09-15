@@ -1,8 +1,8 @@
-import { useOutsideClick } from "@/hooks/useOutsideClick";
-import { camelToKebab } from "@/utils/string";
+import { useOutsideClick } from "@/common/hook/useOutsideClick";
+import { camelToKebab } from "@/common/util/string";
+import { buttonStyle } from "@/shared/component/header/Menu.css";
 import type React from "react";
 import { useState } from "react";
-import { buttonStyle } from "./Menu.css";
 
 type MenuProps = {
   label: string;

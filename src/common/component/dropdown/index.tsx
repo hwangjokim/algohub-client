@@ -1,7 +1,11 @@
-import { camelToKebab } from "@/utils/string";
+import {
+  dropdownContainer,
+  dropdownDefaultStyle,
+  dropdownItemStyle,
+} from "@/common/component/dropdown/index.css";
+import { camelToKebab } from "@/common/util/string";
 import type { PropsWithChildren } from "react";
 import React from "react";
-import { dropdownContainer, dropdownDefaultStyle, dropdownItemStyle } from "./index.css";
 
 type DropdownProps = {
   label: string;
@@ -19,7 +23,11 @@ type DropdownProps = {
      <li {...liProps}>로그아웃</li>
    </Dropdown>
  */
-const Dropdown = ({ children, label, className = dropdownDefaultStyle }: DropdownProps) => {
+const Dropdown = ({
+  children,
+  label,
+  className = dropdownDefaultStyle,
+}: DropdownProps) => {
   return (
     <ul
       className={`${dropdownContainer} ${className}`}
@@ -34,8 +42,8 @@ const Dropdown = ({ children, label, className = dropdownDefaultStyle }: Dropdow
               className: dropdownItemStyle,
               key: index,
               role: "button",
-              tabIndex: 0
-            },
+              tabIndex: 0,
+            }
           );
         }
         return child;

@@ -1,4 +1,4 @@
-import { checkContains } from "@/utils/dom";
+import { checkContains } from "@/common/util/dom";
 import { useCallback, useEffect, useRef } from "react";
 
 /**
@@ -13,7 +13,7 @@ export const useOutsideClick = (handleToggle: () => void) => {
     const [check] = checkContains(target!, ref);
     if (!check) handleToggle();
   }, [handleToggle]);
-  
+
   useEffect(() => {
     // click대신 mousedown으로 빠르게 진행
     document.addEventListener("mousedown", handleOutsideClick);

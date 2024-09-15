@@ -1,6 +1,6 @@
 import { IcnUser2 } from "@/asset/svg";
 import Avatar from "@/common/component/avatar";
-import { iconStyle } from "@/shared/component/Header/index.css";
+import { iconStyle } from "@/shared/component/header/index.css";
 import type { StaticImageData } from "next/image";
 
 interface MemberAvatarProps {

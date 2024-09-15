@@ -1,6 +1,6 @@
-import Button from "@/components/common/Button";
-import { LoginButtonStyle } from "./LoginMenu.css";
-import { buttonContainer } from "./index.css";
+import Button from "@/common/component/button";
+import { LoginButtonStyle } from "@/shared/component/header/LoginMenu.css";
+import { buttonContainer } from "@/shared/component/header/index.css";
 
 const LoginMenu = () => {
   const handleProfileClick = () => {
@@ -10,11 +10,7 @@ const LoginMenu = () => {
   return (
     <div className={`${buttonContainer} ${LoginButtonStyle}`}>
       {/** 임시 버튼 */}
-      <Button
-        aria-label="Login"
-        size="small"
-        onClick={handleProfileClick}
-      >
+      <Button aria-label="Login" size="small" onClick={handleProfileClick}>
         로그인
       </Button>
     </div>
