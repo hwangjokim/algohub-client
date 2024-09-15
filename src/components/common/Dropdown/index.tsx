@@ -1,3 +1,4 @@
+import { camelToKebab } from "@/utils/string";
 import type { PropsWithChildren } from "react";
 import React from "react";
 import { dropdownContainer, dropdownDefaultStyle, dropdownItemStyle } from "./index.css";
@@ -9,36 +10,37 @@ type DropdownProps = {
 
 /**
  * @param label id, aria-label에 들어갈 string
- * @param className 위치 조정용 style
+ * @param className 드롭다운 위치 조정용 style
+ * @param children li 태그를 사용해 주세요
  * @example
- * // dropdownStyle = style({ position: "absolute", top: "6.5rem", right: "6rem" })
+ * const dropdownStyle = style({ position: "absolute", top: "6.5rem", right: "6rem" })
  * <Dropdown label="profile" className={dropdownStyle}>
-     <button {...buttonProps}>내 프로필</button>
-     <button {...buttonProps}>로그아웃</button>
+     <li {...liProps}>내 프로필</li>
+     <li {...liProps}>로그아웃</li>
    </Dropdown>
  */
 const Dropdown = ({ children, label, className = dropdownDefaultStyle }: DropdownProps) => {
   return (
-    <nav
+    <ul
       className={`${dropdownContainer} ${className}`}
       id={label}
-      aria-label={label}
-      role="menu"
+      aria-labelledby={camelToKebab(`${label}Toggle`)}
     >
       {React.Children.map(children, (child, index) => {
         if (React.isValidElement(child)) {
-          return React.cloneElement<HTMLButtonElement>(
-            child as React.ReactElement<HTMLButtonElement>,
+          return React.cloneElement<HTMLLIElement>(
+            child as React.ReactElement<HTMLLIElement>,
             {
               className: dropdownItemStyle,
-              role: "menuitem",
               key: index,
+              role: "button",
+              tabIndex: 0
             },
           );
         }
         return child;
       })}
-    </nav>
+    </ul>
   );
 };
 

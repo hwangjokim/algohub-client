@@ -7,8 +7,8 @@ import { iconStyle } from "./index.css";
 const Profile = () => {
   return (
     <Dropdown label="profile" className={dropdownStyle}>
-      <button>내 프로필</button>
-      <button>로그아웃</button>
+      <li>내 프로필</li>
+      <li>로그아웃</li>
     </Dropdown>
   );
 };

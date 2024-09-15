@@ -21,6 +21,7 @@ export const dropdownDefaultStyle = style({
 })
 
 export const dropdownItemStyle = style({
+  listStyle: "none",
   width: "11.2rem",
   height: "3.4rem",
   padding: "0.5rem 0.8rem",
@@ -30,6 +31,8 @@ export const dropdownItemStyle = style({
   color: theme.color.white,
   textAlign: "left",
   ...theme.font.Caption3_M_12,
+
+  cursor: "pointer",
 
   selectors: {
     "&:hover": {
