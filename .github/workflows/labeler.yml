@@ -27,4 +27,4 @@ jobs:
             "package-lock.json"
             "*.lock"
             "docs/*"
-            "pnpm-lock.yaml"
+            "**/pnpm-lock.yaml"
