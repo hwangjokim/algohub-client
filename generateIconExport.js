@@ -10,7 +10,7 @@ function toPascalCase(fileName) {
 
 // index.ts 파일 생성 함수
 function generateIndex() {
-  const svgDir = path.join(__dirname, "src", "assets", "svgs"); // SVG 파일들이 있는 디렉토리 경로
+  const svgDir = path.join(__dirname, "src", "asset", "svg"); // SVG 파일들이 있는 디렉토리 경로
   const outputFile = path.join(svgDir, "index.ts"); // 생성할 index.ts 경로
 
   // SVG 디렉토리에서 파일 목록 가져오기
