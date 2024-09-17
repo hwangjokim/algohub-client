@@ -33,7 +33,6 @@
     "@storybook/addon-onboarding": "^8.3.1",
     "@storybook/addon-storysource": "^8.3.1",
     "@storybook/addon-styling-webpack": "1.0.0",
-    "@storybook/addon-viewport": "^8.3.1",
     "@storybook/blocks": "^8.3.1",
     "@storybook/nextjs": "^8.3.1",
     "@storybook/react": "^8.3.1",
@@ -49,6 +48,7 @@
     "cross-env": "^7.0.3",
     "mini-css-extract-plugin": "^2.9.1",
     "storybook": "^8.3.1",
+    "storybook-addon-jsdoc-to-mdx": "^1.0.3",
     "typescript": "^5"
   }
 }

@@ -24,8 +24,14 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-links",
     "@storybook/addon-onboarding",
-    "@storybook/addon-viewport",
     "@chromatic-com/storybook",
+    {
+      name: 'storybook-addon-jsdoc-to-mdx',
+      options: {
+        folderPaths: ['./src/'], // paths to folders with JS/TS code
+        extensions: ['ts'] // file extensions to include
+      }
+    },
     // "@storybook/addon-interactions",
     {
       name: '@storybook/addon-styling-webpack',
@@ -41,8 +47,8 @@ const config: StorybookConfig = {
             use: [
               require.resolve("style-loader"),
               {
-                  loader: require.resolve("css-loader"),
-                  options: {},
+                loader: require.resolve("css-loader"),
+                options: {},
               },
             ],
             exclude: /\.vanilla\.css$/,
@@ -70,8 +76,11 @@ const config: StorybookConfig = {
     name: "@storybook/nextjs",
     options: {},
   },
+  docs: {
+    autodocs: "tag",
+  },
   staticDirs: ["../public"],
-  
+
   webpackFinal(config) {
     if (!config.module || !config.module.rules) {
       return config;

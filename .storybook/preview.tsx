@@ -1,6 +1,9 @@
+import { Controls, Primary, Stories, Subtitle, Title } from '@storybook/blocks';
 import type { Preview } from "@storybook/react";
+import React from "react";
+import ModifiedDescription from './Description';
+import { withAppRouterContext } from "./WithAppRouterContext";
 import customViewports from "./viewport";
-import { withAppRouterContext } from "./withAppRouterContext";
 
 const preview: Preview = {
   parameters: {
@@ -18,6 +21,18 @@ const preview: Preview = {
     nextjs: {
       appDirectory: true,
     },
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <ModifiedDescription />
+          <Primary />
+          <Controls />
+          <Stories />
+        </>
+      ),
+    }
   },
   decorators: [withAppRouterContext],
 };

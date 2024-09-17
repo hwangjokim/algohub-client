@@ -5,7 +5,7 @@ const meta: Meta<typeof Button> = {
   title: "Common/Button",
   component: Button,
   parameters: {
-    layout: "centered", // You can adjust or remove this as needed
+    layout: "centered",
     design: {
       type: "figma",
       url: "https://www.figma.com/design/PBHmaVSKndAId6lY6G2qEb/AlgoHub?node-id=500-25826&t=BZcUqksImvGD8cnl-4",

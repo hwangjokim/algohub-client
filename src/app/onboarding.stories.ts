@@ -16,9 +16,7 @@ const meta: Meta<typeof OnboardingPage> = {
 };
 
 type Story = StoryObj<typeof OnboardingPage>;
- 
-// If you have the actions addon,
-// you can interact with the links and see the route change events there
+
 export const Onboarding: Story = {
   parameters: {
     nextjs: {
