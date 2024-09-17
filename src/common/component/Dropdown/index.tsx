@@ -41,7 +41,6 @@ const Dropdown = ({
             {
               className: dropdownItemStyle,
               key: index,
-              role: "button",
               tabIndex: 0,
             }
           );
