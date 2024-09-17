@@ -1,5 +1,4 @@
 "use client"
-
 import Animation from "@/common/component/Animation";
 import ToggleButton from "@/common/component/ToggleButton";
 import "@/styles/globalStyles.css";
