@@ -42,9 +42,6 @@ importers:
       '@storybook/addon-designs':
         specifier: ^8.0.3
         version: 8.0.3(@storybook/blocks@8.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.1))(@storybook/components@8.3.1(storybook@8.3.1))(@storybook/theming@8.3.1(storybook@8.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@storybook/addon-docs':
-        specifier: ^8.3.1
-        version: 8.3.1(storybook@8.3.1)(webpack-sources@3.2.3)
       '@storybook/addon-essentials':
         specifier: ^8.3.1
         version: 8.3.1(storybook@8.3.1)(webpack-sources@3.2.3)
@@ -63,9 +60,6 @@ importers:
       '@storybook/addon-styling-webpack':
         specifier: 1.0.0
         version: 1.0.0(storybook@8.3.1)(webpack@5.94.0(esbuild@0.23.1))
-      '@storybook/addon-viewport':
-        specifier: ^8.3.1
-        version: 8.3.1(storybook@8.3.1)
       '@storybook/blocks':
         specifier: ^8.3.1
         version: 8.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.1)
