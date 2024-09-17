@@ -1,6 +1,7 @@
-import Providers from "@/components/common/Provider/Provider";
+import Header from "@/shared/component/Header";
 import type { Metadata } from "next";
 import "./globals.css";
+import Providers from "@/shared/component/Provider";
 
 export const metadata: Metadata = {
   title: "AlgoHub",
@@ -15,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        {/** NextJS의 SSR 시 global state의 범위를 제한시키기 위한 Providers */}
+        <Header />
         <Providers>{children}</Providers>
       </body>
     </html>

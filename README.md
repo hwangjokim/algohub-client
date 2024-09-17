@@ -8,12 +8,12 @@
 
 |  **category**   |          **stack**           |
 | :-------------: | :--------------------------: |
-|    `Common`     | `eslint`, `prettier`, `npm`  |
+|    `Common`     |        `biome`, `pnpm`       |
 |   `Language`    |  `TypeScript`,`JavaScript`   |
 |     `Build`     |            `Vite`            |
 |   `Framework`   |           `NextJS`           |
-|     `Style`     |        `Tailwind CSS`        |
-| `Data Fetching` |    `Axios`, `React-Query`    |
+|     `Style`     |        `Vanilla-Extract`     |
+| `Data Fetching` |      `ky`, `React-Query`     |
 | `Collaboration` | `Notion`, `Figma`, `Discord` |
 
 ## 🎯 기능 목록
@@ -25,37 +25,80 @@
 ## 📁 폴더 구조
 
 ```
-|-- 📁 node_modules
-|-- 📁 public
-|-- 📁 src
-	|-- 📁 apis
-	|      |-- member.ts
-	|      |-- reservation.ts
-	|-- 📁 app
-	|      |-- 📁onboarding
-  |           |-- pages.tsx
-	|      |-- pages.tsx
-	|-- 📁 assets
-	|      |-- 📁imgs
-	|      |-- 📁svgs
-	|-- 📁 components
-	|      |--📁common
-	|      |--📁shared
-	|-- 📁 constants
-	|      |-- index.ts (상수 데이터 많다면 분리)
-	|-- 📁 hooks
-	|      |-- 📁 commons
-	|          |-- useOverlay.ts
-	|      |-- 📁 query
-	|          |-- useGroupQuery.ts
-	|-- 📁 styles
-	|      |-- fonts.ts
-	|      |-- GlobalStyle.ts
-	|      |-- theme.ts
-	|-- 📁 types
-	|      |-- groupTypes.ts
-	|-- 📁 utils
-	|      |-- date.ts
-|-- .eslintrc.json
-|-- .gitignore
+📦src
+ ┣━ 📂app /* 라우팅에 관한 핵심 정보들만 */
+ ┃   ┣━ 📂group
+ ┃   ┃   ┣━ 📂problemList
+ ┃   ┃   ┣━ 📂solvedList
+ ┃   ┃   ┃   ┗━ 📂solvedDetail
+ ┃   ┃   ┣━ 📂mySolved
+ ┃   ┃   ┣━ 📂setting /* 멤버 접근 시 404 */
+ ┃   ┃   ┗━ 📜page.tsx /* dashboard */
+ ┃	 ┣━ 📂login
+ ┃	 ┣━ 📂signup
+ ┃	 ┣━ 📂user
+ ┃   ┃   ┣━ 📂createGroup
+ ┃   ┃   ┣━ 📂joinGroup
+ ┃   ┃   ┣━ 📂setting
+ ┃   ┃   ┗━ 📜page.tsx /* dashboard */
+ ┃	 ┣━ 🎨globals.css
+ ┃	 ┣━ 📜layout.tsx
+ ┃	 ┗━ 📜page.tsx /* onboarding 페이지 */
+ ┣━ 📂asset
+ ┃	 ┣━ 📂img
+ ┃	 ┣━ 📂lottie
+ ┃	 ┗━ 📂svg
+ ┣━ 📂common
+ ┃	 ┣━ 📂component
+ ┃   ┃   ┗━ 📂button
+ ┃   ┃       ┣━ 📜index.tsx
+ ┃   ┃       ┗━ 🎨index.css.ts
+ ┃	 ┣━ 📂hook
+ ┃	 ┗━ 📂util
+ ┣━ 📂shared /* 도메인이 다를 경우 */
+ ┃	 ┣━ 📂api
+ ┃   ┣━ 📜constant.ts
+ ┃	 ┣━ 📂component
+ ┃	 ┣━ 📂hook
+ ┃   ┣━ 📜type.ts
+ ┃	 ┗━ 📂util
+ ┣━ 📂page /* 라우팅 구조 그대로 */
+ ┃   ┣━ 📂group
+ ┃   ┃   ┣━ 📂index /* domain/group 에서 필요한 것 */
+ ┃   ┃   ┃   ┣━ 📂api
+ ┃   ┃   ┃   ┣━ 📜constant.ts
+ ┃   ┃   ┃   ┣━ 📂component
+ ┃   ┃   ┃   ┃   ┗━ 📂ranking
+ ┃   ┃   ┃   ┃       ┣━ 📜index.tsx
+ ┃   ┃   ┃   ┃       ┣━ 🎨index.css.ts /* index.tsx에 필요한 것 + 공통으로 사용되는 것 */
+ ┃   ┃   ┃   ┃       ┣━ 📜topRanking.tsx
+ ┃   ┃   ┃   ┃       ┣━ 🎨topRanking.css.ts
+ ┃   ┃   ┃   ┃       ┣━ 📜totalRanking.tsx
+ ┃   ┃   ┃   ┃       ┗━ 🎨totalRanking.css.ts
+ ┃   ┃   ┃   ┣━ 📂hook
+ ┃   ┃   ┃   ┣━ 📜type.ts
+ ┃   ┃   ┃   ┗━ 📂util
+ ┃   ┃   ┣━ 📂problemList /* domain/group/problemList 에서 필요한 것 */
+ ┃   ┃   ┃   ┣━ 📂api
+ ┃   ┃   ┃   ┣━ 📜constant.ts
+ ┃   ┃   ┃   ┣━ 📂component
+ ┃   ┃   ┃   ┣━ 📂hook
+ ┃   ┃   ┃   ┣━ 📜type.ts
+ ┃   ┃   ┃   ┗━ 📂util
+ ┃   ┃   ┣━ 📂solvedList
+ ┃   ┃   ┃   ┗━ 📂solvedDetail
+ ┃   ┃   ┣━ 📂mySolved
+ ┃   ┃   ┗━ 📂setting
+ ┃	 ┣━ 📂login
+ ┃	 ┣━ 📂signup
+ ┃	 ┣━ 📂user
+ ┃   ┃   ┣━ 📂dashboard
+ ┃   ┃   ┣━ 📂createGroup
+ ┃   ┃   ┣━ 📂joinGroup
+ ┃   ┃   ┗━ 📂setting
+ ┃	 ┗━ 📂index
+ ┣━ 📂service /* 외부 라이브러리 (ex. jotai) */
+ ┗━ 📂style
+     ┣━ 🎨globalStyle.css.ts
+     ┗━ 🎨theme.css.ts
 ```
