@@ -12,14 +12,14 @@ import {
   dateDetailStyle,
   dateStyle,
   leftArrowStyle,
-  rightArrowStyle,
   wrapperStyle,
 } from "./index.css";
 registerLocale("ko", ko);
 
 interface CalendarProps {
-  initialDate?: Date;
   onChange: (date: Date) => void;
+
+  initialDate?: Date;
 }
 
 const Calendar = ({ onChange, initialDate }: CalendarProps) => {
@@ -46,12 +46,13 @@ const Calendar = ({ onChange, initialDate }: CalendarProps) => {
           renderCustomHeader={renderCustomHeader}
           onChange={handleDateChange}
           locale="ko"
+          calendarStartDay={1}
           popperPlacement="bottom-start"
           shouldCloseOnSelect
         />
       </div>
 
-      <IcnCalenderCard className={calendarIcnStyle} />
+      <IcnCalenderCard className={calendarIcnStyle({ selected })} />
     </div>
   );
 };
@@ -70,13 +71,13 @@ const renderCustomHeader = ({
   return (
     <div className={customHeaderWrapperStyle}>
       <button className={arrowWrapperStyle} onClick={decreaseMonth}>
-        <IcnBtnArrowLeft className={leftArrowStyle} />
+        <IcnBtnArrowLeft className={leftArrowStyle({ rotate: false })} />
       </button>
       <div className={dateDetailStyle}>{`${date.getFullYear()}년 ${
         date.getMonth() + 1
       }월`}</div>
       <button className={arrowWrapperStyle} onClick={increaseMonth}>
-        <IcnBtnArrowLeft className={rightArrowStyle} />
+        <IcnBtnArrowLeft className={leftArrowStyle({ rotate: true })} />
       </button>
     </div>
   );

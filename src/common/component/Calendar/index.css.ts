@@ -13,10 +13,24 @@ export const wrapperStyle = style({
   height: "3.6rem",
 });
 
-export const calendarIcnStyle = style({
-  width: "2rem",
-  height: "2rem",
-  color: theme.color.mg4,
+export const calendarIcnStyle = recipe({
+  base: {
+    width: "2rem",
+    height: "2rem",
+
+    ["[stroke='#9BA1B4']" as string]: {
+      stroke: theme.color.mg4,
+    },
+  },
+  variants: {
+    selected: {
+      true: {
+        ["[stroke='#9BA1B4']" as string]: {
+          stroke: theme.color.lg2,
+        },
+      },
+    },
+  },
 });
 
 export const dateStyle = recipe({
@@ -42,6 +56,7 @@ export const customHeaderWrapperStyle = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  gap: "1rem",
 });
 
 export const arrowWrapperStyle = style({
@@ -50,15 +65,21 @@ export const arrowWrapperStyle = style({
   height: "2rem",
 });
 
-export const leftArrowStyle = style({
-  width: "1.5rem",
-  height: "1.5rem",
-});
-
-export const rightArrowStyle = style({
-  width: "1.5rem",
-  height: "1.5rem",
-  transform: "rotate(180deg)",
+export const leftArrowStyle = recipe({
+  base: {
+    width: "1.5rem",
+    height: "1.5rem",
+    ["[stroke='#BCC0CD']" as string]: {
+      stroke: theme.color.mg4,
+    },
+  },
+  variants: {
+    rotate: {
+      true: {
+        transform: "rotate(180deg)",
+      },
+    },
+  },
 });
 
 export const dateDetailStyle = style({
@@ -86,11 +107,19 @@ globalStyle(".react-datepicker__current-month", {
 globalStyle(".react-datepicker__day-name", {
   color: theme.color.wg,
   fontSize: "1rem",
-  fontWeight: "500",
 });
+
+globalStyle(
+  ".react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name",
+  {
+    width: "2.3rem",
+    height: "2.3rem",
+  }
+);
 
 globalStyle(".react-datepicker__month", {
   margin: 0,
+  padding: "0.8rem",
   backgroundColor: theme.color.mg5,
 });
 
@@ -102,6 +131,7 @@ globalStyle(".react-datepicker__day", {
   color: theme.color.mg3,
   fontSize: "1rem",
   fontWeight: "500",
+  lineHeight: "2.3rem",
 });
 
 globalStyle(".react-datepicker__day--selected", {
