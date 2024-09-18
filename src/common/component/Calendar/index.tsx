@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import DatePicker, { registerLocale } from "react-datepicker";
+import DatePicker, {
+  type DatePickerProps,
+  registerLocale,
+} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { IcnBtnArrowLeft, IcnCalenderCard } from "@/asset/svg";
 import { ko } from "date-fns/locale";
@@ -18,13 +21,15 @@ registerLocale("ko", ko);
 
 interface CalendarProps {
   onChange: (date: Date) => void;
-
-  initialDate?: Date;
 }
 
-const Calendar = ({ onChange, initialDate }: CalendarProps) => {
+const Calendar = ({
+  onChange,
+  ...props
+}: CalendarProps &
+  Omit<DatePickerProps, "onChange" | "selectsRange" | "selectsMultiple">) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(
-    initialDate ?? new Date()
+    props.startDate ?? new Date()
   );
   const [selected, setSelected] = useState<boolean>(false);
 
@@ -49,6 +54,7 @@ const Calendar = ({ onChange, initialDate }: CalendarProps) => {
           calendarStartDay={1}
           popperPlacement="bottom-start"
           shouldCloseOnSelect
+          {...props}
         />
       </div>
 
