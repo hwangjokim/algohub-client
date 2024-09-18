@@ -1,6 +1,6 @@
 import { IcnAlarm } from "@/asset/svg";
 import Menu from "@/shared/component/Header/Menu";
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import Dropdown from ".";
 
 const meta: Meta<typeof Dropdown> = {
@@ -18,26 +18,32 @@ const meta: Meta<typeof Dropdown> = {
   },
 } satisfies Meta<typeof Dropdown>;
 
-export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = () => (
-  <Menu
-    label="test"
-    renderTriggerIcon={<IcnAlarm width={"2.5rem"} height={"2.5rem"} />}
-    renderList={
-      <Dropdown label="test">
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-      </Dropdown>
-    }
-  />
-);
-
-Default.parameters = {
-  docs: {
-    source: {
-      type: "dynamic",
+export const Default: Story = {
+  args: {
+    label: "default",
+  },
+  parameters: {
+    docs: {
+      source: {
+        type: "dynamic", // auto | dynamic | code
+      },
     },
   },
+  render: (props) => (
+    <Menu
+      renderTriggerIcon={<IcnAlarm width="2.5rem" height="2.5rem" />}
+      renderList={
+        <Dropdown {...props}>
+          <li>a</li>
+          <li>b</li>
+          <li>c</li>
+        </Dropdown>
+      }
+      {...props}
+    />
+  ),
 };
+
+export default meta;

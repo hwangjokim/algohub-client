@@ -1,4 +1,4 @@
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import Button from ".";
 
 const meta: Meta<typeof Button> = {
@@ -27,20 +27,31 @@ const meta: Meta<typeof Button> = {
 
 export default meta;
 
-export const Default = () => (
-  <Button size="small" color="purple">
-    Default Button
-  </Button>
-);
+type Story = StoryObj<typeof meta>;
 
-export const MediumGrayButton = () => (
-  <Button size="medium" color="gray">
-    Medium Gray Button
-  </Button>
-);
+export const Default: Story = {
+  args: {
+    size: 'small',
+    color: 'purple',
+    children: 'Default Button',
+  },
+  render: (props) => <Button {...props} />,
+};
 
-export const LargeLgButton = () => (
-  <Button size="large" color="lg">
-    Large LG Button
-  </Button>
-);
+export const MediumGrayButton: Story = {
+  args: {
+    size: 'medium',
+    color: 'gray',
+    children: 'Medium Gray Button',
+  },
+  render: (props) => <Button {...props} />,
+};
+
+export const LargeLgButton: Story = {
+  args: {
+    size: 'large',
+    color: 'lg',
+    children: 'Large LG Button',
+  },
+  render: (props) => <Button {...props} />,
+};

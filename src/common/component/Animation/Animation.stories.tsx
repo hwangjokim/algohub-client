@@ -1,6 +1,6 @@
 import { arrow, exitGroup, requireLogin } from "@/asset/lottie";
 import Animation from "@/common/component/Animation";
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Animation> = {
   title: "Shared/Animation",
@@ -12,23 +12,42 @@ const meta: Meta<typeof Animation> = {
   argTypes: {
     size: { control: "text" },
     loop: { control: "boolean" },
+    animationJson: { control: "object", description: "Lottie JSON" }
   },
 } satisfies Meta<typeof Animation>;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = () => (
-  <Animation size="100px" animationJson={arrow} />
-);
+export const Default: Story = {
+  args: {
+    size: "100px",
+    animationJson: arrow,
+  },
+  render: (props) => <Animation {...props} />
+};
 
-export const NoLoop = () => (
-  <Animation size="100px" animationJson={arrow} loop={false} />
-);
+export const NoLoop: Story = {
+  args: {
+    size: "100px",
+    animationJson: arrow,
+    loop: false,
+  },
+  render: (props) => <Animation {...props} />
+};
 
-export const ExitGroup = () => (
-  <Animation size="100px" animationJson={exitGroup} />
-);
+export const ExitGroup: Story = {
+  args: {
+    size: "100px",
+    animationJson: exitGroup,
+  },
+  render: (props) => <Animation {...props} />
+};
 
-export const RequireLogin = () => (
-  <Animation size="100px" animationJson={requireLogin} />
-);
+export const RequireLogin: Story = {
+  args: {
+    size: "100px",
+    animationJson: requireLogin,
+  },
+  render: (props) => <Animation {...props} />
+};
