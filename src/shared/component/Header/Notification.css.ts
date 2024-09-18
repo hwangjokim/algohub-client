@@ -21,21 +21,47 @@ export const countStyle = style({
 });
 
 export const notificationContainer = style({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
-  gap: "1rem",
-
   position: "absolute",
   top: "7.2rem",
   right: "8rem",
-
+  
   width: "26.9rem",
   height: "27.4rem",
-  padding: "0.8rem",
+  padding: "2rem 0.7rem",
 
   borderRadius: "2rem",
   opacity: "0.9",
   backdropFilter: "blur(2px)",
   backgroundColor: theme.color.mg6,
+});
+
+export const ulStyle = style({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "1rem",
+  paddingTop: "1rem",
+  
+  height: "24.5rem",
+  overflowY: "scroll",
+
+  selectors: {
+    "&::-webkit-scrollbar": {
+      width: "0.3rem",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: theme.color.mg1,
+      borderRadius: "0.4rem",
+    },
+    "&::-webkit-scrollbar-button": {
+      height: "1rem",
+    },
+    "&::-webkit-scrollbar-thumb:active": {
+      background: theme.color.mg4,
+    },
+    "&::-webkit-scrollbar-track": {
+      background: "transparent",
+      boxShadow: "none",
+    },
+  },
 });
