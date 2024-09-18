@@ -1,17 +1,12 @@
 import { theme } from "@/styles/themes.css";
 // NotificationCard.css.ts
 import { style } from "@vanilla-extract/css";
-import { recipe } from "@vanilla-extract/recipes";
 
 export const listStyle = style({
   listStyle: "none",
 });
 
-export const buttonStyle = style({
-  display: "flex",
-  flexDirection: "column",
-  gap: "1.2rem",
-
+export const containerStyle = style({
   padding: "0.6rem 1rem",
   borderRadius: "0.8rem",
 
@@ -24,32 +19,26 @@ export const buttonStyle = style({
   },
 });
 
-export const deleteButtonStyle = recipe({
-  base: {
-    visibility: "hidden",
-    position: "absolute",
-    top: -5,
-    right: -5,
-    zIndex: theme.zIndex.top,
-    
-    borderRadius: "20px",
-    
-    opacity: 1,
-  },
-  variants: {
-    active: {
-      true: {
-        visibility: "visible",
-      },
-    },
-  },
-});
+export const alarmStyle = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "1.2rem",
+})
 
 export const deleteIconStyle = style({
+  position: "absolute",
+  top: 0,
+  right: 0,
+  zIndex: theme.zIndex.top,
+  transform: "translate(0, 10px)",
+  borderRadius: "20px",
+
+  opacity: 1,
   selectors: {
     "&:hover": {
       ["rect:nth-of-type(2)" as string]: {
         stroke: theme.color.mg4,
+        strokeWidth: 5
       },
     },
   },

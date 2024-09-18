@@ -2,25 +2,25 @@ import { checkContains } from "@/common/util/dom";
 import { useCallback, useEffect, useRef } from "react";
 
 /**
- * @param handleToggle toggle 관리용 setState 핸들러
+ * @param callback toggle 관리용 setState 핸들러
  * @example
- *  const handleToggle = () => setShowMenu(false);
-    const ref = useOutsideClick(handleToggle);
+ *  const callback = () => setShowMenu(false);
+    const ref = useOutsideClick(callback);
  */
-export const useOutsideClick = (handleToggle: () => void) => {
+export const useOutsideClick = (callback: () => void) => {
   const ref = useRef<HTMLDivElement>(null);
   const handleOutsideClick = useCallback(
     ({ target }: MouseEvent) => {
       const [check] = checkContains(target!, ref);
-      if (!check) handleToggle();
+      if (!check) callback();
     },
-    [handleToggle],
+    [callback],
   );
   const handleESCKeyDown = useCallback(
     (event: KeyboardEvent) => {
-      if (event.key === "Escape") handleToggle();
+      if (event.key === "Escape") callback();
     },
-    [handleToggle],
+    [callback],
   );
 
   useEffect(() => {

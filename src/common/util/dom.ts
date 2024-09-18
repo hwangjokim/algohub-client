@@ -29,7 +29,7 @@ export const checkContains = (
  * @return handleKeyDown 핸들러 함수
  */
 export const handleKeyDown =
-  (handleClick: () => void) => (event: React.KeyboardEvent<HTMLDivElement>) => {
+  (handleClick: () => void) => (event: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       handleClick();
@@ -57,7 +57,7 @@ export const handleKeyDown =
     </div>
  */
 export const handleStopPropagationKeyDown = (
-  event: React.KeyboardEvent<HTMLButtonElement>,
+  event: React.KeyboardEvent<HTMLElement | SVGElement>,
 ) => {
   if (event.key === "Enter" || event.key === " ") {
     event.stopPropagation();

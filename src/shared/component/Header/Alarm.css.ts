@@ -20,7 +20,7 @@ export const countStyle = style({
   alignContent: "center",
 });
 
-export const notificationContainer = style({
+export const alarmContainer = style({
   position: "absolute",
   top: "7.2rem",
   right: "8rem",

@@ -1,6 +1,6 @@
 import IcnNew from "@/asset/svg/icn_new.svg?url";
 
-export const notifications = [
+export const alarms = [
   {
     name: "Yesol Song",
     message: "님이 코멘트를 달았어요.",
