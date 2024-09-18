@@ -39,6 +39,8 @@ export const handleKeyDown =
 /**
  * @description keydown이 가능한 요소의 자식요소를 focus & keydown할 때 부모 요소가 가로채는 현상 방지하는 함수
  * @example
+ * // 아래 상황에서 button에 focus를 두고 키보드를 사용해 클릭하면 부모인 div의 keydown이 가로채버림
+ * // 이때 handleStopPropagationKeyDown을 사용하면 위 버그 방지 가능
  * <div
       className={buttonStyle}
       role="button"

@@ -13,12 +13,12 @@ export const buttonStyle = style({
   gap: "1.2rem",
 
   padding: "0.6rem 1rem",
-
-  cursor: "pointer",
-
   borderRadius: "0.8rem",
+
   backdropFilter: "blur(2px)",
   backgroundColor: theme.color.mg6,
+
+  cursor: "pointer",
   ":hover": {
     backgroundColor: theme.color.transparent_mg4,
   },
@@ -26,13 +26,15 @@ export const buttonStyle = style({
 
 export const deleteButtonStyle = recipe({
   base: {
+    visibility: "hidden",
     position: "absolute",
     top: -5,
     right: -5,
     zIndex: theme.zIndex.top,
-    opacity: 1,
+    
     borderRadius: "20px",
-    visibility: "hidden",
+    
+    opacity: 1,
   },
   variants: {
     active: {
@@ -56,14 +58,15 @@ export const deleteIconStyle = style({
 export const profileImageStyle = style({
   width: "2.5rem",
   height: "2.5rem",
-  borderRadius: "5rem",
   border: `1px solid ${theme.color.mg1}`,
+  borderRadius: "5rem",
 });
 
 export const profileStyle = style({
   display: "flex",
   alignItems: "center",
   gap: "0.8rem",
+
   width: "22rem",
 
   textAlign: "left",

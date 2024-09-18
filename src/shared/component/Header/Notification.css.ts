@@ -28,8 +28,8 @@ export const notificationContainer = style({
   width: "26.9rem",
   height: "27.4rem",
   padding: "2rem 0.7rem",
-
   borderRadius: "2rem",
+
   opacity: "0.9",
   backdropFilter: "blur(2px)",
   backgroundColor: theme.color.mg6,
@@ -40,10 +40,10 @@ export const ulStyle = style({
   flexDirection: "column",
   alignItems: "center",
   gap: "1rem",
-  paddingTop: "1rem",
+  overflowY: "scroll",
   
   height: "24.5rem",
-  overflowY: "scroll",
+  paddingTop: "1rem",
 
   selectors: {
     "&::-webkit-scrollbar": {
