@@ -1,13 +1,13 @@
-import { Markdown, useOf } from "@storybook/blocks";
-import React from "react";
+import { Controls, Markdown, Primary, Stories, Subtitle, Title, useOf } from "@storybook/blocks";
+import type { ComponentPropsWithoutRef } from "react";
 
-const parseJSDoc = (description) => {
+const parseJSDoc = (description: string) => {
   const paramMatches = description.match(/@param\s+(?:\{([^}]*)\}\s+)?(\w+)\s+(.+)/g)  || [];
   const exampleMatches = description.match(/@example\s+([\s\S]*)/) || [];
 
   const params = paramMatches.map((param) => {
     // 각각의 @param 항목에서 type, name, description을 추출하는 정규식
-    const [_, type, name, desc] = param.match(/@param\s+(?:\{([^}]*)\}\s+)?(\w+)\s+(.+)/);
+    const [_, type, name, desc] = param.match(/@param\s+(?:\{([^}]*)\}\s+)?(\w+)\s+(.+)/)!;
     return {type, name, desc};
   });
   const example = exampleMatches.length > 0 ? exampleMatches[1].trim() : null;
@@ -19,7 +19,7 @@ const parseJSDoc = (description) => {
   return { mainDescription, params, example };
 };
 
-const getDescriptionFromResolvedOf = (resolvedOf) => {
+const getDescriptionFromResolvedOf = (resolvedOf: ReturnType<typeof useOf>) => {
   switch (resolvedOf.type) {
     case "story": {
       return resolvedOf.story.parameters.docs?.description?.story || null;
@@ -43,7 +43,7 @@ const getDescriptionFromResolvedOf = (resolvedOf) => {
         projectAnnotations: { parameters },
       } = resolvedOf;
       return (
-        parameters.docs?.extractComponentDescription?.(component, {
+        parameters?.docs?.extractComponentDescription?.(component, {
           component,
           parameters,
         }) || null
@@ -51,13 +51,13 @@ const getDescriptionFromResolvedOf = (resolvedOf) => {
     }
     default: {
       throw new Error(
-        `Unrecognized module type resolved from 'useOf', got: ${resolvedOf.type}`,
+        `Unrecognized module type resolved from 'useOf', got: ${String(resolvedOf)}`,
       );
     }
   }
 };
 
-const ModifiedDescription = (props) => {
+const ModifiedDescription = (props: ComponentPropsWithoutRef<typeof Markdown>) => {
   const { of } = props;
 
   if ("of" in props && of === undefined) {
@@ -105,4 +105,15 @@ const ModifiedDescription = (props) => {
   );
 };
 
-export default ModifiedDescription;
+const DocsPage = () => (
+  <>
+    <Title />
+    <Subtitle />
+    <ModifiedDescription />
+    <Primary />
+    <Controls />
+    <Stories />
+  </>
+);
+
+export default DocsPage;

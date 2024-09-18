@@ -4,8 +4,7 @@ import {
   dropdownItemStyle,
 } from "@/common/component/Dropdown/index.css";
 import { camelToKebab } from "@/common/util/string";
-import type { PropsWithChildren } from "react";
-import React from "react";
+import { Children, type PropsWithChildren, type ReactElement, cloneElement, isValidElement } from "react";
 
 type DropdownProps = {
   label: string;
@@ -34,10 +33,10 @@ const Dropdown = ({
       id={label}
       aria-labelledby={camelToKebab(`${label}Toggle`)}
     >
-      {React.Children.map(children, (child, index) => {
-        if (React.isValidElement(child)) {
-          return React.cloneElement<HTMLLIElement>(
-            child as React.ReactElement<HTMLLIElement>,
+      {Children.map(children, (child, index) => {
+        if (isValidElement(child)) {
+          return cloneElement<HTMLLIElement>(
+            child as ReactElement<HTMLLIElement>,
             {
               className: dropdownItemStyle,
               key: index,
