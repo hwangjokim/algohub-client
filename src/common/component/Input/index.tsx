@@ -1,12 +1,17 @@
-import { useState } from "react";
+"use client";
+
+import {
+  type ChangeEvent,
+  type KeyboardEvent,
+  type TextareaHTMLAttributes,
+  useState,
+} from "react";
 import { barStyle, inputStyle, wrapperStyle } from "./index.css";
 
-interface InputProps {
+interface InputProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   size: "medium" | "large" | "textarea";
-  placeholder: string;
   handleChange: (value: string) => void;
   error?: boolean;
-  defaultValue?: string;
 }
 
 const Input = ({
@@ -18,11 +23,11 @@ const Input = ({
 }: InputProps) => {
   const [active, setActive] = useState<boolean>(false);
 
-  const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     handleChange(event.target.value);
   };
 
-  const onKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const onKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Enter" && size !== "textarea") {
       event.preventDefault();
       event.stopPropagation();
