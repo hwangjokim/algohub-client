@@ -4,7 +4,7 @@ globalStyle("*, *::before, *::after", {
   boxSizing: "border-box",
   fontFamily: `'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 
     'Apple SD Gothic Neo', 'Noto Sans KR', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif`,
-  fontSize: "62.5%",
+  fontSize: process.env.STORYBOOK === "true" ? "inherit" : "62.5%",
   margin: 0,
   padding: 0,
 });
