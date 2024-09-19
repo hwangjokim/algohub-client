@@ -5,9 +5,6 @@ const meta: Meta<typeof OnboardingPage> = {
 	title: "page/onboarding",
   component: OnboardingPage,
   parameters: {
-    nextjs: {
-      appDirectory: true,
-    },
     design: {
       type: "figma",
       url: "https://www.figma.com/design/PBHmaVSKndAId6lY6G2qEb/AlgoHub?node-id=491-26604&t=BZcUqksImvGD8cnl-4",
