@@ -1,5 +1,4 @@
 import { IcnBellHeader } from "@/asset/svg";
-import AlarmListItem from "@/common/component/AlarmListItem";
 import {
   alarmContainer,
   countStyle,
@@ -7,6 +6,7 @@ import {
 } from "@/shared/component/Header/Alarm.css";
 import { iconStyle } from "@/shared/component/Header/index.css";
 import { alarms } from "@/shared/constant/example";
+import AlarmListItem from "./AlarmListItem";
 
 const Alarm = () => {
   return (
@@ -14,7 +14,7 @@ const Alarm = () => {
       <ul className={ulStyle} aria-label="알림 목록">
         {alarms.map((alarm, index) => (
           <AlarmListItem
-            key={index}
+            key={index} // TODO: api 연결 후 key 변경
             name={alarm.name}
             message={alarm.message}
             date={alarm.date}

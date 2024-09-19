@@ -1,3 +1,5 @@
+"use client";
+
 import Alarm from "@/shared/component/Header/Alarm";
 import Menu from "@/shared/component/Header/Menu";
 import Profile from "@/shared/component/Header/Profile";

@@ -1,13 +1,10 @@
 import { theme } from "@/styles/themes.css";
-// NotificationCard.css.ts
 import { style } from "@vanilla-extract/css";
-
-export const listStyle = style({
-  listStyle: "none",
-});
+import { recipe } from "@vanilla-extract/recipes";
 
 export const containerStyle = style({
-  padding: "0.6rem 1rem",
+  width: "25rem",
+  padding: "0.8rem 0.3rem 0.8rem 0.8rem",
   borderRadius: "0.8rem",
 
   backdropFilter: "blur(2px)",
@@ -19,29 +16,39 @@ export const containerStyle = style({
   },
 });
 
-export const alarmStyle = style({
+export const alarmContentStyle = style({
   display: "flex",
   flexDirection: "column",
-  gap: "1.2rem",
-})
+  gap: "1rem",
+});
 
-export const deleteIconStyle = style({
-  position: "absolute",
-  top: 0,
-  right: 0,
-  zIndex: theme.zIndex.top,
-  transform: "translate(0, 10px)",
-  borderRadius: "20px",
+export const deleteIconStyle = recipe({
+  base: {
+    display: "none",
+    position: "absolute",
+    top: -8,
+    right: -5,
+    zIndex: theme.zIndex.top,
 
-  opacity: 1,
-  selectors: {
-    "&:hover": {
-      ["rect:nth-of-type(2)" as string]: {
-        stroke: theme.color.mg4,
-        strokeWidth: 5
+    borderRadius: "20px",
+
+    opacity: 1,
+    
+    selectors: {
+      "&:hover": {
+        ["rect:nth-of-type(2)" as string]: {
+          stroke: theme.color.mg4,
+        },
       },
     },
   },
+  variants: {
+    active: {
+      true: {
+        display: "block"
+      }
+    }
+  }
 });
 
 export const profileImageStyle = style({
@@ -56,9 +63,7 @@ export const profileStyle = style({
   alignItems: "center",
   gap: "0.8rem",
 
-  width: "22rem",
-
-  textAlign: "left",
+  textAlign: "justify",
 });
 
 export const nameStyle = style({
@@ -73,6 +78,6 @@ export const messageStyle = style({
 
 export const dateStyle = style({
   fontSize: "1rem",
-  lineHeight: "1.193rem",
+  lineHeight: "11.",
   color: theme.color.mg4,
 });

@@ -1,4 +1,4 @@
-import { checkContains } from "@/common/util/dom";
+import { checkRefsContains } from "@/common/util/dom";
 import { useCallback, useEffect, useRef } from "react";
 
 /**
@@ -11,7 +11,7 @@ export const useOutsideClick = (callback: () => void) => {
   const ref = useRef<HTMLDivElement>(null);
   const handleOutsideClick = useCallback(
     ({ target }: MouseEvent) => {
-      const [check] = checkContains(target!, ref);
+      const [check] = checkRefsContains(target!, ref);
       if (!check) callback();
     },
     [callback],
