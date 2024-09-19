@@ -61,7 +61,7 @@
 		"indentStyle": "space"
 	},
 	"files": {
-		"ignore": [".next/*"],
+		"ignore": [".next/*", "main.ts"],
 		"include": ["**/*.ts", "**/*.tsx"]
 	}
 }
