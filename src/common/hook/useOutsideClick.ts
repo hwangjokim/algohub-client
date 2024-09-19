@@ -1,3 +1,4 @@
+'use client';
 import { checkContains } from "@/common/util/dom";
 import { useCallback, useEffect, useRef } from "react";
 
@@ -7,8 +8,8 @@ import { useCallback, useEffect, useRef } from "react";
  *  const handleToggle = () => setShowMenu(false);
     const ref = useOutsideClick(handleToggle);
  */
-export const useOutsideClick = (handleToggle: () => void) => {
-  const ref = useRef<HTMLDivElement>(null);
+export const useOutsideClick = <T extends HTMLElement = HTMLDivElement>(handleToggle: () => void) => {
+  const ref = useRef<T | null>(null);
   const handleOutsideClick = useCallback(({ target }: MouseEvent) => {
     const [check] = checkContains(target!, ref);
     if (!check) handleToggle();
