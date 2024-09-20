@@ -12,6 +12,8 @@ export const footerStyle = style({
   height: "15rem",
   padding: "0 15rem",
   borderTop: `1px solid ${theme.color.mg5}`,
+
+  backgroundColor: theme.color.bg,
 });
 
 export const buttonContainer = style({

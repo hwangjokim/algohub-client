@@ -9,6 +9,8 @@ export const sectionStyle = style({
   scrollSnapAlign: "start",
 
   height: "100vh",
+
+  backgroundColor: theme.color.bg,
 });
 
 export const contentsContainer = recipe({

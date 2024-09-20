@@ -21,9 +21,10 @@ const preview: Preview = {
     },
     docs: {
       page: DocsPage
-    }
+    },
   },
   decorators: [WithAppRouterContext],
+  
 };
 
 export default preview;
