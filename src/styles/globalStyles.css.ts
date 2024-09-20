@@ -12,8 +12,13 @@ globalStyle("*, *::before, *::after", {
 });
 
 globalStyle("html", {
+  overflowY: "scroll",
   scrollBehavior: "smooth",
-  overflow: "hidden",
+  msOverflowStyle: "none",
+  scrollbarWidth: "none",
+  scrollSnapType: "y mandatory",
+
+  height: "100%",
 });
 
 globalStyle("input, textarea", {

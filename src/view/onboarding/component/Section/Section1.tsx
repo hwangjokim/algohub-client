@@ -25,7 +25,7 @@ const Section1 = () => {
     });
   };
   return (
-    <section id="introduction" className={sectionStyle(intro)}>
+    <section id="introduction" className={sectionStyle}>
       <div className={contentsContainer(intro)}>
         <div className={introContainer}>
           <h1 className={introTextContainer()}>

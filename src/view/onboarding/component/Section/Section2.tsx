@@ -13,7 +13,7 @@ import group from "/public/assets/group.png";
 const feature1 = { section: "feature1" } as const;
 const Section2 = () => {
   return (
-    <section id="features" className={sectionStyle()}>
+    <section id="features" className={sectionStyle}>
       <div className={contentsContainer(feature1)}>
         <div className={introContainer}>
           <h1 className={introTextContainer()}>

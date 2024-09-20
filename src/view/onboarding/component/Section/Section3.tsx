@@ -14,7 +14,7 @@ import comment from "/public/assets/comment.gif";
 const feature2 = { section: "feature2" } as const;
 const Section3 = () => {
   return (
-    <section id="features" className={sectionStyle()}>
+    <section id="features" className={sectionStyle}>
       <div className={contentsContainer(feature2)}>
         <div className={introContainer}>
           <h1 className={introTextContainer(feature2)}>

@@ -2,30 +2,13 @@ import { theme } from "@/styles/themes.css";
 import { style, styleVariants } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
-export const mainStyle = style({
-  scrollSnapType: "y mandatory",
-  overflowY: "scroll",
+export const sectionStyle = style({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  scrollSnapAlign: "start",
+
   height: "100vh",
-  msOverflowStyle: "none",
-  scrollbarWidth: "none",
-});
-
-export const sectionStyle = recipe({
-  base: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    scrollSnapAlign: "start",
-
-    height: "100vh",
-  },
-  variants: {
-    section: {
-      intro: {
-        height: "calc(100vh - 7.2rem)",
-      },
-    },
-  },
 });
 
 export const contentsContainer = recipe({
@@ -47,12 +30,14 @@ export const contentsContainer = recipe({
         gridTemplateRows: "25rem 65rem",
         alignItems: "start",
 
-        paddingTop: "10rem",
+        paddingTop: "15rem",
       },
       feature2: {
         gridTemplateColumns: "47.5rem 72.5rem",
         gridTemplateRows: "35rem 55rem",
         gridAutoFlow: "column",
+
+        paddingTop: "5rem",
       },
     },
   },
@@ -179,7 +164,9 @@ export const arrowStyle = style({
 export const gradientStyle = style({
   position: "absolute",
   bottom: 0,
-  background: "linear-gradient(180deg, rgba(16, 18, 23, 0) 0%, #101217 100%)",
+
   width: "85.6rem",
   height: "17.3rem",
+
+  background: "linear-gradient(180deg, rgba(16, 18, 23, 0) 0%, #101217 100%)",
 });
