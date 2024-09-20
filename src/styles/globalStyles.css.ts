@@ -13,6 +13,7 @@ globalStyle("*, *::before, *::after", {
 
 globalStyle("html", {
   scrollBehavior: "smooth",
+  overflow: "hidden",
 });
 
 globalStyle("input, textarea", {

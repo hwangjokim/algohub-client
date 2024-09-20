@@ -1,18 +1,27 @@
 import { theme } from "@/styles/themes.css";
-import { style } from "@vanilla-extract/css";
+import { style, styleVariants } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
+
+export const mainStyle = style({
+  scrollSnapType: "y mandatory",
+  overflowY: "scroll",
+  height: "100vh",
+  msOverflowStyle: "none",
+  scrollbarWidth: "none",
+});
 
 export const sectionStyle = recipe({
   base: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    scrollSnapAlign: "start",
 
     height: "100vh",
   },
   variants: {
     section: {
-      first: {
+      intro: {
         height: "calc(100vh - 7.2rem)",
       },
     },
@@ -22,24 +31,28 @@ export const sectionStyle = recipe({
 export const contentsContainer = recipe({
   base: {
     display: "grid",
-    justifyItems: "start",
     justifyContent: "center",
-    
+
     height: "100%",
     padding: "0 7rem",
   },
   variants: {
     section: {
-      first: {
+      intro: {
         gridTemplateColumns: "60rem 60rem",
         alignItems: "center",
       },
-      second: {
+      feature1: {
         gridTemplateColumns: "47.5rem 72.5rem",
         gridTemplateRows: "25rem 65rem",
         alignItems: "start",
 
         paddingTop: "10rem",
+      },
+      feature2: {
+        gridTemplateColumns: "47.5rem 72.5rem",
+        gridTemplateRows: "35rem 55rem",
+        gridAutoFlow: "column",
       },
     },
   },
@@ -54,17 +67,22 @@ export const introContainer = style({
   paddingLeft: "6rem",
 });
 
-export const introTextContainer = style({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
-  gap: "4px",
-  flex: "none",
-  alignSelf: "stretch",
-  order: 0,
-  flexGrow: 0,
+export const introTextContainer = recipe({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: "0.4rem",
 
-  padding: "0px",
+    alignSelf: "stretch",
+  },
+  variants: {
+    section: {
+      feature2: {
+        gap: "1.6rem",
+      },
+    },
+  },
 });
 
 export const introTextStyle = recipe({
@@ -78,14 +96,19 @@ export const introTextStyle = recipe({
     textWrap: "nowrap",
   },
   variants: {
-    color: {
-      purple: {
+    type: {
+      em: {
         color: theme.color.purple2,
       },
-    },
-    spacing: {
       alphabet: {
         letterSpacing: "-0.015em",
+      },
+      small: {
+        color: theme.color.mg2,
+        fontSize: "24px",
+        fontWeight: "500",
+        letterSpacing: "-0.1em",
+        lineHeight: "33.6px",
       },
     },
   },
@@ -103,24 +126,42 @@ export const introButtonStyle = style({
   width: "24rem",
 });
 
-export const imageStyle = style({
-  width: "58.4rem",
-  height: "54.1rem",
-  
-  objectFit: "cover",
-  objectPosition: "center",
+export const imageContainer = styleVariants({
+  intro: {
+    gridColumn: 2,
+    gridRow: 2,
+  },
+  feature2: {
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    gridColumn: "1 / span 2",
+    gridRow: 2,
+
+    width: "100%",
+    height: "fit-content",
+  },
 });
 
-export const imageContainer = recipe({
-  base: {},
+export const imageStyle = recipe({
+  base: {
+    objectFit: "cover",
+    objectPosition: "center",
+  },
   variants: {
     section: {
-      second: {
-        gridColumn: 2,
-        gridRow: 2,
+      intro: {
+        width: "58.4rem",
+        height: "54.1rem",
       },
-      third: {
-        paddingLeft: "25.5rem",
+      feature1: {
+        width: "74.06rem",
+        height: "42.4rem",
+      },
+      feature2: {
+        width: "85.6rem",
+        height: "48rem",
+        borderRadius: "1.6rem",
       },
     },
   },
@@ -133,4 +174,12 @@ export const arrowContainer = style({
 
 export const arrowStyle = style({
   cursor: "pointer",
+});
+
+export const gradientStyle = style({
+  position: "absolute",
+  bottom: 0,
+  background: "linear-gradient(180deg, rgba(16, 18, 23, 0) 0%, #101217 100%)",
+  width: "85.6rem",
+  height: "17.3rem",
 });

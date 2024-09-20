@@ -16,12 +16,19 @@ import {
 } from "./index.css";
 import graphic from "/public/assets/pixel3.webp";
 
+const intro = { section: "intro" } as const;
 const Section1 = () => {
+  const handleClick = () => {
+    const featureSection = document.querySelector("#features");
+    featureSection?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
   return (
-    <section id="introduction" className={sectionStyle({ section: "first" })}>
-      <div className={contentsContainer({ section: "first" })}>
+    <section id="introduction" className={sectionStyle(intro)}>
+      <div className={contentsContainer(intro)}>
         <div className={introContainer}>
-          <h1 className={introTextContainer}>
+          <h1 className={introTextContainer()}>
             <Text>함께 도전하고 함께 성장하는</Text>
             <Text.Em>알고리즘 스터디 플랫폼</Text.Em>
           </h1>
@@ -38,15 +45,25 @@ const Section1 = () => {
             </div>
           </div>
         </div>
-        <Image className={imageStyle} unoptimized src={graphic} alt="graphic" />
+        <Image
+          className={imageStyle(intro)}
+          src={graphic}
+          alt="graphic"
+          unoptimized
+          priority
+        />
       </div>
-      <a href="#features" className={arrowContainer} role="button">
+      <div className={arrowContainer}>
         <Animation
+          role="button"
+          onClick={handleClick}
+          // onKeyDown={}
+          tabIndex={0}
           className={arrowStyle}
           size="10.8rem"
           animationJson={arrow}
         />
-      </a>
+      </div>
     </section>
   );
 };

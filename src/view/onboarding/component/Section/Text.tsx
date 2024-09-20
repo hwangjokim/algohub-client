@@ -6,13 +6,17 @@ const Text = ({ children }: PropsWithChildren) => {
 };
 
 Text.Em = ({ children }: PropsWithChildren) => {
-  return <em className={introTextStyle({ color: "purple" })}>{children}</em>;
+  return <em className={introTextStyle({ type: "em" })}>{children}</em>;
 };
 
 Text.Alphabet = ({ children }: PropsWithChildren) => {
   return (
-    <span className={introTextStyle({ spacing: "alphabet" })}>{children}</span>
+    <span className={introTextStyle({ type: "alphabet" })}>{children}</span>
   );
+};
+
+Text.Small = ({ children }: PropsWithChildren) => {
+  return <p className={introTextStyle({ type: "small" })}>{children}</p>;
 };
 
 export default Text;
