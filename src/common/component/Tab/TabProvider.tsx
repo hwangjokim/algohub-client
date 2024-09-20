@@ -1,5 +1,5 @@
 import type { Dispatch, ReactNode, Reducer } from "react";
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 type Actions =
   | {
@@ -36,6 +36,26 @@ type Context = {
 } | null;
 
 const TabContext = createContext<Context>(null);
+
+export const useTabState = () => {
+  const context = useContext(TabContext);
+
+  if (context === undefined || context === null) {
+    throw new Error("tab is not context");
+  }
+
+  return context.state;
+};
+
+export const useTabDispatch = () => {
+  const context = useContext(TabContext);
+
+  if (context === undefined || context === null) {
+    throw new Error("tab is not context");
+  }
+
+  return context?.dispatch;
+};
 
 type TabProviderProps = {
   variant?: State["variant"];
