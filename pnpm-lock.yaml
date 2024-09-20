@@ -41,7 +41,7 @@ importers:
         version: 8.3.1(storybook@8.3.1)
       '@storybook/addon-designs':
         specifier: ^8.0.3
-        version: 8.0.3(@storybook/blocks@8.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.1))(@storybook/components@8.3.1(storybook@8.3.1))(@storybook/theming@8.3.1(storybook@8.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 8.0.3(@storybook/blocks@8.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.1))(@storybook/components@8.3.1(storybook@8.3.1))(@storybook/theming@8.3.2(storybook@8.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@storybook/addon-essentials':
         specifier: ^8.3.1
         version: 8.3.1(storybook@8.3.1)(webpack-sources@3.2.3)
@@ -75,6 +75,9 @@ importers:
       '@storybook/test':
         specifier: ^8.3.1
         version: 8.3.1(storybook@8.3.1)
+      '@storybook/theming':
+        specifier: ^8.3.2
+        version: 8.3.2(storybook@8.3.1)
       '@svgr/webpack':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.5.4)
@@ -108,6 +111,9 @@ importers:
       storybook-addon-jsdoc-to-mdx:
         specifier: ^1.0.3
         version: 1.0.3(@storybook/react@8.3.1(@storybook/test@8.3.1(storybook@8.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.1)(typescript@5.5.4))
+      storybook-dark-mode:
+        specifier: ^4.0.2
+        version: 4.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.1)
       typescript:
         specifier: ^5
         version: 5.5.4
@@ -1566,6 +1572,11 @@ packages:
     peerDependencies:
       storybook: ^8.3.1
 
+  '@storybook/core-events@8.3.2':
+    resolution: {integrity: sha512-Nf63X2MLIiw1Czc/zxZ1hWLCNr6+NujJb6Dy96pgcGYLiKduFi9nKPG5eP0VEXpPWFWOc7ccCPxZ+Iw0q+USPw==}
+    peerDependencies:
+      storybook: ^8.3.2
+
   '@storybook/core-webpack@8.3.1':
     resolution: {integrity: sha512-SrHycFCejWopqtxN/Smj9kI0aTkDo6vmtJWW0Rvgp+V8/83ikSJapN+TzRbq+zhSHhAfpvr5NmaFUwYzbwO/rw==}
     peerDependencies:
@@ -1678,10 +1689,10 @@ packages:
     peerDependencies:
       storybook: ^8.3.1
 
-  '@storybook/theming@8.3.1':
-    resolution: {integrity: sha512-R6YZnIdN9P9gTauVkZfVmob0/i6/yaAQxnwfMgRLCaFD0TFQ+UQ2pCz40zPAUp3BcNPwMD168GVxmheBb8cGag==}
+  '@storybook/theming@8.3.2':
+    resolution: {integrity: sha512-JXAVc08Tlbu4GTTMGNmwUy69lShqSpJixAJc4bvWTnNAtPTRltiNJCg/KJ0GauEyRFk8ZR2Ha4KhN3DB1felNQ==}
     peerDependencies:
-      storybook: ^8.3.1
+      storybook: ^8.3.2
 
   '@svgr/babel-plugin-add-jsx-attribute@8.0.0':
     resolution: {integrity: sha512-b9MIk7yhdS1pMCZM8VeNfUlSKVRhsHZNMl5O9SfaX0l0t5wjdgu4IDzGB8bpnGBBOjGST3rRFVsaaEtI4W6f7g==}
@@ -3955,6 +3966,9 @@ packages:
     peerDependencies:
       '@storybook/react': '>=6'
 
+  storybook-dark-mode@4.0.2:
+    resolution: {integrity: sha512-zjcwwQ01R5t1VsakA6alc2JDIRVtavryW8J3E3eKLDIlAMcvsgtpxlelWkZs2cuNspk6Z10XzhQVrUWtYc3F0w==}
+
   storybook@8.3.1:
     resolution: {integrity: sha512-CYqt5KOpaTgb8OczNo2+EtMi8YNDPi4vNVebVlLDOroWxyulb8I7MIOH9gALczcIOb+TZUArPztjoa8rkXTaDQ==}
     hasBin: true
@@ -5690,13 +5704,13 @@ snapshots:
       storybook: 8.3.1
       ts-dedent: 2.2.0
 
-  '@storybook/addon-designs@8.0.3(@storybook/blocks@8.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.1))(@storybook/components@8.3.1(storybook@8.3.1))(@storybook/theming@8.3.1(storybook@8.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@storybook/addon-designs@8.0.3(@storybook/blocks@8.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.1))(@storybook/components@8.3.1(storybook@8.3.1))(@storybook/theming@8.3.2(storybook@8.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@figspec/react': 1.0.3(react@18.3.1)
     optionalDependencies:
       '@storybook/blocks': 8.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.1)
       '@storybook/components': 8.3.1(storybook@8.3.1)
-      '@storybook/theming': 8.3.1(storybook@8.3.1)
+      '@storybook/theming': 8.3.2(storybook@8.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
@@ -5861,6 +5875,10 @@ snapshots:
       - webpack-cli
 
   '@storybook/components@8.3.1(storybook@8.3.1)':
+    dependencies:
+      storybook: 8.3.1
+
+  '@storybook/core-events@8.3.2(storybook@8.3.1)':
     dependencies:
       storybook: 8.3.1
 
@@ -6050,7 +6068,7 @@ snapshots:
       '@storybook/manager-api': 8.3.1(storybook@8.3.1)
       '@storybook/preview-api': 8.3.1(storybook@8.3.1)
       '@storybook/react-dom-shim': 8.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.1)
-      '@storybook/theming': 8.3.1(storybook@8.3.1)
+      '@storybook/theming': 8.3.2(storybook@8.3.1)
       '@types/escodegen': 0.0.6
       '@types/estree': 0.0.51
       '@types/node': 22.5.5
@@ -6093,7 +6111,7 @@ snapshots:
       storybook: 8.3.1
       util: 0.12.5
 
-  '@storybook/theming@8.3.1(storybook@8.3.1)':
+  '@storybook/theming@8.3.2(storybook@8.3.1)':
     dependencies:
       storybook: 8.3.1
 
@@ -8690,6 +8708,21 @@ snapshots:
     dependencies:
       '@storybook/react': 8.3.1(@storybook/test@8.3.1(storybook@8.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.1)(typescript@5.5.4)
       ts-morph: 21.0.1
+
+  storybook-dark-mode@4.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.1):
+    dependencies:
+      '@storybook/components': 8.3.1(storybook@8.3.1)
+      '@storybook/core-events': 8.3.2(storybook@8.3.1)
+      '@storybook/global': 5.0.0
+      '@storybook/icons': 1.2.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@storybook/manager-api': 8.3.1(storybook@8.3.1)
+      '@storybook/theming': 8.3.2(storybook@8.3.1)
+      fast-deep-equal: 3.1.3
+      memoizerific: 1.11.3
+    transitivePeerDependencies:
+      - react
+      - react-dom
+      - storybook
 
   storybook@8.3.1:
     dependencies:

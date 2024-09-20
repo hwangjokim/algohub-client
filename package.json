@@ -38,6 +38,7 @@
     "@storybook/react": "^8.3.1",
     "@storybook/source-loader": "^8.3.1",
     "@storybook/test": "^8.3.1",
+    "@storybook/theming": "^8.3.2",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -49,6 +50,7 @@
     "mini-css-extract-plugin": "^2.9.1",
     "storybook": "^8.3.1",
     "storybook-addon-jsdoc-to-mdx": "^1.0.3",
+    "storybook-dark-mode": "^4.0.2",
     "typescript": "^5"
   }
 }
