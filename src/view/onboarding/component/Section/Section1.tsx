@@ -1,3 +1,5 @@
+"use client";
+
 import { arrow } from "@/asset/lottie";
 import Animation from "@/common/component/Animation";
 import Button from "@/common/component/Button";
