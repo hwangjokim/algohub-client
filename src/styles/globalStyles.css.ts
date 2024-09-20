@@ -13,6 +13,10 @@ globalStyle("input, textarea", {
   outline: "none",
 });
 
+globalStyle("ul, ol, li", {
+  listStyle: "none",
+});
+
 globalStyle("a", {
   color: "inherit",
   textDecoration: "none",
