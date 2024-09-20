@@ -2,31 +2,29 @@ import { arrow } from "@/asset/lottie";
 import Animation from "@/common/component/Animation";
 import Button from "@/common/component/Button";
 import Image from "next/image";
+import Text from "./Text";
 import {
   arrowContainer,
   arrowStyle,
-  contentStyle,
+  contentsContainer,
   imageStyle,
   introButtonContainer,
   introButtonStyle,
   introContainer,
   introTextContainer,
-  introTextStyle,
-  section1Style,
+  sectionStyle,
 } from "./index.css";
-import graphic from "/public/assets/pixel3.gif";
+import graphic from "/public/assets/pixel3.webp";
 
 const Section1 = () => {
   return (
-    <section className={section1Style}>
-      <div className={contentStyle}>
+    <section id="introduction" className={sectionStyle({ section: "first" })}>
+      <div className={contentsContainer({ section: "first" })}>
         <div className={introContainer}>
-          <h2 className={introTextContainer}>
-            <p className={introTextStyle()}>함께 도전하고 함께 성장하는</p>
-            <p className={introTextStyle({ color: "purple" })}>
-              알고리즘 스터디 플랫폼
-            </p>
-          </h2>
+          <h1 className={introTextContainer}>
+            <Text>함께 도전하고 함께 성장하는</Text>
+            <Text.Em>알고리즘 스터디 플랫폼</Text.Em>
+          </h1>
           <div className={introButtonContainer}>
             <div className={introButtonStyle}>
               <Button size="medium" color="lg">
@@ -42,9 +40,13 @@ const Section1 = () => {
         </div>
         <Image className={imageStyle} unoptimized src={graphic} alt="graphic" />
       </div>
-      <div className={arrowContainer} role="button">
-        <Animation className={arrowStyle} size="10.8rem" animationJson={arrow} />
-      </div>
+      <a href="#features" className={arrowContainer} role="button">
+        <Animation
+          className={arrowStyle}
+          size="10.8rem"
+          animationJson={arrow}
+        />
+      </a>
     </section>
   );
 };

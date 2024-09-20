@@ -1,4 +1,5 @@
 import { globalStyle } from "@vanilla-extract/css";
+import { theme } from "./themes.css";
 
 globalStyle("*, *::before, *::after", {
   boxSizing: "border-box",
@@ -7,6 +8,11 @@ globalStyle("*, *::before, *::after", {
   fontSize: process.env.STORYBOOK === "true" ? "inherit" : "62.5%",
   margin: "0",
   padding: 0,
+  backgroundColor: theme.color.bg,
+});
+
+globalStyle("html", {
+  scrollBehavior: "smooth",
 });
 
 globalStyle("input, textarea", {
