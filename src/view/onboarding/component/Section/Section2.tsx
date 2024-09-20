@@ -13,23 +13,23 @@ import group from "/public/assets/group.png";
 const feature1 = { section: "feature1" } as const;
 const Section2 = () => {
   return (
-    <section id="features" className={sectionStyle}>
+    <section id="feature-1" className={sectionStyle}>
       <div className={contentsContainer(feature1)}>
         <div className={introContainer}>
-          <h1 className={introTextContainer()}>
+          <h2 className={introTextContainer()}>
             <Text>
               <Text.Em>백준</Text.Em>에서 문제를 제출하고
             </Text>
             <Text>
               <Text.Alphabet>Chrome extension</Text.Alphabet> 을 설치해
             </Text>
-          </h1>
+          </h2>
         </div>
-        <div className={imageContainer.intro}>
+        <div className={imageContainer.intro} aria-hidden="true">
           <Image
             className={imageStyle(feature1)}
             src={group}
-            alt="group"
+            alt="그룹 페이지 예시 이미지"
             unoptimized
           />
         </div>

@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <header className={headerStyle}>
       <Link href={"/user"} className={logoContainer} aria-label="User page">
-        <IcnLogo className={logoStyle} />
+        <IcnLogo className={logoStyle} aria-label="algoHub 로고"/>
       </Link>
       {isLoggedIn ? <UserMenu /> : <LoginMenu />}
     </header>

@@ -5,11 +5,11 @@ import Section3 from "./Section3";
 
 const Sections = () => {
   return (
-    <>
+    <main>
       <Section1 />
       <Section2 />
       <Section3 />
-    </>
+    </main>
   );
 };
 

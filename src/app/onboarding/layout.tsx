@@ -7,7 +7,7 @@ export default function Layout({
 }) {
   return (
     <>
-      <main>{children}</main>
+      {children}
       <Footer />
     </>
   );
