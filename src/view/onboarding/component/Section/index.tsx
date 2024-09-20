@@ -6,34 +6,32 @@ import Section2 from "./Section2";
 const Sections = () => {
   useEffect(() => {
     const sections = document.querySelectorAll("section");
-    let currentSectionIndex = 0;
-    let isScrolling = false;
-    console.log({ sections });
-    const smoothScroll = (event: WheelEvent) => {
-      if (isScrolling) return; // 스크롤 중일 때는 추가 이동을 막음
-
-      isScrolling = true;
+    const totalSections = sections.length;
+    let currentSection = 0;
+    let isScroll = false;
+    const sectionScroll = (event: WheelEvent) => {
+      if (isScroll) return;
+      isScroll = true;
       if (event.deltaY > 0) {
-        // 아래로 스크롤
-        if (currentSectionIndex < sections.length - 1) {
-          currentSectionIndex++;
+        if (currentSection < totalSections - 1) {
+          const position = sections[++currentSection].offsetTop;
+          window.scrollTo({
+            top: position,
+          });
         }
-      } else if (currentSectionIndex > 0) {
-        currentSectionIndex--;
+      } else if (currentSection > 0) {
+        const position = sections[--currentSection].offsetTop;
+        window.scrollTo({
+          top: position,
+        });
       }
-      console.log({currentSectionIndex})
-      // 해당 섹션으로 스크롤 이동
-      sections[currentSectionIndex].scrollIntoView(true);
-
-      // 1초 후에 스크롤 허용
-      setTimeout(() => {
-        isScrolling = false;
-      }, 500); // 스크롤 완료 후 1초 동안 추가 스크롤 방지
+      isScroll = false;
+      return;
     };
-    // 스크롤 이벤트 핸들러
-    window.addEventListener("wheel", smoothScroll);
+
+    window.addEventListener("wheel", sectionScroll);
     return () => {
-      window.removeEventListener("wheel", smoothScroll);
+      window.removeEventListener("wheel", sectionScroll);
     };
   }, []);
   return (
