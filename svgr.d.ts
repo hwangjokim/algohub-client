@@ -9,3 +9,8 @@ declare module "*.svg?url" {
   const content: StaticImageData;
   export default content;
 }
+
+declare module "*.png";
+declare module "*.svg";
+declare module "*.jpeg";
+declare module "*.jpg";
