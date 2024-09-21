@@ -19,15 +19,15 @@ import {
 } from "./index.css";
 registerLocale("ko", ko);
 
-interface CalendarProps {
+interface CalendarProps
+  extends Omit<
+    DatePickerProps,
+    "onChange" | "selectsRange" | "selectsMultiple"
+  > {
   onChange: (date: Date) => void;
 }
 
-const Calendar = ({
-  onChange,
-  ...props
-}: CalendarProps &
-  Omit<DatePickerProps, "onChange" | "selectsRange" | "selectsMultiple">) => {
+const Calendar = ({ onChange, ...props }: CalendarProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(
     props.startDate ?? new Date()
   );
