@@ -5,11 +5,13 @@ import { recipe } from "@vanilla-extract/recipes";
 export const wrapperStyle = style({
   display: "flex",
   alignItems: "center",
-  padding: "0.8rem",
   gap: "0.4rem",
-  borderRadius: "0.5rem",
-  backgroundColor: theme.color.mg5,
+
   width: "fit-content",
+  padding: "0.8rem",
+  borderRadius: "0.5rem",
+
+  backgroundColor: theme.color.mg5,
   height: "3.6rem",
 });
 
@@ -22,6 +24,7 @@ export const calendarIcnStyle = recipe({
       stroke: theme.color.mg4,
     },
   },
+
   variants: {
     selected: {
       true: {
@@ -36,13 +39,15 @@ export const calendarIcnStyle = recipe({
 export const dateStyle = recipe({
   base: {
     width: "6.2rem",
-    fontSize: "1.2rem",
-    fontWeight: "400",
+
     border: "none",
-    lineHeight: "1.68rem",
+
     backgroundColor: "transparent",
+
+    ...theme.font.Caption1_R_12,
     color: theme.color.mg4,
   },
+
   variants: {
     selected: {
       true: {
@@ -67,12 +72,13 @@ export const arrowWrapperStyle = style({
 
 export const leftArrowStyle = recipe({
   base: {
-    width: "1.5rem",
-    height: "1.5rem",
+    width: "2.5rem",
+    height: "2.1rem",
     ["[stroke='#BCC0CD']" as string]: {
       stroke: theme.color.mg4,
     },
   },
+
   variants: {
     rotate: {
       true: {
@@ -83,43 +89,70 @@ export const leftArrowStyle = recipe({
 });
 
 export const dateDetailStyle = style({
-  textAlign: "center",
-  fontSize: "1rem",
-  fontWeight: "500",
+  ...theme.font.Head2_SB_18,
   color: theme.color.wg,
-  lineHeight: "2.5rem",
+  textAlign: "center",
 });
 
 globalStyle(".react-datepicker", {
+  overflow: "hidden",
+
   border: `1px solid ${theme.color.mg4}`,
+  borderRadius: "0.8rem",
 });
 
 globalStyle(".react-datepicker__header", {
+  display: "flex",
+  flexDirection: "column",
+  gap: "2rem",
+
+  padding: "1.5rem",
+
   backgroundColor: theme.color.mg5,
-  borderBottom: `1px solid ${theme.color.mg4}`,
-  padding: "0.4rem 0rem 0.8rem 0rem",
+  borderBottom: `2px solid ${theme.color.mg4}`,
 });
 
-globalStyle(".react-datepicker__current-month", {
-  color: theme.color.wg,
+globalStyle(".react-datepicker__day-names", {
+  display: "flex",
+  gap: "2.4rem",
+});
+
+globalStyle(".react-datepicker__week", {
+  display: "flex",
+  gap: "2.4rem",
 });
 
 globalStyle(".react-datepicker__day-name", {
+  margin: 0,
+
+  ...theme.font.Title2_M_16,
   color: theme.color.wg,
-  fontSize: "1rem",
 });
 
 globalStyle(
   ".react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name",
   {
-    width: "2.3rem",
-    height: "2.3rem",
+    width: "3rem",
+    height: "3rem",
+    lineHeight: "3rem !important",
+  }
+);
+
+globalStyle(
+  ".react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name",
+  {
+    margin: 0,
   }
 );
 
 globalStyle(".react-datepicker__month", {
+  display: "flex",
+  flexDirection: "column",
+  gap: "2rem",
+
   margin: 0,
-  padding: "0.8rem",
+  padding: "0.8rem 1.5rem 2rem 1.5rem",
+
   backgroundColor: theme.color.mg5,
 });
 
@@ -129,9 +162,7 @@ globalStyle(".react-datepicker__triangle", {
 
 globalStyle(".react-datepicker__day", {
   color: theme.color.mg3,
-  fontSize: "1rem",
-  fontWeight: "500",
-  lineHeight: "2.3rem",
+  ...theme.font.Title2_M_16,
 });
 
 globalStyle(".react-datepicker__day--selected", {
