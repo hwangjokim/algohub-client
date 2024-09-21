@@ -8,7 +8,6 @@ import {
   introTextContainer,
   sectionStyle,
 } from "./index.css";
-import group from "/public/assets/group.png";
 
 const feature1 = { section: "feature1" } as const;
 const Section2 = () => {
@@ -28,7 +27,9 @@ const Section2 = () => {
         <div className={imageContainer.intro} aria-hidden="true">
           <Image
             className={imageStyle(feature1)}
-            src={group}
+            width={740}
+            height={424}
+            src="/assets/group.png"
             alt="그룹 페이지 예시 이미지"
             unoptimized
           />

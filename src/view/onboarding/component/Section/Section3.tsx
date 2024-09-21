@@ -11,7 +11,6 @@ import {
   introTextContainer,
   sectionStyle,
 } from "./index.css";
-import comment from "/public/assets/comment.gif";
 
 const feature2 = { section: "feature2" } as const;
 const Section3 = () => {
@@ -34,7 +33,9 @@ const Section3 = () => {
         <div className={imageContainer.feature2} aria-hidden="true">
           <Image
             className={imageStyle(feature2)}
-            src={comment}
+            width={856}
+            height={480}
+            src="/assets/comment.gif"
             alt="댓글 페이지 예시 이미지"
             unoptimized
           />

@@ -16,7 +16,6 @@ import {
   introTextContainer,
   sectionStyle,
 } from "./index.css";
-import graphic from "/public/assets/pixel3.webp";
 
 const intro = { section: "intro" } as const;
 const Section1 = () => {
@@ -49,7 +48,9 @@ const Section1 = () => {
         </div>
         <Image
           className={imageStyle(intro)}
-          src={graphic}
+          width={584}
+          height={541}
+          src="/assets/pixel3.webp"
           alt="장식용 이미지"
           unoptimized
           priority
