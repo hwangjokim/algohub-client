@@ -4,19 +4,16 @@ import { useTimeout } from "@/common/hook/useTimout";
 import { type PropsWithChildren, useState } from "react";
 
 type ToastProps = PropsWithChildren<{
-  id: string;
   variant?: "error" | "success" | "default";
-  onClose?: () => void;
   duration?: number;
 }>;
 
 const Toast = ({
-  id,
   variant = "default",
   duration = 2000,
   children,
 }: ToastProps) => {
-  useTimeout(() => setAnimation("hide"), duration, [id]);
+  useTimeout(() => setAnimation("hide"), duration);
 
   const [animation, setAnimation] = useState<"show" | "hide">("show");
 

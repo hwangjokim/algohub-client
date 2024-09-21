@@ -12,7 +12,6 @@ const ToastProvider = () => {
       <div className={containerStyle}>
         {toast && (
           <Toast
-            id={toast.id}
             key={toast.id}
             variant={toast.variant}
             duration={toast.duration}
