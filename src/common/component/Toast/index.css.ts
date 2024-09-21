@@ -5,11 +5,11 @@ export const containerStyle = style({
   position: "fixed",
   bottom: "60px",
   left: 0,
-  right: 0,
-  margin: "0 auto",
 
   display: "flex",
-  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "8px",
 
   width: "100vw",
 
@@ -21,7 +21,9 @@ export const toastStyle = style({
   alignItems: "center",
   gap: "6px",
 
-  padding: "16.5px 66px 16.5px 36px",
+  maxWidth: "400px",
+
+  padding: "16.5px 66px 16.5px 46px",
 
   backgroundColor: theme.color.mg4,
 

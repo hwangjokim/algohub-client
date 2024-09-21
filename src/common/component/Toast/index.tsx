@@ -1,15 +1,30 @@
 import Portal from "@/common/component/Portal";
 import Toast from "@/common/component/Toast/Toast";
 import { containerStyle } from "@/common/component/Toast/index.css";
+import { toastAtom } from "@/shared/store/toast";
+import { useAtom } from "jotai";
 
 const ToastProvider = () => {
-  // Toast 컴포넌트를 show할 함수
-  // Toast 컴포넌트가 렌더링될 컨테이너 컴포넌트 -> Portal의 자식 컴포넌트로 제어 가능
+  const [atom, setAtom] = useAtom(toastAtom);
+
+  const closeToast = (id: string | number) => {
+    const removed = atom.toastList.filter((toast) => toast.id !== id);
+
+    setAtom({ toastList: removed });
+  };
 
   return (
     <Portal id="toast">
       <div className={containerStyle}>
-        <Toast variant="error">아이디 비밀번호를 확인해주세요.</Toast>
+        {atom.toastList.map((toast) => (
+          <Toast
+            key={toast.id}
+            variant={toast.variant}
+            onClose={() => closeToast(toast.id)}
+          >
+            아이디 비밀번호를 확인해주세요.
+          </Toast>
+        ))}
       </div>
     </Portal>
   );
