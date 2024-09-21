@@ -1,19 +1,24 @@
 "use client";
 
 import { IcnError } from "@/asset/svg";
-import type { ChangeEvent, InputHTMLAttributes, KeyboardEvent } from "react";
+import type {
+  ChangeEvent,
+  InputHTMLAttributes,
+  TextareaHTMLAttributes,
+} from "react";
 import {
-  barStyle,
-  containerStyle,
   errorIconStyle,
   errorMsgStyle,
   errorWrapper,
-  inputStyle,
+} from "../Input/index.css";
+import {
+  barStyle,
+  containerStyle,
+  textareaStyle,
   wrapperStyle,
 } from "./index.css";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  type: "medium" | "large";
+interface InputProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   handleChange: (value: string) => void;
   label?: string;
   isError?: boolean;
@@ -21,8 +26,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   errorPosition?: "top" | "bottom";
 }
 
-const Input = ({
-  type,
+const Textarea = ({
   handleChange,
   label,
   isError,
@@ -30,19 +34,20 @@ const Input = ({
   errorPosition = "bottom",
   ...props
 }: InputProps) => {
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     handleChange(event.target.value);
   };
 
   return (
     <div className={containerStyle({ errorPosition })}>
-      <div className={wrapperStyle({ type, isError })}>
-        <div className={barStyle({ type })} />
-        <input
-          className={inputStyle({ type })}
+      <div className={wrapperStyle({ isError })}>
+        <div className={barStyle} />
+        <textarea
+          className={textareaStyle}
           onChange={onChange}
           aria-invalid={isError}
           aria-label={label}
+          aria-multiline="true"
           aria-errormessage={errorMsg}
           {...props}
         />
@@ -59,4 +64,4 @@ const Input = ({
   );
 };
 
-export default Input;
+export default Textarea;

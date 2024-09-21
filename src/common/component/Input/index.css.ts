@@ -1,5 +1,23 @@
 import { theme } from "@/styles/themes.css";
+import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
+
+export const containerStyle = recipe({
+  base: {
+    display: "flex",
+    gap: "0.2rem",
+  },
+  variants: {
+    errorPosition: {
+      top: {
+        flexDirection: "column-reverse",
+      },
+      bottom: {
+        flexDirection: "column",
+      },
+    },
+  },
+});
 
 export const wrapperStyle = recipe({
   base: {
@@ -16,63 +34,33 @@ export const wrapperStyle = recipe({
 
     backgroundColor: theme.color.mg5,
 
-    ":hover": {
-      border: `1px solid ${theme.color.transparent_purple2_50}`,
+    ":focus-within": {
+      border: `1px solid ${theme.color.purple}`,
     },
   },
 
   variants: {
-    size: {
+    type: {
       medium: {
         height: "4.4rem",
         padding: "0rem 0.8rem",
+        ":focus-within": {
+          border: `1px solid ${theme.color.purple2}`,
+        },
       },
 
       large: {
         height: "5.1rem",
         padding: "1rem 1.6rem",
       },
-
-      textarea: {
-        alignItems: "flex-start",
-        height: "100%",
-        padding: "1rem 1.6rem",
-      },
     },
 
-    active: {
-      true: {
-        border: `1px solid ${theme.color.purple}`,
-        ":hover": {
-          border: `1px solid ${theme.color.purple}`,
-        },
-      },
-    },
-
-    error: {
+    isError: {
       true: {
         border: `1px solid ${theme.color.red}`,
-        ":hover": {
-          border: `1px solid ${theme.color.red}`,
-        },
       },
     },
   },
-
-  compoundVariants: [
-    {
-      variants: {
-        size: "medium",
-        active: true,
-      },
-      style: {
-        border: `1px solid ${theme.color.purple2}`,
-        ":hover": {
-          border: `1px solid ${theme.color.purple2}`,
-        },
-      },
-    },
-  ],
 });
 
 export const inputStyle = recipe({
@@ -85,40 +73,38 @@ export const inputStyle = recipe({
     backgroundColor: "transparent",
 
     color: theme.color.white,
-    letterSpacing: "-0.01875rem",
-    fontWeight: "500",
-    whiteSpace: "nowrap",
     "::placeholder": {
       color: theme.color.mg4,
     },
   },
 
   variants: {
-    size: {
+    type: {
       medium: {
         height: "2.2rem",
-        fontSize: "1.4rem",
-        lineHeight: "2.2rem",
+        ...theme.font.Body1_M_14,
       },
 
       large: {
         height: "3rem",
-        fontSize: "1.6rem",
-        lineHeight: "3rem",
-      },
-
-      textarea: {
-        height: "auto",
-        fontSize: "1.2rem",
-        lineHeight: "1.4rem",
+        ...theme.font.Title2_M_16,
       },
     },
   },
 });
 
 export const barStyle = recipe({
+  base: {
+    display: "none",
+    selectors: {
+      [`&:has(+ ${inputStyle()}:focus)`]: {
+        display: "block",
+      },
+    },
+  },
+
   variants: {
-    size: {
+    type: {
       medium: {
         height: "2.6rem",
         border: `0.5px solid ${theme.color.purple2}`,
@@ -128,11 +114,21 @@ export const barStyle = recipe({
         height: "3rem",
         border: `0.5px solid ${theme.color.purple}`,
       },
-
-      textarea: {
-        height: "1.4rem",
-        border: `0.5px solid ${theme.color.purple}`,
-      },
     },
   },
+});
+
+export const errorWrapper = style({
+  display: "flex",
+  alignItems: "center",
+});
+
+export const errorIconStyle = style({
+  width: "2.4rem",
+  height: "2.4rem",
+});
+
+export const errorMsgStyle = style({
+  ...theme.font.Caption3_M_12,
+  color: theme.color.error,
 });

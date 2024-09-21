@@ -49,6 +49,7 @@ export const theme = createGlobalTheme(":root", {
       "linear-gradient(271deg, rgba(14, 16, 20, 0.90) -12.2%, rgba(33, 37, 46, 0.00) 99.36%)",
     gradi_BG:
       "radial-gradient(96.85% 96.85% at 50% 3.15%, rgba(163, 156, 255, 0.80) 0%, rgba(16, 18, 23, 0.00) 100%)",
+    error: "#ff3c53",
   },
   font: {
     Head1_B_20: {
