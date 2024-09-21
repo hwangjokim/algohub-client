@@ -8,7 +8,7 @@ const meta: Meta<typeof Textarea> = {
     layout: "centered",
     design: {
       type: "figma",
-      url: "https://www.figma.com/design/PBHmaVSKndAId6lY6G2qEb/AlgoHub?node-id=991-32459&t=XsvrHzrA7CWMznr8-1",
+      url: "https://www.figma.com/design/PBHmaVSKndAId6lY6G2qEb/AlgoHub?node-id=500-25942&t=XsvrHzrA7CWMznr8-1",
     },
   },
   tags: ["autodocs"],
