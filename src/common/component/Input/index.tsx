@@ -1,7 +1,7 @@
 "use client";
 
 import { IcnError } from "@/asset/svg";
-import type { ChangeEvent, InputHTMLAttributes, KeyboardEvent } from "react";
+import type { ChangeEvent, InputHTMLAttributes } from "react";
 import {
   barStyle,
   containerStyle,
@@ -12,9 +12,10 @@ import {
   wrapperStyle,
 } from "./index.css";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  type: "medium" | "large";
+interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   handleChange: (value: string) => void;
+  size?: "medium" | "large";
   label?: string;
   isError?: boolean;
   errorMsg?: string;
@@ -22,7 +23,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = ({
-  type,
+  size = "medium",
   handleChange,
   label,
   isError,
@@ -36,10 +37,10 @@ const Input = ({
 
   return (
     <div className={containerStyle({ errorPosition })}>
-      <div className={wrapperStyle({ type, isError })}>
-        <div className={barStyle({ type })} />
+      <div className={wrapperStyle({ size, isError })}>
+        <div className={barStyle({ size })} />
         <input
-          className={inputStyle({ type })}
+          className={inputStyle({ size })}
           onChange={onChange}
           aria-invalid={isError}
           aria-label={label}

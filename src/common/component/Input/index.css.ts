@@ -40,7 +40,7 @@ export const wrapperStyle = recipe({
   },
 
   variants: {
-    type: {
+    size: {
       medium: {
         height: "4.4rem",
         padding: "0rem 0.8rem",
@@ -79,7 +79,7 @@ export const inputStyle = recipe({
   },
 
   variants: {
-    type: {
+    size: {
       medium: {
         height: "2.2rem",
         ...theme.font.Body1_M_14,
@@ -104,7 +104,7 @@ export const barStyle = recipe({
   },
 
   variants: {
-    type: {
+    size: {
       medium: {
         height: "2.6rem",
         border: `0.5px solid ${theme.color.purple2}`,

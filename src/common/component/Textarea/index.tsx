@@ -1,11 +1,7 @@
 "use client";
 
 import { IcnError } from "@/asset/svg";
-import type {
-  ChangeEvent,
-  InputHTMLAttributes,
-  TextareaHTMLAttributes,
-} from "react";
+import type { ChangeEvent, TextareaHTMLAttributes } from "react";
 import {
   errorIconStyle,
   errorMsgStyle,
@@ -30,7 +26,7 @@ const Textarea = ({
   handleChange,
   label,
   isError,
-  errorMsg,
+  errorMsg = "입력값이 올바르지 않습니다.",
   errorPosition = "bottom",
   ...props
 }: InputProps) => {

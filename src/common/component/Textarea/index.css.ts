@@ -5,6 +5,7 @@ import { recipe } from "@vanilla-extract/recipes";
 export const containerStyle = recipe({
   base: {
     display: "flex",
+    height: "7.4rem",
     gap: "0.2rem",
   },
   variants: {
@@ -54,7 +55,7 @@ export const textareaStyle = style({
   overflow: "hidden",
 
   width: "100%",
-  height: "7.4rem",
+  height: "100%",
   border: "none",
 
   backgroundColor: "transparent",
