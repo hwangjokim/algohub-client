@@ -5,7 +5,7 @@ import {
 } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { FC } from "react";
 
-const WithAppRouterContext = (Story: FC) => {
+const decorators = (Story: FC) => {
   document.querySelector("html")!.style.fontSize = "10px";
   return (
     <AppRouterContext.Provider value={{} as AppRouterInstance}>
@@ -15,4 +15,4 @@ const WithAppRouterContext = (Story: FC) => {
   );
 };
 
-export default WithAppRouterContext;
+export default decorators;

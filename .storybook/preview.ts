@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/react";
-import DocsPage from './DocsPage';
-import WithAppRouterContext from "./WithAppRouterContext";
+import DocsPage from "./DocsPage";
+import decorators from "./decorators";
 import customViewports from "./viewport";
 
 const preview: Preview = {
@@ -20,10 +20,10 @@ const preview: Preview = {
       appDirectory: true,
     },
     docs: {
-      page: DocsPage
-    }
+      page: DocsPage,
+    },
   },
-  decorators: [WithAppRouterContext],
+  decorators: [decorators],
 };
 
 export default preview;
