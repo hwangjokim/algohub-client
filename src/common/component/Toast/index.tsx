@@ -2,29 +2,24 @@ import Portal from "@/common/component/Portal";
 import Toast from "@/common/component/Toast/Toast";
 import { containerStyle } from "@/common/component/Toast/index.css";
 import { toastAtom } from "@/shared/store/toast";
-import { useAtom } from "jotai";
+import { useAtomValue } from "jotai";
 
 const ToastProvider = () => {
-  const [atom, setAtom] = useAtom(toastAtom);
-
-  const closeToast = (id: string | number) => {
-    const removed = atom.toastList.filter((toast) => toast.id !== id);
-
-    setAtom({ toastList: removed });
-  };
+  const { toast } = useAtomValue(toastAtom);
 
   return (
-    <Portal id="toast">
+    <Portal id="toast-list">
       <div className={containerStyle}>
-        {atom.toastList.map((toast) => (
+        {toast && (
           <Toast
+            id={toast.id}
             key={toast.id}
             variant={toast.variant}
-            onClose={() => closeToast(toast.id)}
+            duration={toast.duration}
           >
-            아이디 비밀번호를 확인해주세요.
+            {toast.message}
           </Toast>
-        ))}
+        )}
       </div>
     </Portal>
   );

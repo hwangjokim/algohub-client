@@ -1,5 +1,5 @@
 export type ToastOption = {
-  id: string | number;
+  id: string;
   message: string;
   variant?: "error" | "success" | "default";
   duration?: number;
