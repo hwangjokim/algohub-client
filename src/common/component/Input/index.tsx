@@ -2,6 +2,7 @@
 
 import { IcnError } from "@/asset/svg";
 import type { ChangeEvent, InputHTMLAttributes } from "react";
+import ErrorInfo from "../ErrorInfo";
 import {
   barStyle,
   containerStyle,
@@ -26,8 +27,8 @@ const Input = ({
   size = "medium",
   handleChange,
   label,
-  isError,
-  errorMsg,
+  isError = false,
+  errorMsg = "입력값이 올바르지 않습니다.",
   errorPosition = "bottom",
   ...props
 }: InputProps) => {
@@ -38,7 +39,6 @@ const Input = ({
   return (
     <div className={containerStyle({ errorPosition })}>
       <div className={wrapperStyle({ size, isError })}>
-        <div className={barStyle({ size })} />
         <input
           className={inputStyle({ size })}
           onChange={onChange}
@@ -48,14 +48,7 @@ const Input = ({
           {...props}
         />
       </div>
-      <div className={errorWrapper}>
-        {isError && (
-          <>
-            <IcnError className={errorIconStyle} />
-            <div className={errorMsgStyle}>{errorMsg}</div>
-          </>
-        )}
-      </div>
+      <ErrorInfo isError={isError} errorMsg={errorMsg} />
     </div>
   );
 };

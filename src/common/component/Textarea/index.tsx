@@ -2,6 +2,7 @@
 
 import { IcnError } from "@/asset/svg";
 import type { ChangeEvent, TextareaHTMLAttributes } from "react";
+import ErrorInfo from "../ErrorInfo";
 import {
   errorIconStyle,
   errorMsgStyle,
@@ -25,7 +26,7 @@ interface InputProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 const Textarea = ({
   handleChange,
   label,
-  isError,
+  isError = false,
   errorMsg = "입력값이 올바르지 않습니다.",
   errorPosition = "bottom",
   ...props
@@ -37,7 +38,6 @@ const Textarea = ({
   return (
     <div className={containerStyle({ errorPosition })}>
       <div className={wrapperStyle({ isError })}>
-        <div className={barStyle} />
         <textarea
           className={textareaStyle}
           onChange={onChange}
@@ -48,14 +48,7 @@ const Textarea = ({
           {...props}
         />
       </div>
-      <div className={errorWrapper}>
-        {isError && (
-          <>
-            <IcnError className={errorIconStyle} />
-            <div className={errorMsgStyle}>{errorMsg}</div>
-          </>
-        )}
-      </div>
+      <ErrorInfo isError={isError} errorMsg={errorMsg} />
     </div>
   );
 };

@@ -34,6 +34,10 @@ export const wrapperStyle = recipe({
 
     backgroundColor: theme.color.mg5,
 
+    ":hover": {
+      border: `1px solid ${theme.color.transparent_purple2_50}`,
+    },
+
     ":focus-within": {
       border: `1px solid ${theme.color.purple}`,
     },
@@ -91,44 +95,4 @@ export const inputStyle = recipe({
       },
     },
   },
-});
-
-export const barStyle = recipe({
-  base: {
-    display: "none",
-    selectors: {
-      [`&:has(+ ${inputStyle()}:focus)`]: {
-        display: "block",
-      },
-    },
-  },
-
-  variants: {
-    size: {
-      medium: {
-        height: "2.6rem",
-        border: `0.5px solid ${theme.color.purple2}`,
-      },
-
-      large: {
-        height: "3rem",
-        border: `0.5px solid ${theme.color.purple}`,
-      },
-    },
-  },
-});
-
-export const errorWrapper = style({
-  display: "flex",
-  alignItems: "center",
-});
-
-export const errorIconStyle = style({
-  width: "2.4rem",
-  height: "2.4rem",
-});
-
-export const errorMsgStyle = style({
-  ...theme.font.Caption3_M_12,
-  color: theme.color.error,
 });

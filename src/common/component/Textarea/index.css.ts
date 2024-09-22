@@ -67,14 +67,3 @@ export const textareaStyle = style({
     color: theme.color.mg4,
   },
 });
-
-export const barStyle = style({
-  display: "none",
-  height: "1.4rem",
-  border: `0.5px solid ${theme.color.purple}`,
-  selectors: {
-    [`&:has(+ ${textareaStyle}:focus)`]: {
-      display: "block",
-    },
-  },
-});
