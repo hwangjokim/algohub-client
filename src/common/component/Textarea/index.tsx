@@ -1,19 +1,8 @@
 "use client";
 
-import { IcnError } from "@/asset/svg";
 import type { ChangeEvent, TextareaHTMLAttributes } from "react";
 import ErrorInfo from "../ErrorInfo";
-import {
-  errorIconStyle,
-  errorMsgStyle,
-  errorWrapper,
-} from "../Input/index.css";
-import {
-  barStyle,
-  containerStyle,
-  textareaStyle,
-  wrapperStyle,
-} from "./index.css";
+import { containerStyle, textareaStyle, wrapperStyle } from "./index.css";
 
 interface InputProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   handleChange: (value: string) => void;

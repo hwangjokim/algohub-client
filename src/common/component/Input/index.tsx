@@ -1,17 +1,8 @@
 "use client";
 
-import { IcnError } from "@/asset/svg";
 import type { ChangeEvent, InputHTMLAttributes } from "react";
 import ErrorInfo from "../ErrorInfo";
-import {
-  barStyle,
-  containerStyle,
-  errorIconStyle,
-  errorMsgStyle,
-  errorWrapper,
-  inputStyle,
-  wrapperStyle,
-} from "./index.css";
+import { containerStyle, inputStyle, wrapperStyle } from "./index.css";
 
 interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {

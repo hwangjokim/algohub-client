@@ -1,5 +1,4 @@
 import { theme } from "@/styles/themes.css";
-import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 export const containerStyle = recipe({
