@@ -1,4 +1,4 @@
-import { theme } from "@/styles/themes.css";
+import { scrollTheme, theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
 
 export const alarmContainer = style({
@@ -27,23 +27,10 @@ export const ulStyle = style({
   overflowY: "scroll",
   height: "26.6rem",
   selectors: {
-    "&::-webkit-scrollbar": {
-      width: "0.35rem",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      background: theme.color.mg1,
-      borderRadius: "0.4rem",
-    },
     "&::-webkit-scrollbar-button": {
       height: "1rem",
     },
-    "&::-webkit-scrollbar-thumb:active": {
-      background: theme.color.mg4,
-    },
-    "&::-webkit-scrollbar-track": {
-      background: "transparent",
-      boxShadow: "none",
-    },
+    ...scrollTheme.scrollbar
   },
 });
 
