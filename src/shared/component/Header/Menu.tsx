@@ -16,16 +16,17 @@ const Menu = ({ label, renderTriggerIcon, renderList }: MenuProps) => {
   const handleToggle = () => setShowMenu(false);
   const ref = useOutsideClick(handleToggle);
   const id = camelToKebab(`${label}Toggle`);
+  const kebabLabel = camelToKebab(label);
 
   return (
     <div ref={ref}>
       <button
         className={buttonStyle}
         id={id}
-        aria-label={`${showMenu ? "Close" : "Open"} ${camelToKebab(label)}`}
+        aria-label={`${showMenu ? "Close" : "Open"} ${kebabLabel}`}
         aria-haspopup="true"
         aria-expanded={showMenu}
-        aria-controls={label}
+        aria-controls={kebabLabel}
         onClick={handleClick}
       >
         {renderTriggerIcon}
