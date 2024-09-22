@@ -1,6 +1,6 @@
 import { IcnCheckSmall, IcnError } from "@/asset/svg";
 import { textStyle, toastStyle } from "@/common/component/Toast/index.css";
-import { useTimeout } from "@/common/hook/useTimout";
+import { useTimeout } from "@/common/hook/useTimeout";
 import { toastAtom } from "@/shared/store/toast";
 import type { Timeout } from "@/shared/type";
 import { useSetAtom } from "jotai";
@@ -29,7 +29,7 @@ const Toast = ({
       setAtom({ toast: null });
     }, 600);
 
-    clearTimeout(renderRef.current);
+    return () => clearTimeout(renderRef.current);
   }, duration);
 
   const [animation, setAnimation] = useState<"show" | "hide">("show");

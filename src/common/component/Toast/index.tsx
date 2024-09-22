@@ -9,8 +9,8 @@ const ToastProvider = () => {
 
   return (
     <Portal id="toast-list">
-      <div className={containerStyle}>
-        {toast && (
+      {toast && (
+        <div className={containerStyle}>
           <Toast
             key={toast.id}
             variant={toast.variant}
@@ -18,8 +18,8 @@ const ToastProvider = () => {
           >
             {toast.message}
           </Toast>
-        )}
-      </div>
+        </div>
+      )}
     </Portal>
   );
 };
