@@ -4,5 +4,3 @@ export type ToastOption = {
   variant?: "error" | "success" | "default";
   duration?: number;
 };
-
-export type Timeout = ReturnType<typeof setTimeout>;
