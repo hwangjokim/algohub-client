@@ -33,8 +33,9 @@ const Tab = ({ tabId, icon, children, ...props }: TabProps) => {
     <li
       // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole:
       role="tab"
-      tabIndex={0}
-      aria-label={`Tab ${tabId} `}
+      tabIndex={-1}
+      aria-controls={`tabPanel-${tabId}`}
+      aria-selected={isSelected}
       className={tabStyle({ isSelected, variant: variant })}
       onClick={() => dispatch({ _TAG: "SetSelectedTab", tabId })}
       onKeyDown={handleKeyDown}

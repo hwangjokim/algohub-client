@@ -20,6 +20,7 @@ const meta: Meta<typeof Tabs> = {
       control: {
         type: "radio",
       },
+      options: ["primary", "secondary"],
     },
   },
 } satisfies Meta<typeof Tabs>;
@@ -29,16 +30,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  argTypes: {
-    variant: {
-      control: {
-        type: "radio",
-      },
-    },
+  args: {
+    variant: "secondary"
   },
-  render: () => {
+
+  render: (args) => {
     return (
-      <TabGroup.Tabs variant="secondary">
+      <TabGroup.Tabs {...args}>
         <TabGroup.TabList>
           <TabGroup.Tab tabId="1" icon={IcnAlarm}>
             Tab 1
@@ -53,5 +51,5 @@ export const Default: Story = {
         </TabGroup.TabPanels>
       </TabGroup.Tabs>
     );
-  },
+  }
 };
