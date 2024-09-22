@@ -1,5 +1,3 @@
-"use client";
-
 import { IcnLogo } from "@/asset/svg";
 import LoginMenu from "@/shared/component/Header/LoginMenu";
 import UserMenu from "@/shared/component/Header/UserMenu";

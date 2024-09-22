@@ -43,6 +43,7 @@ export const theme = createGlobalTheme(":root", {
     dg: "#2a2a2a",
     bg: "#101217",
     black: "#000000",
+    transparent_mg4: "rgba(70, 79, 103, 0.2)",
     transparent_purple2_50: "rgba(163, 156, 255, 0.50)",
     transparent_black_50: "rgba(14, 16, 20, 0.90)",
     gradi_card:
@@ -135,6 +136,34 @@ export const theme = createGlobalTheme(":root", {
       fontWeight: "500",
       lineHeight: "normal",
       letterSpacing: "-0.3px",
+    },
+  },
+});
+
+/**
+ * @example
+ * selectors: {
+    "&::-webkit-scrollbar-button": {
+      height: "1rem",
+    },
+    ...scrollTheme.scrollbar
+  },
+ */
+export const scrollTheme = createGlobalTheme(":root", {
+  scrollbar: {
+    "&::-webkit-scrollbar": {
+      width: "0.35rem",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: theme.color.mg1,
+      borderRadius: "0.4rem",
+    },
+    "&::-webkit-scrollbar-thumb:active": {
+      background: theme.color.mg4,
+    },
+    "&::-webkit-scrollbar-track": {
+      background: "transparent",
+      boxShadow: "none",
     },
   },
 });
