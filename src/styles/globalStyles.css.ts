@@ -9,16 +9,6 @@ globalStyle("*, *::before, *::after", {
   padding: 0,
 });
 
-globalStyle("html", {
-  overflowY: "scroll",
-  scrollBehavior: "smooth",
-  msOverflowStyle: "none",
-  scrollbarWidth: "none",
-  scrollSnapType: "y mandatory",
-
-  height: "100%",
-});
-
 globalStyle("input, textarea", {
   outline: "none",
 });

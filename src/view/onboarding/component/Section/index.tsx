@@ -1,15 +1,14 @@
-import Section1 from "./Section1";
-import Section2 from "./Section2";
-import Section3 from "./Section3";
+import type { PropsWithChildren } from "react";
+import Footer from "../Footer";
+import { onboardingStyle } from "./index.css";
 
-const Sections = () => {
+const MainWithFooter = ({ children }: PropsWithChildren) => {
   return (
-    <main>
-      <Section1 />
-      <Section2 />
-      <Section3 />
-    </main>
+    <div className={onboardingStyle}>
+      <main>{children}</main>
+      <Footer />
+    </div>
   );
 };
 
-export default Sections;
+export default MainWithFooter;

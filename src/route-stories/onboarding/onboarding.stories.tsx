@@ -1,5 +1,4 @@
 import RootLayout from "@/app/layout";
-import Layout from "@/app/onboarding/layout";
 import OnboardingPage from "@/app/onboarding/page";
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -15,9 +14,7 @@ const meta: Meta<typeof OnboardingPage> = {
   decorators: [
     (Story) => (
       <RootLayout>
-        <Layout>
-          <Story />
-        </Layout>
+        <Story />
       </RootLayout>
     ),
   ],

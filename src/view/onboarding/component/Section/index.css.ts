@@ -2,6 +2,16 @@ import { theme } from "@/styles/themes.css";
 import { style, styleVariants } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
+export const onboardingStyle = style({
+  overflowY: "scroll",
+  scrollBehavior: "smooth",
+  msOverflowStyle: "none",
+  scrollbarWidth: "none",
+  scrollSnapType: "y mandatory",
+
+  height: "100vh",
+});
+
 export const sectionStyle = style({
   display: "flex",
   flexDirection: "column",
