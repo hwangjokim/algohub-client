@@ -1,12 +1,7 @@
-import type { Dispatch, ReactNode, Reducer } from "react";
+import type { Dispatch, PropsWithChildren, Reducer } from "react";
 import { createContext, useContext, useReducer } from "react";
 
-type Actions =
-  | {
-      _TAG: "SetVariant";
-      variant: "primary" | "secondary";
-    }
-  | { _TAG: "SetSelectedTab"; tabId: string | number };
+type Actions = { _TAG: "SetSelectedTab"; tabId: string | number };
 
 type State = {
   variant: "primary" | "secondary";
@@ -15,12 +10,6 @@ type State = {
 
 const reducer: Reducer<State, Actions> = (state: State, action: Actions) => {
   switch (action._TAG) {
-    case "SetVariant": {
-      return {
-        ...state,
-        variant: action.variant,
-      };
-    }
     case "SetSelectedTab": {
       return {
         ...state,
@@ -57,10 +46,9 @@ export const useTabDispatch = () => {
   return context?.dispatch;
 };
 
-type TabProviderProps = {
-  variant?: State["variant"];
-  children: ReactNode;
-};
+type TabProviderProps = PropsWithChildren<{
+  variant?: "primary" | "secondary";
+}>;
 
 const TabProvider = ({ variant = "primary", children }: TabProviderProps) => {
   const [state, dispatch] = useReducer<Reducer<State, Actions>>(reducer, {
