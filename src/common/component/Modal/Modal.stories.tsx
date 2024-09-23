@@ -29,7 +29,7 @@ export const Default: Story = {
       },
     },
   },
-  render: (props) => {
+  render: (_props) => {
     const { isOpen, open, close } = useBooleanState();
     return (
       <>
