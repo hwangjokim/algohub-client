@@ -13,7 +13,7 @@ interface ModalProps extends ComponentPropsWithoutRef<"dialog"> {
   onClose: () => void;
 }
 
-export const Modal = ({ isOpen, onClose, children, ...props }: ModalProps) => {
+const Modal = ({ isOpen, onClose, children, ...props }: ModalProps) => {
   const closeRef = useOutsideClick<HTMLDialogElement>(onClose);
 
   useEffect(() => {
@@ -66,3 +66,5 @@ export const Modal = ({ isOpen, onClose, children, ...props }: ModalProps) => {
     </>
   );
 };
+
+export default Modal;
