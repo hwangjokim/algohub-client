@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const Profile = () => {
   return (
-    <Dropdown label="profile" className={dropdownStyle}>
+    <Dropdown label="profile-menu" className={dropdownStyle}>
       <li>내 프로필</li>
       <li>로그아웃</li>
     </Dropdown>
