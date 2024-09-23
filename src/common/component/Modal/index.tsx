@@ -5,7 +5,7 @@ import {
   dialogStyle,
 } from "@/common/component/Modal/index.css";
 import { useOutsideClick } from "@/common/hook/useOutsideClick";
-import { useEffect, useRef, type ComponentPropsWithoutRef } from "react";
+import { type ComponentPropsWithoutRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 interface ModalProps extends ComponentPropsWithoutRef<"dialog"> {
