@@ -42,11 +42,13 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "@vanilla-extract/next-plugin": "^2.4.5",
     "@vanilla-extract/webpack-plugin": "^2.3.13",
     "concurrently": "^9.0.0",
     "cross-env": "^7.0.3",
     "mini-css-extract-plugin": "^2.9.1",
+    "react-syntax-highlighter": "^15.5.0",
     "storybook": "^8.3.1",
     "storybook-addon-jsdoc-to-mdx": "^1.0.3",
     "typescript": "^5"
