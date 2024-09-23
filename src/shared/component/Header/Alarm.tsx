@@ -27,16 +27,16 @@ const Alarm = () => {
   );
 };
 
-type TriggerIconProps = {
+interface TriggerButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   count: number;
 };
 
-Alarm.TriggerIcon = ({ count }: TriggerIconProps) => {
+Alarm.TriggerButton = ({ count, ...props }: TriggerButtonProps) => {
   return (
-    <>
+    <button {...props}>
       {count > 0 && <div aria-live="polite" className={countStyle}>{count}</div>}
       <IcnBellHeader className={iconStyle} />
-    </>
+    </button>
   );
 };
 

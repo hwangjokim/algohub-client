@@ -1,7 +1,7 @@
 import { theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
 
-export const buttonStyle = style({
+export const defaultButtonStyle = style({
   position: "relative",
 
   width: "2.5rem",

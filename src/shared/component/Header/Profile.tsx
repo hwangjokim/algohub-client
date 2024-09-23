@@ -13,8 +13,12 @@ const Profile = () => {
   );
 };
 
-Profile.TriggerIcon = () => (
-  <Image className={iconStyle} src={IcnNew} alt="user profile" priority />
+type TriggerButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+Profile.TriggerButton = ({ ...props }: TriggerButtonProps) => (
+  <button {...props}>
+    <Image className={iconStyle} src={IcnNew} alt="user profile" priority />
+  </button>
 );
 
 export default Profile;

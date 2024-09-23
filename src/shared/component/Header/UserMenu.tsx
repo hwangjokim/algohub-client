@@ -1,7 +1,7 @@
 "use client";
 
+import Menu from "@/common/component/Menu/Menu";
 import Alarm from "@/shared/component/Header/Alarm";
-import Menu from "@/shared/component/Header/Menu";
 import Profile from "@/shared/component/Header/Profile";
 import { buttonContainer } from "@/shared/component/Header/index.css";
 
@@ -13,13 +13,15 @@ const UserMenu = () => {
     <div className={buttonContainer}>
       <Menu
         label="alarm"
-        renderTriggerIcon={<Alarm.TriggerIcon count={count} />}
+        renderTriggerButton={(props) => (
+          <Alarm.TriggerButton {...props} count={count} />
+        )}
         renderList={<Alarm />}
       />
 
       <Menu
         label="profileMenu"
-        renderTriggerIcon={<Profile.TriggerIcon />}
+        renderTriggerButton={(props) => <Profile.TriggerButton {...props} />}
         renderList={<Profile />}
       />
     </div>
