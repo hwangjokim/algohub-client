@@ -7,8 +7,8 @@ import { useCallback, useEffect, useRef } from "react";
  *  const callback = () => setShowMenu(false);
     const ref = useOutsideClick(callback);
  */
-export const useOutsideClick = (callback: () => void) => {
-  const ref = useRef<HTMLDivElement>(null);
+export const useOutsideClick = <T extends HTMLElement = HTMLDivElement>(callback: () => void) => {
+  const ref = useRef<T | null>(null);
   const handleOutsideClick = useCallback(
     ({ target }: MouseEvent) => {
       const [check] = checkRefsContains(target!, ref);
