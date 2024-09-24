@@ -1,5 +1,7 @@
+"use client";
+
+import Alarm from "@/shared/component/Header/Alarm";
 import Menu from "@/shared/component/Header/Menu";
-import Notification from "@/shared/component/Header/Notification";
 import Profile from "@/shared/component/Header/Profile";
 import { buttonContainer } from "@/shared/component/Header/index.css";
 
@@ -10,9 +12,9 @@ const UserMenu = () => {
   return (
     <div className={buttonContainer}>
       <Menu
-        label="notification"
-        renderTriggerIcon={<Notification.TriggerIcon count={count} />}
-        renderList={<Notification />}
+        label="alarm"
+        renderTriggerIcon={<Alarm.TriggerIcon count={count} />}
+        renderList={<Alarm />}
       />
 
       <Menu
