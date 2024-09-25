@@ -10,7 +10,7 @@ export const tabListStyle = recipe({
     variant: {
       primary: {},
       secondary: {
-        gap: "12px",
+        gap: "0.75rem",
       },
     },
   },
@@ -22,23 +22,35 @@ export const tabStyle = recipe({
 
     display: "flex",
     alignItems: "center",
-    gap: "8px",
+    gap: "0.5rem",
 
-    ...theme.font.Title1_SB_16,
     color: theme.color.mg3,
   },
   variants: {
     variant: {
       primary: {
-        padding: "26px 17px",
+        padding: "1.625rem 1.063rem",
       },
       secondary: {
-        padding: "16px 0px",
+        padding: "1rem 0rem",
       },
     },
     isSelected: {
       true: {
         color: theme.color.white,
+      },
+    },
+  },
+});
+
+export const textStyle = recipe({
+  variants: {
+    variant: {
+      primary: {
+        ...theme.font.Body3_SB_14,
+      },
+      secondary: {
+        ...theme.font.Title1_SB_16,
       },
     },
   },

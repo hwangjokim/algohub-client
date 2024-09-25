@@ -31,7 +31,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    variant: "secondary"
+    variant: "primary",
   },
 
   render: (args) => {
@@ -51,5 +51,5 @@ export const Default: Story = {
         </TabGroup.TabPanels>
       </TabGroup.Tabs>
     );
-  }
+  },
 };

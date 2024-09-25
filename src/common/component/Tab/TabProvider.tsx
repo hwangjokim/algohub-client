@@ -43,7 +43,7 @@ export const useTabDispatch = () => {
     throw new Error("tab is not context");
   }
 
-  return context?.dispatch;
+  return context.dispatch;
 };
 
 type TabProviderProps = PropsWithChildren<{

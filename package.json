@@ -16,6 +16,7 @@
   "dependencies": {
     "@vanilla-extract/css": "^1.15.5",
     "@vanilla-extract/recipes": "^0.5.5",
+    "framer-motion": "^11.7.0",
     "jotai": "^2.9.3",
     "lottie-react": "^2.4.0",
     "next": "14.2.8",

@@ -3,7 +3,7 @@ import {
   useTabDispatch,
   useTabState,
 } from "@/common/component/Tab/TabProvider";
-import { tabStyle } from "@/common/component/Tab/index.css";
+import { tabStyle, textStyle } from "@/common/component/Tab/index.css";
 import type {
   ComponentPropsWithoutRef,
   FunctionComponent,
@@ -42,7 +42,7 @@ const Tab = ({ tabId, icon, children, ...props }: TabProps) => {
       {...props}
     >
       {icon && <IconElement />}
-      <span>{children}</span>
+      <span className={textStyle({ variant })}>{children}</span>
       {isSelected && <Indicator />}
     </li>
   );
