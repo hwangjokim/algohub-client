@@ -113,8 +113,8 @@ FormItem.displayName = "FormItem";
 
 const FormLabel = forwardRef<
   HTMLLabelElement,
-  HTMLAttributes<HTMLLabelElement> & { isError?: boolean }
->(({ className, isError = false, ...props }, ref) => {
+  HTMLAttributes<HTMLLabelElement>
+>(({ className, ...props }, ref) => {
   const { error, formItemId } = useFormField();
 
   return (
@@ -135,21 +135,22 @@ FormLabel.displayName = "FormLabel";
  * 부모 context provider에서 생성한 정보들로 구성된
  * 여러 접근성 속성값 및 유효성 검사 결과를 useFormField 훅으로 가져와 적용
  */
-const FormControl = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+const FormControl = forwardRef<HTMLDivElement, HTMLAttributes<HTMLInputElement> & { isError?: boolean }>( // TODO: input 컴포넌트 props로 교체하기
   ({ ...props }, ref) => {
     const { error, formItemId, formDescriptionId, formMessageId } =
       useFormField();
-
+    const isError = !!error;
     return (
       <Slot
         ref={ref}
         id={formItemId}
+        isError={isError}
         aria-describedby={
           error
             ? `${formDescriptionId} ${formMessageId}`
             : `${formDescriptionId}`
         }
-        aria-invalid={!!error}
+        aria-invalid={isError}
         {...props}
       />
     );

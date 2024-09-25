@@ -1,10 +1,17 @@
 import Button from "@/common/component/Button";
-import { theme } from "@/styles/themes.css";
+import { getRevalidationHandlers } from "@/shared/util/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useForm } from "react-hook-form";
 import z from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel } from ".";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  useFormField,
+} from ".";
 import { storyContentStyle, storyFormStyle } from "./index.css";
 
 const meta: Meta<typeof Form> = {
@@ -38,14 +45,23 @@ export const Default: Story = {
 
     const form = useForm<z.infer<typeof loginSchema>>({
       resolver: zodResolver(loginSchema),
+      mode: "onBlur",
       defaultValues: {
         id: "",
         password: "",
       },
     });
 
-    const idError = form.getFieldState("id").invalid;
-    const passwordError = form.getFieldState("password").invalid;
+    const revalidationHandlers = getRevalidationHandlers(form);
+
+    const ErrorMsg = () => {
+      // useFormField()는 context를 사용하는 훅이므로
+      // 이 ErrorMsg 컴포넌트가 속한 FormFieldContext 및 FormItemContext의 정보를 가져옴
+      const { error } = useFormField();
+      if (!error) return null;
+      return <p style={{ color: "red" }}>{error.message}</p>;
+    };
+
     const onSubmit = (_values: z.infer<typeof loginSchema>) => {
       // console.log({ values });
     };
@@ -59,9 +75,13 @@ export const Default: Story = {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <input {...field} placeholder="아이디" />
+                    <input
+                      {...field}
+                      placeholder="아이디"
+                      {...revalidationHandlers("id", field)}
+                    />
                   </FormControl>
-                  {idError && <p>id error</p>}
+                  <ErrorMsg />
                 </FormItem>
               )}
             />
@@ -71,9 +91,13 @@ export const Default: Story = {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <input {...field} placeholder="비밀번호" />
+                    <input
+                      {...field}
+                      placeholder="비밀번호"
+                      {...revalidationHandlers("password", field)}
+                    />
                   </FormControl>
-                  {passwordError && <p>password error</p>}
+                  <ErrorMsg />
                 </FormItem>
               )}
             />
@@ -111,8 +135,8 @@ export const LabelWithError: Story = {
       },
     });
 
-    const idError = form.getFieldState("id").invalid;
-    const passwordError = form.getFieldState("password").invalid;
+    const revalidationHandlers = getRevalidationHandlers(form);
+
     const onSubmit = (_values: z.infer<typeof loginSchema>) => {
       // console.log({ values });
     };
@@ -125,9 +149,13 @@ export const LabelWithError: Story = {
               name="id"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel isError={idError}>아이디</FormLabel>
+                  <FormLabel>아이디</FormLabel>
                   <FormControl>
-                    <input {...field} placeholder="아이디" />
+                    <input
+                      {...field}
+                      placeholder="아이디"
+                      {...revalidationHandlers("id", field)}
+                    />
                   </FormControl>
                 </FormItem>
               )}
@@ -137,9 +165,13 @@ export const LabelWithError: Story = {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel isError={passwordError}>비밀번호</FormLabel>
+                  <FormLabel>비밀번호</FormLabel>
                   <FormControl>
-                    <input {...field} placeholder="비밀번호" />
+                    <input
+                      {...field}
+                      placeholder="비밀번호"
+                      {...revalidationHandlers("password", field)}
+                    />
                   </FormControl>
                 </FormItem>
               )}
@@ -179,9 +211,15 @@ export const DateTypeWithErrorMsg: Story = {
       },
     });
 
-    const idError = form.getFieldState("title").invalid;
-    const { invalid: dateError, error: dateErrorMsg } =
-      form.getFieldState("date");
+    const revalidationHandlers = getRevalidationHandlers(form);
+
+    const ErrorMsg = () => {
+      // useFormField()는 context를 사용하는 훅이므로
+      // 이 ErrorMsg 컴포넌트가 속한 FormFieldContext 및 FormItemContext의 정보를 가져옴
+      const { error } = useFormField();
+      if (!error) return null;
+      return <p style={{ color: "red" }}>{error.message}</p>;
+    };
 
     const onSubmit = (_values: z.infer<typeof postSchema>) => {
       // console.log({ values });
@@ -197,11 +235,13 @@ export const DateTypeWithErrorMsg: Story = {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <input {...field} placeholder="아이디" />
+                    <input
+                      {...field}
+                      placeholder="제목"
+                      {...revalidationHandlers("title", field)}
+                    />
                   </FormControl>
-                  {idError && (
-                    <p style={{ color: theme.color.red }}>id error</p>
-                  )}
+                  <ErrorMsg />
                 </FormItem>
               )}
             />
@@ -211,13 +251,14 @@ export const DateTypeWithErrorMsg: Story = {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <input {...field} type="date" placeholder="생년월일" />
+                    <input
+                      {...field}
+                      type="date"
+                      placeholder="날짜"
+                      {...revalidationHandlers("date", field)}
+                    />
                   </FormControl>
-                  {dateError && (
-                    <p style={{ color: theme.color.red }}>
-                      {dateErrorMsg!.message}
-                    </p>
-                  )}
+                  <ErrorMsg />
                 </FormItem>
               )}
             />
