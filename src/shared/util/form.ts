@@ -4,7 +4,7 @@ import type {
   DeepMap,
   FieldValues,
   Path,
-  UseFormReturn
+  UseFormReturn,
 } from "react-hook-form";
 
 const shouldValidateOnChange = <
@@ -12,8 +12,8 @@ const shouldValidateOnChange = <
   TFieldName extends keyof DeepMap<TFieldValues, boolean>,
 >(
   fieldName: TFieldName,
-  touchedFields: DeepMap<TFieldValues, boolean>, // DeepMap으로 변경
-  dirtyFields: DeepMap<TFieldValues, boolean>,   // DeepMap으로 변경
+  touchedFields: DeepMap<TFieldValues, boolean>,
+  dirtyFields: DeepMap<TFieldValues, boolean>,
 ) => {
   return touchedFields[fieldName] && dirtyFields[fieldName];
 };
@@ -52,7 +52,7 @@ const shouldValidateOnChange = <
  */
 export const getRevalidationHandlers =
   <TFieldValues extends FieldValues, TFieldName extends Path<TFieldValues>>(
-    form: UseFormReturn<TFieldValues>, // useForm의 반환 타입으로 인자 설정
+    form: UseFormReturn<TFieldValues>,
   ) =>
   (
     fieldName: TFieldName,
