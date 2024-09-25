@@ -29,7 +29,7 @@ const TabContext = createContext<Context>(null);
 export const useTabState = () => {
   const context = useContext(TabContext);
 
-  if (context === undefined || context === null) {
+  if (!context) {
     throw new Error("tab is not context");
   }
 
@@ -39,7 +39,7 @@ export const useTabState = () => {
 export const useTabDispatch = () => {
   const context = useContext(TabContext);
 
-  if (context === undefined || context === null) {
+  if (!context) {
     throw new Error("tab is not context");
   }
 

@@ -9,7 +9,7 @@ const TabPanels = ({ children }: TabPanelsProps) => {
   return (
     <>
       {Children.toArray(children).map((panel, idx) => {
-        if (idx + 1 === selectedTabId || idx + 1 === +selectedTabId) {
+        if (idx + 1 === +selectedTabId) {
           return (
             <section role="tabpanel" aria-labelledby={`tab-${idx + 1}`}>
               {panel}
