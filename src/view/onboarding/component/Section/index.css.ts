@@ -2,6 +2,10 @@ import { theme } from "@/styles/themes.css";
 import { style, styleVariants } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
+const breakpoints = {
+  lg: "1366px",
+};
+
 export const onboardingStyle = style({
   overflowY: "scroll",
   scrollBehavior: "smooth",
@@ -34,22 +38,36 @@ export const contentsContainer = recipe({
   variants: {
     section: {
       intro: {
-        gridTemplateColumns: "60rem 60rem",
+        gridTemplateColumns: "55rem 45rem",
         alignItems: "center",
+
+        paddingTop: "12rem",
       },
       feature1: {
         gridTemplateColumns: "47.5rem 72.5rem",
         gridTemplateRows: "25rem 65rem",
         alignItems: "start",
 
-        paddingTop: "15rem",
+        paddingTop: "12rem",
+
+        "@media": {
+          [`screen and (max-width: ${breakpoints.lg})`]: {
+            gridTemplateColumns: "40rem 60rem",
+            gridTemplateRows: "20rem auto",
+          },
+        },
       },
       feature2: {
         gridTemplateColumns: "47.5rem 72.5rem",
-        gridTemplateRows: "35rem 55rem",
+        gridTemplateRows: "22.5rem auto",
         gridAutoFlow: "column",
-
+        
         paddingTop: "5rem",
+        "@media": {
+          [`screen and (max-width: ${breakpoints.lg})`]: {
+            gridTemplateColumns: "40rem 60rem",
+          },
+        },
       },
     },
   },
@@ -60,8 +78,6 @@ export const introContainer = style({
   flexDirection: "column",
   justifyContent: "center",
   gap: "6.4rem",
-
-  paddingLeft: "6rem",
 });
 
 export const introTextContainer = recipe({
@@ -123,6 +139,10 @@ export const introButtonStyle = style({
   width: "24rem",
 });
 
+export const buttonTextStyle = style({
+  ...theme.font.Title1_SB_16,
+});
+
 export const imageContainer = styleVariants({
   intro: {
     gridColumn: 2,
@@ -152,8 +172,8 @@ export const imageStyle = recipe({
         height: "54.1rem",
       },
       feature1: {
-        width: "74.06rem",
-        height: "42.4rem",
+        width: "70rem",
+        height: "40rem",
       },
       feature2: {
         width: "85.6rem",
@@ -177,7 +197,7 @@ export const gradientStyle = style({
   position: "absolute",
   bottom: 0,
 
-  width: "85.6rem",
+  width: "100%",
   height: "17.3rem",
 
   background: "linear-gradient(180deg, rgba(16, 18, 23, 0) 0%, #101217 100%)",

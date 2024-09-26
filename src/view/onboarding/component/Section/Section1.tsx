@@ -4,10 +4,12 @@ import { arrow } from "@/asset/lottie";
 import Animation from "@/common/component/Animation";
 import Button from "@/common/component/Button";
 import Image from "next/image";
+import Link from "next/link";
 import Text from "./Text";
 import {
   arrowContainer,
   arrowStyle,
+  buttonTextStyle,
   contentsContainer,
   imageStyle,
   introButtonContainer,
@@ -26,7 +28,11 @@ const Section1 = () => {
     });
   };
   return (
-    <section id="introduction" className={sectionStyle} aria-labelledby="introduction-heading">
+    <section
+      id="introduction"
+      className={sectionStyle}
+      aria-labelledby="introduction-heading"
+    >
       <div className={contentsContainer(intro)}>
         <div className={introContainer}>
           <h1 id="introduction-heading" className={introTextContainer()}>
@@ -35,13 +41,25 @@ const Section1 = () => {
           </h1>
           <div className={introButtonContainer}>
             <div className={introButtonStyle}>
-              <Button size="medium" color="lg" aria-label="로그인 페이지로 이동">
-                로그인
+              <Button
+                size="medium"
+                color="lg"
+                aria-label="로그인 페이지로 이동"
+              >
+                <Link className={buttonTextStyle} href={"/login"}>
+                  로그인
+                </Link>
               </Button>
             </div>
             <div className={introButtonStyle}>
-              <Button size="medium" color="purple" aria-label="회원가입 페이지로 이동">
-                회원가입 하기
+              <Button
+                size="medium"
+                color="purple"
+                aria-label="회원가입 페이지로 이동"
+              >
+                <Link className={buttonTextStyle} href={"/signup"}>
+                  회원가입 하기
+                </Link>
               </Button>
             </div>
           </div>

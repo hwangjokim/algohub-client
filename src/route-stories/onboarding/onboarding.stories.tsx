@@ -1,5 +1,5 @@
 import RootLayout from "@/app/layout";
-import OnboardingPage from "@/app/onboarding/page";
+import OnboardingPage from "@/app/page";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof OnboardingPage> = {
