@@ -59,13 +59,14 @@ export const contentsContainer = recipe({
       },
       feature2: {
         gridTemplateColumns: "47.5rem 72.5rem",
-        gridTemplateRows: "22.5rem auto",
+        gridTemplateRows: "30rem auto",
         gridAutoFlow: "column",
-        
+
         paddingTop: "5rem",
         "@media": {
           [`screen and (max-width: ${breakpoints.lg})`]: {
             gridTemplateColumns: "40rem 60rem",
+            gridTemplateRows: "22.5rem auto",
           },
         },
       },
