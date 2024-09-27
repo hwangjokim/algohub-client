@@ -9,7 +9,7 @@ export const useFadeIn = () => {
     const observer = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
-          imageRef.current?.classList.add(fadeInStyle);
+          e.target.classList.add(fadeInStyle);
           observer.disconnect();
         }
       },
