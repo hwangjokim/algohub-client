@@ -11,17 +11,11 @@ const meta: Meta<typeof Dropdown> = {
     },
   },
   tags: ["autodocs"],
-  argTypes: {
-    label: { control: "text" },
-  },
 } satisfies Meta<typeof Dropdown>;
 
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    label: "default",
-  },
   parameters: {
     docs: {
       source: {
@@ -29,8 +23,8 @@ export const Default: Story = {
       },
     },
   },
-  render: (args) => (
-    <Dropdown {...args}>
+  render: () => (
+    <Dropdown>
       <li>a</li>
       <li>b</li>
       <li>c</li>

@@ -1,23 +1,23 @@
 import { useOutsideClick } from "@/common/hook/useOutsideClick";
+import { handleA11yClick } from "@/common/util/dom";
 import { camelToKebab } from "@/common/util/string";
+import { Slot } from "@radix-ui/react-slot";
 import type React from "react";
 import { useState } from "react";
 import { defaultButtonStyle } from "./Menu.css";
 
 type MenuProps = {
   label: string;
-  renderTriggerButton: (
-    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
-  ) => React.ReactNode;
+  renderTriggerButton: React.ReactNode;
   renderList: React.ReactNode;
 };
 /**
- * 
+ * trigger button과 list에 토글 기능과 aria속성을 부여해주는 컴포넌트
  * @param label id, aria-label에 들어갈 string.
  * id: camelToKebab(`${label}Toggle`)
  * aria-label: `${showMenu ? "Close" : "Open"} ${kebabLabel}`
- * @param renderTriggerButton trigger button에 필요한 aria 속성들과 메뉴 열기 click 이벤트를 props로 받는<button></button>
- * @param renderList <Dropdown></Dropdown>으로 만들어진 리스트 컴포넌트
+ * @param renderTriggerButton trigger button 컴포넌트
+ * @param renderList <Dropdown />으로 만들어진 리스트 컴포넌트
  * @example
 const TriggerButton = ({
   ...props
@@ -31,9 +31,9 @@ const TriggerButton = ({
 
 <Menu
   label={label}
-  renderTriggerButton={(props) => <TriggerButton {...props} />}
+  renderTriggerButton={<TriggerButton />}
   renderList={
-    <Dropdown {label}>
+    <Dropdown>
       <li>a</li>
       <li>b</li>
       <li>c</li>
@@ -44,26 +44,31 @@ const TriggerButton = ({
 const Menu = ({ label, renderTriggerButton, renderList }: MenuProps) => {
   const [showMenu, setShowMenu] = useState(false);
   const handleClick = () => setShowMenu(!showMenu);
-  const handleToggle = () => setShowMenu(false);
-  const ref = useOutsideClick(handleToggle);
-  const id = camelToKebab(`${label}Toggle`);
-  const kebabLabel = camelToKebab(label);
-
-  const triggerButtonProps = {
-    className: defaultButtonStyle,
-    id,
-    "aria-label": `${showMenu ? "Close" : "Open"} ${kebabLabel}`,
-    "aria-haspopup": "true",
-    "aria-expanded": showMenu,
-    "aria-controls": kebabLabel,
-    onClick: handleClick,
-  } as React.ButtonHTMLAttributes<HTMLButtonElement>;
+  const handleClose = () => setShowMenu(false);
+  const ref = useOutsideClick(handleClose);
+  const triggerId = camelToKebab(`${label}Toggle`);
+  const menuId = camelToKebab(label);
 
   return (
     <div ref={ref}>
-      {renderTriggerButton(triggerButtonProps)}
+      <Slot
+        className={defaultButtonStyle}
+        id={triggerId}
+        aria-label={`${showMenu ? "Close" : "Open"} ${menuId}`}
+        aria-haspopup="true"
+        aria-expanded={showMenu}
+        aria-controls={menuId}
+        onClick={handleClick}
+        onKeyDown={handleA11yClick(handleClick)}
+      >
+        {renderTriggerButton}
+      </Slot>
 
-      {showMenu && renderList}
+      {showMenu && (
+        <Slot id={menuId} aria-labelledby={triggerId}>
+          {renderList}
+        </Slot>
+      )}
     </div>
   );
 };

@@ -6,12 +6,16 @@ import {
 } from "@/shared/component/Header/Alarm.css";
 import { iconStyle } from "@/shared/component/Header/index.css";
 import { alarms } from "@/shared/constant/example";
+import type { HTMLAttributes } from "react";
 import AlarmListItem from "./AlarmListItem";
 
-const Alarm = () => {
+type AlarmProps = HTMLAttributes<HTMLUListElement>
+
+const Alarm = ({ ...props }: AlarmProps) => {
   return (
-    <div id="alarm" className={alarmContainer} aria-labelledby="alarm-toggle">
-      <ul className={ulStyle} aria-label="알림 목록">
+    <div className={alarmContainer}>
+      <ul className={ulStyle} {...props} aria-label="알림 목록">
+        {/* TODO: api 연결 후 alarms 데이터 변경 */}
         {alarms.map((alarm, index) => (
           <AlarmListItem
             key={index} // TODO: api 연결 후 key 변경
@@ -19,7 +23,9 @@ const Alarm = () => {
             message={alarm.message}
             date={alarm.date}
             profileImg={alarm.profileImg}
-            onClick={() => {alert("click")}}
+            onClick={() => {
+              alert("click");
+            }}
           />
         ))}
       </ul>
@@ -27,14 +33,19 @@ const Alarm = () => {
   );
 };
 
-interface TriggerButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface TriggerButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   count: number;
-};
+}
 
 Alarm.TriggerButton = ({ count, ...props }: TriggerButtonProps) => {
   return (
     <button {...props}>
-      {count > 0 && <div aria-live="polite" className={countStyle}>{count}</div>}
+      {count > 0 && (
+        <div aria-live="polite" className={countStyle}>
+          {count}
+        </div>
+      )}
       <IcnBellHeader className={iconStyle} />
     </button>
   );

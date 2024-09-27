@@ -13,15 +13,13 @@ const UserMenu = () => {
     <div className={buttonContainer}>
       <Menu
         label="alarm"
-        renderTriggerButton={(props) => (
-          <Alarm.TriggerButton {...props} count={count} />
-        )}
+        renderTriggerButton={<Alarm.TriggerButton count={count} />}
         renderList={<Alarm />}
       />
 
       <Menu
         label="profileMenu"
-        renderTriggerButton={(props) => <Profile.TriggerButton {...props} />}
+        renderTriggerButton={<Profile.TriggerButton />}
         renderList={<Profile />}
       />
     </div>

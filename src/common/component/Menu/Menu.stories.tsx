@@ -21,9 +21,6 @@ const meta: Meta<typeof Menu> = {
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    label: "default",
-  },
   parameters: {
     docs: {
       source: {
@@ -31,7 +28,7 @@ export const Default: Story = {
       },
     },
   },
-  render: (args) => {
+  render: () => {
     const TriggerButton = ({
       ...props
     }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
@@ -43,10 +40,10 @@ export const Default: Story = {
     };
     return (
       <Menu
-        label={args.label}
-        renderTriggerButton={(props) => <TriggerButton {...props} />}
+        label="default"
+        renderTriggerButton={<TriggerButton />}
         renderList={
-          <Dropdown {...args}>
+          <Dropdown>
             <li>a</li>
             <li>b</li>
             <li>c</li>
@@ -58,9 +55,6 @@ export const Default: Story = {
 };
 
 export const Language: Story = {
-  args: {
-    label: "language",
-  },
   parameters: {
     docs: {
       source: {
@@ -68,7 +62,7 @@ export const Language: Story = {
       },
     },
   },
-  render: (args) => {
+  render: () => {
     const TriggerButton = ({
       ...props
     }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
@@ -80,10 +74,10 @@ export const Language: Story = {
     };
     return (
       <Menu
-        label={args.label}
-        renderTriggerButton={(props) => <TriggerButton {...props} />}
+        label="language"
+        renderTriggerButton={<TriggerButton />}
         renderList={
-          <Dropdown {...args}>
+          <Dropdown>
             <li>C++</li>
             <li>Java</li>
             <li>Python</li>
