@@ -14,9 +14,9 @@ import {
 } from "./index.css";
 
 interface PaginationProps extends PropsWithChildren<ComponentProps<"nav">> {
-  count: number; // 전체 페이지 수
-  currentPage: number; // 현재 페이지 (부모에서 전달)
-  onPageChange: (page: number) => void; // 페이지 변경 핸들러
+  count: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
 }
 
 const Pagination = ({
@@ -25,7 +25,6 @@ const Pagination = ({
   onPageChange,
   ...props
 }: PaginationProps) => {
-  console.log({ currentPage });
   const handlePrevious = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
@@ -38,83 +37,36 @@ const Pagination = ({
     }
   };
 
-  // 페이지 번호 리스트 생성
-  const generatePageNumbers = () => {
-    const pages: React.ReactNode[] = [];
-    const maxVisiblePages = 7;
-
-    if (count <= maxVisiblePages) {
-      // 총 페이지 수가 7개 이하인 경우 모든 페이지 표시
-      for (let i = 1; i <= count; i++) {
-        pages.push(
-          <PaginationItem
-            key={i}
-            onClick={() => onPageChange(i)}
-            isActive={i === currentPage}
-          >
-            {i}
-          </PaginationItem>,
-        );
-      }
-    } else {
-      // 첫 번째 페이지는 항상 표시
-      pages.push(
-        <PaginationItem
-          key={1}
-          onClick={() => onPageChange(1)}
-          isActive={currentPage === 1}
-        >
-          1
-        </PaginationItem>,
-      );
-
-      if (currentPage > 4) {
-        // 현재 페이지가 4보다 큰 경우 "..." 추가
-        pages.push(<PaginationEllipsis key="start-ellipsis" />);
-      }
-
-      // 중앙에 표시할 페이지들 (현재 페이지 기준으로 앞뒤 2개씩)
-      let startPage = Math.max(2, currentPage - 1);
-      let endPage = Math.min(count - 1, currentPage + 1);
-
-      if (currentPage <= 4) {
-        // 현재 페이지가 4 이하일 때는 2~5 페이지 표시
-        startPage = 2;
-        endPage = 5;
-      } else if (currentPage >= count - 3) {
-        // 마지막 4개 페이지는 2~마지막에서 4까지 표시
-        startPage = count - 4;
-        endPage = count - 1;
-      }
-
-      for (let i = startPage; i <= endPage; i++) {
-        pages.push(
-          <PaginationItem
-            key={i}
-            onClick={() => onPageChange(i)}
-            isActive={i === currentPage}
-          >
-            {i}
-          </PaginationItem>,
-        );
-      }
-
-      if (currentPage < count - 3) {
-        // 현재 페이지가 마지막에서 3개 이전인 경우 "..." 추가
-        pages.push(<PaginationEllipsis key="end-ellipsis" />);
-      }
-
-      // 마지막 페이지는 항상 표시
-      pages.push(
-        <PaginationItem
-          key={count}
-          onClick={() => onPageChange(count)}
-          isActive={currentPage === count}
-        >
-          {count}
-        </PaginationItem>,
-      );
+  // 페이지 생성 함수
+  const getPageNumbers = () => {
+    // 7 이하일 경우 전부 표시
+    if (count <= 7) {
+      return Array.from({ length: count }, (_, i) => i + 1);
     }
+
+    const pages: (number | "ellipsis")[] = [];
+    // 첫 페이지는 항상 추가
+    pages.push(1);
+
+    // 현재 페이지가 첫 4페이지 이내일 경우
+    if (currentPage <= 4) {
+      pages.push(...Array.from({ length: 4 }, (_, i) => i + 2));
+      pages.push("ellipsis");
+    }
+    // 중간에 있을 경우
+    else if (currentPage > 4 && currentPage < count - 3) {
+      pages.push("ellipsis");
+      pages.push(...Array.from({ length: 3 }, (_, i) => currentPage - 1 + i));
+      pages.push("ellipsis");
+    }
+    // 마지막 4페이지 이내일 경우
+    else {
+      pages.push("ellipsis");
+      pages.push(...Array.from({ length: 4 }, (_, i) => count - 4 + i));
+    }
+
+    // 마지막 페이지는 항상 추가
+    pages.push(count);
 
     return pages;
   };
@@ -136,7 +88,19 @@ const Pagination = ({
           <IcnBtnArrowLeft className={iconSizeStyle} />
         </PaginationItem>
 
-        {generatePageNumbers()}
+        {getPageNumbers().map((page, index) =>
+          page === "ellipsis" ? (
+            <PaginationEllipsis key={`ellipsis-${index}`} />
+          ) : (
+            <PaginationItem
+              key={page}
+              onClick={() => onPageChange(page)}
+              isActive={page === currentPage}
+            >
+              {page}
+            </PaginationItem>
+          ),
+        )}
 
         <PaginationItem
           aria-label="다음 페이지로 이동"
