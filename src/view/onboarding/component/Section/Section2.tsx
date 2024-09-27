@@ -1,4 +1,5 @@
 import Image from "next/image";
+import FadeInImage from "./FadeInImage";
 import Text from "./Text";
 import {
   contentsContainer,
@@ -6,7 +7,7 @@ import {
   imageStyle,
   introContainer,
   introTextContainer,
-  sectionStyle,
+  sectionStyle
 } from "./index.css";
 
 const feature1 = { section: "feature1" } as const;
@@ -24,7 +25,10 @@ const Section2 = () => {
             </Text>
           </h2>
         </div>
-        <div className={imageContainer.intro} aria-hidden="true">
+        <FadeInImage
+          className={imageContainer.intro}
+          aria-hidden="true"
+        >
           <Image
             className={imageStyle(feature1)}
             width={740}
@@ -33,7 +37,7 @@ const Section2 = () => {
             alt="그룹 페이지 예시 이미지"
             unoptimized
           />
-        </div>
+        </FadeInImage>
       </div>
     </section>
   );

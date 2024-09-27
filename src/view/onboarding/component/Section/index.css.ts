@@ -1,5 +1,5 @@
 import { theme } from "@/styles/themes.css";
-import { style, styleVariants } from "@vanilla-extract/css";
+import { keyframes, style, styleVariants } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 const breakpoints = {
@@ -183,6 +183,21 @@ export const imageStyle = recipe({
       },
     },
   },
+});
+
+const fadeInKeyframes = keyframes({
+  from: {
+    opacity: 0,
+    transform: "translateY(2rem)",
+  },
+  to: {
+    opacity: 1,
+    transform: "translateY(0)",
+  },
+});
+
+export const fadeInStyle = style({
+  animation: `${fadeInKeyframes} 1s ease-out forwards`,
 });
 
 export const arrowContainer = style({

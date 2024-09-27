@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import FadeInImage from "./FadeInImage";
 import Text from "./Text";
 import {
   contentsContainer,
@@ -30,7 +31,7 @@ const Section3 = () => {
             </div>
           </h2>
         </div>
-        <div className={imageContainer.feature2} aria-hidden="true">
+        <FadeInImage className={imageContainer.feature2} aria-hidden="true">
           <Image
             className={imageStyle(feature2)}
             width={856}
@@ -40,7 +41,7 @@ const Section3 = () => {
             unoptimized
           />
           <div className={gradientStyle} />
-        </div>
+        </FadeInImage>
       </div>
     </section>
   );
