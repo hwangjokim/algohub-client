@@ -1,11 +1,10 @@
 "use client";
 
 import { IcnBtnArrowLeft, IcnBtnArrowRight, IcnList } from "@/asset/svg";
-import { type ComponentProps, type PropsWithChildren, forwardRef } from "react";
+import { joinClassName } from "@/common/util/string";
+import type { ComponentProps, PropsWithChildren } from "react";
 import {
   ellipsisStyle,
-  gapLeftStyle,
-  gapRightStyle,
   iconSizeStyle,
   navStyle,
   paginationContentStyle,
@@ -23,6 +22,7 @@ const Pagination = ({
   count,
   currentPage,
   onPageChange,
+  className,
   ...props
 }: PaginationProps) => {
   const handlePrevious = () => {
@@ -75,36 +75,36 @@ const Pagination = ({
     <nav
       role="navigation"
       aria-label="pagination"
-      className={`${navStyle}`}
+      className={joinClassName(navStyle, className)}
       {...props}
     >
       <PaginationContent>
         <PaginationItem
           aria-label="이전 페이지로 이동"
-          className={`${gapLeftStyle}`}
           onClick={handlePrevious}
           disabled={currentPage === 1}
         >
           <IcnBtnArrowLeft className={iconSizeStyle} />
         </PaginationItem>
 
-        {getPageNumbers().map((page, index) =>
-          page === "ellipsis" ? (
-            <PaginationEllipsis key={`ellipsis-${index}`} />
-          ) : (
-            <PaginationItem
-              key={page}
-              onClick={() => onPageChange(page)}
-              isActive={page === currentPage}
-            >
-              {page}
-            </PaginationItem>
-          ),
-        )}
+        <div className={paginationContentStyle({ type: "content" })}>
+          {getPageNumbers().map((page, index) =>
+            page === "ellipsis" ? (
+              <PaginationEllipsis key={`ellipsis-${index}`} />
+            ) : (
+              <PaginationItem
+                key={page}
+                onClick={() => onPageChange(page)}
+                isActive={page === currentPage}
+              >
+                {page}
+              </PaginationItem>
+            ),
+          )}
+        </div>
 
         <PaginationItem
           aria-label="다음 페이지로 이동"
-          className={`${gapRightStyle}`}
           onClick={handleNext}
           disabled={currentPage === count}
         >
@@ -115,51 +115,40 @@ const Pagination = ({
   );
 };
 
-interface PaginationContentProps extends ComponentProps<"ul"> {}
-
-const PaginationContent = ({
-  className,
-  children,
-  ...props
-}: PaginationContentProps) => (
-  <ul className={paginationContentStyle({ type: "wrapper" })} {...props}>
-    {children}
-  </ul>
+const PaginationContent = ({ ...props }: ComponentProps<"ul">) => (
+  <ul className={paginationContentStyle({ type: "wrapper" })} {...props} />
 );
 
 type PaginationItemProps = {
   isActive?: boolean;
-  disabled?: boolean;
-  onClick?: () => void;
 } & ComponentProps<"button">;
 
-const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
-  ({ className, children, onClick, isActive, disabled, ...props }, ref) => (
-    <li ref={ref} className={`${paginationItemStyle}`}>
-      <button
-        onClick={onClick}
-        disabled={disabled}
-        aria-current={isActive ? "page" : undefined}
-        aria-disabled={disabled ? "true" : undefined}
-        className={paginationLinkStyle({ isActive })}
-        {...props}
-      >
-        {children}
-      </button>
-    </li>
-  ),
+const PaginationItem = ({
+  onClick,
+  isActive,
+  disabled,
+  ...props
+}: PaginationItemProps) => (
+  <li className={paginationItemStyle}>
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      aria-current={isActive ? "page" : undefined}
+      aria-disabled={disabled ? "true" : undefined}
+      className={paginationLinkStyle({ isActive })}
+      {...props}
+    />
+  </li>
 );
 
 const PaginationEllipsis = ({
-  className,
   ...props
 }: ComponentProps<"span">) => (
-  <li className={`${paginationItemStyle}`}>
-    <span aria-hidden className={`${ellipsisStyle}`} {...props}>
+  <li className={paginationItemStyle}>
+    <span aria-hidden className={ellipsisStyle} {...props}>
       <IcnList className={iconSizeStyle} />
     </span>
   </li>
 );
 
-export { Pagination, PaginationContent, PaginationEllipsis, PaginationItem };
-
+export default Pagination;

@@ -54,7 +54,6 @@ export const paginationLinkStyle = recipe({
   variants: {
     isActive: {
       true: {
-        padding: "0.1rem",
         backgroundColor: "#f3f4f6",
       },
     },
@@ -64,16 +63,6 @@ export const paginationLinkStyle = recipe({
 export const iconSizeStyle = style({
   height: "2.4rem",
   width: "2.4rem",
-});
-
-export const gapLeftStyle = style({
-  gap: "0.25rem",
-  paddingLeft: "0.625rem",
-});
-
-export const gapRightStyle = style({
-  gap: "0.25rem",
-  paddingRight: "0.625rem",
 });
 
 export const ellipsisStyle = style({

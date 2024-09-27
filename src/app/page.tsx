@@ -1,5 +1,5 @@
 "use client"
-import { Pagination } from "@/shared/component/Pagination";
+import Pagination from "@/shared/component/Pagination";
 import "@/styles/globalStyles.css";
 import { theme } from "@/styles/themes.css";
 import { useState } from "react";
