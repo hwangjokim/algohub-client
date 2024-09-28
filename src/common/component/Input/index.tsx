@@ -27,7 +27,6 @@ const Input = forwardRef(
   ) => {
     return (
       <div className={containerStyle({ supportingTextPosition })}>
-        {/* <div className={wrapperStyle({ size, isError })}> */}
         <input
           ref={ref}
           className={inputStyle({ size, isError })}
@@ -35,7 +34,6 @@ const Input = forwardRef(
           aria-errormessage={supportingText}
           {...props}
         />
-        {/* </div> */}
         <SupportingText
           hasErrorIcon={hasErrorIcon}
           isError={isError}

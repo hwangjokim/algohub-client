@@ -1,5 +1,4 @@
 import { theme } from "@/styles/themes.css";
-import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 export const containerStyle = recipe({
@@ -41,7 +40,6 @@ export const textareaStyle = recipe({
     },
 
     ...theme.font.Caption3_M_12,
-
     color: theme.color.white,
     "::placeholder": {
       color: theme.color.mg4,

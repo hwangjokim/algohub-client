@@ -20,16 +20,18 @@ export const containerStyle = recipe({
 
 export const inputStyle = recipe({
   base: {
-    // wrapperStyle의 스타일
     display: "flex",
     gap: "1rem",
     alignItems: "center",
     justifyContent: "center",
+
     width: "100%",
     border: "1px solid transparent",
     borderRadius: "5px",
     outline: "none",
+
     backgroundColor: theme.color.mg5,
+
     ":hover": {
       border: `1px solid ${theme.color.transparent_purple2_50}`,
     },
