@@ -35,7 +35,7 @@ export const inputStyle = recipe({
     ":hover": {
       border: `1px solid ${theme.color.transparent_purple2_50}`,
     },
-    ":focus-within": {
+    ":focus": {
       border: `1px solid ${theme.color.purple}`,
     },
 
