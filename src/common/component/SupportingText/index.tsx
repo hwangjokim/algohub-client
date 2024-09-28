@@ -14,10 +14,8 @@ const SupportingText = ({
 }: SupportingTextProps) => {
   return (
     <div className={errorWrapper}>
-      <>
-        {hasErrorIcon && <IcnError className={errorIconStyle} />}
-        {message && <div className={msgStyle({ isError })}>{message}</div>}
-      </>
+      {hasErrorIcon && <IcnError className={errorIconStyle} />}
+      {message && <div className={msgStyle({ isError })}>{message}</div>}
     </div>
   );
 };
