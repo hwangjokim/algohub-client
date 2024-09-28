@@ -17,21 +17,18 @@ const meta: Meta<typeof Input> = {
       control: { type: "select" },
       options: ["medium", "large"],
     },
-    label: {
-      control: { type: "text" },
-    },
     isError: {
       control: { type: "boolean" },
     },
-    errorMsg: {
+    hasErrorIcon: {
+      control: { type: "boolean" },
+    },
+    supportingText: {
       control: { type: "text" },
     },
-    errorPosition: {
+    supportingTextPosition: {
       control: { type: "select" },
       options: ["top", "bottom"],
-    },
-    handleChange: {
-      action: "handleChange",
     },
   },
 } satisfies Meta<typeof Input>;
@@ -56,23 +53,61 @@ export const LargeInput: Story = {
   render: (props) => <Input {...props} />,
 };
 
+export const InputWithSupportingText: Story = {
+  args: {
+    size: "large",
+    placeholder: "InputWithSupportingText",
+    supportingText: "supporting text",
+  },
+  render: (props) => <Input {...props} />,
+};
+
+export const InputWithTopSupportingText: Story = {
+  args: {
+    size: "large",
+    placeholder: "InputWithTopSupportingText",
+    supportingText: "supporting text",
+    supportingTextPosition: "top",
+  },
+  render: (props) => <Input {...props} />,
+};
+
 export const ErrorInput: Story = {
   args: {
     size: "large",
     isError: true,
     placeholder: "error",
-    errorMsg: "error message",
   },
   render: (props) => <Input {...props} />,
 };
 
-export const ErrorInputWithTop: Story = {
+export const ErrorInputWithSupportingText: Story = {
   args: {
     size: "large",
     isError: true,
     placeholder: "error",
-    errorMsg: "error message at top",
-    errorPosition: "top",
+    supportingText: "error message ",
+  },
+  render: (props) => <Input {...props} />,
+};
+export const ErrorInputWithTopSupportingText: Story = {
+  args: {
+    size: "large",
+    isError: true,
+    placeholder: "error",
+    supportingText: "error message ",
+    supportingTextPosition: "top",
+  },
+  render: (props) => <Input {...props} />,
+};
+
+export const ErrorInputWithSupportingTextAndErrorIcon: Story = {
+  args: {
+    size: "large",
+    isError: true,
+    hasErrorIcon: true,
+    placeholder: "error",
+    supportingText: "error message ",
   },
   render: (props) => <Input {...props} />,
 };

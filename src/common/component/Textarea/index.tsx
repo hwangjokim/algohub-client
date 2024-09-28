@@ -1,45 +1,50 @@
 "use client";
 
-import type { ChangeEvent, TextareaHTMLAttributes } from "react";
-import ErrorInfo from "../ErrorInfo";
-import { containerStyle, textareaStyle, wrapperStyle } from "./index.css";
+import {
+  type ForwardedRef,
+  type TextareaHTMLAttributes,
+  forwardRef,
+} from "react";
+import SupportingText from "../SupportingText";
+import { containerStyle, textareaStyle } from "./index.css";
 
-interface InputProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  handleChange: (value: string) => void;
-  label?: string;
+export interface TextareaProps
+  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   isError?: boolean;
-  errorMsg?: string;
-  errorPosition?: "top" | "bottom";
+  hasErrorIcon?: boolean;
+  supportingText?: string;
+  supportingTextPosition?: "top" | "bottom";
 }
 
-const Textarea = ({
-  handleChange,
-  label,
-  isError = false,
-  errorMsg = "입력값이 올바르지 않습니다.",
-  errorPosition = "bottom",
-  ...props
-}: InputProps) => {
-  const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    handleChange(event.target.value);
-  };
-
-  return (
-    <div className={containerStyle({ errorPosition })}>
-      <div className={wrapperStyle({ isError })}>
+const Textarea = forwardRef(
+  (
+    {
+      isError = false,
+      hasErrorIcon = false,
+      supportingText,
+      supportingTextPosition = "bottom",
+      ...props
+    }: TextareaProps,
+    ref: ForwardedRef<HTMLTextAreaElement>
+  ) => {
+    return (
+      <div className={containerStyle({ supportingTextPosition })}>
         <textarea
-          className={textareaStyle}
-          onChange={onChange}
+          ref={ref}
+          className={textareaStyle({ isError })}
           aria-invalid={isError}
-          aria-label={label}
           aria-multiline="true"
-          aria-errormessage={errorMsg}
+          aria-errormessage={supportingText}
           {...props}
         />
+        <SupportingText
+          hasErrorIcon={hasErrorIcon}
+          isError={isError}
+          message={supportingText}
+        />
       </div>
-      <ErrorInfo isError={isError} errorMsg={errorMsg} />
-    </div>
-  );
-};
+    );
+  }
+);
 
 export default Textarea;

@@ -1,47 +1,49 @@
 "use client";
 
-import type { ChangeEvent, InputHTMLAttributes } from "react";
-import ErrorInfo from "../ErrorInfo";
-import { containerStyle, inputStyle, wrapperStyle } from "./index.css";
+import { type ForwardedRef, type InputHTMLAttributes, forwardRef } from "react";
+import SupportingText from "../SupportingText";
+import { containerStyle, inputStyle } from "./index.css";
 
-interface InputProps
+export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
-  handleChange: (value: string) => void;
   size?: "medium" | "large";
-  label?: string;
   isError?: boolean;
-  errorMsg?: string;
-  errorPosition?: "top" | "bottom";
+  hasErrorIcon?: boolean;
+  supportingText?: string;
+  supportingTextPosition?: "top" | "bottom";
 }
 
-const Input = ({
-  size = "medium",
-  handleChange,
-  label,
-  isError = false,
-  errorMsg = "입력값이 올바르지 않습니다.",
-  errorPosition = "bottom",
-  ...props
-}: InputProps) => {
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    handleChange(event.target.value);
-  };
-
-  return (
-    <div className={containerStyle({ errorPosition })}>
-      <div className={wrapperStyle({ size, isError })}>
+const Input = forwardRef(
+  (
+    {
+      size = "medium",
+      isError = false,
+      hasErrorIcon = false,
+      supportingText,
+      supportingTextPosition = "bottom",
+      ...props
+    }: InputProps,
+    ref: ForwardedRef<HTMLInputElement>
+  ) => {
+    return (
+      <div className={containerStyle({ supportingTextPosition })}>
+        {/* <div className={wrapperStyle({ size, isError })}> */}
         <input
-          className={inputStyle({ size })}
-          onChange={onChange}
+          ref={ref}
+          className={inputStyle({ size, isError })}
           aria-invalid={isError}
-          aria-label={label}
-          aria-errormessage={errorMsg}
+          aria-errormessage={supportingText}
           {...props}
         />
+        {/* </div> */}
+        <SupportingText
+          hasErrorIcon={hasErrorIcon}
+          isError={isError}
+          message={supportingText}
+        />
       </div>
-      <ErrorInfo isError={isError} errorMsg={errorMsg} />
-    </div>
-  );
-};
+    );
+  }
+);
 
 export default Input;

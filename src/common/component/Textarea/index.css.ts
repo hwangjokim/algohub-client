@@ -9,7 +9,7 @@ export const containerStyle = recipe({
     gap: "0.2rem",
   },
   variants: {
-    errorPosition: {
+    supportingTextPosition: {
       top: {
         flexDirection: "column-reverse",
       },
@@ -20,7 +20,7 @@ export const containerStyle = recipe({
   },
 });
 
-export const wrapperStyle = recipe({
+export const textareaStyle = recipe({
   base: {
     display: "flex",
     gap: "1rem",
@@ -31,14 +31,20 @@ export const wrapperStyle = recipe({
     height: "100%",
     padding: "1rem 1.6rem",
     border: "1px solid transparent",
-    borderRadius: "0.5rem",
+    borderRadius: "5px",
     outline: "none",
-    boxSizing: "border-box",
 
     backgroundColor: theme.color.mg5,
 
-    ":focus-within": {
+    ":focus": {
       border: `1px solid ${theme.color.purple}`,
+    },
+
+    ...theme.font.Caption3_M_12,
+
+    color: theme.color.white,
+    "::placeholder": {
+      color: theme.color.mg4,
     },
   },
 
@@ -48,22 +54,5 @@ export const wrapperStyle = recipe({
         border: `1px solid ${theme.color.red}`,
       },
     },
-  },
-});
-
-export const textareaStyle = style({
-  overflow: "hidden",
-
-  width: "100%",
-  height: "100%",
-  border: "none",
-
-  backgroundColor: "transparent",
-
-  ...theme.font.Caption3_M_12,
-
-  color: theme.color.white,
-  "::placeholder": {
-    color: theme.color.mg4,
   },
 });

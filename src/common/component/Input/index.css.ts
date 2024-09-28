@@ -7,7 +7,7 @@ export const containerStyle = recipe({
     gap: "0.2rem",
   },
   variants: {
-    errorPosition: {
+    supportingTextPosition: {
       top: {
         flexDirection: "column-reverse",
       },
@@ -18,62 +18,24 @@ export const containerStyle = recipe({
   },
 });
 
-export const wrapperStyle = recipe({
+export const inputStyle = recipe({
   base: {
+    // wrapperStyle의 스타일
     display: "flex",
     gap: "1rem",
     alignItems: "center",
     justifyContent: "center",
-
     width: "100%",
     border: "1px solid transparent",
-    borderRadius: "0.5rem",
+    borderRadius: "5px",
     outline: "none",
-    boxSizing: "border-box",
-
     backgroundColor: theme.color.mg5,
-
     ":hover": {
       border: `1px solid ${theme.color.transparent_purple2_50}`,
     },
-
     ":focus-within": {
       border: `1px solid ${theme.color.purple}`,
     },
-  },
-
-  variants: {
-    size: {
-      medium: {
-        height: "4.4rem",
-        padding: "0rem 0.8rem",
-        ":focus-within": {
-          border: `1px solid ${theme.color.purple2}`,
-        },
-      },
-
-      large: {
-        height: "5.1rem",
-        padding: "1rem 1.6rem",
-      },
-    },
-
-    isError: {
-      true: {
-        border: `1px solid ${theme.color.red}`,
-      },
-    },
-  },
-});
-
-export const inputStyle = recipe({
-  base: {
-    overflow: "hidden",
-
-    width: "100%",
-    border: "none",
-
-    backgroundColor: "transparent",
 
     color: theme.color.white,
     "::placeholder": {
@@ -84,13 +46,24 @@ export const inputStyle = recipe({
   variants: {
     size: {
       medium: {
-        height: "2.2rem",
+        height: "4.4rem",
+        padding: "0rem 0.8rem",
+        ":focus": {
+          border: `1px solid ${theme.color.purple2}`,
+        },
         ...theme.font.Body1_M_14,
       },
 
       large: {
-        height: "3rem",
+        height: "5.1rem",
+        padding: "1rem 1.6rem",
         ...theme.font.Title2_M_16,
+      },
+    },
+
+    isError: {
+      true: {
+        border: `1px solid ${theme.color.red}`,
       },
     },
   },

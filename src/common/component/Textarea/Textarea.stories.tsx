@@ -13,21 +13,18 @@ const meta: Meta<typeof Textarea> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    label: {
-      control: { type: "text" },
-    },
     isError: {
       control: { type: "boolean" },
     },
-    errorMsg: {
+    hasErrorIcon: {
+      control: { type: "boolean" },
+    },
+    supportingText: {
       control: { type: "text" },
     },
-    errorPosition: {
+    supportingTextPosition: {
       control: { type: "select" },
       options: ["top", "bottom"],
-    },
-    handleChange: {
-      action: "handleChange",
     },
   },
 } satisfies Meta<typeof Textarea>;
@@ -43,21 +40,55 @@ export const Default: Story = {
   render: (props) => <Textarea {...props} />,
 };
 
-export const ErrorTextarea: Story = {
+export const TextareaWithSupportingText: Story = {
   args: {
-    isError: true,
-    placeholder: "error",
-    errorMsg: "error message",
+    placeholder: "TextareaWithSupportingText",
+    supportingText: "supporting text",
   },
   render: (props) => <Textarea {...props} />,
 };
 
-export const ErrorTextareaWithTop: Story = {
+export const TextareaWithTopSupportingText: Story = {
+  args: {
+    placeholder: "TextareaWithTopSupportingText",
+    supportingText: "supporting text",
+    supportingTextPosition: "top",
+  },
+  render: (props) => <Textarea {...props} />,
+};
+
+export const ErrorInput: Story = {
   args: {
     isError: true,
     placeholder: "error",
-    errorMsg: "error message at top",
-    errorPosition: "top",
+  },
+  render: (props) => <Textarea {...props} />,
+};
+
+export const ErrorInputWithSupportingText: Story = {
+  args: {
+    isError: true,
+    placeholder: "error",
+    supportingText: "error message ",
+  },
+  render: (props) => <Textarea {...props} />,
+};
+export const ErrorInputWithTopSupportingText: Story = {
+  args: {
+    isError: true,
+    placeholder: "error",
+    supportingText: "error message ",
+    supportingTextPosition: "top",
+  },
+  render: (props) => <Textarea {...props} />,
+};
+
+export const ErrorInputWithSupportingTextAndErrorIcon: Story = {
+  args: {
+    isError: true,
+    hasErrorIcon: true,
+    placeholder: "error",
+    supportingText: "error message ",
   },
   render: (props) => <Textarea {...props} />,
 };

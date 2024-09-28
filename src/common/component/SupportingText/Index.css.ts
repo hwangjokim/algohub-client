@@ -1,5 +1,6 @@
 import { theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
 export const errorWrapper = style({
   display: "flex",
@@ -11,7 +12,16 @@ export const errorIconStyle = style({
   height: "2.4rem",
 });
 
-export const errorMsgStyle = style({
-  ...theme.font.Caption3_M_12,
-  color: theme.color.error,
+export const msgStyle = recipe({
+  base: {
+    ...theme.font.Caption3_M_12,
+    color: theme.color.mg3,
+  },
+  variants: {
+    isError: {
+      true: {
+        color: theme.color.error,
+      },
+    },
+  },
 });
