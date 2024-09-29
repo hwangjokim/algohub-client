@@ -2,15 +2,16 @@
 import Lottie from "lottie-react";
 
 type LottiePlayerProps = {
+  /** size값은 다음과 같이 들어갑니다.
+   * `style={{ width: size, height: size }}`
+   * */
   size: string;
+  /** `src/asset/lottie의 json파일을 사용해주세요.` */
   animationJson: unknown;
+  /** 애니메이션 반복 실행 여부입니다. */
   loop?: boolean;
 };
 
-/**
- * @param {string} size style={{ width: size, height: size }}
- * @param {boolean} loop default true
- */
 const Animation = ({ size, animationJson, loop = true }: LottiePlayerProps) => {
   return (
     <Lottie
