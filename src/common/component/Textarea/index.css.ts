@@ -1,24 +1,6 @@
 import { theme } from "@/styles/themes.css";
 import { recipe } from "@vanilla-extract/recipes";
 
-export const containerStyle = recipe({
-  base: {
-    display: "flex",
-    height: "7.4rem",
-    gap: "0.2rem",
-  },
-  variants: {
-    supportingTextPosition: {
-      top: {
-        flexDirection: "column-reverse",
-      },
-      bottom: {
-        flexDirection: "column",
-      },
-    },
-  },
-});
-
 export const textareaStyle = recipe({
   base: {
     display: "flex",
@@ -27,7 +9,7 @@ export const textareaStyle = recipe({
     justifyContent: "center",
 
     width: "100%",
-    height: "100%",
+    height: "7.4rem",
     padding: "1rem 1.6rem",
     border: "1px solid transparent",
     borderRadius: "5px",

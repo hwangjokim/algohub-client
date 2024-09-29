@@ -16,16 +16,6 @@ const meta: Meta<typeof Textarea> = {
     isError: {
       control: { type: "boolean" },
     },
-    hasErrorIcon: {
-      control: { type: "boolean" },
-    },
-    supportingText: {
-      control: { type: "text" },
-    },
-    supportingTextPosition: {
-      control: { type: "select" },
-      options: ["top", "bottom"],
-    },
   },
 } satisfies Meta<typeof Textarea>;
 
@@ -40,55 +30,10 @@ export const Default: Story = {
   render: (props) => <Textarea {...props} />,
 };
 
-export const TextareaWithSupportingText: Story = {
-  args: {
-    placeholder: "TextareaWithSupportingText",
-    supportingText: "supporting text",
-  },
-  render: (props) => <Textarea {...props} />,
-};
-
-export const TextareaWithTopSupportingText: Story = {
-  args: {
-    placeholder: "TextareaWithTopSupportingText",
-    supportingText: "supporting text",
-    supportingTextPosition: "top",
-  },
-  render: (props) => <Textarea {...props} />,
-};
-
 export const ErrorInput: Story = {
   args: {
     isError: true,
     placeholder: "error",
-  },
-  render: (props) => <Textarea {...props} />,
-};
-
-export const ErrorInputWithSupportingText: Story = {
-  args: {
-    isError: true,
-    placeholder: "error",
-    supportingText: "error message ",
-  },
-  render: (props) => <Textarea {...props} />,
-};
-export const ErrorInputWithTopSupportingText: Story = {
-  args: {
-    isError: true,
-    placeholder: "error",
-    supportingText: "error message ",
-    supportingTextPosition: "top",
-  },
-  render: (props) => <Textarea {...props} />,
-};
-
-export const ErrorInputWithSupportingTextAndErrorIcon: Story = {
-  args: {
-    isError: true,
-    hasErrorIcon: true,
-    placeholder: "error",
-    supportingText: "error message ",
   },
   render: (props) => <Textarea {...props} />,
 };
