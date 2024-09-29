@@ -1,23 +1,6 @@
 import { theme } from "@/styles/themes.css";
 import { recipe } from "@vanilla-extract/recipes";
 
-export const containerStyle = recipe({
-  base: {
-    display: "flex",
-    gap: "0.2rem",
-  },
-  variants: {
-    supportingTextPosition: {
-      top: {
-        flexDirection: "column-reverse",
-      },
-      bottom: {
-        flexDirection: "column",
-      },
-    },
-  },
-});
-
 export const inputStyle = recipe({
   base: {
     display: "flex",
