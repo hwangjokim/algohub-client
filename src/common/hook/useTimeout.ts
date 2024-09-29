@@ -4,7 +4,7 @@ import { type DependencyList, useEffect, useRef } from "react";
 export const useTimeout = (
   callback: () => void,
   delay?: number,
-  dependencies?: DependencyList
+  dependencies?: DependencyList,
 ) => {
   const timeoutRef = useRef<Timeout>();
 

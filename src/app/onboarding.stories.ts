@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import OnboardingPage from './page';
+import type { Meta, StoryObj } from "@storybook/react";
+import OnboardingPage from "./page";
 
 const meta: Meta<typeof OnboardingPage> = {
-	title: "page/onboarding",
+  title: "page/onboarding",
   component: OnboardingPage,
   parameters: {
     design: {
@@ -18,7 +18,7 @@ export const Onboarding: Story = {
   parameters: {
     nextjs: {
       navigation: {
-        pathname: '/',
+        pathname: "/",
       },
     },
   },

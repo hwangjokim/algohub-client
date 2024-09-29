@@ -33,7 +33,7 @@ export const deleteIconStyle = recipe({
     borderRadius: "20px",
 
     opacity: 1,
-    
+
     selectors: {
       "&:hover": {
         ["rect:nth-of-type(2)" as string]: {
@@ -45,10 +45,10 @@ export const deleteIconStyle = recipe({
   variants: {
     active: {
       true: {
-        display: "block"
-      }
-    }
-  }
+        display: "block",
+      },
+    },
+  },
 });
 
 export const profileImageStyle = style({
