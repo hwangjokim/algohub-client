@@ -1,7 +1,7 @@
 "use client";
 
 import { IcnBtnArrowLeft, IcnBtnArrowRight, IcnList } from "@/asset/svg";
-import { joinClassName } from "@/common/util/string";
+import clsx from "clsx";
 import type { ComponentProps, PropsWithChildren } from "react";
 import {
   ellipsisStyle,
@@ -13,11 +13,15 @@ import {
 } from "./index.css";
 
 interface PaginationProps extends PropsWithChildren<ComponentProps<"nav">> {
+  /** 페이지 수 */
   count: number;
+  /** 현재 페이지 번호 `state` */
   currentPage: number;
+  /** 현재 페이지 번호 `setState` */
   onPageChange: (page: number) => void;
 }
 
+/** 외부에서 `const [page, setPage] = useState(1)`를 정의해서 `props`로 넣어주세요 */
 const Pagination = ({
   count,
   currentPage,
@@ -75,7 +79,7 @@ const Pagination = ({
     <nav
       role="navigation"
       aria-label="pagination"
-      className={joinClassName(navStyle, className)}
+      className={clsx(navStyle, className)}
       {...props}
     >
       <PaginationContent>
@@ -141,9 +145,7 @@ const PaginationItem = ({
   </li>
 );
 
-const PaginationEllipsis = ({
-  ...props
-}: ComponentProps<"span">) => (
+const PaginationEllipsis = ({ ...props }: ComponentProps<"span">) => (
   <li className={paginationItemStyle}>
     <span aria-hidden className={ellipsisStyle} {...props}>
       <IcnList className={iconSizeStyle} />
