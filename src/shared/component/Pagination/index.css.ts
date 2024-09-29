@@ -34,7 +34,7 @@ export const paginationItemStyle = style({
   height: "2.4rem",
 });
 
-export const paginationLinkStyle = recipe({
+export const paginationButtonStyle = recipe({
   base: {
     display: "inline-flex",
     alignItems: "center",
@@ -43,12 +43,14 @@ export const paginationLinkStyle = recipe({
     padding: "0.5rem",
     border: "none",
 
+    cursor: "pointer",
+
     ...theme.font.Caption3_M_12,
     color: theme.color.mg2,
     backgroundColor: "transparent",
     borderRadius: "0.375rem",
     ":disabled": {
-      cursor: "auto"
+      cursor: "default"
     }
   },
   variants: {

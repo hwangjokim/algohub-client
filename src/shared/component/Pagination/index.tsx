@@ -7,9 +7,9 @@ import {
   ellipsisStyle,
   iconSizeStyle,
   navStyle,
+  paginationButtonStyle,
   paginationContentStyle,
   paginationItemStyle,
-  paginationLinkStyle,
 } from "./index.css";
 
 interface PaginationProps extends PropsWithChildren<ComponentProps<"nav">> {
@@ -139,7 +139,7 @@ const PaginationItem = ({
       disabled={disabled}
       aria-current={isActive ? "page" : undefined}
       aria-disabled={disabled ? "true" : undefined}
-      className={paginationLinkStyle({ isActive })}
+      className={paginationButtonStyle({ isActive })}
       {...props}
     />
   </li>
