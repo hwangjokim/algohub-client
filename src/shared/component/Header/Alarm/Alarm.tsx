@@ -3,7 +3,7 @@ import {
   alarmContainer,
   countStyle,
   ulStyle,
-} from "@/shared/component/Header/Alarm.css";
+} from "@/shared/component/Header/Alarm/Alarm.css";
 import { iconStyle } from "@/shared/component/Header/index.css";
 import { alarms } from "@/shared/constant/example";
 import type { HTMLAttributes } from "react";

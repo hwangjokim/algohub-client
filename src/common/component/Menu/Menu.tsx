@@ -2,44 +2,25 @@ import { useOutsideClick } from "@/common/hook/useOutsideClick";
 import { handleA11yClick } from "@/common/util/dom";
 import { camelToKebab } from "@/common/util/string";
 import { Slot } from "@radix-ui/react-slot";
-import type React from "react";
-import { useState } from "react";
+import { type ReactNode, useState } from "react";
 import { defaultButtonStyle } from "./Menu.css";
 
 type MenuProps = {
+  /** 두 render 컴포넌트의 `id`, `aria-label`, `aria-labelledby`속성에 사용될 string <br><hr> */
   label: string;
-  renderTriggerButton: React.ReactNode;
-  renderList: React.ReactNode;
-};
-/**
- * trigger button과 list에 토글 기능과 aria속성을 부여해주는 컴포넌트
- * @param label id, aria-label에 들어갈 string.
- * id: camelToKebab(`${label}Toggle`)
- * aria-label: `${showMenu ? "Close" : "Open"} ${kebabLabel}`
- * @param renderTriggerButton trigger button 컴포넌트
- * @param renderList <Dropdown />으로 만들어진 리스트 컴포넌트
- * @example
-const TriggerButton = ({
-  ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
-  return (
-    <button {...props}>
-      <IcnAlarm width="2.5rem" height="2.5rem" />
-    </button>
-  );
+  /** trigger button 컴포넌트<br>
+   * **부여되는 속성**: `className`, `id`, `aria-label`, `aria-haspopup`, `aria-expanded`, `aria-controls`, `onClick`, `onKeyDown`<br><hr>
+   */
+  renderTriggerButton: ReactNode;
+  /** `<Dropdown />`으로 만들어진 리스트 컴포넌트<br>
+   * **부여되는 속성**: `id`, `aria-labelledby`<br><hr>
+  */
+  renderList: ReactNode;
 };
 
-<Menu
-  label={label}
-  renderTriggerButton={<TriggerButton />}
-  renderList={
-    <Dropdown>
-      <li>a</li>
-      <li>b</li>
-      <li>c</li>
-    </Dropdown>
-  }
-/>
+/** 
+ * trigger button과 list에 토글 기능과 필요한 aria속성을 부여해주는 컴포넌트<br>
+ * **`renderTriggerButton`은 꼭 clsx를 사용해 className을 결합해야 함**
  */
 const Menu = ({ label, renderTriggerButton, renderList }: MenuProps) => {
   const [showMenu, setShowMenu] = useState(false);

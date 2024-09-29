@@ -1,9 +1,9 @@
 "use client";
 
 import Menu from "@/common/component/Menu/Menu";
-import Alarm from "@/shared/component/Header/Alarm";
 import Profile from "@/shared/component/Header/Profile";
 import { buttonContainer } from "@/shared/component/Header/index.css";
+import Alarm from "./Alarm/Alarm";
 
 const UserMenu = () => {
   // TODO: 알림 기능 구현 시 수정

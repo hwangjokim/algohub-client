@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Dropdown from ".";
+import { storyContainer, storyItemStyle } from "./index.css";
 
 const meta: Meta<typeof Dropdown> = {
   title: "Common/Dropdown",
@@ -28,6 +29,33 @@ export const Default: Story = {
       <li>a</li>
       <li>b</li>
       <li>c</li>
+    </Dropdown>
+  ),
+};
+
+export const ApplyClassName: Story = {
+  parameters: {
+    docs: {
+      source: {
+        type: "dynamic",
+      },
+    },
+  },
+  render: () => (
+    /**
+     * export const storyContainer = style({
+        position: "static",
+        width: "7rem",
+      })
+
+      export const storyItemStyle = style({
+        width: "5rem"
+      })
+     */
+    <Dropdown className={storyContainer}>
+      <li className={storyItemStyle}>a</li>
+      <li className={storyItemStyle}>b</li>
+      <li className={storyItemStyle}>c</li>
     </Dropdown>
   ),
 };

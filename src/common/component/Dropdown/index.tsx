@@ -1,46 +1,42 @@
 import {
   dropdownContainer,
-  dropdownDefaultStyle,
   dropdownItemStyle,
 } from "@/common/component/Dropdown/index.css";
-import { Children, type PropsWithChildren, type ReactElement, cloneElement, isValidElement } from "react";
+import clsx from "clsx";
+import {
+  Children,
+  type ComponentProps,
+  type ReactElement,
+  type ReactNode,
+  cloneElement,
+  isValidElement,
+} from "react";
 
-export interface DropdownProps extends React.HTMLAttributes<HTMLUListElement>, PropsWithChildren {};
+export interface DropdownProps extends ComponentProps<"ul"> {
+  /**
+   * **ul에 적용되는 기본값** : `dropdownContainer`<br>
+   * **li에 적용되는 기본값** : `dropdownItemStyle`<br><hr>
+   */
+  className?: string;
+  /** `<li></li>`들을 사용해주세요<br>
+   * **`<li>`에 부여되는 속성**: `className`, `key`, `role`, `tabIndex`<br><hr>
+   */
+  children?: ReactNode;
+}
 
-/**
- * @param label id, aria-labelledby에 들어갈 string. 
- ** id의 값은 lebel
- ** aria-labelledby의 값은 `camelToKebab('${label}Toggle')`
- * @param className 드롭다운 위치 조정용 style
- ** default: `{ position: "absolute" }`
- * @param children li 태그를 사용해 주세요
- * @example
- * const dropdownStyle = style({ position: "absolute", top: "6.5rem", right: "6rem" })
- * <Dropdown label="profile" className={dropdownStyle}>
- *   <li {...liProps}>내 프로필</li>
- *   <li {...liProps}>로그아웃</li>
- * </Dropdown>
- */
-const Dropdown = ({
-  children,
-  className = dropdownDefaultStyle,
-  ...props
-}: DropdownProps) => {
+const Dropdown = ({ children, className, ...props }: DropdownProps) => {
   return (
-    <ul
-      {...props}
-      className={`${dropdownContainer} ${className}`}
-    >
+    <ul {...props} className={clsx(dropdownContainer, className)}>
       {Children.map(children, (child, index) => {
         if (isValidElement(child)) {
           return cloneElement<HTMLLIElement>(
             child as ReactElement<HTMLLIElement>,
             {
-              className: dropdownItemStyle,
+              className: clsx(child.props.className, dropdownItemStyle),
               key: index, // TODO: 실제 데이터로 확인 후 버그 있으면 적절한 key 탐색
               role: "button",
               tabIndex: 0,
-            }
+            },
           );
         }
         return child;

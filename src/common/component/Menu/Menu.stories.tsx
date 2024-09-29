@@ -1,7 +1,10 @@
 import { IcnAlarm, IcnBtnArrowDown } from "@/asset/svg";
 import type { Meta, StoryObj } from "@storybook/react";
+import clsx from "clsx";
+import type { ComponentProps } from "react";
 import Dropdown from "../Dropdown";
 import Menu from "./Menu";
+import { storyButtonStyle, storyDivStyle } from "./Menu.css";
 
 const meta: Meta<typeof Menu> = {
   title: "Common/Menu",
@@ -29,11 +32,13 @@ export const Default: Story = {
     },
   },
   render: () => {
+    // 버튼의 className은 항상 clsx로 결합(Menu 컴포넌트가 기본 스타일 className을 주입해줌)
     const TriggerButton = ({
+      className,
       ...props
-    }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+    }: ComponentProps<"button">) => {
       return (
-        <button {...props}>
+        <button className={clsx(storyButtonStyle, className)} {...props}>
           <IcnAlarm width="2.5rem" height="2.5rem" />
         </button>
       );
@@ -54,22 +59,23 @@ export const Default: Story = {
   },
 };
 
-export const Language: Story = {
+export const LanguageWithDivTrigger: Story = {
   parameters: {
     docs: {
       source: {
-        type: "dynamic", // auto | dynamic | code
+        type: "dynamic",
       },
     },
   },
   render: () => {
-    const TriggerButton = ({
-      ...props
-    }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+    // 버튼의 className은 항상 clsx로 결합(Menu 컴포넌트가 기본 스타일 className을 주입해줌)
+    const TriggerButton = ({ className, ...props }: ComponentProps<"div">) => {
       return (
-        <button {...props} style={{width: "11.2rem", height: "3.6rem"}}>
-          <span>모든 언어</span> <IcnBtnArrowDown width={"2rem"} height={"2rem"} />
-        </button>
+        // <button> 외의 것을 사용할 경우 role="button"을 넣어주세요
+        <div className={clsx(storyDivStyle, className)} role="button" {...props}>
+          <span>모든 언어</span>{" "}
+          <IcnBtnArrowDown width={"2rem"} height={"2rem"} />
+        </div>
       );
     };
     return (

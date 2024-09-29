@@ -2,6 +2,7 @@ import { theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
 
 export const dropdownContainer = style({
+  position: "absolute",
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
@@ -16,18 +17,15 @@ export const dropdownContainer = style({
   backgroundColor: theme.color.mg6,
 });
 
-export const dropdownDefaultStyle = style({
-  position: "absolute",
-})
-
 export const dropdownItemStyle = style({
-  listStyle: "none",
+  display: "flex",
+  alignItems: "center",
+
   width: "11.2rem",
   height: "3.4rem",
   padding: "0.5rem 0.8rem",
-  
-  borderRadius: "0.8rem",
 
+  borderRadius: "0.8rem",
   color: theme.color.white,
   textAlign: "left",
   ...theme.font.Caption3_M_12,
@@ -39,4 +37,13 @@ export const dropdownItemStyle = style({
       backgroundColor: theme.color.mg5,
     },
   },
+});
+
+export const storyContainer = style({
+  position: "static",
+  width: "7rem",
+});
+
+export const storyItemStyle = style({
+  width: "5rem",
 });
