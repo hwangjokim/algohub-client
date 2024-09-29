@@ -1,21 +1,15 @@
 "use client";
 
-import { joinClassName } from "@/common/util/string";
+import useFormField from "@/shared/hook/useFormField";
 import { Slot } from "@radix-ui/react-slot";
-import {
-  type HTMLAttributes,
-  createContext,
-  forwardRef,
-  useContext,
-  useId,
-} from "react";
+import clsx from "clsx";
+import { type HTMLAttributes, createContext, forwardRef, useId } from "react";
 import {
   Controller,
   type ControllerProps,
   type FieldPath,
   type FieldValues,
   FormProvider,
-  useFormContext,
 } from "react-hook-form";
 import { itemDefaultStyle, labelDefaultStyle } from "./index.css";
 
@@ -53,33 +47,6 @@ const FormField = <
   );
 };
 
-/**
- * 현재 form field의 상태와 정보에 접근할 수 있게 해주는 훅
- * form 구성은 Field-Item-Control-children으로 이어지는 트리구조
- * Control에서 이 훅을 사용해 form의 상태와 유효성 검사 결과를 확인
- */
-const useFormField = () => {
-  const fieldContext = useContext(FormFieldContext);
-  const itemContext = useContext(FormItemContext);
-  const { getFieldState, formState } = useFormContext();
-
-  if (!fieldContext) {
-    throw new Error("useFormField should be used within <FormField>");
-  }
-  const fieldState = getFieldState(fieldContext.name, formState);
-
-  const { id } = itemContext;
-
-  return {
-    id,
-    name: fieldContext.name,
-    formItemId: `${id}-form-item`,
-    formDescriptionId: `${id}-form-item-description`,
-    formMessageId: `${id}-form-item-message`,
-    ...fieldState,
-  };
-};
-
 type FormItemContextValue = {
   id: string;
 };
@@ -102,7 +69,7 @@ const FormItem = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
       <FormItemContext.Provider value={{ id }}>
         <div
           ref={ref}
-          className={joinClassName(className, itemDefaultStyle)}
+          className={clsx(className, itemDefaultStyle)}
           {...props}
         />
       </FormItemContext.Provider>
@@ -120,7 +87,7 @@ const FormLabel = forwardRef<
   return (
     <label
       ref={ref}
-      className={joinClassName(
+      className={clsx(
         className,
         labelDefaultStyle[error ? "error" : "default"],
       )}
@@ -135,7 +102,11 @@ FormLabel.displayName = "FormLabel";
  * 부모 context provider에서 생성한 정보들로 구성된
  * 여러 접근성 속성값 및 유효성 검사 결과를 useFormField 훅으로 가져와 적용
  */
-const FormControl = forwardRef<HTMLDivElement, HTMLAttributes<HTMLInputElement> & { isError?: boolean }>( // TODO: input 컴포넌트 props로 교체하기
+const FormControl = forwardRef<
+  HTMLDivElement,
+  HTMLAttributes<HTMLInputElement> & { isError?: boolean }
+>(
+  // TODO: input 컴포넌트 props로 교체하기
   ({ ...props }, ref) => {
     const { error, formItemId, formDescriptionId, formMessageId } =
       useFormField();
@@ -158,5 +129,13 @@ const FormControl = forwardRef<HTMLDivElement, HTMLAttributes<HTMLInputElement> 
 );
 FormControl.displayName = "FormControl";
 
-export { Form, FormControl, FormField, FormItem, FormLabel, useFormField };
+export {
+  Form,
+  FormControl,
+  FormField,
+  FormFieldContext,
+  FormItem,
+  FormItemContext,
+  FormLabel
+};
 

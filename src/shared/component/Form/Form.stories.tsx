@@ -1,4 +1,5 @@
 import Button from "@/common/component/Button";
+import useFormField from "@/shared/hook/useFormField";
 import { getRevalidationHandlers } from "@/shared/util/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -10,7 +11,6 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  useFormField,
 } from ".";
 import { storyContentStyle, storyFormStyle } from "./index.css";
 
@@ -129,6 +129,7 @@ export const LabelWithError: Story = {
 
     const form = useForm<z.infer<typeof loginSchema>>({
       resolver: zodResolver(loginSchema),
+      mode: "onBlur",
       defaultValues: {
         id: "",
         password: "",
