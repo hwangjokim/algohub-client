@@ -1,5 +1,8 @@
 "use client";
 
+import SupportingText, {
+  type SupportingTextProps,
+} from "@/common/component/SupportingText";
 import useFormField from "@/shared/hook/useFormField";
 import { Slot } from "@radix-ui/react-slot";
 import clsx from "clsx";
@@ -129,9 +132,38 @@ const FormControl = forwardRef<
 );
 FormControl.displayName = "FormControl";
 
+type FormDescriptionProps = {
+  showError?: boolean;
+  showErrorIcon?: boolean;
+} & SupportingTextProps;
+
+const FormDescription = ({
+  className,
+  showError = true,
+  showErrorIcon = true,
+  isError,
+  message,
+  ...props
+}: FormDescriptionProps) => {
+  const { formDescriptionId, error } = useFormField();
+  const isFieldError = !!error;
+  return (
+    <SupportingText
+      id={formDescriptionId}
+      className={clsx(className)}
+      isError={showError && (isError || isFieldError)}
+      hasErrorIcon={showErrorIcon && (isError || isFieldError)}
+      message={message || error?.message}
+      {...props}
+    />
+  );
+};
+FormDescription.displayName = "FormDescription";
+
 export {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormFieldContext,
   FormItem,

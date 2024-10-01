@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { type ForwardedRef, type InputHTMLAttributes, forwardRef } from "react";
 import { inputStyle } from "./index.css";
 
@@ -11,13 +12,13 @@ export interface InputProps
 
 const Input = forwardRef(
   (
-    { size = "medium", isError = false, ...props }: InputProps,
+    { size = "medium", isError = false, className, ...props }: InputProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
     return (
       <input
         ref={ref}
-        className={inputStyle({ size, isError })}
+        className={clsx(inputStyle({ size, isError }), className)}
         aria-invalid={isError}
         {...props}
       />
