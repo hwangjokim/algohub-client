@@ -1,6 +1,6 @@
 import Button from "@/common/component/Button";
+import Calendar from "@/common/component/Calendar";
 import Input from "@/common/component/Input";
-import useFormField from "@/shared/hook/useFormField";
 import { getRevalidationHandlers } from "@/shared/util/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -241,12 +241,12 @@ export const DateTypeWithErrorMsg: Story = {
         .string()
         .min(6)
         .max(12)
-        .regex(/^[a-zA-Z0-9]+$/),
+        .regex(/^[a-zA-Z가-하0-9]+$/),
 
       date: z
-        .string()
+        .date()
         .refine(
-          (value) => !Number.isNaN(Date.parse(value)),
+          (value) => !Number.isNaN(Date.parse(value.toString())),
           "유효한 날짜를 입력해주세요",
         ),
     }); // schema는 파일 분리해서 작성 권장
@@ -255,27 +255,26 @@ export const DateTypeWithErrorMsg: Story = {
       resolver: zodResolver(postSchema),
       defaultValues: {
         title: "",
-        date: "",
+        date: new Date(),
       },
     });
-
+    const dateValue = form
+      .getValues("date")
+      .toLocaleDateString()
+      .replaceAll(" ", "");
     const revalidationHandlers = getRevalidationHandlers(form);
 
-    const ErrorMsg = () => {
-      // useFormField()는 context를 사용하는 훅이므로
-      // 이 ErrorMsg 컴포넌트가 속한 FormFieldContext 및 FormItemContext의 정보를 가져옴
-      const { error } = useFormField();
-      if (!error) return null;
-      return <p style={{ color: "red" }}>{error.message}</p>;
-    };
-
-    const onSubmit = (_values: z.infer<typeof postSchema>) => {
+    const onSubmit = (values: z.infer<typeof postSchema>) => {
       // console.log({ values });
+      alert(`${values.date.toLocaleDateString()}, ${values.title}`);
     };
 
     return (
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className={storyFormStyle({type: "login"})}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className={storyFormStyle({ type: "login" })}
+        >
           <div className={storyContentStyle.loginContents}>
             <FormField
               control={form.control}
@@ -290,7 +289,7 @@ export const DateTypeWithErrorMsg: Story = {
                       {...revalidationHandlers("title", field)}
                     />
                   </FormControl>
-                  <ErrorMsg />
+                  <FormDescription />
                 </FormItem>
               )}
             />
@@ -300,14 +299,13 @@ export const DateTypeWithErrorMsg: Story = {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <input
+                    <Calendar
                       {...field}
-                      type="date"
-                      placeholder="날짜"
+                      value={dateValue}
                       {...revalidationHandlers("date", field)}
                     />
                   </FormControl>
-                  <ErrorMsg />
+                  <FormDescription />
                 </FormItem>
               )}
             />
