@@ -3,7 +3,7 @@ import type { Preview } from "@storybook/react";
 import { themes } from "@storybook/theming";
 import "../src/styles/globalStyles.css";
 import DocsPage from "./DocsPage";
-import WithAppRouterContext from "./WithAppRouterContext";
+import decorators from "./decorators";
 import customViewports from "./viewport";
 
 const preview: Preview = {
@@ -30,7 +30,7 @@ const preview: Preview = {
       page: DocsPage,
     },
   },
-  decorators: [WithAppRouterContext],
+  decorators: [decorators],
 };
 
 export default preview;
