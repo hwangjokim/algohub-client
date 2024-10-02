@@ -9,7 +9,7 @@
     "generate-icon-export": "node ./generateIconExport.js",
     "lint": "biome lint",
     "typecheck": "tsc --noEmit",
-    "check": "concurrently \"pnpm biome ci --formatter-enabled=false\" \"pnpm typecheck\"",
+    "check": "concurrently \"pnpm biome ci --formatter-enabled=true\" \"pnpm typecheck\"",
     "storybook": "cross-env STORYBOOK=true storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

@@ -20,7 +20,7 @@ const Modal = ({ isOpen, onClose, children, ...props }: ModalProps) => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Tab") {
         const focusableElements = closeRef.current?.querySelectorAll(
-          'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
+          'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])',
         );
         if (!focusableElements) return;
 
@@ -61,7 +61,7 @@ const Modal = ({ isOpen, onClose, children, ...props }: ModalProps) => {
               {children}
             </dialog>
           </>,
-          document.body
+          document.body,
         )}
     </>
   );

@@ -31,27 +31,27 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: 'small',
-    color: 'purple',
-    children: 'Default Button',
+    size: "small",
+    color: "purple",
+    children: "Default Button",
   },
   render: (props) => <Button {...props} />,
 };
 
 export const MediumGrayButton: Story = {
   args: {
-    size: 'medium',
-    color: 'gray',
-    children: 'Medium Gray Button',
+    size: "medium",
+    color: "gray",
+    children: "Medium Gray Button",
   },
   render: (props) => <Button {...props} />,
 };
 
 export const LargeLgButton: Story = {
   args: {
-    size: 'large',
-    color: 'lg',
-    children: 'Large LG Button',
+    size: "large",
+    color: "lg",
+    children: "Large LG Button",
   },
   render: (props) => <Button {...props} />,
 };
