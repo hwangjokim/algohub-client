@@ -33,6 +33,7 @@ const Tab = ({ tabId, icon, children, ...props }: TabProps) => {
     <li
       // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole:
       role="tab"
+      id={`tab-${tabId}`}
       tabIndex={-1}
       aria-controls={`tabPanel-${tabId}`}
       aria-selected={isSelected}
