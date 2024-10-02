@@ -50,8 +50,6 @@ export const LoginForm: Story = {
     const isError = !!Object.keys(form.formState.errors).length;
     const message = isError ? "아이디 혹은 비밀번호를 확인해주세요" : undefined;
 
-    const revalidationHandlers = getRevalidationHandlers(form);
-
     const onSubmit = (_values: z.infer<typeof loginSchema>) => {
       // console.log({ values });
     };
@@ -66,7 +64,7 @@ export const LoginForm: Story = {
               <FormField
                 control={form.control}
                 name="id"
-                revalidationHandlers={revalidationHandlers}
+                revalidationHandlers={getRevalidationHandlers}
               >
                 <FormDescription
                   className={storyItemStyle.description}
@@ -81,11 +79,11 @@ export const LoginForm: Story = {
                   />
                 </FormControl>
               </FormField>
-              
+
               <FormField
                 control={form.control}
                 name="password"
-                revalidationHandlers={revalidationHandlers}
+                revalidationHandlers={getRevalidationHandlers}
               >
                 <FormControl>
                   <Input
@@ -137,8 +135,6 @@ export const LabelWithError: Story = {
       },
     });
 
-    const revalidationHandlers = getRevalidationHandlers(form);
-
     const onSubmit = (_values: z.infer<typeof editSchema>) => {
       // console.log({ values });
     };
@@ -153,7 +149,7 @@ export const LabelWithError: Story = {
               <FormField
                 control={form.control}
                 name="nickname"
-                revalidationHandlers={revalidationHandlers}
+                revalidationHandlers={getRevalidationHandlers}
               >
                 <FormLabel className={storyItemStyle.label}>닉네임</FormLabel>
                 <FormControl>
@@ -168,7 +164,7 @@ export const LabelWithError: Story = {
               <FormField
                 control={form.control}
                 name="baekjoonId"
-                revalidationHandlers={revalidationHandlers}
+                revalidationHandlers={getRevalidationHandlers}
               >
                 <FormLabel className={storyItemStyle.label}>
                   백준 아이디
@@ -185,7 +181,7 @@ export const LabelWithError: Story = {
               <FormField
                 control={form.control}
                 name="introduction"
-                revalidationHandlers={revalidationHandlers}
+                revalidationHandlers={getRevalidationHandlers}
               >
                 <FormLabel className={storyItemStyle.label}>소개</FormLabel>
                 <FormControl>
@@ -236,7 +232,6 @@ export const DateTypeWithErrorMsg: Story = {
       .getValues("date")
       .toLocaleDateString()
       .replaceAll(" ", "");
-    const revalidationHandlers = getRevalidationHandlers(form);
 
     const onSubmit = (values: z.infer<typeof postSchema>) => {
       // console.log({ values });
@@ -253,7 +248,7 @@ export const DateTypeWithErrorMsg: Story = {
             <FormField
               control={form.control}
               name="title"
-              revalidationHandlers={revalidationHandlers}
+              revalidationHandlers={getRevalidationHandlers}
             >
               <FormControl>
                 <Input size="large" placeholder="제목" />
@@ -264,7 +259,7 @@ export const DateTypeWithErrorMsg: Story = {
             <FormField
               control={form.control}
               name="date"
-              revalidationHandlers={revalidationHandlers}
+              revalidationHandlers={getRevalidationHandlers}
             >
               <FormControl>
                 <Calendar value={dateValue} />

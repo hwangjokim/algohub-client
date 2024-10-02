@@ -58,7 +58,7 @@ const FormField = <
   ...props
 }: PropsWithChildren<
   Omit<ControllerProps<TFieldValues, TName>, "render"> & {
-    revalidationHandlers?: ReturnType<typeof getRevalidationHandlers>;
+    revalidationHandlers?: typeof getRevalidationHandlers;
   }
 >) => {
   return (
@@ -66,7 +66,7 @@ const FormField = <
       <Controller
         {...props}
         render={({ field }) => (
-          <>
+          <FormItem>
             {Children.map(children, (child: ReactNode) => {
               if (isValidElement(child)) {
                 const elementType = child.type as ReactElement["type"] & {
@@ -81,7 +81,7 @@ const FormField = <
               }
               return child;
             })}
-          </>
+          </FormItem>
         )}
       />
     </FormFieldContext.Provider>
