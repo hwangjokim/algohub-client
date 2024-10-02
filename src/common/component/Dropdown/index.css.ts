@@ -18,14 +18,14 @@ export const dropdownContainer = style({
 
 export const dropdownDefaultStyle = style({
   position: "absolute",
-})
+});
 
 export const dropdownItemStyle = style({
   listStyle: "none",
   width: "11.2rem",
   height: "3.4rem",
   padding: "0.5rem 0.8rem",
-  
+
   borderRadius: "0.8rem",
 
   color: theme.color.white,

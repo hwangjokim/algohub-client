@@ -9,17 +9,20 @@
     "generate-icon-export": "node ./generateIconExport.js",
     "lint": "biome lint",
     "typecheck": "tsc --noEmit",
-    "check": "concurrently \"pnpm biome ci --formatter-enabled=false\" \"pnpm typecheck\"",
+    "check": "concurrently \"pnpm biome ci --formatter-enabled=true\" \"pnpm typecheck\"",
     "storybook": "cross-env STORYBOOK=true storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.15.5",
     "@vanilla-extract/recipes": "^0.5.5",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^11.7.0",
     "jotai": "^2.9.3",
     "lottie-react": "^2.4.0",
     "next": "14.2.8",
     "react": "^18",
+    "react-datepicker": "^7.3.0",
     "react-dom": "^18"
   },
   "devDependencies": {
@@ -38,6 +41,7 @@
     "@storybook/react": "^8.3.1",
     "@storybook/source-loader": "^8.3.1",
     "@storybook/test": "^8.3.1",
+    "@storybook/theming": "^8.3.2",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -49,6 +53,7 @@
     "mini-css-extract-plugin": "^2.9.1",
     "storybook": "^8.3.1",
     "storybook-addon-jsdoc-to-mdx": "^1.0.3",
+    "storybook-dark-mode": "^4.0.2",
     "typescript": "^5"
   }
 }

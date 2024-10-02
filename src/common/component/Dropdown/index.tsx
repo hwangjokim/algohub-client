@@ -4,7 +4,13 @@ import {
   dropdownItemStyle,
 } from "@/common/component/Dropdown/index.css";
 import { camelToKebab } from "@/common/util/string";
-import { Children, type PropsWithChildren, type ReactElement, cloneElement, isValidElement } from "react";
+import {
+  Children,
+  type PropsWithChildren,
+  type ReactElement,
+  cloneElement,
+  isValidElement,
+} from "react";
 
 type DropdownProps = {
   label: string;
@@ -12,9 +18,12 @@ type DropdownProps = {
 } & PropsWithChildren;
 
 /**
- * @param {string} label id, aria-label에 들어갈 string
- * @param {string} className 드롭다운 위치 조정용 style
- * @param {React.ReactNode} children li 태그를 사용해 주세요
+ * @param label id, aria-labelledby에 들어갈 string.
+ ** id의 값은 lebel
+ ** aria-labelledby의 값은 `camelToKebab('${label}Toggle')`
+ * @param className 드롭다운 위치 조정용 style
+ ** default: `{ position: "absolute" }`
+ * @param children li 태그를 사용해 주세요
  * @example
  * const dropdownStyle = style({ position: "absolute", top: "6.5rem", right: "6rem" })
  * <Dropdown label="profile" className={dropdownStyle}>
@@ -39,9 +48,10 @@ const Dropdown = ({
             child as ReactElement<HTMLLIElement>,
             {
               className: dropdownItemStyle,
-              key: index,
+              key: index, // TODO: 실제 데이터로 확인 후 버그 있으면 적절한 key 탐색
+              role: "button",
               tabIndex: 0,
-            }
+            },
           );
         }
         return child;

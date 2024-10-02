@@ -3,14 +3,18 @@ import { globalStyle } from "@vanilla-extract/css";
 globalStyle("*, *::before, *::after", {
   boxSizing: "border-box",
   fontFamily: `'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 
-      'Apple SD Gothic Neo', 'Noto Sans KR', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif`,
+    'Apple SD Gothic Neo', 'Noto Sans KR', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif`,
   fontSize: process.env.STORYBOOK === "true" ? "inherit" : "62.5%",
-  margin: "0",
+  margin: 0,
   padding: 0,
 });
 
 globalStyle("input, textarea", {
   outline: "none",
+});
+
+globalStyle("ul, ol, li", {
+  listStyle: "none",
 });
 
 globalStyle("a", {
@@ -28,4 +32,8 @@ globalStyle("button", {
 
 globalStyle("textarea", {
   resize: "none",
+});
+
+globalStyle("li", {
+  listStyle: "none",
 });
