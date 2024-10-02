@@ -6,14 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useForm } from "react-hook-form";
 import z from "zod";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from ".";
+import { Form, FormControl, FormDescription, FormField, FormLabel } from ".";
 import { storyContentStyle, storyFormStyle, storyItemStyle } from "./index.css";
 
 const meta: Meta<typeof Form> = {
@@ -73,42 +66,35 @@ export const LoginForm: Story = {
               <FormField
                 control={form.control}
                 name="id"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormDescription
-                      className={storyItemStyle.description}
-                      isError={isError}
-                      message={message}
-                    />
-                    <FormControl>
-                      <Input
-                        {...field}
-                        size="large"
-                        className={storyItemStyle.input}
-                        placeholder="아이디"
-                        {...revalidationHandlers("id", field)}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+                revalidationHandlers={revalidationHandlers}
+              >
+                <FormDescription
+                  className={storyItemStyle.description}
+                  isError={isError}
+                  message={message}
+                />
+                <FormControl>
+                  <Input
+                    size="large"
+                    className={storyItemStyle.input}
+                    placeholder="아이디"
+                  />
+                </FormControl>
+              </FormField>
+              
               <FormField
                 control={form.control}
                 name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        size="large"
-                        className={storyItemStyle.input}
-                        placeholder="비밀번호"
-                        {...revalidationHandlers("password", field)}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+                revalidationHandlers={revalidationHandlers}
+              >
+                <FormControl>
+                  <Input
+                    size="large"
+                    className={storyItemStyle.input}
+                    placeholder="비밀번호"
+                  />
+                </FormControl>
+              </FormField>
             </div>
             <Button type="submit" size="medium">
               로그인
@@ -167,61 +153,49 @@ export const LabelWithError: Story = {
               <FormField
                 control={form.control}
                 name="nickname"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className={storyItemStyle.label}>
-                      닉네임
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        className={storyItemStyle.input}
-                        size="large"
-                        placeholder="닉네임"
-                        {...revalidationHandlers("nickname", field)}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+                revalidationHandlers={revalidationHandlers}
+              >
+                <FormLabel className={storyItemStyle.label}>닉네임</FormLabel>
+                <FormControl>
+                  <Input
+                    className={storyItemStyle.input}
+                    size="large"
+                    placeholder="닉네임"
+                  />
+                </FormControl>
+              </FormField>
+
               <FormField
                 control={form.control}
                 name="baekjoonId"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className={storyItemStyle.label}>
-                      백준 아이디
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        className={storyItemStyle.input}
-                        size="large"
-                        placeholder="백준 아이디"
-                        {...revalidationHandlers("baekjoonId", field)}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+                revalidationHandlers={revalidationHandlers}
+              >
+                <FormLabel className={storyItemStyle.label}>
+                  백준 아이디
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    className={storyItemStyle.input}
+                    size="large"
+                    placeholder="백준 아이디"
+                  />
+                </FormControl>
+              </FormField>
+
               <FormField
                 control={form.control}
                 name="introduction"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className={storyItemStyle.label}>소개</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        className={storyItemStyle.input}
-                        size="large"
-                        placeholder="소개"
-                        {...revalidationHandlers("introduction", field)}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+                revalidationHandlers={revalidationHandlers}
+              >
+                <FormLabel className={storyItemStyle.label}>소개</FormLabel>
+                <FormControl>
+                  <Input
+                    className={storyItemStyle.input}
+                    size="large"
+                    placeholder="소개"
+                  />
+                </FormControl>
+              </FormField>
             </div>
             <Button type="submit" size="medium">
               수정하기
@@ -279,36 +253,24 @@ export const DateTypeWithErrorMsg: Story = {
             <FormField
               control={form.control}
               name="title"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      size="large"
-                      placeholder="제목"
-                      {...revalidationHandlers("title", field)}
-                    />
-                  </FormControl>
-                  <FormDescription />
-                </FormItem>
-              )}
-            />
+              revalidationHandlers={revalidationHandlers}
+            >
+              <FormControl>
+                <Input size="large" placeholder="제목" />
+              </FormControl>
+              <FormDescription />
+            </FormField>
+
             <FormField
               control={form.control}
               name="date"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Calendar
-                      {...field}
-                      value={dateValue}
-                      {...revalidationHandlers("date", field)}
-                    />
-                  </FormControl>
-                  <FormDescription />
-                </FormItem>
-              )}
-            />
+              revalidationHandlers={revalidationHandlers}
+            >
+              <FormControl>
+                <Calendar value={dateValue} />
+              </FormControl>
+              <FormDescription />
+            </FormField>
           </div>
           <Button type="submit" size="medium">
             등록

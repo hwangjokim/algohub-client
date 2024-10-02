@@ -1,8 +1,12 @@
 import { useContext } from "react";
-import { useFormContext } from "react-hook-form";
+import {
+  type FieldPath,
+  type FieldValues,
+  useFormContext,
+} from "react-hook-form";
 import { FormFieldContext, FormItemContext } from "../component/Form";
 
-const useFormField = () => {
+export const useFormField = () => {
   /**
    * 현재 form field의 상태와 정보에 접근할 수 있게 해주는 훅
    * form 구성은 Field-Item-Control으로 이어지는 트리구조
@@ -29,4 +33,12 @@ const useFormField = () => {
   };
 };
 
-export default useFormField;
+export const useFieldName = <
+  TFieldValues extends FieldValues,
+>(): FieldPath<TFieldValues> => {
+  const fieldContext = useContext(FormFieldContext);
+  if (!fieldContext) {
+    throw new Error("useFormField should be used within <FormField>");
+  }
+  return fieldContext.name as FieldPath<TFieldValues>;
+};

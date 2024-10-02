@@ -1,11 +1,11 @@
 import type { ChangeEvent } from "react";
-import type {
-  ControllerRenderProps,
-  DeepMap,
-  FieldValues,
-  Path,
-  UseFormReturn,
+import {
+  type DeepMap,
+  type FieldValues,
+  type UseFormReturn,
+  useController,
 } from "react-hook-form";
+import { useFieldName } from "../hook/useFormField";
 
 const shouldValidateOnChange = <
   TFieldValues extends FieldValues,
@@ -33,31 +33,28 @@ const shouldValidateOnChange = <
  *
  * const revalidationHandlers = getRevalidationHandlers(form);
  *
- * <FormField
- *   control={form.control}
- *   name="password"
- *   render={({ field }) => (
- *     <FormItem>
- *       <FormControl>
- *         <Input
- *           {...field}
- *           placeholder="비밀번호"
- *           size="large"
- *           {...revalidationHandlers("password", field)}
- *         />
- *       </FormControl>
- *     </FormItem>
- *   )}
- * />
+  <FormField
+    control={form.control}
+    name="password"
+    revalidationHandlers={revalidationHandlers}
+  >
+    <FormControl>
+      <Input
+        size="large"
+        className={storyItemStyle.input}
+        placeholder="비밀번호"
+      />
+    </FormControl>
+  </FormField>
  */
 export const getRevalidationHandlers =
-  <TFieldValues extends FieldValues, TFieldName extends Path<TFieldValues>>(
-    form: UseFormReturn<TFieldValues>,
-  ) =>
-  (
-    fieldName: TFieldName,
-    field: ControllerRenderProps<TFieldValues, TFieldName>,
-  ) => {
+  <TFieldValues extends FieldValues>(form: UseFormReturn<TFieldValues>) =>
+  () => {
+    const fieldName = useFieldName<TFieldValues>();
+    const { field } = useController({
+      name: fieldName,
+      control: form.control,
+    });
     const { touchedFields, dirtyFields } = form.formState;
     const { trigger } = form;
 

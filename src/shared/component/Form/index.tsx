@@ -3,10 +3,22 @@
 import SupportingText, {
   type SupportingTextProps,
 } from "@/common/component/SupportingText";
-import useFormField from "@/shared/hook/useFormField";
+import { useFormField } from "@/shared/hook/useFormField";
+import type { getRevalidationHandlers } from "@/shared/util/form";
 import { Slot } from "@radix-ui/react-slot";
 import clsx from "clsx";
-import { type HTMLAttributes, createContext, forwardRef, useId } from "react";
+import {
+  Children,
+  type HTMLAttributes,
+  type PropsWithChildren,
+  type ReactElement,
+  type ReactNode,
+  cloneElement,
+  createContext,
+  forwardRef,
+  isValidElement,
+  useId,
+} from "react";
 import {
   Controller,
   type ControllerProps,
@@ -41,11 +53,37 @@ const FormField = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
+  children,
+  revalidationHandlers,
   ...props
-}: ControllerProps<TFieldValues, TName>) => {
+}: PropsWithChildren<
+  Omit<ControllerProps<TFieldValues, TName>, "render"> & {
+    revalidationHandlers?: ReturnType<typeof getRevalidationHandlers>;
+  }
+>) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
-      <Controller {...props} />
+      <Controller
+        {...props}
+        render={({ field }) => (
+          <>
+            {Children.map(children, (child: ReactNode) => {
+              if (isValidElement(child)) {
+                const elementType = child.type as ReactElement["type"] & {
+                  displayName?: string;
+                };
+                if (elementType.displayName === "FormControl") {
+                  return cloneElement(child, {
+                    ...field,
+                    ...revalidationHandlers?.(),
+                  });
+                }
+              }
+              return child;
+            })}
+          </>
+        )}
+      />
     </FormFieldContext.Provider>
   );
 };
