@@ -47,7 +47,7 @@ const Tab = ({ tabId, renderedIcon, mode, children, ...props }: TabProps) => {
         ? renderedIcon?.(
             iconStyle({
               variant: isSelected ? mode : (`none${mode}` as TabProps["mode"]),
-            })
+            }),
           )
         : null}
       <span className={textStyle({ variant })}>{children}</span>

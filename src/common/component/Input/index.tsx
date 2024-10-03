@@ -12,7 +12,7 @@ export interface InputProps
 const Input = forwardRef(
   (
     { size = "medium", isError = false, ...props }: InputProps,
-    ref: ForwardedRef<HTMLInputElement>
+    ref: ForwardedRef<HTMLInputElement>,
   ) => {
     return (
       <input
@@ -22,7 +22,7 @@ const Input = forwardRef(
         {...props}
       />
     );
-  }
+  },
 );
 
 export default Input;
