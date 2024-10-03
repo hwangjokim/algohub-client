@@ -1,4 +1,4 @@
-import { IcnBtnArrowLeft, IcnBtnNext } from "@/asset/svg";
+import { IcnBtnNext, IcnBtnPrev } from "@/asset/svg";
 import { arrowStyle } from "@/common/component/Carousel/index.css";
 
 type ArrowProps = {
@@ -9,8 +9,8 @@ type ArrowProps = {
 const Arrow = ({ position, onClick }: ArrowProps) => {
   return (
     <button className={arrowStyle({ position })} onClick={onClick}>
-      {position === "left" && <IcnBtnArrowLeft width={24} height={24} />}
-      {position === "right" && <IcnBtnNext width={24} height={24} />}
+      {position === "left" && <IcnBtnPrev width={28} height={28} />}
+      {position === "right" && <IcnBtnNext width={28} height={28} />}
     </button>
   );
 };
