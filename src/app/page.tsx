@@ -1,7 +1,6 @@
 "use client";
 import defaultImg from "@/asset/img/alogohub_icon.png";
 import EditAvatar from "@/shared/component/EditAvatar";
-import Image from "next/image";
 import { useState } from "react";
 
 const OnboardingPage = () => {

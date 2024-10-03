@@ -10,7 +10,7 @@ const TabGroup = Object.assign(
     TabList,
     Tab,
     TabPanels,
-  }
+  },
 );
 
 export default TabGroup;

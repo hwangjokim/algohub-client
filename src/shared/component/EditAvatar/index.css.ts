@@ -9,12 +9,13 @@ export const iconWrapper = style({
 
   width: "2.5rem",
   height: "2.5rem",
-})
+});
+
 export const iconStyle = style({
-  position: 'absolute',
+  position: "absolute",
   bottom: 0,
   right: 0,
-  
+
   width: "2.5rem",
   height: "2.5rem",
 
@@ -25,5 +26,5 @@ export const iconStyle = style({
 });
 
 export const inputStyle = style({
-  display: 'none',
-})
+  display: "none",
+});
