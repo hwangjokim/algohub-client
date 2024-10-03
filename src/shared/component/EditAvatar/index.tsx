@@ -20,7 +20,7 @@ const EditAvatar = ({
   ...props
 }: EditAvatarProps) => {
   const [pickedImage, setPickedImage] = useState<string | null>(src || null);
-  const imageInputRef = useRef<HTMLInputElement | null>(null);
+  const imageInputRef = useRef<HTMLInputElement>(null);
 
   const handlePickClick = () => {
     if (imageInputRef?.current) imageInputRef.current.click();
@@ -41,12 +41,19 @@ const EditAvatar = ({
   };
 
   return (
-    <Avatar src={pickedImage || defaultImg} alt={alt} size="large" {...props}>
-      <IcnEditProfile className={iconStyle} onClick={handlePickClick} />
+    <Avatar
+      src={pickedImage || src || defaultImg}
+      alt={alt}
+      size="large"
+      {...props}
+    >
+      <label htmlFor="edit-avatar">
+        <IcnEditProfile className={iconStyle} onClick={handlePickClick} />
+      </label>
       <input
         className={inputStyle}
         type="file"
-        id="editAvatar"
+        id="edit-avatar"
         accept="image/*"
         ref={imageInputRef}
         onChange={handleImageChange}
