@@ -1,6 +1,6 @@
 import Header from "@/shared/component/Header";
 import Providers from "@/shared/component/Provider";
-import { theme } from "@/styles/themes.css";
+import "@/styles/globalStyles.css";
 import type { Metadata } from "next";
 import "@/styles/globalStyles.css";
 
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body style={{ backgroundColor: theme.color.bg }}>
+      <body>
         <Header />
         <Providers>{children}</Providers>
       </body>

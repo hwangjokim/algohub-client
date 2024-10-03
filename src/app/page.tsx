@@ -1,19 +1,15 @@
-"use client";
-import defaultImg from "@/asset/img/alogohub_icon.png";
-import EditAvatar from "@/shared/component/EditAvatar";
-import { useState } from "react";
+import MainWithFooter from "@/view/onboarding/component/Section";
+import Section1 from "@/view/onboarding/component/Section/Section1";
+import Section2 from "@/view/onboarding/component/Section/Section2";
+import Section3 from "@/view/onboarding/component/Section/Section3";
 
 const OnboardingPage = () => {
-  const [profileImage, setProfileImage] = useState(defaultImg);
-  const handleImageChange = (image: string) => {
-    setProfileImage(image);
-  };
-
   return (
-    <div>
-      OnboardingPage
-      <EditAvatar src={profileImage} onImageChange={handleImageChange} />
-    </div>
+    <MainWithFooter>
+      <Section1 />
+      <Section2 />
+      <Section3 />
+    </MainWithFooter>
   );
 };
 
