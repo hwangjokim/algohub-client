@@ -1,7 +1,23 @@
-const getPageNumbers = (count: number, currentPage: number) => {
+/** start번호부터 end까지의 number 배열 반환
+ * @example
+ * getRange(2, 5) // [2, 3, 4, 5]
+ */
+export const getRange = (start: number, end: number) => {
+  if (start > end) {
+    throw new Error("'start' 값은 'end' 값보다 클 수 없습니다.");
+  }
+
+  if (start < 0 || end < 1) {
+    throw new Error("'start'와 'end' 값은 1 이상의 양수여야 합니다.");
+  }
+
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+};
+
+export const getPageNumbers = (totalPages: number, currentPage: number) => {
   // 7 이하일 경우 전부 표시
-  if (count <= 7) {
-    return Array.from({ length: count }, (_, i) => i + 1);
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
   const pages: (number | "ellipsis")[] = [];
@@ -10,25 +26,23 @@ const getPageNumbers = (count: number, currentPage: number) => {
 
   // 현재 페이지가 첫 4페이지 이내일 경우
   if (currentPage <= 4) {
-    pages.push(...Array.from({ length: 4 }, (_, i) => i + 2));
+    pages.push(...getRange(2, 5));
     pages.push("ellipsis");
   }
   // 중간에 있을 경우
-  else if (currentPage > 4 && currentPage < count - 3) {
+  else if (currentPage > 4 && currentPage < totalPages - 3) {
     pages.push("ellipsis");
-    pages.push(...Array.from({ length: 3 }, (_, i) => currentPage - 1 + i));
+    pages.push(...getRange(currentPage - 1, currentPage + 1));
     pages.push("ellipsis");
   }
   // 마지막 4페이지 이내일 경우
   else {
     pages.push("ellipsis");
-    pages.push(...Array.from({ length: 4 }, (_, i) => count - 4 + i));
+    pages.push(...getRange(totalPages - 4, totalPages - 1));
   }
 
   // 마지막 페이지는 항상 추가
-  pages.push(count);
+  pages.push(totalPages);
 
   return pages;
 };
-
-export default getPageNumbers;

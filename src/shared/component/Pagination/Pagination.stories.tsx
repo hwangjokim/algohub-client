@@ -7,7 +7,7 @@ const meta: Meta<typeof Pagination> = {
   component: Pagination,
   tags: ["autodocs"],
   argTypes: {
-    count: {
+    totalPages: {
       control: { type: "number" },
     },
     currentPage: {

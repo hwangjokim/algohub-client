@@ -1,7 +1,7 @@
 import { buttonStyle } from "@/common/component/Button/index.css";
 import type { ButtonHTMLAttributes } from "react";
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "small" | "medium" | "large";
   color?: "purple" | "gray" | "lg";
 }
