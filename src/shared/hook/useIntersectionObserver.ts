@@ -1,18 +1,12 @@
 import { useEffect, useRef } from "react";
-import { fadeInStyle } from "../component/Section/index.css";
 
-export const useFadeIn = () => {
-  const imageRef = useRef<HTMLDivElement>(null);
+export const useFadeIn = <T extends HTMLElement>(callback: IntersectionObserverCallback) => {
+  const imageRef = useRef<T>(null);
 
   useEffect(() => {
     if (!imageRef.current) return;
     const observer = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          e.target.classList.add(fadeInStyle);
-          observer.disconnect();
-        }
-      },
+      callback,
       { threshold: 0.1 },
     );
 
@@ -26,4 +20,4 @@ export const useFadeIn = () => {
   }, []);
 
   return imageRef;
-}
+};

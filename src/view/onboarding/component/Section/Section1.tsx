@@ -3,8 +3,9 @@
 import { arrow } from "@/asset/lottie";
 import Animation from "@/common/component/Animation";
 import Button from "@/common/component/Button";
+import clsx from "clsx";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Text from "./Text";
 import {
   arrowContainer,
@@ -21,11 +22,18 @@ import {
 
 const intro = { section: "intro" } as const;
 const Section1 = () => {
+  const router = useRouter();
   const handleClick = () => {
     const featureSection = document.querySelector("#feature-1");
     featureSection?.scrollIntoView({
       behavior: "smooth",
     });
+  };
+  const handleLoginClick = () => {
+    router.push("/login");
+  };
+  const handleSignupClick = () => {
+    router.push("/signup");
   };
   return (
     <section
@@ -40,28 +48,24 @@ const Section1 = () => {
             <Text.Em>알고리즘 스터디 플랫폼</Text.Em>
           </h1>
           <div className={introButtonContainer}>
-            <div className={introButtonStyle}>
-              <Button
-                size="medium"
-                color="lg"
-                aria-label="로그인 페이지로 이동"
-              >
-                <Link className={buttonTextStyle} href={"/login"}>
-                  로그인
-                </Link>
-              </Button>
-            </div>
-            <div className={introButtonStyle}>
-              <Button
-                size="medium"
-                color="purple"
-                aria-label="회원가입 페이지로 이동"
-              >
-                <Link className={buttonTextStyle} href={"/signup"}>
-                  회원가입 하기
-                </Link>
-              </Button>
-            </div>
+            <Button
+              size="medium"
+              color="lg"
+              aria-label="로그인 페이지로 이동"
+              className={clsx(introButtonStyle, buttonTextStyle)}
+              onClick={handleLoginClick}
+            >
+              로그인
+            </Button>
+            <Button
+              size="medium"
+              color="purple"
+              aria-label="회원가입 페이지로 이동"
+              className={clsx(introButtonStyle, buttonTextStyle)}
+              onClick={handleSignupClick}
+            >
+              회원가입 하기
+            </Button>
           </div>
         </div>
         <Image
