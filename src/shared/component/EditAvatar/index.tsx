@@ -5,7 +5,7 @@ import { IcnEditProfile } from "@/asset/svg";
 import Avatar from "@/common/component/Avatar";
 import { iconStyle, inputStyle } from "@/shared/component/EditAvatar/index.css";
 import type { ImageProps } from "next/image";
-import { type ChangeEvent, useRef, useState } from "react";
+import { type ChangeEvent, useState } from "react";
 
 interface EditAvatarProps extends Omit<ImageProps, "src" | "alt"> {
   src?: string;
