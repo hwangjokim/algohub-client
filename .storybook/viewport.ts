@@ -19,7 +19,7 @@ const customViewports = {
       width: "1336px",
       height: "768px",
     },
-  }
+  },
 };
 
 export default customViewports;

@@ -28,7 +28,8 @@ const AlarmListItem = ({
   message,
   date,
 }: AlarmListProps) => {
-  const {isActive, handleMouseOver, handleMouseOut, handleFocus, handleBlur} = useA11yHoverHandler();
+  const { isActive, handleMouseOver, handleMouseOut, handleFocus, handleBlur } =
+    useA11yHoverHandler();
 
   const handleDeleteClick = () => {
     alert("delete");
