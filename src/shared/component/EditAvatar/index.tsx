@@ -10,16 +10,16 @@ import { type ChangeEvent, useRef, useState } from "react";
 interface EditAvatarProps extends Omit<ImageProps, "src" | "alt"> {
   src?: string;
   alt?: string;
+  onImageChange: (image: string) => void;
 }
 
 const EditAvatar = ({
-  src = "undefined",
+  src = "",
   alt = "프로필 사진 수정",
+  onImageChange,
   ...props
 }: EditAvatarProps) => {
-  const [pickedImage, setPickedImage] = useState<string | ArrayBuffer | null>(
-    null
-  );
+  const [pickedImage, setPickedImage] = useState<string | null>(src || null);
   const imageInputRef = useRef<HTMLInputElement | null>(null);
 
   const handlePickClick = () => {
@@ -34,7 +34,8 @@ const EditAvatar = ({
 
     const fileReader = new FileReader();
     fileReader.onload = () => {
-      setPickedImage(fileReader.result);
+      setPickedImage(fileReader.result as string);
+      onImageChange(fileReader.result as string);
     };
     fileReader.readAsDataURL(file);
   };
