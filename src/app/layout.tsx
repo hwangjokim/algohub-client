@@ -2,7 +2,7 @@ import Header from "@/shared/component/Header";
 import Providers from "@/shared/component/Provider";
 import { theme } from "@/styles/themes.css";
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/styles/globalStyles.css";
 
 export const metadata: Metadata = {
   title: "AlgoHub",

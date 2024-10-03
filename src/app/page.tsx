@@ -1,7 +1,20 @@
-import "@/styles/globalStyles.css";
+"use client";
+import defaultImg from "@/asset/img/alogohub_icon.png";
+import EditAvatar from "@/shared/component/EditAvatar";
+import { useState } from "react";
 
 const OnboardingPage = () => {
-  return <div>OnboardingPage</div>;
+  const [profileImage, setProfileImage] = useState(defaultImg);
+  const handleImageChange = (image: string) => {
+    setProfileImage(image);
+  };
+
+  return (
+    <div>
+      OnboardingPage
+      <EditAvatar src={profileImage} onImageChange={handleImageChange} />
+    </div>
+  );
 };
 
 export default OnboardingPage;
