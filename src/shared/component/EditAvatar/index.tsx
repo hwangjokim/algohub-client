@@ -1,60 +1,52 @@
 "use client";
-
+// TODO: 현재 임시 defaultImg임 (확정 아직 X)
+import defaultImg from "@/asset/img/alogohub_icon.png";
 import { IcnEditProfile } from "@/asset/svg";
 import Avatar from "@/common/component/Avatar";
-import {
-  iconStyle,
-  iconWrapper,
-} from "@/shared/component/EditAvatar/index.css";
-import Image, { StaticImageData } from "next/image";
-import { ChangeEvent, useRef, useState } from "react";
+import { iconStyle, inputStyle } from "@/shared/component/EditAvatar/index.css";
+import type { ImageProps } from "next/image";
+import { type ChangeEvent, useRef, useState } from "react";
 
-interface EditAvatarProps {
-  src: StaticImageData;
-}
-
-const EditAvatar = ({ src }: EditAvatarProps) => {
-  const [imageFile, setImageFile] = useState<string | null>(null);
-  const imageInput = useRef<HTMLInputElement | null>(null);
+const EditAvatar = ({ src = "undefined", alt = "", ...props }: ImageProps) => {
+  const [pickedImage, setPickedImage] = useState<string | ArrayBuffer | null>(
+    null
+  );
+  const imageInputRef = useRef<HTMLInputElement | null>(null);
 
   const handlePickClick = () => {
-    if (imageInput.current) imageInput.current.click();
+    if (imageInputRef?.current) imageInputRef.current.click();
   };
-  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) {
-      setImageFile(null);
+      setPickedImage(null);
       return;
     }
 
     const fileReader = new FileReader();
     fileReader.onload = () => {
-      setImageFile(fileReader.result + "");
+      setPickedImage(fileReader.result);
     };
+    fileReader.readAsDataURL(file);
   };
 
   return (
-    <>
-      {/* <Avatar src={imageFile || src} size="large" alt="멤버 프로필"> */}
-      <label className={iconWrapper} htmlFor="profile-image">
-        <input
-          type="file"
-          id="profile-image"
-          name="profile-image"
-          accept="image/*"
-          ref={imageInput}
-          onChange={handleChangeImage}
-          style={{ display: "none" }}
-        />
-        <IcnEditProfile
-          className={iconStyle}
-          type="button"
-          onClick={handlePickClick}
-        />
-      </label>
-      {/* </Avatar> */}
-      <Image src={imageFile || src} alt="프로필 사진" />
-    </>
+    <Avatar
+      src={pickedImage || defaultImg}
+      alt="프로필 사진 수정"
+      size="large"
+      {...props}
+    >
+      <IcnEditProfile className={iconStyle} onClick={handlePickClick} />
+      <input
+        className={inputStyle}
+        type="file"
+        id="editAvatar"
+        accept="image/*"
+        ref={imageInputRef}
+        onChange={handleImageChange}
+      />
+    </Avatar>
   );
 };
 

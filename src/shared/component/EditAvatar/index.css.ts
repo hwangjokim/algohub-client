@@ -11,11 +11,19 @@ export const iconWrapper = style({
   height: "2.5rem",
 })
 export const iconStyle = style({
-  width: "100%",
-  height: "100%",
+  position: 'absolute',
+  bottom: 0,
+  right: 0,
+  
+  width: "2.5rem",
+  height: "2.5rem",
 
   borderRadius: "50%",
   opacity: 0.9,
 
   cursor: "pointer",
 });
+
+export const inputStyle = style({
+  display: 'none',
+})
