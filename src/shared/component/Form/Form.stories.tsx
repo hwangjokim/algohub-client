@@ -1,7 +1,6 @@
 import Button from "@/common/component/Button";
 import Calendar from "@/common/component/Calendar";
 import Input from "@/common/component/Input";
-import { getRevalidationHandlers } from "@/shared/util/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useForm } from "react-hook-form";
@@ -40,7 +39,7 @@ export const LoginForm: Story = {
 
     const form = useForm<z.infer<typeof loginSchema>>({
       resolver: zodResolver(loginSchema),
-      mode: "onBlur",
+      mode: "onTouched",
       defaultValues: {
         id: "",
         password: "",
@@ -49,7 +48,6 @@ export const LoginForm: Story = {
 
     const isError = !!Object.keys(form.formState.errors).length;
     const message = isError ? "아이디 혹은 비밀번호를 확인해주세요" : undefined;
-
     const onSubmit = (_values: z.infer<typeof loginSchema>) => {
       // console.log({ values });
     };
@@ -64,14 +62,15 @@ export const LoginForm: Story = {
               <FormField
                 control={form.control}
                 name="id"
-                revalidationHandlers={getRevalidationHandlers}
               >
                 <FormDescription
                   className={storyItemStyle.description}
                   isError={isError}
                   message={message}
+                  id="description"
+                  aria-live="assertive"
                 />
-                <FormControl>
+                <FormControl aria-describedby="description">
                   <Input
                     size="large"
                     className={storyItemStyle.input}
@@ -83,9 +82,8 @@ export const LoginForm: Story = {
               <FormField
                 control={form.control}
                 name="password"
-                revalidationHandlers={getRevalidationHandlers}
               >
-                <FormControl>
+                <FormControl aria-describedby="description">
                   <Input
                     size="large"
                     className={storyItemStyle.input}
@@ -127,7 +125,7 @@ export const LabelWithError: Story = {
 
     const form = useForm<z.infer<typeof editSchema>>({
       resolver: zodResolver(editSchema),
-      mode: "onBlur",
+      mode: "onTouched",
       defaultValues: {
         nickname: "",
         baekjoonId: "",
@@ -149,7 +147,6 @@ export const LabelWithError: Story = {
               <FormField
                 control={form.control}
                 name="nickname"
-                revalidationHandlers={getRevalidationHandlers}
               >
                 <FormLabel className={storyItemStyle.label}>닉네임</FormLabel>
                 <FormControl>
@@ -164,7 +161,6 @@ export const LabelWithError: Story = {
               <FormField
                 control={form.control}
                 name="baekjoonId"
-                revalidationHandlers={getRevalidationHandlers}
               >
                 <FormLabel className={storyItemStyle.label}>
                   백준 아이디
@@ -181,7 +177,6 @@ export const LabelWithError: Story = {
               <FormField
                 control={form.control}
                 name="introduction"
-                revalidationHandlers={getRevalidationHandlers}
               >
                 <FormLabel className={storyItemStyle.label}>소개</FormLabel>
                 <FormControl>
@@ -223,6 +218,7 @@ export const DateTypeWithErrorMsg: Story = {
 
     const form = useForm<z.infer<typeof postSchema>>({
       resolver: zodResolver(postSchema),
+      mode: "onTouched",
       defaultValues: {
         title: "",
         date: new Date(),
@@ -248,7 +244,6 @@ export const DateTypeWithErrorMsg: Story = {
             <FormField
               control={form.control}
               name="title"
-              revalidationHandlers={getRevalidationHandlers}
             >
               <FormControl>
                 <Input size="large" placeholder="제목" />
@@ -259,7 +254,6 @@ export const DateTypeWithErrorMsg: Story = {
             <FormField
               control={form.control}
               name="date"
-              revalidationHandlers={getRevalidationHandlers}
             >
               <FormControl>
                 <Calendar value={dateValue} />

@@ -4,7 +4,7 @@ import SupportingText, {
   type SupportingTextProps,
 } from "@/common/component/SupportingText";
 import { useFormField } from "@/shared/hook/useFormField";
-import type { getRevalidationHandlers } from "@/shared/util/form";
+import type { getRevalidationOnServerHandlers } from "@/shared/util/form";
 import { Slot } from "@radix-ui/react-slot";
 import clsx from "clsx";
 import {
@@ -58,7 +58,7 @@ const FormField = <
   ...props
 }: PropsWithChildren<
   Omit<ControllerProps<TFieldValues, TName>, "render"> & {
-    revalidationHandlers?: typeof getRevalidationHandlers;
+    revalidationHandlers?: typeof getRevalidationOnServerHandlers;
   }
 >) => {
   return (

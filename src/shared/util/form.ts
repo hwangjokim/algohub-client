@@ -20,50 +20,7 @@ const shouldValidateOnChange = <
 };
 
 /**
- * 첫 blur 이후, onChange로 유효성 검사하게 만드는 handler를 반환하는 함수
- ** `<FormField></FormField>`의 props로 넣어주세요.
- * @example
-  <FormField
-    control={form.control}
-    name="password"
-    revalidationHandlers={getRevalidationHandlers}
-  >
-    <FormControl>
-      <Input
-        size="large"
-        className={storyItemStyle.input}
-        placeholder="비밀번호"
-      />
-    </FormControl>
-  </FormField>
- */
-export const getRevalidationHandlers = <TFieldValues extends FieldValues>() => {
-  const form = useFormContext();
-  const fieldName = useFieldName<TFieldValues>();
-  const { field } = useController({
-    name: fieldName,
-    control: form.control,
-  });
-
-  const { touchedFields, dirtyFields } = form.formState;
-  const { trigger } = form;
-
-  return {
-    onBlur: () => {
-      field.onBlur();
-      trigger(fieldName);
-    },
-    onChange: (e: ChangeEvent<HTMLInputElement>) => {
-      field.onChange(e);
-      if (shouldValidateOnChange(fieldName, touchedFields, dirtyFields)) {
-        trigger(fieldName);
-      }
-    },
-  };
-};
-
-/**
- * 여러 필드의 유효성 검사를 한번에 하는 handlers를 반환하는 함수
+ * 비밀번호 확인처럼 여러 필드의 유효성 검사를 한번에 하는 handlers를 반환하는 함수
  ** `<FormField></FormField>`의 props로 넣어주세요.
  * @param otherFieldNames 자신을 제외하고 같이 검사할 필드들의 name
  * @example
