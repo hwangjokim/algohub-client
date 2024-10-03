@@ -36,10 +36,21 @@ const EditAvatar = ({
     fileReader.readAsDataURL(file);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<SVGElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      document.getElementById("edit-avatar-label")?.click();
+    }
+  };
+
   return (
     <Avatar src={pickedImage || defaultImg} alt={alt} size="large" {...props}>
-      <label htmlFor="edit-avatar">
-        <IcnEditProfile className={iconStyle} />
+      <label id="edit-avatar-label" htmlFor="edit-avatar">
+        <IcnEditProfile
+          className={iconStyle}
+          tabIndex={0}
+          onKeyDown={handleKeyDown}
+        />
       </label>
       <input
         className={inputStyle}
