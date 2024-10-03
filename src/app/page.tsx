@@ -4,7 +4,7 @@ const OnboardingPage = () => {
   return (
     <div>
       OnboardingPage
-      <EditAvatar src={undefined} alt={undefined}/>
+      <EditAvatar />
     </div>
   );
 };

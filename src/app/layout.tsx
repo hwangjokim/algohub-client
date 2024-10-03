@@ -2,7 +2,6 @@ import Header from "@/shared/component/Header";
 import Providers from "@/shared/component/Provider";
 import { theme } from "@/styles/themes.css";
 import type { Metadata } from "next";
-import "@/styles/globalStyles.css";
 
 export const metadata: Metadata = {
   title: "AlgoHub",
@@ -16,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>
+      <body style={{ backgroundColor: theme.color.bg }}>
         <Header />
         <Providers>{children}</Providers>
       </body>

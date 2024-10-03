@@ -7,7 +7,16 @@ import { iconStyle, inputStyle } from "@/shared/component/EditAvatar/index.css";
 import type { ImageProps } from "next/image";
 import { type ChangeEvent, useRef, useState } from "react";
 
-const EditAvatar = ({ src = "undefined", alt = "", ...props }: ImageProps) => {
+interface EditAvatarProps extends Omit<ImageProps, "src" | "alt"> {
+  src?: string;
+  alt?: string;
+}
+
+const EditAvatar = ({
+  src = "undefined",
+  alt = "프로필 사진 수정",
+  ...props
+}: EditAvatarProps) => {
   const [pickedImage, setPickedImage] = useState<string | ArrayBuffer | null>(
     null
   );
@@ -31,12 +40,7 @@ const EditAvatar = ({ src = "undefined", alt = "", ...props }: ImageProps) => {
   };
 
   return (
-    <Avatar
-      src={pickedImage || defaultImg}
-      alt="프로필 사진 수정"
-      size="large"
-      {...props}
-    >
+    <Avatar src={pickedImage || defaultImg} alt={alt} size="large" {...props}>
       <IcnEditProfile className={iconStyle} onClick={handlePickClick} />
       <input
         className={inputStyle}
