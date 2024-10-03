@@ -29,6 +29,8 @@ export const tabStyle = recipe({
     gap: "0.5rem",
 
     color: theme.color.mg3,
+
+    userSelect: "none",
   },
   variants: {
     variant: {
