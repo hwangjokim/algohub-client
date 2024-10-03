@@ -1,7 +1,12 @@
 "use client";
 
 import { useTabState } from "@/common/component/Tab/TabProvider";
-import { Children, type PropsWithChildren } from "react";
+import {
+  Children,
+  type PropsWithChildren,
+  type ReactElement,
+  cloneElement,
+} from "react";
 
 type TabPanelsProps = PropsWithChildren;
 
@@ -12,15 +17,12 @@ const TabPanels = ({ children }: TabPanelsProps) => {
     <>
       {Children.toArray(children).map((panel, idx) => {
         if (idx + 1 === +selectedTabId) {
-          return (
-            <section
-              role="tabpanel"
-              id={`tabpanel-${idx + 1}`}
-              aria-labelledby={`tab-${idx + 1}`}
-            >
-              {panel}
-            </section>
-          );
+          return cloneElement(panel as ReactElement, {
+            key: idx + 1,
+            role: "tabpanel",
+            id: `tabpanel-${idx + 1}`,
+            ariaLabelledby: `tab-${idx + 1}`,
+          });
         }
       })}
     </>

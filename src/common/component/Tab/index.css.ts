@@ -1,11 +1,14 @@
 import { theme } from "@/styles/themes.css";
-import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 export const tabListStyle = recipe({
   base: {
     display: "flex",
     alignItems: "center",
+
+    height: "7.2rem",
+
+    padding: "0 6.7rem",
   },
   variants: {
     variant: {
@@ -15,13 +18,6 @@ export const tabListStyle = recipe({
       },
     },
   },
-});
-
-export const tabContainerStyle = style({
-  width: "100%",
-  height: "7.2rem",
-
-  padding: "0 6.7rem",
 });
 
 export const tabStyle = recipe({
