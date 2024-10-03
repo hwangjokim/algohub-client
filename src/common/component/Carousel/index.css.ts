@@ -6,25 +6,45 @@ export const carouselStyle = style({
   position: "relative",
 
   width: "100%",
-  height: "max-content",
+  height: "30rem",
+
+  overflow: "hidden",
 });
 
 export const sliderWrapperStyle = style({
-  position: "relative",
+  position: "absolute",
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+
+  display: "flex",
+  justifyContent: "space-between",
+  gap: "2rem",
+
+  width: "100%",
+  height: "100%",
+
+  margin: "auto auto",
 
   overflowX: "scroll",
   scrollBehavior: "smooth",
   scrollSnapType: "x mandatory",
 
-  display: "flex",
-
-  width: "100%",
-  height: "100%",
+  "::-webkit-scrollbar": {
+    display: "none",
+  },
 });
 
 export const itemStyle = style({
-  width: "max-content",
-  height: "30rem",
+  display: "flex",
+  justifyContent: "center",
+
+  width: "calc(25% - 1.5rem)",
+  minWidth: "23rem",
+  height: "100%",
+
+  overflow: "hidden",
 
   scrollSnapAlign: "start",
 
@@ -37,27 +57,25 @@ export const arrowStyle = recipe({
     top: 0,
     bottom: 0,
 
-    margin: "auto 0",
-
     width: "3.2rem",
     height: "3.2rem",
+
+    margin: "auto 0",
 
     zIndex: theme.zIndex.middle,
 
     border: "none",
     borderRadius: "16px",
 
-    background: "rgb(255,255,255,0.3)",
-
     cursor: "pointer",
   },
   variants: {
     position: {
       left: {
-        left: "1.6rem",
+        left: "0",
       },
       right: {
-        right: "1.6rem",
+        right: "0",
       },
     },
   },

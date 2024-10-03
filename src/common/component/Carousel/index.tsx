@@ -1,3 +1,5 @@
+"use client";
+
 import Arrow from "@/common/component/Carousel/Arrow";
 import CarouselItem from "@/common/component/Carousel/Item";
 import {

@@ -18,6 +18,7 @@ export { default as IcnBtnList } from "./icn_btn_list.svg";
 export { default as IcnBtnNext } from "./icn_btn_next.svg";
 export { default as IcnBtnPin } from "./icn_btn_pin.svg";
 export { default as IcnBtnPlus } from "./icn_btn_plus.svg";
+export { default as IcnBtnPrev } from "./icn_btn_prev.svg";
 export { default as IcnBtnSort } from "./icn_btn_sort.svg";
 export { default as IcnCalendarTable } from "./icn_calendar_table.svg";
 export { default as IcnCalenderCard } from "./icn_calender_card.svg";
