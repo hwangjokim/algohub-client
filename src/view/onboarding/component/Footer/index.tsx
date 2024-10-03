@@ -19,7 +19,7 @@ const Footer = () => {
   return (
     <footer className={footerStyle}>
       <div className={buttonContainer}>
-        <IcnLogo className={logoStyle} aria-label="algoHub 로고"/>
+        <IcnLogo className={logoStyle} aria-label="algoHub 로고" />
         <div className={iconContainer}>
           <IcnInstagram
             className={iconStyle}

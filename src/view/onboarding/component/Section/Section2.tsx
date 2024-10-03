@@ -7,7 +7,7 @@ import {
   imageStyle,
   introContainer,
   introTextContainer,
-  sectionStyle
+  sectionStyle,
 } from "./index.css";
 
 const feature1 = { section: "feature1" } as const;
@@ -25,10 +25,7 @@ const Section2 = () => {
             </Text>
           </h2>
         </div>
-        <FadeInImage
-          className={imageContainer.intro}
-          aria-hidden="true"
-        >
+        <FadeInImage className={imageContainer.intro} aria-hidden="true">
           <Image
             className={imageStyle(feature1)}
             width={740}

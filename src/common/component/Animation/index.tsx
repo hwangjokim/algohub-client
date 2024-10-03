@@ -6,13 +6,18 @@ interface LottiePlayerProps extends HTMLAttributes<HTMLDivElement> {
   size: string;
   animationJson: unknown;
   loop?: boolean;
-};
+}
 
 /**
  * @param {string} size style={{ width: size, height: size }}
  * @param {boolean} loop default true
  */
-const Animation = ({ size, animationJson, loop = true, ...props }: LottiePlayerProps) => {
+const Animation = ({
+  size,
+  animationJson,
+  loop = true,
+  ...props
+}: LottiePlayerProps) => {
   return (
     <Lottie
       autoplay

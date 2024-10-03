@@ -16,7 +16,9 @@ Text.Alphabet = ({ children }: PropsWithChildren) => {
 };
 
 Text.Small = ({ children }: PropsWithChildren) => {
-  return <small className={introTextStyle({ type: "small" })}>{children}</small>;
+  return (
+    <small className={introTextStyle({ type: "small" })}>{children}</small>
+  );
 };
 
 export default Text;

@@ -9,7 +9,10 @@ interface ImageProps
     HTMLAttributes<HTMLDivElement> {}
 
 const FadeInImage = ({ children, ...props }: ImageProps) => {
-  const imageRef = useFadeIn<HTMLDivElement>(function (this: IntersectionObserver, [e]) {
+  const imageRef = useFadeIn<HTMLDivElement>(function (
+    this: IntersectionObserver,
+    [e],
+  ) {
     if (e.isIntersecting) {
       e.target.classList.add(fadeInStyle);
       this.disconnect();

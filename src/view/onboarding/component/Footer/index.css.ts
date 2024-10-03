@@ -39,5 +39,5 @@ export const iconStyle = style({
 
 export const textStyle = style({
   ...theme.font.Body1_M_14,
-  color: theme.color.mg4
-})
+  color: theme.color.mg4,
+});
