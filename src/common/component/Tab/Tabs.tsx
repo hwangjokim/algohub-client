@@ -1,4 +1,5 @@
 import TabProvider from "@/common/component/Tab/TabProvider";
+import { tabContainerStyle } from "@/common/component/Tab/index.css";
 import type { ElementType, HTMLAttributes } from "react";
 
 interface TabsProps extends HTMLAttributes<HTMLDivElement> {
@@ -11,7 +12,7 @@ const Tabs = ({ tag = "div", variant = "primary", children }: TabsProps) => {
 
   return (
     <TabProvider variant={variant}>
-      <Tag>{children}</Tag>
+      <Tag className={tabContainerStyle}>{children}</Tag>
     </TabProvider>
   );
 };

@@ -1,3 +1,5 @@
+"use client";
+
 import { useTabState } from "@/common/component/Tab/TabProvider";
 import { Children, type PropsWithChildren } from "react";
 

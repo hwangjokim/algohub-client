@@ -1,4 +1,5 @@
 import { theme } from "@/styles/themes.css";
+import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 export const tabListStyle = recipe({
@@ -16,6 +17,13 @@ export const tabListStyle = recipe({
   },
 });
 
+export const tabContainerStyle = style({
+  width: "100%",
+  height: "7.2rem",
+
+  padding: "0 6.7rem",
+});
+
 export const tabStyle = recipe({
   base: {
     position: "relative",
@@ -29,7 +37,7 @@ export const tabStyle = recipe({
   variants: {
     variant: {
       primary: {
-        padding: "1.625rem 1.063rem",
+        padding: "2.5rem 1.8rem",
       },
       secondary: {
         padding: "1rem 0rem",

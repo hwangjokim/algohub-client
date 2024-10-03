@@ -1,3 +1,5 @@
+"use client";
+
 import Indicator from "@/common/component/Tab/Indicator";
 import {
   useTabDispatch,

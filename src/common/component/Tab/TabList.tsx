@@ -1,3 +1,5 @@
+"use client";
+
 import { useTabState } from "@/common/component/Tab/TabProvider";
 import { tabListStyle } from "@/common/component/Tab/index.css";
 import type { ComponentPropsWithoutRef } from "react";
