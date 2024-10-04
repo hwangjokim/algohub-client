@@ -15,7 +15,7 @@ export interface TextareaProps
 const Textarea = forwardRef(
   (
     { isError = false, ...props }: TextareaProps,
-    ref: ForwardedRef<HTMLTextAreaElement>
+    ref: ForwardedRef<HTMLTextAreaElement>,
   ) => {
     return (
       <textarea
@@ -26,7 +26,7 @@ const Textarea = forwardRef(
         {...props}
       />
     );
-  }
+  },
 );
 
 export default Textarea;
