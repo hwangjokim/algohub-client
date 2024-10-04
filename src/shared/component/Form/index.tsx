@@ -1,11 +1,9 @@
 import Calendar from "@/common/component/Calendar";
-import type { InputProps } from "@/common/component/Input";
-import Input from "@/common/component/Input";
+import Input, { type InputProps } from "@/common/component/Input";
 import SupportingText, {
   type SupportingTextProps,
 } from "@/common/component/SupportingText";
-import type { TextareaProps } from "@/common/component/Textarea";
-import Textarea from "@/common/component/Textarea";
+import Textarea, { type TextareaProps } from "@/common/component/Textarea";
 import type { getRevalidationOnServerHandlers } from "@/shared/util/form";
 import clsx from "clsx";
 import { type ComponentProps, type ReactNode, forwardRef } from "react";
@@ -66,32 +64,19 @@ const FormController = <
         const formDescriptionId = `${name}-description`;
         const isError = !!error;
         const message = error?.message;
+        const props = {
+          id: fieldId,
+          isError: isError,
+          "aria-describedby": formDescriptionId,
+          "aria-invalid": isError,
+          ...field,
+          ...revalidationHandlers?.(name),
+        };
         let FormField: ReactNode;
         if (type === "input") {
-          FormField = (
-            <Input
-              id={fieldId}
-              size="large"
-              isError={isError}
-              aria-describedby={formDescriptionId}
-              aria-invalid={isError}
-              {...field}
-              {...revalidationHandlers?.(name)}
-              {...inputProps}
-            />
-          );
+          FormField = <Input size="large" {...props} {...inputProps} />;
         } else if (type === "textarea") {
-          FormField = (
-            <Textarea
-              id={fieldId}
-              isError={isError}
-              aria-describedby={formDescriptionId}
-              aria-invalid={isError}
-              {...field}
-              {...revalidationHandlers?.(name)}
-              {...textareaProps}
-            />
-          );
+          FormField = <Textarea {...props} {...textareaProps} />;
         } else {
           FormField = (
             <Calendar
@@ -146,7 +131,6 @@ const FormController = <
   );
 };
 
-/** Label 컴포넌트 */
 const FormLabel = forwardRef<
   HTMLLabelElement,
   ComponentProps<"label"> & { isError?: boolean }
@@ -166,7 +150,6 @@ type FormDescriptionProps = {
   showErrorIcon?: boolean;
 } & SupportingTextProps;
 
-/** FormDescription 컴포넌트 */
 const FormDescription = ({
   message,
   isError,

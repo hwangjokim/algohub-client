@@ -58,9 +58,7 @@ export const LoginForm: Story = {
     const isError = !!Object.keys(form.formState.errors).length;
     // zod에서 메세지를 처리하면 모든 메서드 체인마다 똑같은 `, {message: "msg"}`를 적어야해서 아래처럼 단순화
     const message = isError ? "아이디 혹은 비밀번호를 확인해주세요" : undefined;
-    const onSubmit = (_values: z.infer<typeof loginSchema>) => {
-      // console.log({ values });
-    };
+    const onSubmit = (_values: z.infer<typeof loginSchema>) => {};
     return (
       <Form {...form}>
         <form
@@ -75,13 +73,11 @@ export const LoginForm: Story = {
                 name="id"
                 showDescription
                 descriptionPosition="top"
-                // description 공유
-                descriptionProps={{ isError, message, id: "form-description" }}
+                descriptionProps={{ isError, message, id: "form-description" }} // description 공유
                 inputProps={{
                   className: itemStyle.input,
                   placeholder: "아이디",
-                  // description 공유
-                  "aria-describedby": "form-description",
+                  "aria-describedby": "form-description", // description 공유
                 }}
               />
               <FormController
@@ -91,8 +87,7 @@ export const LoginForm: Story = {
                 inputProps={{
                   className: itemStyle.input,
                   placeholder: "비밀번호",
-                  // description 공유
-                  "aria-describedby": "form-description",
+                  "aria-describedby": "form-description", // description 공유
                 }}
               />
             </div>
@@ -151,9 +146,7 @@ export const PasswordConfirm: Story = {
       errors.confirmPassword?.message ||
       "영문, 숫자, 특수문자(~!@#$%^&*) 조합 8~15 자리";
 
-    const onSubmit = (_values: z.infer<typeof passwordSchema>) => {
-      // console.log({ values });
-    };
+    const onSubmit = (_values: z.infer<typeof passwordSchema>) => {};
     return (
       <Form {...form}>
         <form
@@ -169,8 +162,7 @@ export const PasswordConfirm: Story = {
                 inputProps={{
                   className: itemStyle.input,
                   placeholder: "비밀번호",
-                  // description 공유 (confirm password)
-                  "aria-describedby": "password-description",
+                  "aria-describedby": "password-description", // description 공유 (confirm password)
                 }}
               />
               <FormController
@@ -178,7 +170,6 @@ export const PasswordConfirm: Story = {
                 type="input"
                 name="confirmPassword"
                 // 비밀번호 field도 같이 검사하여 둘이 같이 onTouched 한 것 처럼 작동
-                // 확인하려면 revalidationHandlers 주석 처리 후 confirmPassword를 바로 blur 해보세요
                 revalidationHandlers={getMultipleRevalidationHandlers(
                   "password",
                 )}
@@ -186,14 +177,12 @@ export const PasswordConfirm: Story = {
                 descriptionProps={{
                   isError,
                   message,
-                  // description 공유 (confirm password)
-                  id: "password-description",
+                  id: "password-description", // description 공유 (confirm password)
                 }}
                 inputProps={{
                   className: itemStyle.input,
                   placeholder: "비밀번호 확인",
-                  // description 공유 (confirm password)
-                  "aria-describedby": "password-description",
+                  "aria-describedby": "password-description", // description 공유 (confirm password)
                 }}
               />
             </div>
@@ -238,8 +227,8 @@ export const ValidateOnServer: Story = {
 
     const nickname = form.watch("nickname");
     const backjoonId = form.watch("baekjoonId");
-    // useQuery 모방용 임시 훅
-    const { isNicknameLoading, isBaekjoonIdLoading } = useCheckOnServer(
+    
+    const { isNicknameLoading, isBaekjoonIdLoading } = useCheckOnServer( // useQuery 모방용 임시 훅
       form,
       nickname,
       backjoonId,
@@ -247,10 +236,8 @@ export const ValidateOnServer: Story = {
     );
     const { errors, dirtyFields } = form.formState;
 
-    // 기본적으로 메세지 표시x
-    // 서버 검증 시 로딩중 표시
-    // 검증 완료 시 메시지 표시
-    // 에러 발생 시 에러 & 에러 메세지 표시
+    // 기본적으로 메세지 표시x, 서버 검증 시 로딩중 표시
+    // 검증 완료 시 메시지 표시, 에러 발생 시 에러 & 에러 메세지 표시
     const nicknameValidationSuccess =
       !(errors.nickname || isNicknameLoading) && dirtyFields.nickname;
     const nicknameMsg = isNicknameLoading
@@ -259,10 +246,6 @@ export const ValidateOnServer: Story = {
         ? "사용가능한 닉네임이에요."
         : errors.nickname?.message;
 
-    // 기본적으로 메세지 표시x
-    // 서버 검증 시 로딩중 표시
-    // 검증 완료 시 메시지 표시
-    // 에러 발생 시 에러 & 에러 메세지 표시
     const baekjoonIdValidationSuccess =
       !(errors.baekjoonId || isBaekjoonIdLoading) && dirtyFields.baekjoonId;
     const bjMsg = isBaekjoonIdLoading
@@ -271,9 +254,7 @@ export const ValidateOnServer: Story = {
         ? "정상적으로 연동되었어요."
         : errors.baekjoonId?.message;
 
-    const onSubmit = (_values: z.infer<typeof serverValidationSchema>) => {
-      // console.log({ values });
-    };
+    const onSubmit = (_values: z.infer<typeof serverValidationSchema>) => {};
     return (
       <Form {...form}>
         <form
@@ -312,7 +293,6 @@ export const ValidateOnServer: Story = {
                 type="input"
                 showLabel
                 showDescription
-                // 이 필드만 onChange로 검사하기 위해 custom handler 적용
                 revalidationHandlers={getRevalidationOnServerHandlers}
                 labelProps={{
                   className: itemStyle.label,
@@ -366,17 +346,9 @@ export const DateTypeWithErrorMsg: Story = {
 
         startDate: z
           .date()
-          .refine(
-            (value) => !Number.isNaN(Date.parse(value.toString())),
-            "유효한 날짜를 입력해주세요",
-          ),
 
         endDate: z
           .date()
-          .refine(
-            (value) => !Number.isNaN(Date.parse(value.toString())),
-            "유효한 날짜를 입력해주세요",
-          ),
       })
       .refine((data) => data.endDate >= data.startDate, {
         message: "시작일은 종료일보다 느릴 수 없습니다.",
@@ -394,7 +366,6 @@ export const DateTypeWithErrorMsg: Story = {
     });
 
     const onSubmit = (values: z.infer<typeof postSchema>) => {
-      // console.log({ values });
       alert(`${values.startDate.toLocaleDateString()}, ${values.title}`);
     };
 
@@ -427,18 +398,15 @@ export const DateTypeWithErrorMsg: Story = {
                   children: "시작 일자",
                 }}
                 dateProps={{
-                  // description 공유 (start date)
-                  ariaDescribedBy: "date-description",
+                  ariaDescribedBy: "date-description", // description 공유 (start date)
                 }}
                 descriptionProps={{
-                  // 오류 표시를 위한 간이 스타일링
-                  style: {
+                  style: { // 오류 표시를 위한 간이 스타일링
                     position: "absolute",
                     transform: "translate(0, 10px)",
                   },
                   showErrorIcon: false,
-                  // description 공유 (start date)
-                  id: "date-description",
+                  id: "date-description", // description 공유 (start date)
                 }}
               />
               <FormController
@@ -450,8 +418,7 @@ export const DateTypeWithErrorMsg: Story = {
                   children: "종료 일자",
                 }}
                 dateProps={{
-                  // description 공유 (start date)
-                  ariaDescribedBy: "date-description",
+                  ariaDescribedBy: "date-description", // description 공유 (start date)
                 }}
               />
             </fieldset>
