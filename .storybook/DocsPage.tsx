@@ -18,7 +18,7 @@ const parseJSDoc = (description: string) => {
   const exampleMatches = description.match(/@example\s+([\s\S]*)/) || [];
 
   const params = paramMatches.map((param) => {
-    // 각각의 @param 항목에서 type, name, description을 추출하는 정규식
+    // @param 항목에서 type, name, description을 추출하는 정규식
     const [_, type, name, desc] = param.match(
       /@param\s+(?:\{([^}]*)\}\s+)?(\w+)\s+(.+)/,
     )!;

@@ -33,7 +33,7 @@ const Dropdown = ({ children, className, ...props }: DropdownProps) => {
             child as ReactElement<HTMLLIElement>,
             {
               className: clsx(child.props.className, dropdownItemStyle),
-              key: index, // TODO: 실제 데이터로 확인 후 버그 있으면 적절한 key 탐색
+              key: index, // TODO: 실제 데이터로 확인 후 적절한 key 탐색
               role: "button",
               tabIndex: 0,
             },
