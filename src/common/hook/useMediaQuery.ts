@@ -33,6 +33,7 @@ export const useMediaQuery = (
       desktop: isDesktop.matches,
     });
 
+    /** 각 Device 일치 여부에 따른 Callback 실행 */
     isMobile.matches && mobile?.();
     isTablet.matches && tablet?.();
     isDesktop.matches && desktop?.();
@@ -46,6 +47,7 @@ export const useMediaQuery = (
     };
   }, dependencies);
 
+  /** 각 Device 일치 여부 반환하여 사용처에서 조건부 렌더링 등에 활용 */
   return {
     isMobile: matches.mobile,
     isTablet: matches.tablet,
