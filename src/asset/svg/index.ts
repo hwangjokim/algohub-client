@@ -79,3 +79,4 @@ export { default as IcnTrash } from "./icn_trash.svg";
 export { default as IcnUser } from "./icn_user.svg";
 export { default as IcnUser2 } from "./icn_user2.svg";
 export { default as IcnEditProfile } from "./icn_edit_profile.svg";
+export { default as IcnBtnDelete } from "./icn_btn_delete.svg";
