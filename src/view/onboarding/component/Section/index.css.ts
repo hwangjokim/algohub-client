@@ -13,7 +13,7 @@ export const onboardingStyle = style({
   scrollbarWidth: "none",
   scrollSnapType: "y mandatory",
 
-  height: "100vh",
+  height: "calc(100vh - 7.2rem)",
 });
 
 export const sectionStyle = style({
@@ -22,7 +22,7 @@ export const sectionStyle = style({
   justifyContent: "space-between",
   scrollSnapAlign: "start",
 
-  height: "100vh",
+  height: "calc(100vh - 7.2rem)",
 
   backgroundColor: theme.color.bg,
 });
@@ -40,15 +40,11 @@ export const contentsContainer = recipe({
       intro: {
         gridTemplateColumns: "55rem 45rem",
         alignItems: "center",
-
-        paddingTop: "12rem",
       },
       feature1: {
         gridTemplateColumns: "47.5rem 72.5rem",
         gridTemplateRows: "25rem 65rem",
         alignItems: "start",
-
-        paddingTop: "12rem",
 
         "@media": {
           [`screen and (max-width: ${breakpoints.lg})`]: {
