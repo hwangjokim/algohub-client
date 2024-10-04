@@ -25,11 +25,11 @@ interface CalendarProps
     DatePickerProps,
     "onChange" | "selectsRange" | "selectsMultiple"
   > {
-  handleChange?: (date: Date) => void;
+  onChange?: (date: Date) => void;
 }
 
 const Calendar = forwardRef<DatePicker, CalendarProps>(
-  ({ handleChange, className, ...props }, ref) => {
+  ({ onChange, className, ...props }, ref) => {
     const [selectedDate, setSelectedDate] = useState<Date | null>(
       props.startDate ?? new Date(),
     );
@@ -38,8 +38,8 @@ const Calendar = forwardRef<DatePicker, CalendarProps>(
     const handleDateChange = (date: Date | null) => {
       setSelectedDate(date);
       setSelected(true);
-      if (handleChange && date) {
-        handleChange(date);
+      if (onChange && date) {
+        onChange(date);
       }
     };
 
