@@ -3,7 +3,8 @@ import { style } from "@vanilla-extract/css";
 
 export const wrapper = style({
   display: "flex",
-  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center",
   flexShrink: "0",
 
   position: "relative",

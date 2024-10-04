@@ -5,4 +5,5 @@ export interface GroupJoinResponse {
   startDate: string;
   endDate: string;
   description: string;
+  owner: string;
 }

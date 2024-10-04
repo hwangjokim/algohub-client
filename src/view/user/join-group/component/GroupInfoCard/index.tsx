@@ -11,17 +11,15 @@ import {
 } from "@/view/user/join-group/component/GroupInfoCard/index.css";
 
 const GroupInfoCard = ({ groupInfo }: { groupInfo: GroupJoinResponse }) => {
+  const { name, startDate, endDate, description } = groupInfo;
   return (
     <section className={infoCardWrapper}>
       <IcnGroupInfoCard width={246} height={341} />
       <section className={infoWrapper}>
-        <Avatar src={tmpSrc} alt={`${groupInfo.name} 그룹 사진`} size="large" />
-        <p className={groupNameStyle}>{groupInfo.name}</p>
-        <GroupDateInfo
-          startDate={groupInfo.startDate}
-          endDate={groupInfo.endDate}
-        />
-        <p className={descStyle}>{groupInfo.description}</p>
+        <Avatar src={tmpSrc} alt={`${name} 그룹 사진`} size="large" />
+        <p className={groupNameStyle}>{name}</p>
+        <GroupDateInfo startDate={startDate} endDate={endDate} />
+        <p className={descStyle}>{description}</p>
       </section>
     </section>
   );
