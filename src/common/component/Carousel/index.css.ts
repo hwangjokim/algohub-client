@@ -2,13 +2,67 @@ import { theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
-export const carouselStyle = style({
-  position: "relative",
+export const carouselStyle = recipe({
+  base: {
+    position: "relative",
 
-  width: "100%",
-  height: "30rem",
+    width: "100%",
+    height: "30rem",
 
-  overflow: "hidden",
+    "::before": {
+      content: "",
+
+      position: "absolute",
+      top: 0,
+      left: 0,
+
+      width: "10rem",
+      height: "100%",
+
+      zIndex: theme.zIndex.middle,
+
+      opacity: 0,
+
+      background: "linear-gradient(to left, transparent, rgba(0,0,0,0.3))",
+
+      transition: "opacity 0.3s ease-in",
+    },
+
+    "::after": {
+      content: "",
+
+      position: "absolute",
+      top: 0,
+      right: 0,
+
+      width: "10rem",
+      height: "100%",
+
+      zIndex: theme.zIndex.middle,
+
+      opacity: 0,
+
+      background: "linear-gradient(to right, transparent, rgba(0,0,0,0.3))",
+
+      transition: "opacity 0.3s ease-in",
+    },
+  },
+  variants: {
+    hasRight: {
+      true: {
+        "::after": {
+          opacity: 1,
+        },
+      },
+    },
+    hasLeft: {
+      true: {
+        "::before": {
+          opacity: 1,
+        },
+      },
+    },
+  },
 });
 
 export const sliderWrapperStyle = style({
@@ -42,6 +96,7 @@ export const itemStyle = style({
 
   width: "calc(25% - 1.5rem)",
   minWidth: "23rem",
+  maxWidth: "30rem",
   height: "100%",
 
   overflow: "hidden",
@@ -72,10 +127,10 @@ export const arrowStyle = recipe({
   variants: {
     position: {
       left: {
-        left: "0",
+        left: "-1.6rem",
       },
       right: {
-        right: "0",
+        right: "-1.6rem",
       },
     },
   },

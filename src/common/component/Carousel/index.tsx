@@ -6,6 +6,7 @@ import {
   carouselStyle,
   sliderWrapperStyle,
 } from "@/common/component/Carousel/index.css";
+import { useMediaQuery } from "@/common/hook/useMediaQuery";
 import {
   type HTMLAttributes,
   type MutableRefObject,
@@ -33,11 +34,25 @@ const Carousel = ({ length, children }: CarouselProps) => {
   /** 인덱스: 0 ~ length - 1 */
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemRef = useRef<HTMLDivElement | null>(null);
+  const [slideCount, setSlideCount] = useState(
+    window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3,
+  );
+
+  useMediaQuery(
+    {
+      mobile: () => setSlideCount(1),
+      tablet: () => setSlideCount(2),
+      desktop: () => setSlideCount(3),
+    },
+    [slideCount],
+  );
 
   const handleNext = () => {
     if (itemRef.current) {
       flushSync(() => {
-        setCurrentIndex((prev) => (prev + 4 < length ? prev + 4 : length - 1));
+        setCurrentIndex((prev) =>
+          prev + slideCount < length ? prev + slideCount : length - 1,
+        );
       });
 
       itemRef.current.scrollIntoView({
@@ -51,7 +66,9 @@ const Carousel = ({ length, children }: CarouselProps) => {
   const handlePrev = () => {
     if (itemRef.current) {
       flushSync(() => {
-        setCurrentIndex((prev) => (prev - 4 >= 0 ? prev - 4 : 0));
+        setCurrentIndex((prev) =>
+          prev - slideCount >= 0 ? prev - slideCount : 0,
+        );
       });
 
       itemRef.current.scrollIntoView({
@@ -64,8 +81,13 @@ const Carousel = ({ length, children }: CarouselProps) => {
 
   return (
     <CarouselContext.Provider value={{ length, currentIndex, itemRef }}>
-      <div className={carouselStyle}>
-        <Arrow position="left" onClick={handlePrev} />
+      <div
+        className={carouselStyle({
+          hasLeft: currentIndex > 0,
+          hasRight: currentIndex < length - slideCount,
+        })}
+      >
+        {currentIndex > 0 && <Arrow position="left" onClick={handlePrev} />}
 
         <div className={sliderWrapperStyle}>{children}</div>
 

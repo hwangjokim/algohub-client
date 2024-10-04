@@ -33,11 +33,11 @@ const Card = ({ num }: { num: number }) => {
   return (
     <div
       style={{
-        width: "29rem",
+        width: "100%",
         height: "30rem",
         borderRadius: "8px",
         fontSize: "40px",
-        backgroundColor: "black",
+        backgroundColor: "#222734",
         color: "white",
       }}
     >
