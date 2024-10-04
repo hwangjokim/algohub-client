@@ -154,10 +154,7 @@ const FormLabel = forwardRef<
   return (
     <label
       ref={ref}
-      className={clsx(
-        className,
-        isError && errorLabelStyle,
-      )}
+      className={clsx(className, isError && errorLabelStyle)}
       {...props}
     />
   );
@@ -193,4 +190,3 @@ FormDescription.displayName = "FormDescription";
 const Form = FormProvider;
 
 export { Form, FormController };
-

@@ -13,7 +13,7 @@ export interface InputProps
 const Input = forwardRef(
   (
     { size = "medium", isError = false, className, ...props }: InputProps,
-    ref: ForwardedRef<HTMLInputElement>
+    ref: ForwardedRef<HTMLInputElement>,
   ) => {
     return (
       <input
