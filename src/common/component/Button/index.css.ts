@@ -5,14 +5,14 @@ export const buttonStyle = recipe({
   base: {
     display: "flex",
     gap: "1rem",
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
 
-    width: '100%',
+    width: "100%",
 
-    ':disabled': {
+    ":disabled": {
       opacity: "0.7",
-      cursor: 'not-allowed',
+      cursor: "not-allowed",
     },
   },
   variants: {
@@ -25,13 +25,13 @@ export const buttonStyle = recipe({
       medium: {
         padding: "1.5rem 0",
         borderRadius: "5px",
-        ...theme.font.Title1_SB_16
+        ...theme.font.Title1_SB_16,
       },
       large: {
         padding: "1.5rem 0",
         borderRadius: "5px",
-        ...theme.font.Head2_SB_18
-      }
+        ...theme.font.Head2_SB_18,
+      },
     },
     color: {
       purple: {
@@ -45,7 +45,7 @@ export const buttonStyle = recipe({
       lg: {
         color: theme.color.purple2,
         backgroundColor: theme.color.lg2,
-      }
-    }
-  }
+      },
+    },
+  },
 });

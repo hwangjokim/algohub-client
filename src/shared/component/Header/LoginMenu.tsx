@@ -1,10 +1,13 @@
+"use client";
 import Button from "@/common/component/Button";
 import { LoginButtonStyle } from "@/shared/component/Header/LoginMenu.css";
 import { buttonContainer } from "@/shared/component/Header/index.css";
+import { useRouter } from "next/navigation";
 
 const LoginMenu = () => {
+  const route = useRouter();
   const handleProfileClick = () => {
-    alert("로그인");
+    route.push("/login");
   };
 
   return (

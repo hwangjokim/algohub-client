@@ -26,12 +26,13 @@ export const checkRefsContains = (
 
 /**
  * button 외의 태그에서 클릭 이벤트를 사용할 때 스크린 리더로도 접근할 수 있게 keydown 이벤트 핸들러를 부착해야 함.
- * 
+ *
  * @param {() => void} onClick onClick에 사용될 핸들러 함수
  * @return handleKeyDown 핸들러 함수
  */
 export const handleA11yClick =
-  (onClick: () => void) => (event: React.KeyboardEvent<HTMLElement | SVGElement>) => {
+  (onClick: () => void) =>
+  (event: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       onClick();

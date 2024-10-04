@@ -8,11 +8,11 @@ const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     {
-      name: '@storybook/addon-storysource',
+      name: "@storybook/addon-storysource",
       options: {
-        parser: 'typescript',
+        parser: "typescript",
         rule: {
-          include: [path.resolve(__dirname, '../src')],
+          include: [path.resolve(__dirname, "../src")],
         },
         loaderOptions: {
           injectStoryParameters: false,
@@ -25,20 +25,18 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-onboarding",
     "@chromatic-com/storybook",
+    "storybook-dark-mode",
     {
-      name: 'storybook-addon-jsdoc-to-mdx',
+      name: "storybook-addon-jsdoc-to-mdx",
       options: {
-        folderPaths: ['./src/'],
-        extensions: ['ts']
-      }
+        folderPaths: ["./src/"],
+        extensions: ["ts"],
+      },
     },
     {
-      name: '@storybook/addon-styling-webpack',
+      name: "@storybook/addon-styling-webpack",
       options: {
-        plugins: [
-          new VanillaExtractPlugin(),
-          new MiniCssExtractPlugin(),
-        ],
+        plugins: [new VanillaExtractPlugin(), new MiniCssExtractPlugin()],
         rules: [
           {
             test: /\.css$/,
@@ -58,16 +56,16 @@ const config: StorybookConfig = {
             use: [
               MiniCssExtractPlugin.loader,
               {
-                loader: require.resolve('css-loader'),
+                loader: require.resolve("css-loader"),
                 options: {
                   url: false,
                 },
               },
             ],
           },
-        ]
-      }
-    }
+        ],
+      },
+    },
   ],
   framework: {
     name: "@storybook/nextjs",
@@ -84,8 +82,8 @@ const config: StorybookConfig = {
 
     config.module.rules.push({
       test: /\.stories\.jsx?$/,
-      use: [{ loader: require.resolve('@storybook/source-loader'), }],
-      enforce: 'pre',
+      use: [{ loader: require.resolve("@storybook/source-loader") }],
+      enforce: "pre",
     });
 
     config.module.rules = [

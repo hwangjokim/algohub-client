@@ -17,6 +17,10 @@ export const dropdownContainer = style({
   backgroundColor: theme.color.mg6,
 });
 
+export const dropdownDefaultStyle = style({
+  position: "absolute",
+});
+
 export const dropdownItemStyle = style({
   display: "flex",
   alignItems: "center",

@@ -16,6 +16,8 @@ const Avatar = ({
     <div className={wrapperStyle}>
       <Image
         {...imageProps}
+        width="100"
+        height="100"
         role="button"
         className={avatarStyle({ size, hasShadow })}
       />
