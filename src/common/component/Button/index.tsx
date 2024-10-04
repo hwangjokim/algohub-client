@@ -1,4 +1,5 @@
 import { buttonStyle } from "@/common/component/Button/index.css";
+import clsx from "clsx";
 import type { ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -8,16 +9,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({
   children,
+  className,
   size = "small",
   color = "purple",
   ...props
 }: ButtonProps) => {
   return (
     <button
-      className={buttonStyle({
-        size: size,
-        color: color,
-      })}
+      className={clsx(
+        buttonStyle({
+          size: size,
+          color: color,
+        }),
+        className,
+      )}
       {...props}
     >
       {children}

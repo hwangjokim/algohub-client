@@ -135,14 +135,14 @@ globalStyle(
     width: "3rem",
     height: "3rem",
     lineHeight: "3rem !important",
-  }
+  },
 );
 
 globalStyle(
   ".react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name",
   {
     margin: 0,
-  }
+  },
 );
 
 globalStyle(".react-datepicker__month", {

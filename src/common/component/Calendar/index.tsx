@@ -29,7 +29,7 @@ interface CalendarProps
 
 const Calendar = ({ onChange, ...props }: CalendarProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(
-    props.startDate ?? new Date()
+    props.startDate ?? new Date(),
   );
   const [selected, setSelected] = useState<boolean>(false);
 

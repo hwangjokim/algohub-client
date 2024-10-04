@@ -20,7 +20,7 @@ export const ulStyle = style({
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
-  
+
   paddingTop: "1rem",
 
   // scroll bar
@@ -30,7 +30,7 @@ export const ulStyle = style({
     "&::-webkit-scrollbar-button": {
       height: "1rem",
     },
-    ...scrollTheme.scrollbar
+    ...scrollTheme.scrollbar,
   },
 });
 
