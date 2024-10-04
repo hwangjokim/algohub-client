@@ -19,7 +19,7 @@ export default meta;
 
 export const Default = {
   args: {
-    count: 10,
+    totalPages: 10,
     currentPage: 1,
   },
   render: (args: ComponentProps<typeof Pagination>) => {
@@ -41,7 +41,7 @@ export const Default = {
 
 export const Small = {
   args: {
-    count: 5,
+    totalPages: 5,
     currentPage: 1,
   },
   render: (args: ComponentProps<typeof Pagination>) => {
@@ -63,7 +63,7 @@ export const Small = {
 
 export const Large = {
   args: {
-    count: 20,
+    totalPages: 20,
     currentPage: 1,
   },
   render: (args: ComponentProps<typeof Pagination>) => {
@@ -85,7 +85,7 @@ export const Large = {
 
 export const MidPageStart = {
   args: {
-    count: 10,
+    totalPages: 10,
     currentPage: 5,
   },
   render: (args: ComponentProps<typeof Pagination>) => {
@@ -107,7 +107,7 @@ export const MidPageStart = {
 
 export const LastPageStart = {
   args: {
-    count: 10,
+    totalPages: 10,
     currentPage: 10,
   },
   render: (args: ComponentProps<typeof Pagination>) => {
