@@ -17,7 +17,7 @@ import {
   type FieldValues,
   FormProvider,
 } from "react-hook-form";
-import { itemDefaultStyle, labelDefaultStyle } from "./index.css";
+import { errorLabelStyle, itemDefaultStyle, itemStyle } from "./index.css";
 
 type FormFieldProps<
   TFieldValues extends FieldValues = FieldValues,
@@ -34,7 +34,7 @@ type FormFieldProps<
   labelProps?: ComponentProps<"label"> & { error?: boolean };
   inputProps?: InputProps;
   textareaProps?: TextareaProps;
-  calendarProps?: ComponentProps<typeof Calendar>;
+  dateProps?: ComponentProps<typeof Calendar>;
   descriptionProps?: FormDescriptionProps;
 };
 
@@ -53,7 +53,7 @@ const FormController = <
   labelProps,
   inputProps,
   textareaProps,
-  calendarProps,
+  dateProps,
   descriptionProps,
 }: FormFieldProps<TFieldValues, TName>) => {
   return (
@@ -96,9 +96,9 @@ const FormController = <
           FormField = (
             <Calendar
               id={fieldId}
+              {...dateProps}
               onChange={field.onChange}
               onBlur={field.onBlur}
-              {...calendarProps}
             />
           );
         }
@@ -114,7 +114,15 @@ const FormController = <
             )}
 
             {showLabel && labelPosition === "top" && (
-              <FormLabel htmlFor={fieldId} isError={isError} {...labelProps} />
+              <FormLabel
+                htmlFor={fieldId}
+                isError={isError}
+                {...labelProps}
+                className={clsx(
+                  labelProps?.className,
+                  type === "date" && itemStyle.dateLabel,
+                )}
+              />
             )}
 
             {FormField}
@@ -148,7 +156,7 @@ const FormLabel = forwardRef<
       ref={ref}
       className={clsx(
         className,
-        labelDefaultStyle[isError ? "error" : "default"],
+        isError && errorLabelStyle,
       )}
       {...props}
     />

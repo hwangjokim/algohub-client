@@ -2,14 +2,19 @@ import Button from "@/common/component/Button";
 import { useCheckOnServer } from "@/shared/hook/useCheckOnServer";
 import {
   getMultipleRevalidationHandlers,
-  getRevalidationOnServerHandlers
+  getRevalidationOnServerHandlers,
 } from "@/shared/util/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { Form, FormController } from ".";
-import { storyContentStyle, storyFormStyle, storyItemStyle } from "./index.css";
+import {
+  fieldsetStyle,
+  itemStyle,
+  storyContentStyle,
+  storyFormStyle,
+} from "./index.css";
 
 const meta: Meta<typeof Form> = {
   title: "Shared/Form",
@@ -49,7 +54,9 @@ export const LoginForm: Story = {
       },
     });
 
+    // 로그인 폼은 field가 2개 뿐이라서 errors로 isError 직접 제작
     const isError = !!Object.keys(form.formState.errors).length;
+    // zod에서 메세지를 처리하면 모든 메서드 체인마다 똑같은 `, {message: "msg"}`를 적어야해서 아래처럼 단순화
     const message = isError ? "아이디 혹은 비밀번호를 확인해주세요" : undefined;
     const onSubmit = (_values: z.infer<typeof loginSchema>) => {
       // console.log({ values });
@@ -68,10 +75,13 @@ export const LoginForm: Story = {
                 name="id"
                 showDescription
                 descriptionPosition="top"
-                descriptionProps={{ isError, message }}
+                // description 공유
+                descriptionProps={{ isError, message, id: "form-description" }}
                 inputProps={{
-                  className: storyItemStyle.input,
+                  className: itemStyle.input,
                   placeholder: "아이디",
+                  // description 공유
+                  "aria-describedby": "form-description",
                 }}
               />
               <FormController
@@ -79,9 +89,10 @@ export const LoginForm: Story = {
                 type="input"
                 name="password"
                 inputProps={{
-                  className: storyItemStyle.input,
+                  className: itemStyle.input,
                   placeholder: "비밀번호",
-                  "aria-describedby": "id-description",
+                  // description 공유
+                  "aria-describedby": "form-description",
                 }}
               />
             </div>
@@ -89,9 +100,7 @@ export const LoginForm: Story = {
               로그인
             </Button>
           </div>
-          <p className={storyItemStyle.text}>
-            아직 계정이 없으신가요? 회원가입하기
-          </p>
+          <p className={itemStyle.text}>아직 계정이 없으신가요? 회원가입하기</p>
         </form>
       </Form>
     );
@@ -134,8 +143,10 @@ export const PasswordConfirm: Story = {
 
     const { errors } = form.formState;
 
+    // zod 검사 결과를 기반으로 isError 직접 제작
     const isError =
       !!errors.password || errors.confirmPassword?.type === "custom";
+    // 에러 없으면 안내 메세지 출력
     const message =
       errors.confirmPassword?.message ||
       "영문, 숫자, 특수문자(~!@#$%^&*) 조합 8~15 자리";
@@ -156,8 +167,9 @@ export const PasswordConfirm: Story = {
                 type="input"
                 name="password"
                 inputProps={{
-                  className: storyItemStyle.input,
+                  className: itemStyle.input,
                   placeholder: "비밀번호",
+                  // description 공유 (confirm password)
                   "aria-describedby": "password-description",
                 }}
               />
@@ -171,10 +183,17 @@ export const PasswordConfirm: Story = {
                   "password",
                 )}
                 showDescription
-                descriptionProps={{ isError, message }}
+                descriptionProps={{
+                  isError,
+                  message,
+                  // description 공유 (confirm password)
+                  id: "password-description",
+                }}
                 inputProps={{
-                  className: storyItemStyle.input,
+                  className: itemStyle.input,
                   placeholder: "비밀번호 확인",
+                  // description 공유 (confirm password)
+                  "aria-describedby": "password-description",
                 }}
               />
             </div>
@@ -275,11 +294,11 @@ export const ValidateOnServer: Story = {
                 // 이 필드만 onChange로 검사하기 위해 custom handler 적용
                 revalidationHandlers={getRevalidationOnServerHandlers}
                 labelProps={{
-                  className: storyItemStyle.label,
+                  className: itemStyle.label,
                   children: "닉네임(서버에서 검증)",
                 }}
                 inputProps={{
-                  className: storyItemStyle.input,
+                  className: itemStyle.input,
                   placeholder: "닉네임",
                 }}
                 descriptionProps={{
@@ -296,11 +315,11 @@ export const ValidateOnServer: Story = {
                 // 이 필드만 onChange로 검사하기 위해 custom handler 적용
                 revalidationHandlers={getRevalidationOnServerHandlers}
                 labelProps={{
-                  className: storyItemStyle.label,
+                  className: itemStyle.label,
                   children: "백준 아이디(서버에서 검증)",
                 }}
                 inputProps={{
-                  className: storyItemStyle.input,
+                  className: itemStyle.input,
                   placeholder: "백준 아이디",
                 }}
                 descriptionProps={{
@@ -315,11 +334,11 @@ export const ValidateOnServer: Story = {
                 showLabel
                 showDescription
                 labelProps={{
-                  className: storyItemStyle.label,
+                  className: itemStyle.label,
                   children: "소개(서버 x)",
                 }}
                 inputProps={{
-                  className: storyItemStyle.input,
+                  className: itemStyle.input,
                   placeholder: "소개",
                 }}
               />
@@ -328,7 +347,7 @@ export const ValidateOnServer: Story = {
               회원가입하기
             </Button>
           </div>
-          <p className={storyItemStyle.text}>회원 탈퇴하기</p>
+          <p className={itemStyle.text}>회원 탈퇴하기</p>
         </form>
       </Form>
     );
@@ -337,40 +356,53 @@ export const ValidateOnServer: Story = {
 
 export const DateTypeWithErrorMsg: Story = {
   render: () => {
-    const postSchema = z.object({
-      title: z
-        .string()
-        .min(6)
-        .max(12)
-        .regex(/^[a-zA-Z가-하0-9]+$/),
+    const postSchema = z
+      .object({
+        title: z
+          .string()
+          .min(6)
+          .max(12)
+          .regex(/^[a-zA-Z가-하0-9]+$/),
 
-      date: z
-        .date()
-        .refine(
-          (value) => !Number.isNaN(Date.parse(value.toString())),
-          "유효한 날짜를 입력해주세요",
-        ),
-    }); // schema는 파일 분리해서 작성 권장
+        startDate: z
+          .date()
+          .refine(
+            (value) => !Number.isNaN(Date.parse(value.toString())),
+            "유효한 날짜를 입력해주세요",
+          ),
+
+        endDate: z
+          .date()
+          .refine(
+            (value) => !Number.isNaN(Date.parse(value.toString())),
+            "유효한 날짜를 입력해주세요",
+          ),
+      })
+      .refine((data) => data.endDate >= data.startDate, {
+        message: "시작일은 종료일보다 느릴 수 없습니다.",
+        path: ["startDate"],
+      }); // schema는 파일 분리해서 작성 권장
 
     const form = useForm<z.infer<typeof postSchema>>({
       resolver: zodResolver(postSchema),
       mode: "onTouched",
       defaultValues: {
         title: "",
-        date: new Date(),
+        startDate: new Date(),
+        endDate: new Date(),
       },
     });
 
     const onSubmit = (values: z.infer<typeof postSchema>) => {
       // console.log({ values });
-      alert(`${values.date.toLocaleDateString()}, ${values.title}`);
+      alert(`${values.startDate.toLocaleDateString()}, ${values.title}`);
     };
 
     return (
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className={storyFormStyle({ type: "login" })}
+          className={storyFormStyle({ type: "post" })}
         >
           <div className={storyContentStyle.loginContents}>
             <FormController
@@ -383,12 +415,46 @@ export const DateTypeWithErrorMsg: Story = {
               }}
             />
 
-            <FormController
-              control={form.control}
-              type="date"
-              name="date"
-              showDescription
-            />
+            <fieldset className={fieldsetStyle}>
+              <legend className={itemStyle.legend}>풀이 기간</legend>
+              <FormController
+                control={form.control}
+                type="date"
+                name="startDate"
+                showLabel
+                showDescription
+                labelProps={{
+                  children: "시작 일자",
+                }}
+                dateProps={{
+                  // description 공유 (start date)
+                  ariaDescribedBy: "date-description",
+                }}
+                descriptionProps={{
+                  // 오류 표시를 위한 간이 스타일링
+                  style: {
+                    position: "absolute",
+                    transform: "translate(0, 10px)",
+                  },
+                  showErrorIcon: false,
+                  // description 공유 (start date)
+                  id: "date-description",
+                }}
+              />
+              <FormController
+                control={form.control}
+                type="date"
+                name="endDate"
+                showLabel
+                labelProps={{
+                  children: "종료 일자",
+                }}
+                dateProps={{
+                  // description 공유 (start date)
+                  ariaDescribedBy: "date-description",
+                }}
+              />
+            </fieldset>
           </div>
           <Button type="submit" size="medium">
             등록

@@ -21,6 +21,10 @@ export const storyFormStyle = recipe({
       edit: {
         padding: "2rem 3rem",
       },
+      post: {
+        padding: "3rem",
+        gap: "4rem",
+      },
     },
   },
 });
@@ -47,7 +51,14 @@ export const storyContentStyle = styleVariants({
   },
 });
 
-export const storyItemStyle = styleVariants({
+export const fieldsetStyle = style({
+  display: "flex",
+  gap: "2.6rem",
+
+  border: "none",
+});
+
+export const itemStyle = styleVariants({
   description: {
     margin: 0,
   },
@@ -60,10 +71,24 @@ export const storyItemStyle = styleVariants({
     paddingBottom: "0rem",
     ...theme.font.Body2_R_14,
     color: theme.color.mg2,
+    textAlign: "left",
   },
   label: {
     ...theme.font.Title1_SB_16,
-    color: theme.color.mg2,
+    color: theme.color.white,
+    textAlign: "left",
+  },
+  dateLabel: {
+    ...theme.font.Title2_M_16,
+    color: theme.color.mg3,
+    textAlign: "left",
+  },
+  legend: {
+    paddingBottom: "1rem",
+
+    ...theme.font.Head2_SB_18,
+    color: theme.color.white,
+    textAlign: "left",
   },
 });
 
@@ -73,11 +98,6 @@ export const itemDefaultStyle = style({
   gap: ".5rem",
 });
 
-export const labelDefaultStyle = styleVariants({
-  default: {
-    color: theme.color.wg,
-  },
-  error: {
-    color: theme.color.red,
-  },
+export const errorLabelStyle = style({
+  color: theme.color.error,
 });
