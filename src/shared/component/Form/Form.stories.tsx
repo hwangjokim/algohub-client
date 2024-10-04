@@ -54,7 +54,7 @@ export const LoginForm: Story = {
       },
     });
 
-    // 로그인 폼은 field가 2개 뿐이라서 errors로 isError 직접 제작
+    // 로그인 폼은 field 2개가 Description을 공유하고 있어서 errors로 isError 직접 제작
     const isError = !!Object.keys(form.formState.errors).length;
     // zod에서 메세지를 처리하면 모든 메서드 체인마다 똑같은 `, {message: "msg"}`를 적어야해서 아래처럼 단순화
     const message = isError ? "아이디 혹은 비밀번호를 확인해주세요" : undefined;

@@ -31,7 +31,7 @@ type FormFieldProps<
   showDescription?: boolean;
   revalidationHandlers?: typeof getRevalidationOnServerHandlers;
   control: Control<TFieldValues>;
-  labelProps?: ComponentProps<"label"> & { error?: boolean };
+  labelProps?: ComponentProps<typeof FormLabel>;
   inputProps?: InputProps;
   textareaProps?: TextareaProps;
   dateProps?: ComponentProps<typeof Calendar>;
