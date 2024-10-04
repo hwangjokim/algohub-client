@@ -24,7 +24,7 @@ export const useCheckOnServer = <
   const [isBaekjoonIdLoading, setBaekjoonIdLoading] = useState(false);
 
   const handleValidation = async (
-    fieldName: string,
+    fieldName: "nickname" | "baekjoonId",
     value: string,
     validateFn: typeof validateNickname,
     loadingSetter: (value: boolean) => void,
