@@ -50,8 +50,8 @@ export const paginationButtonStyle = recipe({
     backgroundColor: "transparent",
     borderRadius: "0.375rem",
     ":disabled": {
-      cursor: "default"
-    }
+      cursor: "default",
+    },
   },
   variants: {
     isActive: {
