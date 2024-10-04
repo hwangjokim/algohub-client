@@ -14,11 +14,11 @@ type MenuProps = {
   renderTriggerButton: ReactNode;
   /** `<Dropdown />`으로 만들어진 리스트 컴포넌트<br>
    * **부여되는 속성**: `id`, `aria-labelledby`<br><hr>
-  */
+   */
   renderList: ReactNode;
 };
 
-/** 
+/**
  * trigger button과 list에 토글 기능과 필요한 aria속성을 부여해주는 컴포넌트<br>
  * **`renderTriggerButton`은 꼭 clsx를 사용해 className을 결합해야 함**
  */

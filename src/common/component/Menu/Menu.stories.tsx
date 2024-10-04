@@ -72,7 +72,11 @@ export const LanguageWithDivTrigger: Story = {
     const TriggerButton = ({ className, ...props }: ComponentProps<"div">) => {
       return (
         // <button> 외의 것을 사용할 경우 role="button"을 넣어주세요
-        <div className={clsx(storyDivStyle, className)} role="button" {...props}>
+        <div
+          className={clsx(storyDivStyle, className)}
+          role="button"
+          {...props}
+        >
           <span>모든 언어</span>{" "}
           <IcnBtnArrowDown width={"2rem"} height={"2rem"} />
         </div>

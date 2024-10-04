@@ -19,8 +19,7 @@ export const defaultButtonStyle = style({
 export const storyButtonStyle = style({
   width: "5rem",
   height: "5rem",
-})
-
+});
 
 export const storyDivStyle = style({
   display: "flex",
@@ -30,4 +29,4 @@ export const storyDivStyle = style({
   width: "11rem",
   height: "3.6rem",
   backgroundColor: theme.color.mg3,
-})
+});

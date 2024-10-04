@@ -32,7 +32,7 @@ export const checkRefsContains = (
  */
 export const handleA11yClick =
   (onClick: () => void) =>
-  (event: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {
+  (event: React.KeyboardEvent<HTMLElement | SVGElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       onClick();
