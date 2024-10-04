@@ -48,10 +48,6 @@ export const LoginForm: Story = {
     const form = useForm<z.infer<typeof loginSchema>>({
       resolver: zodResolver(loginSchema),
       mode: "onTouched",
-      defaultValues: {
-        id: "",
-        password: "",
-      },
     });
 
     // 로그인 폼은 field 2개가 Description을 공유하고 있어서 errors로 isError 직접 제작
@@ -95,7 +91,6 @@ export const LoginForm: Story = {
               로그인
             </Button>
           </div>
-          <p className={itemStyle.text}>아직 계정이 없으신가요? 회원가입하기</p>
         </form>
       </Form>
     );
@@ -130,10 +125,6 @@ export const PasswordConfirm: Story = {
     const form = useForm<z.infer<typeof passwordSchema>>({
       resolver: zodResolver(passwordSchema),
       mode: "onTouched",
-      defaultValues: {
-        password: "",
-        confirmPassword: "",
-      },
     });
 
     const { errors } = form.formState;
@@ -218,11 +209,6 @@ export const ValidateOnServer: Story = {
     const form = useForm<z.infer<typeof serverValidationSchema>>({
       resolver: zodResolver(serverValidationSchema),
       mode: "onTouched",
-      defaultValues: {
-        nickname: "",
-        baekjoonId: "",
-        introduction: "",
-      },
     });
 
     const nickname = form.watch("nickname");
@@ -328,7 +314,6 @@ export const ValidateOnServer: Story = {
               회원가입하기
             </Button>
           </div>
-          <p className={itemStyle.text}>회원 탈퇴하기</p>
         </form>
       </Form>
     );
@@ -384,7 +369,6 @@ export const DateTypeWithErrorMsg: Story = {
                 placeholder: "제목",
               }}
             />
-
             <fieldset className={fieldsetStyle}>
               <legend className={itemStyle.legend}>풀이 기간</legend>
               <FormController
@@ -401,7 +385,6 @@ export const DateTypeWithErrorMsg: Story = {
                 }}
                 descriptionProps={{
                   style: {
-                    // 오류 표시를 위한 간이 스타일링
                     position: "absolute",
                     transform: "translate(0, 10px)",
                   },

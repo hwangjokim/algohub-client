@@ -1,19 +1,16 @@
 import Calendar from "@/common/component/Calendar";
 import Input from "@/common/component/Input";
 import Textarea from "@/common/component/Textarea";
-import type {
-  getRevalidationOnServerHandlers
-} from "@/shared/util/form";
+import type { getRevalidationOnServerHandlers } from "@/shared/util/form";
 import clsx from "clsx";
 import type { ComponentProps, ReactNode } from "react";
 import {
   Controller,
-  type ControllerProps,
   type ControllerRenderProps,
   type FieldPath,
   type FieldValues,
   FormProvider,
-  type UseFormReturn,
+  type UseFormReturn
 } from "react-hook-form";
 import FormDescription from "./FormDescription";
 import FormLabel from "./FormLabel";
@@ -22,7 +19,7 @@ import { itemDefaultStyle, itemStyle } from "./index.css";
 type FormFieldProps<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>,
-> = Omit<ControllerProps<TFieldValues, TName>, "render"> & {
+> = {
   type: "input" | "textarea" | "date";
   name: TName;
   labelPosition?: "top" | "bottom";
