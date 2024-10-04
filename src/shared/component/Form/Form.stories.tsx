@@ -227,8 +227,9 @@ export const ValidateOnServer: Story = {
 
     const nickname = form.watch("nickname");
     const backjoonId = form.watch("baekjoonId");
-    
-    const { isNicknameLoading, isBaekjoonIdLoading } = useCheckOnServer( // useQuery 모방용 임시 훅
+
+    const { isNicknameLoading, isBaekjoonIdLoading } = useCheckOnServer(
+      // useQuery 모방용 임시 훅
       form,
       nickname,
       backjoonId,
@@ -344,11 +345,9 @@ export const DateTypeWithErrorMsg: Story = {
           .max(12)
           .regex(/^[a-zA-Z가-하0-9]+$/),
 
-        startDate: z
-          .date()
+        startDate: z.date(),
 
-        endDate: z
-          .date()
+        endDate: z.date(),
       })
       .refine((data) => data.endDate >= data.startDate, {
         message: "시작일은 종료일보다 느릴 수 없습니다.",
@@ -401,7 +400,8 @@ export const DateTypeWithErrorMsg: Story = {
                   ariaDescribedBy: "date-description", // description 공유 (start date)
                 }}
                 descriptionProps={{
-                  style: { // 오류 표시를 위한 간이 스타일링
+                  style: {
+                    // 오류 표시를 위한 간이 스타일링
                     position: "absolute",
                     transform: "translate(0, 10px)",
                   },

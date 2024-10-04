@@ -143,7 +143,6 @@ const FormLabel = forwardRef<
     />
   );
 });
-FormLabel.displayName = "Label";
 
 type FormDescriptionProps = {
   showError?: boolean;
@@ -168,7 +167,6 @@ const FormDescription = ({
     />
   );
 };
-FormDescription.displayName = "FormDescription";
 
 const Form = FormProvider;
 
