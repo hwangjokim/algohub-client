@@ -1,0 +1,23 @@
+import { theme } from "@/styles/themes.css";
+import { style } from "@vanilla-extract/css";
+
+export const wrapper = style({
+  display: "flex",
+  justifyContent: "center",
+  flexShrink: "0",
+
+  position: "relative",
+
+  width: "54rem",
+  height: "65.6rem",
+  padding: "7.4rem 2.2rem 2.6rem",
+
+  borderRadius: "16px",
+  backgroundColor: theme.color.bg,
+});
+
+export const exitStyle = style({
+  position: "absolute",
+  top: "3.3rem",
+  right: "3.3rem",
+});
