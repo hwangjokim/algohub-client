@@ -3,6 +3,7 @@ import clsx from "clsx";
 import type { ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /** small: Body3_SB_14 <br/> medium: Title1_SB_16 <br/> large: Head2_SB_18*/
   size?: "small" | "medium" | "large";
   color?: "purple" | "gray" | "lg";
 }
@@ -21,7 +22,7 @@ const Button = ({
           size,
           color,
         }),
-        className,
+        className
       )}
       {...props}
     >
