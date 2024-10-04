@@ -1,11 +1,16 @@
 "use client";
 import UserDashboardPage from "@/app/user/page";
 import { IcnBtnDelete } from "@/asset/svg";
+import Button from "@/common/component/Button";
 import Modal from "@/common/component/Modal";
 import type { GroupJoinResponse } from "@/view/user/join-group/api/type";
 import DecisionPrompt from "@/view/user/join-group/component/DecisionPrompt";
 import GroupInfoCard from "@/view/user/join-group/component/GroupInfoCard";
-import { exitStyle, wrapper } from "@/view/user/join-group/component/index.css";
+import {
+  btnWrapper,
+  exitStyle,
+  wrapper,
+} from "@/view/user/join-group/component/index.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -30,6 +35,14 @@ const JoinGroupPage = () => {
           </Link>
           <GroupInfoCard groupInfo={tmpGroupInfo} />
           <DecisionPrompt owner={tmpGroupInfo.owner} />
+          <div className={btnWrapper}>
+            <Button size="medium" color="lg">
+              거절하기
+            </Button>
+            <Button size="medium" color="purple">
+              수락하기
+            </Button>
+          </div>
         </section>
       </Modal>
     </>

@@ -22,3 +22,11 @@ export const exitStyle = style({
   top: "3.3rem",
   right: "3.3rem",
 });
+
+export const btnWrapper = style({
+  display: "flex",
+  gap: "1.6rem",
+
+  width: "100%",
+  paddingTop: "2.4rem",
+});
