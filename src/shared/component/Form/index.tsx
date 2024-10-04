@@ -10,7 +10,7 @@ import {
   type FieldPath,
   type FieldValues,
   FormProvider,
-  type UseFormReturn
+  type UseFormReturn,
 } from "react-hook-form";
 import FormDescription from "./FormDescription";
 import FormLabel from "./FormLabel";
@@ -130,3 +130,4 @@ const FormController = <
 const Form = FormProvider;
 
 export { Form, FormController };
+
