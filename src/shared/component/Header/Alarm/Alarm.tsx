@@ -9,7 +9,7 @@ import { alarms } from "@/shared/constant/example";
 import type { HTMLAttributes } from "react";
 import AlarmListItem from "./AlarmListItem";
 
-type AlarmProps = HTMLAttributes<HTMLUListElement>
+type AlarmProps = HTMLAttributes<HTMLUListElement>;
 
 const Alarm = ({ ...props }: AlarmProps) => {
   return (
