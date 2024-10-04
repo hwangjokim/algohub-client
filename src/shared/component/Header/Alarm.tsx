@@ -19,7 +19,9 @@ const Alarm = () => {
             message={alarm.message}
             date={alarm.date}
             profileImg={alarm.profileImg}
-            onClick={() => {alert("click")}}
+            onClick={() => {
+              alert("click");
+            }}
           />
         ))}
       </ul>
@@ -34,7 +36,11 @@ type TriggerIconProps = {
 Alarm.TriggerIcon = ({ count }: TriggerIconProps) => {
   return (
     <>
-      {count > 0 && <div aria-live="polite" className={countStyle}>{count}</div>}
+      {count > 0 && (
+        <div aria-live="polite" className={countStyle}>
+          {count}
+        </div>
+      )}
       <IcnBellHeader className={iconStyle} />
     </>
   );

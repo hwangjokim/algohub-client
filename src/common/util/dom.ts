@@ -29,7 +29,8 @@ export const checkRefsContains = (
  * @return handleKeyDown 핸들러 함수
  */
 export const handleA11yClick =
-  (onClick: () => void) => (event: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {
+  (onClick: () => void) =>
+  (event: React.KeyboardEvent<HTMLDivElement | SVGElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       onClick();

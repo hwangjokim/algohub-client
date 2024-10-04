@@ -7,7 +7,7 @@ export const useToast = () => {
   const showToast = (
     message: string,
     variant?: "error" | "success" | "default",
-    duration?: number
+    duration?: number,
   ) => {
     const added = {
       id: self.crypto.randomUUID(),
