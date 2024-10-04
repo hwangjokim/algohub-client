@@ -68,7 +68,7 @@ export const LoginForm: Story = {
           <div className={storyContentStyle.loginContents}>
             <div className={storyContentStyle.fields}>
               <FormController
-                control={form.control}
+                form={form}
                 type="input"
                 name="id"
                 showDescription
@@ -81,7 +81,7 @@ export const LoginForm: Story = {
                 }}
               />
               <FormController
-                control={form.control}
+                form={form}
                 type="input"
                 name="password"
                 inputProps={{
@@ -156,7 +156,7 @@ export const PasswordConfirm: Story = {
           <div className={storyContentStyle.loginContents}>
             <div className={storyContentStyle.fields}>
               <FormController
-                control={form.control}
+                form={form}
                 type="input"
                 name="password"
                 inputProps={{
@@ -166,7 +166,7 @@ export const PasswordConfirm: Story = {
                 }}
               />
               <FormController
-                control={form.control}
+                form={form}
                 type="input"
                 name="confirmPassword"
                 // 비밀번호 field도 같이 검사하여 둘이 같이 onTouched 한 것 처럼 작동
@@ -268,7 +268,7 @@ export const ValidateOnServer: Story = {
                 스토리용 임시 검증 : t로 끝나면 통과, 그 외 중복 표시
               </p>
               <FormController
-                control={form.control}
+                form={form}
                 name="nickname"
                 type="input"
                 showLabel
@@ -289,7 +289,7 @@ export const ValidateOnServer: Story = {
                 }}
               />
               <FormController
-                control={form.control}
+                form={form}
                 name="baekjoonId"
                 type="input"
                 showLabel
@@ -309,7 +309,7 @@ export const ValidateOnServer: Story = {
                 }}
               />
               <FormController
-                control={form.control}
+                form={form}
                 name="introduction"
                 type="input"
                 showLabel
@@ -376,7 +376,7 @@ export const DateTypeWithErrorMsg: Story = {
         >
           <div className={storyContentStyle.loginContents}>
             <FormController
-              control={form.control}
+              form={form}
               type="input"
               name="title"
               showDescription
@@ -388,7 +388,7 @@ export const DateTypeWithErrorMsg: Story = {
             <fieldset className={fieldsetStyle}>
               <legend className={itemStyle.legend}>풀이 기간</legend>
               <FormController
-                control={form.control}
+                form={form}
                 type="date"
                 name="startDate"
                 showLabel
@@ -410,7 +410,7 @@ export const DateTypeWithErrorMsg: Story = {
                 }}
               />
               <FormController
-                control={form.control}
+                form={form}
                 type="date"
                 name="endDate"
                 showLabel

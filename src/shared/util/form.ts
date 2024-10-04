@@ -1,10 +1,10 @@
 import type { ChangeEvent } from "react";
-import {
-  type DeepMap,
-  type FieldValues,
-  type Path,
-  useController,
-  useFormContext,
+import type {
+  ControllerRenderProps,
+  DeepMap,
+  FieldPath,
+  FieldValues,
+  UseFormReturn,
 } from "react-hook-form";
 
 const shouldValidateOnChange = <
@@ -23,24 +23,23 @@ const shouldValidateOnChange = <
  * @param otherFieldNames 자신을 제외하고 같이 검사할 필드들의 name
  */
 export const getMultipleRevalidationHandlers =
-  <TFieldValues extends FieldValues, TFieldName extends Path<TFieldValues>>(
+  <
+    TFieldValues extends FieldValues,
+    TFieldName extends FieldPath<TFieldValues>,
+  >(
     ...otherFieldNames: TFieldName[]
   ) =>
-  (fieldName: string) => {
-    const form = useFormContext();
-    const { field } = useController({
-      name: fieldName,
-      control: form.control,
-    });
-    const { touchedFields, dirtyFields } = form.formState;
-    const { trigger } = form;
-    const fieldNames = [fieldName, ...otherFieldNames];
+  (form: UseFormReturn, field: ControllerRenderProps) => {
+    const {
+      trigger,
+      formState: { touchedFields, dirtyFields },
+    } = form;
+    const { name } = field;
+    const fieldNames = [name, ...otherFieldNames];
     return {
       onBlur: () => {
         field.onBlur();
-        for (const fieldName of fieldNames) {
-          trigger(fieldName);
-        }
+        trigger(fieldNames);
       },
       onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         field.onChange(e);
@@ -49,9 +48,7 @@ export const getMultipleRevalidationHandlers =
             shouldValidateOnChange(fieldName, touchedFields, dirtyFields),
           )
         ) {
-          for (const fieldName of fieldNames) {
-            trigger(fieldName);
-          }
+          trigger(fieldNames);
         }
       },
     };
@@ -60,26 +57,25 @@ export const getMultipleRevalidationHandlers =
 /**
  * 매 입력마다 서버에서 결과를 받아야 하는 필드에 대해 * onChange로 유효성 검사하게 만드는 handler를 반환하는 함수
  */
-export const getRevalidationOnServerHandlers = (fieldName: string) => {
-  const form = useFormContext();
-  const { field } = useController({
-    name: fieldName,
-    control: form.control,
-  });
+export const getRevalidationOnServerHandlers = (
+  form: UseFormReturn,
+  field: ControllerRenderProps,
+) => {
   const {
     trigger,
     formState: { errors },
   } = form;
+  const { name } = field;
 
   return {
     onBlur: () => {
-      if (errors[fieldName]?.type === "custom") return;
+      if (errors[name]?.type === "custom") return;
       field.onBlur();
-      trigger(fieldName);
+      trigger(name);
     },
     onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       field.onChange(e);
-      trigger(fieldName);
+      trigger(name);
     },
   };
 };

@@ -1,25 +1,27 @@
 import Calendar from "@/common/component/Calendar";
-import Input, { type InputProps } from "@/common/component/Input";
-import SupportingText, {
-  type SupportingTextProps,
-} from "@/common/component/SupportingText";
-import Textarea, { type TextareaProps } from "@/common/component/Textarea";
-import type { getRevalidationOnServerHandlers } from "@/shared/util/form";
+import Input from "@/common/component/Input";
+import Textarea from "@/common/component/Textarea";
+import type {
+  getRevalidationOnServerHandlers
+} from "@/shared/util/form";
 import clsx from "clsx";
-import { type ComponentProps, type ReactNode, forwardRef } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import {
-  type Control,
   Controller,
   type ControllerProps,
+  type ControllerRenderProps,
   type FieldPath,
   type FieldValues,
   FormProvider,
+  type UseFormReturn,
 } from "react-hook-form";
-import { errorLabelStyle, itemDefaultStyle, itemStyle } from "./index.css";
+import FormDescription from "./FormDescription";
+import FormLabel from "./FormLabel";
+import { itemDefaultStyle, itemStyle } from "./index.css";
 
 type FormFieldProps<
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>,
 > = Omit<ControllerProps<TFieldValues, TName>, "render"> & {
   type: "input" | "textarea" | "date";
   name: TName;
@@ -28,17 +30,17 @@ type FormFieldProps<
   showLabel?: boolean;
   showDescription?: boolean;
   revalidationHandlers?: typeof getRevalidationOnServerHandlers;
-  control: Control<TFieldValues>;
+  form: UseFormReturn<TFieldValues>;
   labelProps?: ComponentProps<typeof FormLabel>;
-  inputProps?: InputProps;
-  textareaProps?: TextareaProps;
+  inputProps?: ComponentProps<typeof Input>;
+  textareaProps?: ComponentProps<typeof Textarea>;
   dateProps?: ComponentProps<typeof Calendar>;
-  descriptionProps?: FormDescriptionProps;
+  descriptionProps?: ComponentProps<typeof FormDescription>;
 };
 
 const FormController = <
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>,
 >({
   type,
   name,
@@ -47,7 +49,7 @@ const FormController = <
   showLabel = false,
   showDescription = false,
   revalidationHandlers,
-  control,
+  form,
   labelProps,
   inputProps,
   textareaProps,
@@ -57,7 +59,7 @@ const FormController = <
   return (
     <Controller
       name={name}
-      control={control}
+      control={form.control}
       render={({ field, fieldState: { error } }) => {
         const { name } = field;
         const fieldId = `form-${name}`;
@@ -66,12 +68,23 @@ const FormController = <
         const message = error?.message;
         const props = {
           id: fieldId,
-          isError: isError,
+          isError,
           "aria-describedby": formDescriptionId,
           "aria-invalid": isError,
           ...field,
-          ...revalidationHandlers?.(name),
+          ...revalidationHandlers?.(
+            form as UseFormReturn,
+            field as ControllerRenderProps,
+          ),
         };
+        const Description = (
+          <FormDescription
+            id={formDescriptionId}
+            message={message}
+            isError={isError}
+            {...descriptionProps}
+          />
+        );
         let FormField: ReactNode;
         if (type === "input") {
           FormField = <Input size="large" {...props} {...inputProps} />;
@@ -89,14 +102,7 @@ const FormController = <
         }
         return (
           <div className={clsx(itemDefaultStyle)}>
-            {showDescription && descriptionPosition === "top" && (
-              <FormDescription
-                id={formDescriptionId}
-                message={message}
-                isError={isError}
-                {...descriptionProps}
-              />
-            )}
+            {showDescription && descriptionPosition === "top" && Description}
 
             {showLabel && labelPosition === "top" && (
               <FormLabel
@@ -116,54 +122,10 @@ const FormController = <
               <FormLabel htmlFor={fieldId} isError={isError} {...labelProps} />
             )}
 
-            {showDescription && descriptionPosition === "bottom" && (
-              <FormDescription
-                id={formDescriptionId}
-                message={message}
-                isError={isError}
-                {...descriptionProps}
-              />
-            )}
+            {showDescription && descriptionPosition === "bottom" && Description}
           </div>
         );
       }}
-    />
-  );
-};
-
-const FormLabel = forwardRef<
-  HTMLLabelElement,
-  ComponentProps<"label"> & { isError?: boolean }
->(({ className, isError, ...props }, ref) => {
-  return (
-    <label
-      ref={ref}
-      className={clsx(className, isError && errorLabelStyle)}
-      {...props}
-    />
-  );
-});
-
-type FormDescriptionProps = {
-  showError?: boolean;
-  showErrorIcon?: boolean;
-} & SupportingTextProps;
-
-const FormDescription = ({
-  message,
-  isError,
-  showError = true,
-  showErrorIcon = true,
-  ...props
-}: FormDescriptionProps) => {
-  if (!message) return null;
-
-  return (
-    <SupportingText
-      isError={showError && isError}
-      hasErrorIcon={showErrorIcon && isError}
-      message={message}
-      {...props}
     />
   );
 };
