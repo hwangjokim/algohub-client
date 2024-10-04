@@ -91,7 +91,9 @@ const Carousel = ({ length, children }: CarouselProps) => {
 
         <div className={sliderWrapperStyle}>{children}</div>
 
-        <Arrow position="right" onClick={handleNext} />
+        {currentIndex < length - slideCount && (
+          <Arrow position="right" onClick={handleNext} />
+        )}
       </div>
     </CarouselContext.Provider>
   );
