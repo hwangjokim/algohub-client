@@ -1,14 +1,25 @@
-import { Controls, Markdown, Primary, Stories, Subtitle, Title, useOf } from "@storybook/blocks";
+import {
+  Controls,
+  Markdown,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+  useOf,
+} from "@storybook/blocks";
 import type { ComponentPropsWithoutRef } from "react";
 
 const parseJSDoc = (description: string) => {
-  const paramMatches = description.match(/@param\s+(?:\{([^}]*)\}\s+)?(\w+)\s+(.+)/g)  || [];
+  const paramMatches =
+    description.match(/@param\s+(?:\{([^}]*)\}\s+)?(\w+)\s+(.+)/g) || [];
   const exampleMatches = description.match(/@example\s+([\s\S]*)/) || [];
 
   const params = paramMatches.map((param) => {
     // 각각의 @param 항목에서 type, name, description을 추출하는 정규식
-    const [_, type, name, desc] = param.match(/@param\s+(?:\{([^}]*)\}\s+)?(\w+)\s+(.+)/)!;
-    return {type, name, desc};
+    const [_, type, name, desc] = param.match(
+      /@param\s+(?:\{([^}]*)\}\s+)?(\w+)\s+(.+)/,
+    )!;
+    return { type, name, desc };
   });
   const example = exampleMatches.length > 0 ? exampleMatches[1].trim() : null;
 
@@ -57,7 +68,9 @@ const getDescriptionFromResolvedOf = (resolvedOf: ReturnType<typeof useOf>) => {
   }
 };
 
-const ModifiedDescription = (props: ComponentPropsWithoutRef<typeof Markdown>) => {
+const ModifiedDescription = (
+  props: ComponentPropsWithoutRef<typeof Markdown>,
+) => {
   const { of } = props;
 
   if ("of" in props && of === undefined) {
@@ -82,10 +95,9 @@ const ModifiedDescription = (props: ComponentPropsWithoutRef<typeof Markdown>) =
         <>
           <h3>@Param</h3>
           <ul>
-            {params.map(({name, type, desc}, index) => (
+            {params.map(({ name, type, desc }, index) => (
               <li key={index}>
-                <strong>{name}</strong> {type && <em>{type}</em>} :{" "}
-                {desc}
+                <strong>{name}</strong> {type && <em>{type}</em>} : {desc}
               </li>
             ))}
           </ul>
