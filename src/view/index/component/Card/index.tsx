@@ -1,14 +1,12 @@
-import type React from "react";
-import type { PropsWithChildren } from "react";
+import clsx from "clsx";
+import type { ComponentProps } from "react";
 import { cardStyle } from "./index.css";
 
-interface CardProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    PropsWithChildren {}
+type CardProps = ComponentProps<'div'>
 
-const Card = ({ children, ...props }: CardProps) => {
+const Card = ({ className, children, ...props }: CardProps) => {
   return (
-    <div className={cardStyle} {...props}>
+    <div className={clsx(cardStyle, className)} {...props}>
       {children}
     </div>
   );
