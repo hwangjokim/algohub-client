@@ -64,6 +64,7 @@ const Modal = ({
             <div className={backgroundStyle} />
             <dialog
               aria-hidden={!isOpen}
+              aria-modal={isOpen}
               ref={closeRef}
               className={dialogStyle}
               {...props}
