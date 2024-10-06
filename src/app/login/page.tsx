@@ -1,8 +1,8 @@
 "use client";
 import Modal from "@/common/component/Modal";
 import AuthHeader from "@/view/index/component/AuthHeader";
+import Card from "@/view/index/component/Card";
 import Footer from "@/view/index/component/Footer";
-import Card from "@/view/login/component/Card";
 import Container from "@/view/login/component/Container";
 import Heading from "@/view/login/component/Heading";
 import LoginForm from "@/view/login/component/LoginForm";
