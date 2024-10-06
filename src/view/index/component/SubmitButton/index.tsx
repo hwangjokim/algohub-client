@@ -1,6 +1,6 @@
 import Button from "@/common/component/Button";
-import { buttonStyle } from "./index.css";
 import type { ComponentProps } from "react";
+import { buttonStyle } from "./index.css";
 
 const SubmitButton = ({ ...props }: ComponentProps<typeof Button>) => {
   return (
