@@ -54,6 +54,7 @@ const Modal = ({ isOpen, onClose, children, ...props }: ModalProps) => {
             <div className={backgroundStyle} />
             <dialog
               aria-hidden={!isOpen}
+              aria-modal={isOpen}
               ref={closeRef}
               className={dialogStyle}
               {...props}

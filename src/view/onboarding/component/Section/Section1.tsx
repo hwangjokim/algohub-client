@@ -30,10 +30,10 @@ const Section1 = () => {
     });
   };
   const handleLoginClick = () => {
-    router.push("/login");
+    router.push("/login", { scroll: false });
   };
   const handleSignupClick = () => {
-    router.push("/signup");
+    router.push("/signup", { scroll: false });
   };
   return (
     <section
