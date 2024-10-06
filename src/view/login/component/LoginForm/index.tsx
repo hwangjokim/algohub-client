@@ -3,17 +3,21 @@ import SubmitButton from "@/view/index/component/SubmitButton";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
-import { loginSchema } from "../../api/schema";
+import { loginSchema, loginSchemaMessage } from "../../api/schema";
 import { contentStyle, formStyle } from "./index.css";
 
 const LoginForm = () => {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     mode: "onTouched",
+    defaultValues: {
+      id: "",
+      password: "",
+    },
   });
 
   const isError = !!Object.keys(form.formState.errors).length;
-  const message = isError ? "아이디 혹은 비밀번호를 확인해주세요" : undefined;
+  const message = isError ? loginSchemaMessage : undefined;
   const disabled = !form.formState.isValid;
 
   const onSubmit = (_values: z.infer<typeof loginSchema>) => {
