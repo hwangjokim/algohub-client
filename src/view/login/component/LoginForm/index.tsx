@@ -20,7 +20,7 @@ const LoginForm = () => {
 
   const isError = !!Object.keys(form.formState.errors).length;
   const message = isError ? loginSchemaMessage : undefined;
-  const disabled = !form.formState.isValid;
+  const isActive = form.formState.isValid;
 
   const onSubmit = (_values: z.infer<typeof loginSchema>) => {
     // console.log({ values });
@@ -55,7 +55,7 @@ const LoginForm = () => {
             }}
           />
         </div>
-        <SubmitButton onClick={handleClick}>로그인하기</SubmitButton>
+        <SubmitButton isActive={isActive} onClick={handleClick}>로그인하기</SubmitButton>
       </form>
     </Form>
   );
