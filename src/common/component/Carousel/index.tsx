@@ -35,7 +35,7 @@ const Carousel = ({ length, children }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemRef = useRef<HTMLDivElement | null>(null);
   const [slideCount, setSlideCount] = useState(
-    window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3,
+    window.innerWidth < 768 ? 2 : window.innerWidth < 1024 ? 3 : 4,
   );
 
   const hasLeft = currentIndex > 0;
@@ -43,9 +43,9 @@ const Carousel = ({ length, children }: CarouselProps) => {
 
   useMediaQuery(
     {
-      mobile: () => setSlideCount(1),
-      tablet: () => setSlideCount(2),
-      desktop: () => setSlideCount(3),
+      mobile: () => setSlideCount(2),
+      tablet: () => setSlideCount(3),
+      desktop: () => setSlideCount(4),
     },
     [slideCount],
   );
