@@ -2,6 +2,7 @@
 import UserDashboardPage from "@/app/user/page";
 import { IcnBtnDelete } from "@/asset/svg";
 import Modal from "@/common/component/Modal";
+import { useToast } from "@/common/hook/useToast";
 import CreateGroupForm from "@/view/user/create-group/component/CreateGroupForm";
 import {
   exitStyle,
@@ -9,9 +10,19 @@ import {
 } from "@/view/user/create-group/component/index.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const CreateGroupPage = () => {
   const router = useRouter();
+  const [isSuccess, setIsSuccess] = useState(false);
+  const { showToast } = useToast();
+
+  useEffect(() => {
+    if (isSuccess) {
+      showToast("스터디가 정상적으로 만들어졌어요.", "success");
+    }
+  }, [isSuccess]);
+
   return (
     <>
       <UserDashboardPage />
@@ -26,7 +37,7 @@ const CreateGroupPage = () => {
               role="button"
             />
           </Link>
-          <CreateGroupForm />
+          <CreateGroupForm setIsSuccess={setIsSuccess} />
         </div>
       </Modal>
     </>

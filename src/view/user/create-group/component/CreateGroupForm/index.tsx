@@ -4,10 +4,14 @@ import { groupSchema } from "@/shared/api/schema";
 import GroupInfoForm from "@/shared/component/GroupInfoForm";
 import { submitBtnStyle } from "@/view/user/create-group/component/CreateGroupForm/index.css";
 import { zodResolver } from "@hookform/resolvers/zod";
+import type { Dispatch, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
 
-const CreateGroupForm = () => {
+type CreateGroupFormProps = {
+  setIsSuccess: Dispatch<SetStateAction<boolean>>;
+};
+const CreateGroupForm = ({ setIsSuccess }: CreateGroupFormProps) => {
   const form = useForm<z.infer<typeof groupSchema>>({
     resolver: zodResolver(groupSchema),
     mode: "onTouched",
@@ -27,6 +31,7 @@ const CreateGroupForm = () => {
         type="submit"
         size="large"
         disabled={!form.formState.isValid}
+        onClick={() => setIsSuccess(true)}
       >
         <IcnPlus fill="white" width={24} height={24} />
         스터디 만들기
