@@ -1,6 +1,8 @@
+import { IcnPlus } from "@/asset/svg";
+import Button from "@/common/component/Button";
 import { groupSchema } from "@/shared/api/schema";
 import GroupInfoForm from "@/shared/component/GroupInfoForm";
-import { formatDate } from "@/shared/util/date";
+import { submitBtnStyle } from "@/view/user/create-group/component/CreateGroupForm/index.css";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
@@ -11,16 +13,24 @@ const CreateGroupForm = () => {
     mode: "onTouched",
     defaultValues: {
       image: "",
-      name: "ㅎㅇ",
-      startDate: formatDate(new Date()),
-      endDate: formatDate(new Date()),
-      desc: "해당 스터디는 숭실대학교 학생들을 대상으로 \n한 알고리즘 스터디입니다.",
+      name: "",
+      startDate: new Date(),
+      endDate: new Date(),
+      desc: "",
     },
   });
 
   return (
     <GroupInfoForm form={form}>
-      <button disabled={!form.formState.isValid}>제출하기</button>
+      <Button
+        className={submitBtnStyle}
+        type="submit"
+        size="large"
+        disabled={!form.formState.isValid}
+      >
+        <IcnPlus fill="white" width={24} height={24} />
+        스터디 만들기
+      </Button>
     </GroupInfoForm>
   );
 };

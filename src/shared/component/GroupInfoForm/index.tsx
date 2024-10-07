@@ -1,3 +1,4 @@
+import SupportingText from "@/common/component/SupportingText";
 import type { groupSchema } from "@/shared/api/schema";
 import DateFormController from "@/shared/component/GroupInfoForm/DateFormController";
 import DescFormController from "@/shared/component/GroupInfoForm/DescFormController";
@@ -34,6 +35,13 @@ const GroupInfoForm = ({
         <NameFormController form={form} variant={variant} />
         <div>
           <p className={formLabelStyle({ variant })}>스터디 기간</p>
+          {!!form.formState.errors.endDate && (
+            <SupportingText
+              isError
+              hasErrorIcon
+              message={form.formState.errors.endDate.message}
+            />
+          )}
           <div className={dateWrapper}>
             <DateFormController
               form={form}

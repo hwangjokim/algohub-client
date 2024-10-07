@@ -6,6 +6,7 @@ import {
 } from "@/shared/component/GroupInfoForm/index.css";
 
 const NameFormController = ({ form, variant }: GroupFormProps) => {
+  const isError = !!form.formState.errors.name;
   return (
     <FormController
       form={form}
@@ -18,8 +19,14 @@ const NameFormController = ({ form, variant }: GroupFormProps) => {
         className: formLabelStyle({ variant }),
       }}
       inputProps={{
-        placeholder: form.getValues("name"),
+        placeholder: "스터디 이름을 입력해주세요. (최대 15자)",
         className: nameInputStyle({ variant }),
+      }}
+      showDescription
+      descriptionPosition="bottom"
+      descriptionProps={{
+        isError,
+        message: isError ? form.formState.errors.name?.message : undefined,
       }}
     />
   );
