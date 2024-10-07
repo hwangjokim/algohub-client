@@ -1,11 +1,13 @@
 import { z } from "zod";
 
+const dateRegex = /^\d{4}\.\d{2}\.\d{2}$/;
+
 export const groupSchema = z
   .object({
     image: z.string(),
     name: z.string().max(15),
-    startDate: z.date(),
-    endDate: z.date(),
+    startDate: z.string().regex(dateRegex),
+    endDate: z.string().regex(dateRegex),
     desc: z.string(),
   })
   .refine((data) => data.endDate >= data.startDate, {
