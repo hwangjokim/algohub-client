@@ -1,4 +1,5 @@
 import { theme } from "@/styles/themes.css";
+import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 export const formStyle = recipe({
@@ -20,7 +21,7 @@ export const formStyle = recipe({
   },
 });
 
-export const nameFormLabelStyle = recipe({
+export const formLabelStyle = recipe({
   base: {
     color: theme.color.white,
   },
@@ -40,10 +41,8 @@ export const nameFormLabelStyle = recipe({
 export const nameFormInputStyle = recipe({
   base: {
     color: theme.color.white,
-    selectors: {
-      "&::placeholder": {
-        color: theme.color.mg4,
-      },
+    "::placeholder": {
+      color: theme.color.mg4,
     },
   },
   variants: {
@@ -56,4 +55,26 @@ export const nameFormInputStyle = recipe({
       },
     },
   },
+});
+
+export const dateLabelStyle = recipe({
+  base: {
+    color: theme.color.mg3,
+  },
+
+  variants: {
+    variant: {
+      "create-group": {
+        ...theme.font.Title2_M_16,
+      },
+      "group-setting": {
+        ...theme.font.Caption1_R_12,
+      },
+    },
+  },
+});
+
+export const dateInputStyle = style({
+  color: theme.color.mg4,
+  ...theme.font.Caption1_R_12,
 });

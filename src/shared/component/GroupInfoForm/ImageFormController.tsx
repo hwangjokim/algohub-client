@@ -1,15 +1,15 @@
 import { FormController } from "@/shared/component/Form";
 import type { GroupFormProps } from "@/shared/component/GroupInfoForm";
 import {
-  formLabelStyle,
-  nameFormInputStyle,
+  formLabelStyle
+  nameFormInputStyletyletyletyletyletyletyletyletyletyle,
 } from "@/shared/component/GroupInfoForm/index.css";
 
-const NameFormController = ({ form, variant }: GroupFormProps) => {
+const ImageFormController = ({ form, variant }: GroupFormProps) => {
   return (
     <FormController
       form={form}
-      name="name"
+      name="image"
       type="input"
       showLabel
       labelPosition="top"
@@ -25,4 +25,4 @@ const NameFormController = ({ form, variant }: GroupFormProps) => {
   );
 };
 
-export default NameFormController;
+export default ImageFormController;
