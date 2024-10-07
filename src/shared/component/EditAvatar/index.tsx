@@ -7,32 +7,30 @@ import { iconStyle, inputStyle } from "@/shared/component/EditAvatar/index.css";
 import type { ImageProps } from "next/image";
 import { type ChangeEvent, useState } from "react";
 
-interface EditAvatarProps extends Omit<ImageProps, "src" | "alt"> {
+interface EditAvatarProps extends Omit<ImageProps, "src" | "alt" | "onChange"> {
   src?: string;
   alt?: string;
-  onImageChange: (image: string) => void;
+  onChange?: (img: string | ArrayBuffer | null) => void;
 }
 
 const EditAvatar = ({
   src = "",
   alt = "프로필 사진 수정",
-  onImageChange,
+  onChange,
   ...props
 }: EditAvatarProps) => {
   const [pickedImage, setPickedImage] = useState<string | null>(src || null);
-
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file) {
-      setPickedImage(src);
-      return;
-    }
+    if (!file) return;
+    if (pickedImage && !file.type.includes("image")) return;
 
     const fileReader = new FileReader();
     fileReader.onload = () => {
       setPickedImage(fileReader.result as string);
-      onImageChange(fileReader.result as string);
+      onChange?.(fileReader.result);
     };
+
     fileReader.readAsDataURL(file);
   };
 
