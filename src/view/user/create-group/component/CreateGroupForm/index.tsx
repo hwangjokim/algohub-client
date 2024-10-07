@@ -1,5 +1,6 @@
 import { groupSchema } from "@/shared/api/schema";
 import GroupInfoForm from "@/shared/component/GroupInfoForm";
+import { formatDate } from "@/shared/util/date";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
@@ -11,8 +12,8 @@ const CreateGroupForm = () => {
     defaultValues: {
       image: "",
       name: "ㅎㅇ",
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: formatDate(new Date()),
+      endDate: formatDate(new Date()),
       desc: "",
     },
   });

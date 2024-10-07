@@ -1,7 +1,11 @@
 import type { groupSchema } from "@/shared/api/schema";
 import DateFormController from "@/shared/component/GroupInfoForm/DateFormController";
 import NameFormController from "@/shared/component/GroupInfoForm/NameFormController";
-import { formStyle } from "@/shared/component/GroupInfoForm/index.css";
+import {
+  dateWrapper,
+  formLabelStyle,
+  formStyle,
+} from "@/shared/component/GroupInfoForm/index.css";
 import { Form, type UseFormReturn } from "react-hook-form";
 import type { z } from "zod";
 
@@ -28,16 +32,19 @@ const GroupInfoForm = ({
       >
         <NameFormController form={form} variant={variant} />
         <div>
-          <DateFormController
-            form={form}
-            variant={variant}
-            dateType="startDate"
-          />
-          <DateFormController
-            form={form}
-            variant={variant}
-            dateType="endDate"
-          />
+          <p className={formLabelStyle({ variant })}>스터디 기간</p>
+          <div className={dateWrapper}>
+            <DateFormController
+              form={form}
+              variant={variant}
+              dateType="startDate"
+            />
+            <DateFormController
+              form={form}
+              variant={variant}
+              dateType="endDate"
+            />
+          </div>
         </div>
         {children}
       </form>

@@ -23,6 +23,7 @@ export const formStyle = recipe({
 
 export const formLabelStyle = recipe({
   base: {
+    marginBottom: "0.3rem",
     color: theme.color.white,
   },
 
@@ -57,8 +58,14 @@ export const nameFormInputStyle = recipe({
   },
 });
 
+export const dateWrapper = style({
+  display: "flex",
+  gap: "2.6rem",
+});
+
 export const dateLabelStyle = recipe({
   base: {
+    marginBottom: "0.3rem",
     color: theme.color.mg3,
   },
 

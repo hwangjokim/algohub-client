@@ -17,15 +17,14 @@ const DateFormController = ({
     <FormController
       form={form}
       name={dateType}
-      type="input"
+      type="date"
       showLabel
       labelPosition="top"
       labelProps={{
         children: dateType === "startDate" ? "시작 일자" : "종료 일자",
         className: dateLabelStyle({ variant }),
       }}
-      inputProps={{
-        placeholder: form.getValues("name"),
+      dateProps={{
         className: dateInputStyle,
       }}
     />
