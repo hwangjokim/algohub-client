@@ -70,7 +70,7 @@ export const LoginForm: Story = {
                 showDescription
                 descriptionPosition="top"
                 descriptionProps={{ isError, message, id: "form-description" }} // description 공유
-                inputProps={{
+                fieldProps={{
                   className: itemStyle.input,
                   placeholder: "아이디",
                   "aria-describedby": "form-description", // description 공유
@@ -80,7 +80,7 @@ export const LoginForm: Story = {
                 form={form}
                 type="input"
                 name="password"
-                inputProps={{
+                fieldProps={{
                   className: itemStyle.input,
                   placeholder: "비밀번호",
                   "aria-describedby": "form-description", // description 공유
@@ -150,7 +150,7 @@ export const PasswordConfirm: Story = {
                 form={form}
                 type="input"
                 name="password"
-                inputProps={{
+                fieldProps={{
                   className: itemStyle.input,
                   placeholder: "비밀번호",
                   "aria-describedby": "password-description", // description 공유 (confirm password)
@@ -170,7 +170,7 @@ export const PasswordConfirm: Story = {
                   message,
                   id: "password-description", // description 공유 (confirm password)
                 }}
-                inputProps={{
+                fieldProps={{
                   className: itemStyle.input,
                   placeholder: "비밀번호 확인",
                   "aria-describedby": "password-description", // description 공유 (confirm password)
@@ -265,7 +265,7 @@ export const ValidateOnServer: Story = {
                   className: itemStyle.label,
                   children: "닉네임(서버에서 검증)",
                 }}
-                inputProps={{
+                fieldProps={{
                   className: itemStyle.input,
                   placeholder: "닉네임",
                 }}
@@ -285,7 +285,7 @@ export const ValidateOnServer: Story = {
                   className: itemStyle.label,
                   children: "백준 아이디(서버에서 검증)",
                 }}
-                inputProps={{
+                fieldProps={{
                   className: itemStyle.input,
                   placeholder: "백준 아이디",
                 }}
@@ -304,7 +304,7 @@ export const ValidateOnServer: Story = {
                   className: itemStyle.label,
                   children: "소개(서버 x)",
                 }}
-                inputProps={{
+                fieldProps={{
                   className: itemStyle.input,
                   placeholder: "소개",
                 }}
@@ -314,6 +314,58 @@ export const ValidateOnServer: Story = {
               회원가입하기
             </Button>
           </div>
+        </form>
+      </Form>
+    );
+  },
+};
+
+export const Profile: Story = {
+  render: () => {
+    const postSchema = z.object({
+      profileImage: z.string(),
+
+      title: z
+        .string()
+        .min(6)
+        .max(12)
+        .regex(/^[a-zA-Z가-하0-9]+$/),
+    });
+
+    const form = useForm<z.infer<typeof postSchema>>({
+      resolver: zodResolver(postSchema),
+      mode: "onTouched",
+      defaultValues: {
+        title: "",
+        profileImage: "",
+      },
+    });
+    const onSubmit = (values: z.infer<typeof postSchema>) => {
+      console.log({ values });
+    };
+
+    return (
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className={storyFormStyle({ type: "post" })}
+        >
+          <div className={storyContentStyle.profileContents}>
+            <FormController form={form} type="image" name="profileImage" />
+
+            <FormController
+              form={form}
+              type="input"
+              name="title"
+              showDescription
+              fieldProps={{
+                placeholder: "제목",
+              }}
+            />
+          </div>
+          <Button type="submit" size="medium">
+            등록
+          </Button>
         </form>
       </Form>
     );
@@ -350,7 +402,7 @@ export const DateTypeWithErrorMsg: Story = {
     });
 
     const onSubmit = (values: z.infer<typeof postSchema>) => {
-      alert(`${values.startDate.toLocaleDateString()}, ${values.title}`);
+      console.log({ values });
     };
 
     return (
@@ -365,7 +417,7 @@ export const DateTypeWithErrorMsg: Story = {
               type="input"
               name="title"
               showDescription
-              inputProps={{
+              fieldProps={{
                 placeholder: "제목",
               }}
             />
@@ -380,7 +432,7 @@ export const DateTypeWithErrorMsg: Story = {
                 labelProps={{
                   children: "시작 일자",
                 }}
-                dateProps={{
+                fieldProps={{
                   ariaDescribedBy: "date-description", // description 공유 (start date)
                 }}
                 descriptionProps={{
@@ -400,7 +452,7 @@ export const DateTypeWithErrorMsg: Story = {
                 labelProps={{
                   children: "종료 일자",
                 }}
-                dateProps={{
+                fieldProps={{
                   ariaDescribedBy: "date-description", // description 공유 (start date)
                 }}
               />
