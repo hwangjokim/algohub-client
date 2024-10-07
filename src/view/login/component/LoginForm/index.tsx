@@ -1,3 +1,4 @@
+import { useToast } from "@/common/hook/useToast";
 import { Form, FormController } from "@/shared/component/Form";
 import SubmitButton from "@/view/index/component/SubmitButton";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,6 +16,7 @@ const LoginForm = () => {
       password: "",
     },
   });
+  const { showToast } = useToast();
 
   const isError = !!Object.keys(form.formState.errors).length;
   const message = isError ? loginSchemaMessage : undefined;
@@ -22,6 +24,9 @@ const LoginForm = () => {
 
   const onSubmit = (_values: z.infer<typeof loginSchema>) => {
     // console.log({ values });
+  };
+  const handleClick = () => {
+    if (!form.formState.isValid) showToast(loginSchemaMessage, "error");
   };
   return (
     <Form {...form}>
@@ -50,7 +55,7 @@ const LoginForm = () => {
             }}
           />
         </div>
-        <SubmitButton disabled={disabled}>로그인하기</SubmitButton>
+        <SubmitButton onClick={handleClick}>로그인하기</SubmitButton>
       </form>
     </Form>
   );
