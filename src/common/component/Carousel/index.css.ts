@@ -117,7 +117,7 @@ export const arrowStyle = recipe({
 
     margin: "auto 0",
 
-    zIndex: theme.zIndex.middle,
+    zIndex: theme.zIndex.high,
 
     border: "none",
     borderRadius: "16px",

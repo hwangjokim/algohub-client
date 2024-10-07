@@ -38,6 +38,9 @@ const Carousel = ({ length, children }: CarouselProps) => {
     window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3,
   );
 
+  const hasLeft = currentIndex > 0;
+  const hasRight = currentIndex < length - slideCount;
+
   useMediaQuery(
     {
       mobile: () => setSlideCount(1),
@@ -83,17 +86,15 @@ const Carousel = ({ length, children }: CarouselProps) => {
     <CarouselContext.Provider value={{ length, currentIndex, itemRef }}>
       <div
         className={carouselStyle({
-          hasLeft: currentIndex > 0,
-          hasRight: currentIndex < length - slideCount,
+          hasLeft,
+          hasRight,
         })}
       >
-        {currentIndex > 0 && <Arrow position="left" onClick={handlePrev} />}
+        {hasLeft && <Arrow position="left" onClick={handlePrev} />}
 
         <div className={sliderWrapperStyle}>{children}</div>
 
-        {currentIndex < length - slideCount && (
-          <Arrow position="right" onClick={handleNext} />
-        )}
+        {hasRight && <Arrow position="right" onClick={handleNext} />}
       </div>
     </CarouselContext.Provider>
   );

@@ -13,7 +13,7 @@ const meta: Meta<typeof Carousel> = {
     (Story) => (
       <div
         style={{
-          width: "100vw",
+          width: "90vw",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
