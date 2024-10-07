@@ -3,6 +3,7 @@ import UserDashboardPage from "@/app/user/page";
 import { IcnBtnDelete } from "@/asset/svg";
 import Modal from "@/common/component/Modal";
 import EditAvatar from "@/shared/component/EditAvatar";
+import CreateGroupForm from "@/view/user/create-group/component/CreateGroupForm";
 import {
   exitStyle,
   wrapper,
@@ -32,6 +33,7 @@ const CreateGroupPage = () => {
             />
           </Link>
           <EditAvatar src={groupImg} onImageChange={handleImageChange} />
+          <CreateGroupForm />
         </div>
       </Modal>
     </>
