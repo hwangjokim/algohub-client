@@ -1,5 +1,7 @@
+import TestTable from "@/shared/component/Table";
+
 const UserDashboardPage = () => {
-  return <div>UserDashboardPage</div>;
+  return <div><TestTable /></div>;
 };
 
 export default UserDashboardPage;
