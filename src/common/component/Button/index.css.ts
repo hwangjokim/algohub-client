@@ -9,11 +9,6 @@ export const buttonStyle = recipe({
     alignItems: "center",
 
     width: "100%",
-
-    ":disabled": {
-      opacity: "0.7",
-      cursor: "not-allowed",
-    },
   },
   variants: {
     size: {
@@ -36,16 +31,58 @@ export const buttonStyle = recipe({
     color: {
       purple: {
         color: theme.color.white,
-        backgroundColor: theme.color.purple,
+        backgroundColor: theme.color.purple2,
+        ":hover": {
+          backgroundColor: theme.color.purple,
+        },
       },
       gray: {
         color: theme.color.lg2,
-        backgroundColor: theme.color.mg4,
+        backgroundColor: theme.color.mg3,
+        ":hover": {
+          backgroundColor: theme.color.mg4,
+        },
       },
       lg: {
         color: theme.color.purple2,
         backgroundColor: theme.color.lg2,
+        ":hover": {
+          backgroundColor: theme.color.wg,
+        },
       },
     },
+    isActive: {
+      true: {},
+      false: {},
+    },
   },
+  compoundVariants: [
+    {
+      variants: {
+        color: "purple",
+        isActive: true,
+      },
+      style: {
+        backgroundColor: theme.color.purple,
+      },
+    },
+    {
+      variants: {
+        color: "lg",
+        isActive: true,
+      },
+      style: {
+        backgroundColor: theme.color.wg,
+      },
+    },
+    {
+      variants: {
+        color: "gray",
+        isActive: true,
+      },
+      style: {
+        backgroundColor: theme.color.mg4,
+      },
+    },
+  ],
 });
