@@ -4,6 +4,7 @@ import { IcnBtnDelete } from "@/asset/svg";
 import Modal from "@/common/component/Modal";
 import { useToast } from "@/common/hook/useToast";
 import CreateGroupForm from "@/view/user/create-group/component/CreateGroupForm";
+import LinkWithCopy from "@/view/user/create-group/component/LinkWithCopy";
 import {
   exitStyle,
   wrapper,
@@ -14,7 +15,7 @@ import { useEffect, useState } from "react";
 
 const CreateGroupPage = () => {
   const router = useRouter();
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
   const { showToast } = useToast();
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const CreateGroupPage = () => {
             />
           </Link>
           <CreateGroupForm setIsSuccess={setIsSuccess} />
+          {isSuccess && <LinkWithCopy link="algohub.kr" />}
         </div>
       </Modal>
     </>

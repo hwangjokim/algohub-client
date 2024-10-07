@@ -10,8 +10,7 @@ export const wrapper = style({
   position: "relative",
 
   width: "39.5rem",
-  height: "67.9rem",
-  padding: "3.6rem 3rem 0",
+  padding: "3.6rem 3rem 3.1rem",
 
   borderRadius: "16px",
   backgroundColor: theme.color.mg6,
