@@ -29,9 +29,15 @@ const JoinGroupPage = () => {
     <>
       <UserDashboardPage />
       <Modal isOpen={true} onClose={() => router.push("/user")}>
-        <section className={wrapper}>
+        <div className={wrapper}>
           <Link href="/user">
-            <IcnBtnDelete width={10} height={10} className={exitStyle} />
+            <IcnBtnDelete
+              width={10}
+              height={10}
+              className={exitStyle}
+              aria-label="Close JoinGroup Modal"
+              role="button"
+            />
           </Link>
           <GroupInfoCard groupInfo={tmpGroupInfo} />
           <DecisionPrompt owner={tmpGroupInfo.owner} />
@@ -43,7 +49,7 @@ const JoinGroupPage = () => {
               수락하기
             </Button>
           </div>
-        </section>
+        </div>
       </Modal>
     </>
   );

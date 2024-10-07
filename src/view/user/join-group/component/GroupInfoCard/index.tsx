@@ -15,12 +15,12 @@ const GroupInfoCard = ({ groupInfo }: { groupInfo: GroupJoinResponse }) => {
   return (
     <section className={infoCardWrapper}>
       <IcnGroupInfoCard width={246} height={341} />
-      <section className={infoWrapper}>
+      <div className={infoWrapper}>
         <Avatar src={tmpSrc} alt={`${name} 그룹 사진`} size="large" />
-        <p className={groupNameStyle}>{name}</p>
+        <h3 className={groupNameStyle}>{name}</h3>
         <GroupDateInfo startDate={startDate} endDate={endDate} />
-        <p className={descStyle}>{description}</p>
-      </section>
+        <h4 className={descStyle}>{description}</h4>
+      </div>
     </section>
   );
 };

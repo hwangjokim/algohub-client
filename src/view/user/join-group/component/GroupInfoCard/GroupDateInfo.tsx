@@ -10,12 +10,16 @@ interface GroupDateInfoProps {
 }
 const GroupDateInfo = ({ startDate, endDate }: GroupDateInfoProps) => {
   return (
-    <section className={groupDateInfoWrapper}>
+    <div className={groupDateInfoWrapper}>
       <IcnCalenderCard width={20} height={20} />
-      <span className={groupDateStyle}>{startDate}</span>
+      <time dateTime={startDate} className={groupDateStyle}>
+        {startDate}
+      </time>
       <span className={groupDateStyle}>~</span>
-      <span className={groupDateStyle}>{endDate}</span>
-    </section>
+      <time dateTime={endDate} className={groupDateStyle}>
+        {endDate}
+      </time>
+    </div>
   );
 };
 
