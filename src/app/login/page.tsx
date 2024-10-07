@@ -1,5 +1,6 @@
 "use client";
 import Modal from "@/common/component/Modal";
+import ToastProvider from "@/common/component/Toast";
 import AuthHeader from "@/view/index/component/AuthHeader";
 import Card from "@/view/index/component/Card";
 import Footer from "@/view/index/component/Footer";
@@ -26,6 +27,7 @@ const LoginPage = () => {
           />
         </Card>
       </Container>
+      <ToastProvider />
     </Modal>
   );
 };
