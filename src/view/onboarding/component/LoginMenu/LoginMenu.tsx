@@ -1,6 +1,6 @@
 import Button from "@/common/component/Button";
-import { LoginButtonStyle } from "@/shared/component/Header/LoginMenu.css";
 import { buttonContainer } from "@/shared/component/Header/index.css";
+import { LoginButtonStyle } from "@/view/onboarding/component/LoginMenu/LoginMenu.css";
 import { useRouter } from "next/navigation";
 
 const LoginMenu = () => {

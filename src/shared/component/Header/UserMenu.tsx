@@ -3,8 +3,8 @@
 import Menu from "@/common/component/Menu/Menu";
 import Profile from "@/shared/component/Header/Profile";
 import { buttonContainer } from "@/shared/component/Header/index.css";
+import LoginMenu from "../../../view/onboarding/component/LoginMenu/LoginMenu";
 import Alarm from "./Alarm/Alarm";
-import LoginMenu from "./LoginMenu";
 
 const UserMenu = () => {
   /* TODO: 로그인 api 부착 후 Atom으로 교체 */
@@ -12,8 +12,8 @@ const UserMenu = () => {
   const isLoggedIn = false;
   // TODO: 알림 기능 구현 시 수정
   const count = 10;
-  
-  if (!isLoggedIn) return <LoginMenu />
+
+  if (!isLoggedIn) return <LoginMenu />;
   return (
     <div className={buttonContainer}>
       <Menu
