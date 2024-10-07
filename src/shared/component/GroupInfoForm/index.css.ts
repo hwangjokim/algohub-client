@@ -39,6 +39,12 @@ export const formLabelStyle = recipe({
   },
 });
 
+export const imageWrapper = style({
+  display: "flex",
+  justifyContent: "center",
+  width: "100%",
+});
+
 export const nameInputStyle = recipe({
   base: {
     color: theme.color.white,
@@ -49,9 +55,11 @@ export const nameInputStyle = recipe({
   variants: {
     variant: {
       "create-group": {
+        padding: "1rem 1.6rem",
         ...theme.font.Title2_M_16,
       },
       "group-setting": {
+        padding: "1rem 8rem",
         ...theme.font.Body1_M_14,
       },
     },
@@ -61,6 +69,7 @@ export const nameInputStyle = recipe({
 export const dateWrapper = style({
   display: "flex",
   gap: "2.6rem",
+  paddingBottom: "0.4rem",
 });
 
 export const dateLabelStyle = recipe({
@@ -82,11 +91,15 @@ export const dateLabelStyle = recipe({
 });
 
 export const dateInputStyle = style({
-  color: theme.color.mg4,
   ...theme.font.Caption1_R_12,
+  "::placeholder": {
+    color: theme.color.mg4,
+  },
 });
 
 export const descInputStyle = style({
+  padding: "0.8rem",
+
   color: theme.color.white,
   ...theme.font.Caption3_M_12,
   "::placeholder": {

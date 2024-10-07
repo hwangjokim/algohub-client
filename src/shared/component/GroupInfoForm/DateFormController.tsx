@@ -24,7 +24,7 @@ const DateFormController = ({
         children: dateType === "startDate" ? "시작 일자" : "종료 일자",
         className: dateLabelStyle({ variant }),
       }}
-      dateProps={{
+      fieldProps={{
         className: dateInputStyle,
       }}
     />

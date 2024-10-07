@@ -18,7 +18,7 @@ const NameFormController = ({ form, variant }: GroupFormProps) => {
         children: "스터디 이름",
         className: formLabelStyle({ variant }),
       }}
-      inputProps={{
+      fieldProps={{
         placeholder: "스터디 이름을 입력해주세요. (최대 15자)",
         className: nameInputStyle({ variant }),
       }}

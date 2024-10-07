@@ -17,7 +17,7 @@ const DescFormController = ({ form, variant }: GroupFormProps) => {
         children: "스터디 소개",
         className: formLabelStyle({ variant }),
       }}
-      textareaProps={{
+      fieldProps={{
         placeholder: "스터디 소개를 입력해주세요.",
         className: descInputStyle,
       }}

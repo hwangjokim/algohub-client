@@ -2,6 +2,7 @@ import SupportingText from "@/common/component/SupportingText";
 import type { groupSchema } from "@/shared/api/schema";
 import DateFormController from "@/shared/component/GroupInfoForm/DateFormController";
 import DescFormController from "@/shared/component/GroupInfoForm/DescFormController";
+import ImageFormController from "@/shared/component/GroupInfoForm/ImageFormController";
 import NameFormController from "@/shared/component/GroupInfoForm/NameFormController";
 import {
   dateWrapper,
@@ -32,16 +33,10 @@ const GroupInfoForm = ({
         className={formStyle({ variant })}
         onSubmit={form.handleSubmit(handleSubmit)}
       >
+        <ImageFormController form={form} />
         <NameFormController form={form} variant={variant} />
         <div>
           <p className={formLabelStyle({ variant })}>스터디 기간</p>
-          {!!form.formState.errors.endDate && (
-            <SupportingText
-              isError
-              hasErrorIcon
-              message={form.formState.errors.endDate.message}
-            />
-          )}
           <div className={dateWrapper}>
             <DateFormController
               form={form}
@@ -54,6 +49,13 @@ const GroupInfoForm = ({
               dateType="endDate"
             />
           </div>
+          {!!form.formState.errors.endDate && (
+            <SupportingText
+              isError
+              hasErrorIcon
+              message={form.formState.errors.endDate.message}
+            />
+          )}
         </div>
         <DescFormController form={form} variant={variant} />
         {children}
