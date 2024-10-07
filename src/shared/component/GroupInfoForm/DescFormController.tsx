@@ -1,28 +1,28 @@
 import { FormController } from "@/shared/component/Form";
 import type { GroupFormProps } from "@/shared/component/GroupInfoForm";
 import {
+  descInputStyle,
   formLabelStyle,
-  nameInputStyle,
 } from "@/shared/component/GroupInfoForm/index.css";
 
-const NameFormController = ({ form, variant }: GroupFormProps) => {
+const DescFormController = ({ form, variant }: GroupFormProps) => {
   return (
     <FormController
       form={form}
-      name="name"
-      type="input"
+      name="desc"
+      type="textarea"
       showLabel
       labelPosition="top"
       labelProps={{
-        children: "스터디 이름",
+        children: "스터디 소개",
         className: formLabelStyle({ variant }),
       }}
       inputProps={{
-        placeholder: form.getValues("name"),
-        className: nameInputStyle({ variant }),
+        placeholder: form.getValues("desc"),
+        className: descInputStyle,
       }}
     />
   );
 };
 
-export default NameFormController;
+export default DescFormController;

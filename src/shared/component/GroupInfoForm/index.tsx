@@ -1,5 +1,6 @@
 import type { groupSchema } from "@/shared/api/schema";
 import DateFormController from "@/shared/component/GroupInfoForm/DateFormController";
+import DescFormController from "@/shared/component/GroupInfoForm/DescFormController";
 import NameFormController from "@/shared/component/GroupInfoForm/NameFormController";
 import {
   dateWrapper,
@@ -46,6 +47,7 @@ const GroupInfoForm = ({
             />
           </div>
         </div>
+        <DescFormController form={form} variant={variant} />
         {children}
       </form>
     </Form>

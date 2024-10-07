@@ -14,7 +14,7 @@ const CreateGroupForm = () => {
       name: "ㅎㅇ",
       startDate: formatDate(new Date()),
       endDate: formatDate(new Date()),
-      desc: "",
+      desc: "해당 스터디는 숭실대학교 학생들을 대상으로 \n한 알고리즘 스터디입니다.",
     },
   });
 

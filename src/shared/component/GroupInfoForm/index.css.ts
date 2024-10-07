@@ -39,7 +39,7 @@ export const formLabelStyle = recipe({
   },
 });
 
-export const nameFormInputStyle = recipe({
+export const nameInputStyle = recipe({
   base: {
     color: theme.color.white,
     "::placeholder": {
@@ -84,4 +84,12 @@ export const dateLabelStyle = recipe({
 export const dateInputStyle = style({
   color: theme.color.mg4,
   ...theme.font.Caption1_R_12,
+});
+
+export const descInputStyle = style({
+  color: theme.color.white,
+  ...theme.font.Caption3_M_12,
+  "::placeholder": {
+    color: theme.color.mg4,
+  },
 });
