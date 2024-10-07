@@ -5,6 +5,7 @@ import type { ButtonHTMLAttributes } from "react";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "small" | "medium" | "large";
   color?: "purple" | "gray" | "lg";
+  isActive?: boolean;
 }
 
 const Button = ({
@@ -12,14 +13,16 @@ const Button = ({
   className,
   size = "small",
   color = "purple",
+  isActive,
   ...props
 }: ButtonProps) => {
   return (
     <button
       className={clsx(
         buttonStyle({
-          size: size,
-          color: color,
+          size,
+          color,
+          isActive,
         }),
         className,
       )}
