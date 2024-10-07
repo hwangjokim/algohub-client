@@ -30,14 +30,8 @@ const JoinGroupPage = () => {
       <UserDashboardPage />
       <Modal isOpen={true} onClose={() => router.push("/user")}>
         <div className={wrapper}>
-          <Link href="/user">
-            <IcnBtnDelete
-              width={10}
-              height={10}
-              className={exitStyle}
-              aria-label="Close JoinGroup Modal"
-              role="button"
-            />
+          <Link href="/user" aria-label="Close JoinGroup Modal">
+            <IcnBtnDelete width={10} height={10} className={exitStyle} />
           </Link>
           <GroupInfoCard groupInfo={tmpGroupInfo} />
           <DecisionPrompt owner={tmpGroupInfo.owner} />
