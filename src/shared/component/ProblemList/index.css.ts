@@ -20,6 +20,10 @@ export const textStyle = style({
   textOverflow: "ellipsis",
 });
 
+export const titleStyle = style({
+  whiteSpace: "nowrap",
+});
+
 export const wrongCheckBoxStyle = style({
   appearance: "none",
 

@@ -5,6 +5,7 @@ import { getTierImage } from "@/shared/component/ProblemList/img";
 import {
   itemStyle,
   textStyle,
+  titleStyle,
   wrongCheckBoxStyle,
 } from "@/shared/component/ProblemList/index.css";
 import type { Problem } from "@/shared/type";
@@ -30,7 +31,7 @@ const ProblemListItem = ({
   return (
     <li className={itemStyle}>
       <Icon width={25} height={32} />
-      <Link href={`/problem/${id}`}>
+      <Link className={`${titleStyle} ${textStyle}`} href={`/problem/${id}`}>
         <span className={textStyle}>{title}</span>
       </Link>
       <span className={textStyle}>{format(date, "yyyy.MM.dd")}</span>
