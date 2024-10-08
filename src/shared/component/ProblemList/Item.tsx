@@ -6,6 +6,7 @@ import {
   wrongCheckBoxStyle,
 } from "@/shared/component/ProblemList/index.css";
 import type { Problem } from "@/shared/type";
+import { format } from "date-fns";
 import Link from "next/link";
 import { match } from "ts-pattern";
 
@@ -30,7 +31,7 @@ const ProblemListItem = ({
       <Link href={`/problem/${id}`}>
         <span className={textStyle}>{title}</span>
       </Link>
-      <span className={textStyle}>{date}</span>
+      <span className={textStyle}>{format(date, "yyyy.MM.dd")}</span>
       <span className={textStyle}>{`${solved}/${total}`}</span>
       <span className={textStyle}>{`${accuracy}%`}</span>
       {match(status)
