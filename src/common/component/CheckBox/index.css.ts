@@ -16,6 +16,8 @@ export const boxStyle = style({
 
   backgroundColor: theme.color.mg3,
 
+  cursor: "pointer",
+
   ":checked": {
     backgroundColor: theme.color.purple,
   },
