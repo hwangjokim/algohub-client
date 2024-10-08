@@ -18,8 +18,6 @@ const CreateGroupForm = ({ setIsSuccess }: CreateGroupFormProps) => {
     defaultValues: {
       image: "",
       name: "",
-      startDate: new Date(),
-      endDate: new Date(),
       desc: "",
     },
   });
@@ -31,6 +29,7 @@ const CreateGroupForm = ({ setIsSuccess }: CreateGroupFormProps) => {
         type="submit"
         size="large"
         disabled={!form.formState.isValid}
+        isActive={form.formState.isValid}
         onClick={() => setIsSuccess(true)}
       >
         <IcnPlus fill="white" width={24} height={24} />
