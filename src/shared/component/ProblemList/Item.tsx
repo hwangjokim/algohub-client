@@ -1,3 +1,5 @@
+"use client";
+
 import CheckBox from "@/common/component/CheckBox";
 import { getTierImage } from "@/shared/component/ProblemList/img";
 import {
