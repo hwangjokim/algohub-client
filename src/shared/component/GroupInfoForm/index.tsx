@@ -1,5 +1,6 @@
 import SupportingText from "@/common/component/SupportingText";
 import type { groupSchema } from "@/shared/api/schema";
+import { Form } from "@/shared/component/Form";
 import DateFormController from "@/shared/component/GroupInfoForm/DateFormController";
 import DescFormController from "@/shared/component/GroupInfoForm/DescFormController";
 import ImageFormController from "@/shared/component/GroupInfoForm/ImageFormController";
@@ -9,7 +10,7 @@ import {
   formLabelStyle,
   formStyle,
 } from "@/shared/component/GroupInfoForm/index.css";
-import { Form, type UseFormReturn } from "react-hook-form";
+import type { UseFormReturn } from "react-hook-form";
 import type { z } from "zod";
 
 export type GroupFormProps = {
@@ -28,7 +29,7 @@ const GroupInfoForm = ({
   };
 
   return (
-    <Form {...form} className={formStyle({ variant })}>
+    <Form {...form}>
       <form
         className={formStyle({ variant })}
         onSubmit={form.handleSubmit(handleSubmit)}

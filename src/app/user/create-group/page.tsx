@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 
 const CreateGroupPage = () => {
   const router = useRouter();
-  const [isSuccess, setIsSuccess] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false);
   const { showToast } = useToast();
 
   useEffect(() => {
