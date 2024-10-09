@@ -19,6 +19,8 @@ export const backgroundStyle = style({
 });
 
 export const dialogStyle = style({
+  zIndex: theme.zIndex.high,
+
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -31,9 +33,22 @@ export const dialogStyle = style({
 
   margin: "auto auto",
 
-  zIndex: theme.zIndex.high,
+  backgroundColor: "transparent",
 
   border: "none",
 
   overflow: "hidden",
+});
+
+export const dialogContentStyle = style({
+  position: "relative",
+});
+
+export const exitStyle = style({
+  zIndex: theme.zIndex.middle,
+  position: "absolute",
+  top: "3.3rem",
+  right: "3.3rem",
+
+  cursor: "pointer",
 });
