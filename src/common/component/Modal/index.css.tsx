@@ -39,3 +39,16 @@ export const dialogStyle = style({
 
   overflow: "hidden",
 });
+
+export const dialogContentStyle = style({
+  position: "relative",
+});
+
+export const exitStyle = style({
+  zIndex: theme.zIndex.middle,
+  position: "absolute",
+  top: "3.3rem",
+  right: "3.3rem",
+
+  cursor: "pointer",
+});

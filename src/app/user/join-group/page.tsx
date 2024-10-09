@@ -1,6 +1,5 @@
 "use client";
 import UserDashboardPage from "@/app/user/page";
-import { IcnBtnDelete } from "@/asset/svg";
 import Button from "@/common/component/Button";
 import Modal from "@/common/component/Modal";
 import type { GroupJoinResponse } from "@/view/user/join-group/api/type";
@@ -8,10 +7,8 @@ import DecisionPrompt from "@/view/user/join-group/component/DecisionPrompt";
 import GroupInfoCard from "@/view/user/join-group/component/GroupInfoCard";
 import {
   btnWrapper,
-  exitStyle,
   wrapper,
 } from "@/view/user/join-group/component/index.css";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const JoinGroupPage = () => {
@@ -28,11 +25,8 @@ const JoinGroupPage = () => {
   return (
     <>
       <UserDashboardPage />
-      <Modal isOpen={true} onClose={() => router.push("/user")}>
+      <Modal isOpen={true} onClose={() => router.push("/user")} isCloseBtn>
         <div className={wrapper}>
-          <Link href="/user" aria-label="Close JoinGroup Modal">
-            <IcnBtnDelete width={10} height={10} className={exitStyle} />
-          </Link>
           <GroupInfoCard groupInfo={tmpGroupInfo} />
           <DecisionPrompt owner={tmpGroupInfo.owner} />
           <div className={btnWrapper}>

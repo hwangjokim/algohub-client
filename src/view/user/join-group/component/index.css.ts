@@ -17,12 +17,6 @@ export const wrapper = style({
   backgroundColor: theme.color.bg,
 });
 
-export const exitStyle = style({
-  position: "absolute",
-  top: "3.3rem",
-  right: "3.3rem",
-});
-
 export const btnWrapper = style({
   display: "flex",
   gap: "1.6rem",

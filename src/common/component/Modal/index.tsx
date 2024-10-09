@@ -1,8 +1,11 @@
 "use client";
 
+import { IcnBtnDelete } from "@/asset/svg";
 import {
   backgroundStyle,
+  dialogContentStyle,
   dialogStyle,
+  exitStyle,
 } from "@/common/component/Modal/index.css";
 import { useOutsideClick } from "@/common/hook/useOutsideClick";
 import { type ComponentPropsWithoutRef, useEffect } from "react";
@@ -11,9 +14,16 @@ import { createPortal } from "react-dom";
 interface ModalProps extends ComponentPropsWithoutRef<"dialog"> {
   isOpen: boolean;
   onClose: () => void;
+  isCloseBtn?: boolean;
 }
 
-const Modal = ({ isOpen, onClose, children, ...props }: ModalProps) => {
+const Modal = ({
+  isOpen,
+  onClose,
+  isCloseBtn = false,
+  children,
+  ...props
+}: ModalProps) => {
   const closeRef = useOutsideClick<HTMLDialogElement>(onClose);
 
   useEffect(() => {
@@ -58,7 +68,19 @@ const Modal = ({ isOpen, onClose, children, ...props }: ModalProps) => {
               className={dialogStyle}
               {...props}
             >
-              {children}
+              <section className={dialogContentStyle}>
+                {isCloseBtn && (
+                  <IcnBtnDelete
+                    role="button"
+                    aria-label="Close Modal"
+                    width={10}
+                    height={10}
+                    className={exitStyle}
+                    onClick={onClose}
+                  />
+                )}
+                {children}
+              </section>
             </dialog>
           </>,
           document.body,
