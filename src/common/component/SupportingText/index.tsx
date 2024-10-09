@@ -1,7 +1,9 @@
 import { IcnError } from "@/asset/svg";
+import clsx from "clsx";
+import type { ComponentProps } from "react";
 import { errorIconStyle, errorWrapper, msgStyle } from "./Index.css";
 
-interface SupportingTextProps {
+export interface SupportingTextProps extends ComponentProps<"p"> {
   isError?: boolean;
   hasErrorIcon?: boolean;
   message?: string;
@@ -11,11 +13,17 @@ const SupportingText = ({
   isError,
   hasErrorIcon,
   message,
+  className,
+  ...props
 }: SupportingTextProps) => {
   return (
     <div className={errorWrapper}>
       {hasErrorIcon && <IcnError className={errorIconStyle} />}
-      {message && <div className={msgStyle({ isError })}>{message}</div>}
+      {message && (
+        <p {...props} className={clsx(msgStyle({ isError }), className)}>
+          {message}
+        </p>
+      )}
     </div>
   );
 };

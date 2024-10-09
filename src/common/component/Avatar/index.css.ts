@@ -11,6 +11,7 @@ export const avatarStyle = recipe({
   base: {
     borderRadius: "50%",
     overflow: "hidden",
+    objectFit: "cover",
   },
   variants: {
     size: {

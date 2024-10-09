@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { IcnBtnArrowLeft, IcnCalenderCard } from "@/asset/svg";
+import clsx from "clsx";
+import { ko } from "date-fns/locale";
+import { forwardRef, useState } from "react";
 import DatePicker, {
   type DatePickerProps,
   registerLocale,
 } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { IcnBtnArrowLeft, IcnCalenderCard } from "@/asset/svg";
-import { ko } from "date-fns/locale";
 import {
   arrowWrapperStyle,
   calendarIcnStyle,
@@ -24,44 +25,47 @@ interface CalendarProps
     DatePickerProps,
     "onChange" | "selectsRange" | "selectsMultiple"
   > {
-  onChange: (date: Date) => void;
+  onChange?: (date: Date) => void;
 }
 
-const Calendar = ({ onChange, ...props }: CalendarProps) => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(
-    props.startDate ?? new Date(),
-  );
-  const [selected, setSelected] = useState<boolean>(false);
+const Calendar = forwardRef<DatePicker, CalendarProps>(
+  ({ onChange, className, ...props }, ref) => {
+    const [selectedDate, setSelectedDate] = useState<Date | null>(
+      props.startDate ?? new Date(),
+    );
+    const [selected, setSelected] = useState<boolean>(false);
 
-  const handleDateChange = (date: Date | null) => {
-    setSelectedDate(date);
-    setSelected(true);
-    if (date) {
-      onChange(date);
-    }
-  };
+    const handleDateChange = (date: Date | null) => {
+      setSelectedDate(date);
+      setSelected(true);
+      if (onChange && date) {
+        onChange(date);
+      }
+    };
 
-  return (
-    <div className={wrapperStyle}>
-      <div>
-        <DatePicker
-          dateFormat="yyyy.MM.dd"
-          selected={selectedDate}
-          className={dateStyle({ selected })}
-          renderCustomHeader={renderCustomHeader}
-          onChange={handleDateChange}
-          locale="ko"
-          calendarStartDay={1}
-          popperPlacement="bottom-start"
-          shouldCloseOnSelect
-          {...props}
-        />
+    return (
+      <div className={wrapperStyle}>
+        <div>
+          <DatePicker
+            ref={ref}
+            dateFormat="yyyy.MM.dd"
+            selected={selectedDate}
+            className={clsx(dateStyle({ selected }), className)}
+            renderCustomHeader={renderCustomHeader}
+            onChange={handleDateChange}
+            locale="ko"
+            calendarStartDay={1}
+            popperPlacement="bottom-start"
+            shouldCloseOnSelect
+            {...props}
+          />
+        </div>
+
+        <IcnCalenderCard className={calendarIcnStyle({ selected })} />
       </div>
-
-      <IcnCalenderCard className={calendarIcnStyle({ selected })} />
-    </div>
-  );
-};
+    );
+  },
+);
 
 interface CustomHeaderProps {
   date: Date;

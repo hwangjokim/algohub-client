@@ -1,12 +1,9 @@
 import { IcnBellHeader } from "@/asset/svg";
-import {
-  alarmContainer,
-  countStyle,
-  ulStyle,
-} from "@/shared/component/Header/Alarm.css";
+
 import { iconStyle } from "@/shared/component/Header/index.css";
 import { alarms } from "@/shared/constant/example";
-import AlarmListItem from "./AlarmListItem";
+import { alarmContainer, countStyle, ulStyle } from "./Alarm/Alarm.css";
+import AlarmListItem from "./Alarm/AlarmListItem";
 
 const Alarm = () => {
   return (

@@ -1,7 +1,6 @@
-import { IcnAlarm } from "@/asset/svg";
-import Menu from "@/shared/component/Header/Menu";
 import type { Meta, StoryObj } from "@storybook/react";
 import Dropdown from ".";
+import { storyContainer, storyItemStyle } from "./index.css";
 
 const meta: Meta<typeof Dropdown> = {
   title: "Common/Dropdown",
@@ -13,17 +12,11 @@ const meta: Meta<typeof Dropdown> = {
     },
   },
   tags: ["autodocs"],
-  argTypes: {
-    label: { control: "text" },
-  },
 } satisfies Meta<typeof Dropdown>;
 
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    label: "default",
-  },
   parameters: {
     docs: {
       source: {
@@ -31,18 +24,39 @@ export const Default: Story = {
       },
     },
   },
-  render: (props) => (
-    <Menu
-      renderTriggerIcon={<IcnAlarm width="2.5rem" height="2.5rem" />}
-      renderList={
-        <Dropdown {...props}>
-          <li>a</li>
-          <li>b</li>
-          <li>c</li>
-        </Dropdown>
-      }
-      {...props}
-    />
+  render: () => (
+    <Dropdown>
+      <li>a</li>
+      <li>b</li>
+      <li>c</li>
+    </Dropdown>
+  ),
+};
+
+export const ApplyClassName: Story = {
+  parameters: {
+    docs: {
+      source: {
+        type: "dynamic",
+      },
+    },
+  },
+  render: () => (
+    /**
+     * export const storyContainer = style({
+        position: "static",
+        width: "7rem",
+      })
+
+      export const storyItemStyle = style({
+        width: "5rem"
+      })
+     */
+    <Dropdown className={storyContainer}>
+      <li className={storyItemStyle}>a</li>
+      <li className={storyItemStyle}>b</li>
+      <li className={storyItemStyle}>c</li>
+    </Dropdown>
   ),
 };
 
