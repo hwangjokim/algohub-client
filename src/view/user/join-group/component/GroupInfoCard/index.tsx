@@ -1,7 +1,7 @@
+import type { GroupJoinResponse } from "@/api/group/type";
 import tmpSrc from "@/asset/img/alogohub_icon.png";
 import { IcnGroupInfoCard } from "@/asset/svg";
 import Avatar from "@/common/component/Avatar";
-import type { GroupJoinResponse } from "@/view/user/join-group/api/type";
 import GroupDateInfo from "@/view/user/join-group/component/GroupInfoCard/GroupDateInfo";
 import {
   descStyle,
