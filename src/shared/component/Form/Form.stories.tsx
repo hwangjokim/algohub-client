@@ -340,8 +340,8 @@ export const Profile: Story = {
         profileImage: "",
       },
     });
-    const onSubmit = (values: z.infer<typeof postSchema>) => {
-      console.log({ values });
+    const onSubmit = (_values: z.infer<typeof postSchema>) => {
+      // console.log({ values });
     };
 
     return (
@@ -401,8 +401,8 @@ export const DateTypeWithErrorMsg: Story = {
       },
     });
 
-    const onSubmit = (values: z.infer<typeof postSchema>) => {
-      console.log({ values });
+    const onSubmit = (_values: z.infer<typeof postSchema>) => {
+      // console.log({ values });
     };
 
     return (
