@@ -25,7 +25,7 @@ const JoinGroupPage = () => {
   return (
     <>
       <UserDashboardPage />
-      <Modal isOpen={true} onClose={() => router.push("/user")} isCloseBtn>
+      <Modal isOpen={true} onClose={() => router.push("/user")} hasCloseBtn>
         <div className={wrapper}>
           <GroupInfoCard groupInfo={tmpGroupInfo} />
           <DecisionPrompt owner={tmpGroupInfo.owner} />

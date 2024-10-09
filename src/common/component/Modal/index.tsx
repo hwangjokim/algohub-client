@@ -14,13 +14,13 @@ import { createPortal } from "react-dom";
 interface ModalProps extends ComponentPropsWithoutRef<"dialog"> {
   isOpen: boolean;
   onClose: () => void;
-  isCloseBtn?: boolean;
+  hasCloseBtn?: boolean;
 }
 
 const Modal = ({
   isOpen,
   onClose,
-  isCloseBtn = false,
+  hasCloseBtn = false,
   children,
   ...props
 }: ModalProps) => {
@@ -69,7 +69,7 @@ const Modal = ({
               {...props}
             >
               <section className={dialogContentStyle}>
-                {isCloseBtn && (
+                {hasCloseBtn && (
                   <IcnBtnDelete
                     role="button"
                     aria-label="Close Modal"
