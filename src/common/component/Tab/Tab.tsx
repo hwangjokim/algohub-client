@@ -1,21 +1,24 @@
+"use client";
+
 import Indicator from "@/common/component/Tab/Indicator";
 import {
   useTabDispatch,
   useTabState,
 } from "@/common/component/Tab/TabProvider";
-import { tabStyle, textStyle } from "@/common/component/Tab/index.css";
-import type {
-  ComponentPropsWithoutRef,
-  FunctionComponent,
-  SVGProps,
-} from "react";
+import {
+  iconStyle,
+  tabStyle,
+  textStyle,
+} from "@/common/component/Tab/index.css";
+import type { ComponentPropsWithoutRef, ReactElement } from "react";
 
 interface TabProps extends ComponentPropsWithoutRef<"li"> {
   tabId: string | number;
-  icon?: FunctionComponent<SVGProps<SVGElement>>;
+  renderedIcon?: (className: string) => ReactElement;
+  mode?: "fill" | "stroke";
 }
 
-const Tab = ({ tabId, icon, children, ...props }: TabProps) => {
+const Tab = ({ tabId, renderedIcon, mode, children, ...props }: TabProps) => {
   const { variant, selectedTabId } = useTabState();
   const dispatch = useTabDispatch();
 
@@ -26,8 +29,6 @@ const Tab = ({ tabId, icon, children, ...props }: TabProps) => {
   };
 
   const isSelected = selectedTabId === tabId;
-
-  const IconElement = icon!;
 
   return (
     <li
@@ -42,7 +43,13 @@ const Tab = ({ tabId, icon, children, ...props }: TabProps) => {
       onKeyDown={handleKeyDown}
       {...props}
     >
-      {icon && <IconElement />}
+      {renderedIcon
+        ? renderedIcon?.(
+            iconStyle({
+              variant: isSelected ? mode : (`none${mode}` as TabProps["mode"]),
+            }),
+          )
+        : null}
       <span className={textStyle({ variant })}>{children}</span>
       {isSelected && <Indicator />}
     </li>
