@@ -5,6 +5,10 @@ export const tabListStyle = recipe({
   base: {
     display: "flex",
     alignItems: "center",
+
+    height: "7.2rem",
+
+    padding: "0 6.7rem",
   },
   variants: {
     variant: {
@@ -25,11 +29,13 @@ export const tabStyle = recipe({
     gap: "0.5rem",
 
     color: theme.color.mg3,
+
+    userSelect: "none",
   },
   variants: {
     variant: {
       primary: {
-        padding: "1.625rem 1.063rem",
+        padding: "2.5rem 1.8rem",
       },
       secondary: {
         padding: "1rem 0rem",
@@ -59,7 +65,7 @@ export const textStyle = recipe({
 export const indicatorStyle = recipe({
   base: {
     position: "absolute",
-    bottom: 0,
+    bottom: 2,
     left: 0,
     right: 0,
 
@@ -75,6 +81,34 @@ export const indicatorStyle = recipe({
       },
       secondary: {
         backgroundColor: theme.color.white,
+      },
+    },
+  },
+});
+
+export const iconStyle = recipe({
+  base: {},
+  variants: {
+    variant: {
+      fill: {
+        ["& path" as string]: {
+          fill: theme.color.white,
+        },
+      },
+      stroke: {
+        ["& path" as string]: {
+          stroke: theme.color.white,
+        },
+      },
+      nonefill: {
+        ["& path" as string]: {
+          fill: theme.color.mg3,
+        },
+      },
+      nonestroke: {
+        ["& path" as string]: {
+          stroke: theme.color.mg3,
+        },
       },
     },
   },
