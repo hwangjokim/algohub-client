@@ -38,6 +38,15 @@ export const Default: Story = {
   render: (props) => <Button {...props} />,
 };
 
+export const ActivePurpleButton: Story = {
+  args: {
+    size: "medium",
+    color: "purple",
+    isActive: true,
+    children: "Active Purple Button",
+  },
+  render: (props) => <Button {...props} />,
+};
 export const MediumGrayButton: Story = {
   args: {
     size: "medium",
