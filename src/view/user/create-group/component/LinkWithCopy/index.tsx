@@ -13,7 +13,7 @@ type LinkWithCopyProps = {
 const LinkWithCopy = ({ link }: LinkWithCopyProps) => {
   return (
     <div className={wrapper}>
-      <span className={linkStyle}>{link}</span>
+      <p className={linkStyle}>{link}</p>
       <IcnCopy
         width={24}
         height={24}
