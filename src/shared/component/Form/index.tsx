@@ -12,6 +12,7 @@ import {
   FormProvider,
   type UseFormReturn,
 } from "react-hook-form";
+import EditAvatar from "../EditAvatar";
 import FormDescription from "./FormDescription";
 import FormLabel from "./FormLabel";
 import { itemDefaultStyle, itemStyle } from "./index.css";
@@ -20,7 +21,6 @@ type FormFieldProps<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>,
 > = {
-  type: "input" | "textarea" | "date";
   name: TName;
   labelPosition?: "top" | "bottom";
   descriptionPosition?: "top" | "bottom";
@@ -29,11 +29,13 @@ type FormFieldProps<
   revalidationHandlers?: typeof getRevalidationOnServerHandlers;
   form: UseFormReturn<TFieldValues>;
   labelProps?: ComponentProps<typeof FormLabel>;
-  inputProps?: ComponentProps<typeof Input>;
-  textareaProps?: ComponentProps<typeof Textarea>;
-  dateProps?: ComponentProps<typeof Calendar>;
   descriptionProps?: ComponentProps<typeof FormDescription>;
-};
+} & (
+  | { type: "input"; fieldProps?: ComponentProps<typeof Input> }
+  | { type: "textarea"; fieldProps?: ComponentProps<typeof Textarea> }
+  | { type: "date"; fieldProps?: ComponentProps<typeof Calendar> }
+  | { type: "image"; fieldProps?: ComponentProps<typeof EditAvatar> }
+);
 
 const FormController = <
   TFieldValues extends FieldValues,
@@ -48,9 +50,7 @@ const FormController = <
   revalidationHandlers,
   form,
   labelProps,
-  inputProps,
-  textareaProps,
-  dateProps,
+  fieldProps,
   descriptionProps,
 }: FormFieldProps<TFieldValues, TName>) => {
   return (
@@ -84,18 +84,20 @@ const FormController = <
         );
         let FormField: ReactNode;
         if (type === "input") {
-          FormField = <Input size="large" {...props} {...inputProps} />;
+          FormField = <Input size="large" {...fieldProps} {...props} />;
         } else if (type === "textarea") {
-          FormField = <Textarea {...props} {...textareaProps} />;
-        } else {
+          FormField = <Textarea {...fieldProps} {...props} />;
+        } else if (type === "date") {
           FormField = (
             <Calendar
               id={fieldId}
-              {...dateProps}
+              {...fieldProps}
               onChange={field.onChange}
               onBlur={field.onBlur}
             />
           );
+        } else {
+          FormField = <EditAvatar {...fieldProps} onChange={field.onChange} />;
         }
         return (
           <div className={clsx(itemDefaultStyle)}>

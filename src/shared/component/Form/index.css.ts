@@ -37,6 +37,13 @@ export const storyContentStyle = styleVariants({
 
     width: "34rem",
   },
+  profileContents: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "3rem",
+
+    width: "34rem",
+  },
   editContents: {
     display: "flex",
     flexDirection: "column",
