@@ -1,6 +1,5 @@
 import { IcnPlus, IcnSearch, IcnSquare } from "@/asset/svg";
 import NavBar from "@/shared/component/NavBar";
-import NavBarItem from "@/shared/component/NavBar/Item";
 
 export default function GroupLayout({
   children,
@@ -10,19 +9,19 @@ export default function GroupLayout({
   return (
     <main>
       <NavBar>
-        <NavBarItem icon={<IcnSquare />} mode="fill" href="/group">
+        <NavBar.Item icon={<IcnSquare />} mode="fill" href="/group">
           대시보드
-        </NavBarItem>
-        <NavBarItem
+        </NavBar.Item>
+        <NavBar.Item
           icon={<IcnSearch />}
           mode="stroke"
           href="/group/solved-list"
         >
           문제 리스트
-        </NavBarItem>
-        <NavBarItem icon={<IcnPlus />} mode="stroke" href="/group/setting">
+        </NavBar.Item>
+        <NavBar.Item icon={<IcnPlus />} mode="stroke" href="/group/setting">
           스터디 관리
-        </NavBarItem>
+        </NavBar.Item>
       </NavBar>
       {children}
     </main>

@@ -1,3 +1,4 @@
+import NavBarItem from "@/shared/component/NavBar/Item";
 import { navListStyle, navStyle } from "@/shared/component/NavBar/index.css";
 import type { ComponentPropsWithoutRef } from "react";
 
@@ -10,5 +11,7 @@ const NavBar = ({ children }: NavBarProps) => {
     </nav>
   );
 };
+
+NavBar.Item = NavBarItem;
 
 export default NavBar;
