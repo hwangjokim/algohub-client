@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 const LoginPage = () => {
   const router = useRouter();
   const onClose = () => {
-    router.back();
+    router.push("/");
   };
   return (
     <Modal isOpen={true} onClose={onClose}>
