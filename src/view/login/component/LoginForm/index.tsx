@@ -1,36 +1,14 @@
-import { useToast } from "@/common/hook/useToast";
 import { Form, FormController } from "@/shared/component/Form";
 import SubmitButton from "@/view/index/component/SubmitButton";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import type { z } from "zod";
-import { loginSchema, loginSchemaMessage } from "../../api/schema";
+import useLoginForm from "../../hook/useLoginForm";
 import { contentStyle, formStyle } from "./index.css";
 
 const LoginForm = () => {
-  const form = useForm<z.infer<typeof loginSchema>>({
-    resolver: zodResolver(loginSchema),
-    mode: "onTouched",
-    defaultValues: {
-      id: "",
-      password: "",
-    },
-  });
-  const { showToast } = useToast();
-
-  const isError = !!Object.keys(form.formState.errors).length;
-  const message = isError ? loginSchemaMessage : undefined;
-  const isActive = form.formState.isValid;
-
-  const onSubmit = (_values: z.infer<typeof loginSchema>) => {
-    // console.log({ values });
-  };
-  const handleClick = () => {
-    if (!form.formState.isValid) showToast(loginSchemaMessage, "error");
-  };
+  const { form, isError, message, isActive, handleSubmit, handleClick } =
+    useLoginForm();
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className={formStyle}>
+      <form onSubmit={form.handleSubmit(handleSubmit)} className={formStyle}>
         <div className={contentStyle}>
           <FormController
             form={form}
@@ -55,7 +33,9 @@ const LoginForm = () => {
             }}
           />
         </div>
-        <SubmitButton isActive={isActive} onClick={handleClick}>로그인하기</SubmitButton>
+        <SubmitButton isActive={isActive} onClick={handleClick}>
+          로그인하기
+        </SubmitButton>
       </form>
     </Form>
   );
