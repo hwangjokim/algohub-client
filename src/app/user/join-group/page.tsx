@@ -1,8 +1,8 @@
 "use client";
+import type { GroupJoinResponse } from "@/api/group/type";
 import UserDashboardPage from "@/app/user/page";
 import Button from "@/common/component/Button";
 import Modal from "@/common/component/Modal";
-import type { GroupJoinResponse } from "@/view/user/join-group/api/type";
 import DecisionPrompt from "@/view/user/join-group/component/DecisionPrompt";
 import GroupInfoCard from "@/view/user/join-group/component/GroupInfoCard";
 import {

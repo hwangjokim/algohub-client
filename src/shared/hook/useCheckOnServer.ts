@@ -1,7 +1,7 @@
+import { validateNickname } from "@/api/validate";
 import { useEffect, useState } from "react";
 import type { UseFormReturn } from "react-hook-form";
 import type { z } from "zod";
-import { validateNickname } from "../api/validate";
 
 // TODO: API연결 후 useQuery로 교체하며 동일하게 기능 적용하기
 export const useCheckOnServer = <
