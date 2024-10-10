@@ -1,3 +1,5 @@
+"use client";
+
 import type { Dispatch, PropsWithChildren, Reducer } from "react";
 import { createContext, useContext, useReducer } from "react";
 

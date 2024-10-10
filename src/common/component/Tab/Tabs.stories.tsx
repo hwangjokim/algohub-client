@@ -1,4 +1,3 @@
-import { IcnAlarm } from "@/asset/svg";
 import TabGroup from "@/common/component/Tab";
 import Tabs from "@/common/component/Tab/Tabs";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -38,9 +37,7 @@ export const Default: Story = {
     return (
       <TabGroup.Tabs {...args}>
         <TabGroup.TabList>
-          <TabGroup.Tab tabId="1" icon={IcnAlarm}>
-            Tab 1
-          </TabGroup.Tab>
+          <TabGroup.Tab tabId="1">Tab 1</TabGroup.Tab>
           <TabGroup.Tab tabId="2">Tab 2</TabGroup.Tab>
           <TabGroup.Tab tabId="3">Tab 3</TabGroup.Tab>
         </TabGroup.TabList>

@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import {
   type ForwardedRef,
   type TextareaHTMLAttributes,
@@ -14,13 +15,13 @@ export interface TextareaProps
 
 const Textarea = forwardRef(
   (
-    { isError = false, ...props }: TextareaProps,
+    { isError = false, className, ...props }: TextareaProps,
     ref: ForwardedRef<HTMLTextAreaElement>,
   ) => {
     return (
       <textarea
         ref={ref}
-        className={textareaStyle({ isError })}
+        className={clsx(className, textareaStyle({ isError }))}
         aria-invalid={isError}
         aria-multiline="true"
         {...props}
