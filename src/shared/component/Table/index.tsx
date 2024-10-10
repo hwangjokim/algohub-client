@@ -1,85 +1,89 @@
-import Table from "./TableElements/Table";
-import TableBody from "./TableElements/TableBody";
-import TableCell from "./TableElements/TableCell";
-import TableFooter from "./TableElements/TableFooter";
-import TableHead from "./TableElements/TableHead";
-import TableHeader from "./TableElements/TableHeader";
-import TableRow from "./TableElements/TableRow";
+"use client";
 
-const TestTable = () => {
+import { IcnBtnPin, IcnCalendarTable } from "@/asset/svg";
+import type { TableColumns } from "@/shared/type/Table";
+import Header from "./Header";
+import Table from "./TableElements/Table";
+import TableCaption from "./TableElements/TableCaption";
+import { pinStyle } from "./index.css";
+
+type DataTableProps = {
+  columns: TableColumns[];
+  data: [];
+};
+
+export const studyManaging: TableColumns[] = [
+  {
+    key: "pin",
+    headerName: <IcnBtnPin width={20} height={20} className={pinStyle.active} />,
+    width: 30,
+    sort: true,
+    justify: "left",
+  },
+  {
+    key: "groupName",
+    headerName: "그룹명",
+    width: 120,
+    justify: "left",
+  },
+  {
+    key: "duration",
+    headerName: (
+      <>
+        <IcnCalendarTable width={20} height={20} />
+        기간
+      </>
+    ),
+    width: 100,
+    sort: true,
+  },
+  {
+    key: "role",
+    headerName: "역할",
+    width: 60,
+  },
+  {
+    key: "isPublic",
+    headerName: "공개여부",
+    width: 60,
+  },
+  {
+    key: "status",
+    headerName: "상태",
+    width: 100,
+    dropdownFilter: true,
+  },
+  {
+    key: "withdraw",
+    headerName: "회원탈퇴",
+    width: 60,
+    justify: "right",
+  },
+];
+
+export function DataTableDemo({ columns, data }: DataTableProps) {
+  // 정렬 필터 검색 페이징 헤더 셀width
+
   return (
     <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[100px]">Invoice</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead className="text-right">Amount</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {invoices.map((invoice) => (
+      <TableCaption>스터디 리스트</TableCaption>
+      <Header columns={studyManaging} type="스터디관리" />
+      {/* <TableBody>
+        {data.map((invoice) => (
           <TableRow key={invoice.invoice}>
             <TableCell className="font-medium">{invoice.invoice}</TableCell>
             <TableCell>{invoice.paymentStatus}</TableCell>
             <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+            <TableCell>{invoice.totalAmount}</TableCell>
           </TableRow>
         ))}
       </TableBody>
       <TableFooter>
         <TableRow>
           <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
+          <TableCell>$2,500.00</TableCell>
         </TableRow>
-      </TableFooter>
+      </TableFooter> */}
     </Table>
   );
-};
-
-export default TestTable;
-
-const invoices = [
-  {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
-  },
-];
+}

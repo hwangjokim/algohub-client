@@ -1,9 +1,29 @@
+import type { PageType } from "@/shared/type/Table";
 import clsx from "clsx";
 import type { ComponentProps } from "react";
 import { tableHeadStyle } from "./TableElements.css";
 
-const TableHead = ({ className, ...props }: ComponentProps<"th">) => (
-  <th className={clsx(tableHeadStyle, className)} {...props} />
-);
+type TableHeadProps = {
+  textAlign?: "left" | "right";
+  type?: PageType;
+  width?: number;
+} & ComponentProps<"th">;
+
+const TableHead = ({
+  className,
+  type,
+  textAlign,
+  width,
+  ...props
+}: TableHeadProps) => {
+  const padding = type === "내가푼문제" ? "dense" : undefined;
+  return (
+    <th
+      className={clsx(tableHeadStyle({ textAlign, padding }), className)}
+      style={{ width: `${width}px` }}
+      {...props}
+    />
+  );
+};
 
 export default TableHead;

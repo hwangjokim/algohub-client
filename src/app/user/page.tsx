@@ -1,7 +1,11 @@
-import TestTable from "@/shared/component/Table";
+import { DataTableDemo } from "@/shared/component/Table";
 
 const UserDashboardPage = () => {
-  return <div><TestTable /></div>;
+  return (
+    <div style={{ color: "white" }}>
+      <DataTableDemo />
+    </div>
+  );
 };
 
 export default UserDashboardPage;
