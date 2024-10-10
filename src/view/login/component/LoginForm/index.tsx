@@ -20,7 +20,7 @@ const LoginForm = () => {
               isError,
               message,
             }}
-            inputProps={{
+            fieldProps={{
               placeholder: "아이디",
             }}
           />
@@ -28,7 +28,7 @@ const LoginForm = () => {
             form={form}
             name="password"
             type="input"
-            inputProps={{
+            fieldProps={{
               placeholder: "비밀번호",
             }}
           />
