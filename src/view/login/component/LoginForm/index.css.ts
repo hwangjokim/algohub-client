@@ -24,6 +24,6 @@ export const itemStyle = style({
 
 export const fieldStyle = style({
   "::placeholder": {
-    color: theme.color.white
-  }
-})
+    color: theme.color.white,
+  },
+});
