@@ -1,89 +1,100 @@
 "use client";
 
 import { IcnBtnPin, IcnCalendarTable } from "@/asset/svg";
-import type { TableColumns } from "@/shared/type/Table";
+import type { StudyListDataType, TableColumns } from "@/shared/type/Table";
+import Body from "./Body";
 import Header from "./Header";
 import Table from "./TableElements/Table";
 import TableCaption from "./TableElements/TableCaption";
 import { pinStyle } from "./index.css";
 
-type DataTableProps = {
-  columns: TableColumns[];
-  data: [];
+type DataTableProps<T> = {
+  title: string;
+  rows: T[];
+  cols: TableColumns<T>[];
 };
 
-export const studyManaging: TableColumns[] = [
+export const studyManaging: TableColumns<StudyListDataType>[] = [
   {
     key: "pin",
-    headerName: <IcnBtnPin width={20} height={20} className={pinStyle.active} />,
+    Header: () => (
+      <IcnBtnPin width={20} height={20} className={pinStyle.active} />
+    ),
+    Cell: ({ pin }) => (
+      <IcnBtnPin
+        width={20}
+        height={20}
+        className={pinStyle[pin ? "active" : "inActive"]}
+      />
+    ),
     width: 30,
     sort: true,
     justify: "left",
   },
   {
     key: "groupName",
-    headerName: "그룹명",
-    width: 120,
+    Header: () => "그룹명",
+    Cell: (data) => <p>{data.groupName}</p>,
+    width: 100,
     justify: "left",
   },
   {
     key: "duration",
-    headerName: (
+    Header: () => (
       <>
         <IcnCalendarTable width={20} height={20} />
         기간
       </>
     ),
+    Cell: ({ startDate, endDate }) => {
+      const startDateStr = startDate.toLocaleDateString().replaceAll(" ", "");
+      const endDateStr = endDate.toLocaleDateString().replaceAll(" ", "");
+      return (
+        <p>
+          <time dateTime={startDateStr}>{startDateStr}</time> ~{" "}
+          <time dateTime={endDateStr}>{endDateStr}</time>
+        </p>
+      );
+    },
     width: 100,
     sort: true,
   },
   {
     key: "role",
-    headerName: "역할",
+    Header: () => "역할",
+    Cell: (data) => <p>{data.role}</p>,
     width: 60,
   },
   {
     key: "isPublic",
-    headerName: "공개여부",
+    Header: () => "공개여부",
+    Cell: (data) => <p>{data.isPublic ? "ON" : "OFF"}</p>,
     width: 60,
   },
   {
     key: "status",
-    headerName: "상태",
+    Header: () => "상태",
+    Cell: (data) => <p>{data.status}</p>,
     width: 100,
     dropdownFilter: true,
   },
   {
     key: "withdraw",
-    headerName: "회원탈퇴",
+    Header: () => "회원탈퇴",
+    Cell: () => <p>회원 탈퇴</p>,
     width: 60,
     justify: "right",
   },
 ];
 
-export function DataTableDemo({ columns, data }: DataTableProps) {
+export const DataTable = <T,>({ title, rows, cols }: DataTableProps<T>) => {
   // 정렬 필터 검색 페이징 헤더 셀width
 
   return (
     <Table>
-      <TableCaption>스터디 리스트</TableCaption>
-      <Header columns={studyManaging} type="스터디관리" />
-      {/* <TableBody>
-        {data.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell>{invoice.totalAmount}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={3}>Total</TableCell>
-          <TableCell>$2,500.00</TableCell>
-        </TableRow>
-      </TableFooter> */}
+      <TableCaption>{title}</TableCaption>
+      <Header columns={cols} type="스터디관리" />
+      <Body rows={rows} cols={cols} />
     </Table>
   );
-}
+};

@@ -63,7 +63,6 @@ export const tableFooterStyle = style({
 });
 
 export const tableRowStyle = style({
-  padding: "1.2rem 0",
   selectors: {
     "&[data-state=selected]": {
       backgroundColor: "rgba(128, 128, 128, 1)",
@@ -85,7 +84,6 @@ export const tableHeadStyle = recipe({
       },
       right: {
         textAlign: "right",
-        
       },
     },
     padding: {
@@ -96,8 +94,22 @@ export const tableHeadStyle = recipe({
   },
 });
 
-export const tableCellStyle = style({
-  padding: "0.5rem 2.8rem",
-  verticalAlign: "middle",
-  color: theme.color.white,
+export const tableCellStyle = recipe({
+  base: {
+    padding: "2rem 0",
+    verticalAlign: "middle",
+    textAlign: "center",
+    color: theme.color.white,
+  },
+  variants: {
+    textAlign: {
+      left: {
+        textAlign: "left",
+      },
+      right: {
+        textAlign: "right",
+        paddingRight: "1rem",
+      },
+    },
+  },
 });
