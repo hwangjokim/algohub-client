@@ -62,13 +62,7 @@ export const tableFooterStyle = style({
   fontWeight: 500,
 });
 
-export const tableRowStyle = style({
-  selectors: {
-    "&[data-state=selected]": {
-      backgroundColor: "rgba(128, 128, 128, 1)",
-    },
-  },
-});
+export const tableRowStyle = style({});
 
 export const tableHeadStyle = recipe({
   base: {
@@ -97,9 +91,9 @@ export const tableHeadStyle = recipe({
 export const tableCellStyle = recipe({
   base: {
     padding: "2rem 0",
+
     verticalAlign: "middle",
     textAlign: "center",
-    color: theme.color.white,
   },
   variants: {
     textAlign: {
@@ -108,8 +102,23 @@ export const tableCellStyle = recipe({
       },
       right: {
         textAlign: "right",
-        paddingRight: "1rem",
+        paddingRight: "1.5rem",
       },
     },
+  },
+});
+
+export const tableCellTextStyle = style({
+  ...theme.font.Caption3_M_12,
+  color: theme.color.white,
+});
+
+export const withdrawTextStyle = style({
+  ...theme.font.Body1_M_14,
+  color: theme.color.mg2,
+  borderRadius: ".4rem",
+  padding: "0 .4rem",
+  ":hover": {
+    backgroundColor: theme.color.mg5,
   },
 });

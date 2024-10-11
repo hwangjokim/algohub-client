@@ -1,3 +1,4 @@
+import type { Status } from "@/view/user/setting/type";
 import type { ComponentProps, ReactNode } from "react";
 import type TableHead from "../component/Table/TableElements/TableHead";
 
@@ -21,5 +22,5 @@ export type StudyListDataType = {
   endDate: Date;
   role: string;
   isPublic: boolean;
-  status: string;
+  status: Status;
 };

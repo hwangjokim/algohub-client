@@ -1,7 +1,7 @@
 import type { PageType } from "@/shared/type/table";
 import clsx from "clsx";
 import type { ComponentProps } from "react";
-import { tableHeadStyle } from "./TableElements.css";
+import { tableHeadStyle } from "./index.css";
 
 type TableHeadProps = {
   textAlign?: "left" | "right";

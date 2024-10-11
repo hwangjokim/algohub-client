@@ -1,9 +1,6 @@
 import type { TableColumns } from "@/shared/type/table";
 import TableCell from "./TableElements/TableCell";
-import {
-  tableBodyStyle,
-  tableRowStyle,
-} from "./TableElements/TableElements.css";
+import { tableBodyStyle, tableRowStyle } from "./TableElements/index.css";
 
 type BodyProps<T> = {
   rows: T[];

@@ -1,5 +1,4 @@
 import { theme } from "@/styles/themes.css";
-import { styleVariants } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 export const headWrapper = recipe({
@@ -21,21 +20,28 @@ export const headWrapper = recipe({
       },
       right: {
         justifyContent: "right",
-        paddingRight: "1rem"
+        paddingRight: "1rem",
       },
     },
   },
 });
 
-export const pinStyle = styleVariants({
-  active: {
-    ["path" as string]: {
-      fill: "#6659FF",
-    },
+export const pinStyle = recipe({
+  base: {
+    cursor: "pointer",
   },
-  inActive: {
-    ["path" as string]: {
-      fill: theme.color.mg2,
+  variants: {
+    active: {
+      true: {
+        ["path" as string]: {
+          fill: "#6659FF",
+        },
+      },
+      false: {
+        ["path" as string]: {
+          fill: theme.color.mg2,
+        },
+      },
     },
   },
 });

@@ -6,7 +6,7 @@ import {
   tableCaptionStyle,
   tableStyle,
   wrapperStyle,
-} from "./TableElements/TableElements.css";
+} from "./TableElements/index.css";
 
 type DataTableProps<T> = {
   title: string;

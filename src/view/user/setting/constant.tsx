@@ -1,21 +1,26 @@
-"use client"
+"use client";
 
 import { IcnBtnPin, IcnCalendarTable } from "@/asset/svg";
-import { pinStyle } from "../../../shared/component/Table/index.css";
-import type { StudyListDataType, TableColumns } from "../../../shared/type/table";
+import {
+  tableCellTextStyle,
+  withdrawTextStyle,
+} from "@/shared/component/Table/TableElements/index.css";
+import { pinStyle } from "@/shared/component/Table/index.css";
+import type { StudyListDataType, TableColumns } from "@/shared/type/table";
+import StatusIcon from "./component/StatusIcon";
 
 export const STUDY_MANAGING_COLUMNS: TableColumns<StudyListDataType>[] = [
   {
     key: "pin",
     Header: () => (
-      <IcnBtnPin width={20} height={20} className={pinStyle.active} />
-    ),
-    Cell: ({ pin }) => (
       <IcnBtnPin
         width={20}
         height={20}
-        className={pinStyle[pin ? "active" : "inActive"]}
+        className={pinStyle({ active: true })}
       />
+    ),
+    Cell: ({ pin }) => (
+      <IcnBtnPin width={20} height={20} className={pinStyle({ active: pin })} />
     ),
     width: 30,
     sort: true,
@@ -24,7 +29,7 @@ export const STUDY_MANAGING_COLUMNS: TableColumns<StudyListDataType>[] = [
   {
     key: "groupName",
     Header: () => "그룹명",
-    Cell: (data) => <p>{data.groupName}</p>,
+    Cell: (data) => data.groupName,
     width: 100,
     justify: "left",
   },
@@ -40,10 +45,15 @@ export const STUDY_MANAGING_COLUMNS: TableColumns<StudyListDataType>[] = [
       const startDateStr = startDate.toLocaleDateString().replaceAll(" ", "");
       const endDateStr = endDate.toLocaleDateString().replaceAll(" ", "");
       return (
-        <p>
-          <time dateTime={startDateStr}>{startDateStr}</time> ~{" "}
-          <time dateTime={endDateStr}>{endDateStr}</time>
-        </p>
+        <>
+          <time className={tableCellTextStyle} dateTime={startDateStr}>
+            {startDateStr}
+          </time>{" "}
+          ~{" "}
+          <time className={tableCellTextStyle} dateTime={endDateStr}>
+            {endDateStr}
+          </time>
+        </>
       );
     },
     width: 100,
@@ -52,26 +62,26 @@ export const STUDY_MANAGING_COLUMNS: TableColumns<StudyListDataType>[] = [
   {
     key: "role",
     Header: () => "역할",
-    Cell: (data) => <p>{data.role}</p>,
+    Cell: (data) => data.role,
     width: 60,
   },
   {
     key: "isPublic",
     Header: () => "공개여부",
-    Cell: (data) => <p>{data.isPublic ? "ON" : "OFF"}</p>,
+    Cell: (data) => (data.isPublic ? "ON" : "OFF"),
     width: 60,
   },
   {
     key: "status",
     Header: () => "상태",
-    Cell: (data) => <p>{data.status}</p>,
-    width: 100,
+    Cell: (data) => <StatusIcon status={data.status} />,
+    width: 60,
     dropdownFilter: true,
   },
   {
     key: "withdraw",
     Header: () => "회원탈퇴",
-    Cell: () => <p>회원 탈퇴</p>,
+    Cell: () => <button className={withdrawTextStyle}>회원 탈퇴</button>,
     width: 60,
     justify: "right",
   },

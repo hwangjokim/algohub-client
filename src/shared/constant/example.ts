@@ -1,4 +1,5 @@
 import IcnNew from "@/asset/svg/icn_new.svg?url";
+import type { StudyListDataType } from "../type/table";
 
 export const alarms = [
   {
@@ -43,7 +44,7 @@ export const alarms = [
   },
 ];
 
-export const testTableData = [
+export const testTableData: StudyListDataType[] = [
   {
     pin: true,
     groupName: "soongsil univ algorithm",
