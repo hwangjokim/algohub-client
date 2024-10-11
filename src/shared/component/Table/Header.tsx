@@ -1,11 +1,7 @@
 import { IcnBtnArrowDown, IcnBtnSort } from "@/asset/svg";
-import type {
-  PageType,
-  TableColumns
-} from "@/shared/type/Table";
+import type { PageType, TableColumns } from "@/shared/type/table";
+import { tableHeaderStyle, tableRowStyle } from "./TableElements/TableElements.css";
 import TableHead from "./TableElements/TableHead";
-import TableHeader from "./TableElements/TableHeader";
-import TableRow from "./TableElements/TableRow";
 import { headWrapper } from "./index.css";
 
 type HeaderProps<T> = {
@@ -15,8 +11,8 @@ type HeaderProps<T> = {
 
 const Header = <T,>({ columns, type }: HeaderProps<T>) => {
   return (
-    <TableHeader type={type}>
-      <TableRow>
+    <thead className={tableHeaderStyle({ type })}>
+      <tr className={tableRowStyle}>
         {columns.map((v) => (
           <TableHead key={v.key?.toString()} {...v.props} width={v.width}>
             <div className={headWrapper({ justifyContent: v.justify })}>
@@ -26,8 +22,8 @@ const Header = <T,>({ columns, type }: HeaderProps<T>) => {
             </div>
           </TableHead>
         ))}
-      </TableRow>
-    </TableHeader>
+      </tr>
+    </thead>
   );
 };
 

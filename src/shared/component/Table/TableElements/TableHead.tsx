@@ -1,4 +1,4 @@
-import type { PageType } from "@/shared/type/Table";
+import type { PageType } from "@/shared/type/table";
 import clsx from "clsx";
 import type { ComponentProps } from "react";
 import { tableHeadStyle } from "./TableElements.css";
