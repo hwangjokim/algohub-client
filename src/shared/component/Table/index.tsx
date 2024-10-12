@@ -9,9 +9,13 @@ import {
 } from "./TableElements/index.css";
 
 type DataTableProps<T> = {
-  title: string;
+  /** 좌상단 제목 */
+  title?: string;
+  /** 테이블 타입: 테이블 내부 요소들에서 recipe()로 스타일 변경 */
   type: TableType;
+  /** 원본 데이터 배열 */
   rows: T[];
+  /** 테이블 메타데이터(행, 열) 배열 */
   cols: TableColumns<T>[];
 };
 
@@ -24,7 +28,9 @@ export const DataTable = <T,>({
   return (
     <div className={wrapperStyle}>
       <table className={tableStyle({ type })}>
-        {title && <caption className={tableCaptionStyle}>{title}</caption>}
+        {title && (
+          <caption className={tableCaptionStyle({ type })}>{title}</caption>
+        )}
         <Header columns={cols} type={type} />
         <Body rows={rows} cols={cols} type={type} />
       </table>

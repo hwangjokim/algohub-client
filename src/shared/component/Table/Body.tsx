@@ -14,14 +14,14 @@ const Body = <T,>({ rows, cols, type }: BodyProps<T>) => {
       {rows.map((row, idx) => (
         // TODO: api 연결 후, raw data에 고유 id값 추가 등의 방안으로 key 교체하기
         <tr key={idx}>
-          {cols.map((col) => (
+          {cols.map(({ key, align, Cell }) => (
             <TableCell
-              key={col.key?.toString()}
-              textAlign={col.justify}
+              key={key?.toString()}
+              align={align}
               type={type}
               className={tableCellTextStyle[type]}
             >
-              {col.Cell(row)}
+              {Cell(row)}
             </TableCell>
           ))}
         </tr>

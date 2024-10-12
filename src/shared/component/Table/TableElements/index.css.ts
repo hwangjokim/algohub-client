@@ -13,16 +13,6 @@ export const wrapperStyle = style({
   height: "100%",
 });
 
-export const tableCaptionStyle = style({
-  padding: "1.5rem 2rem",
-
-  color: theme.color.white,
-  textAlign: "left",
-  fontSize: "1.6rem",
-  fontWeight: 600,
-  lineHeight: "19.09px",
-});
-
 export const tableHeadStyle = recipe({
   base: {
     height: "2.5rem",
@@ -31,7 +21,7 @@ export const tableHeadStyle = recipe({
     color: theme.color.mg2,
   },
   variants: {
-    textAlign: {
+    align: {
       left: {
         textAlign: "left",
       },
@@ -76,13 +66,32 @@ export const tableStyle = recipe({
   },
 });
 
+export const tableCaptionStyle = recipe({
+  base: {
+    color: theme.color.white,
+    textAlign: "left",
+    fontSize: "1.6rem",
+    fontWeight: 600,
+    lineHeight: "19.09px",
+  },
+  variants: {
+    type: {
+      스터디리스트: {
+        padding: "1.5rem 0",
+      },
+      알림설정: {
+        padding: "1.5rem 2rem",
+      },
+    },
+  },
+});
+
 export const tableHeaderStyle = recipe({
   base: {
     position: "relative",
   },
   variants: {
     type: {
-      /** border bottom style */
       스터디리스트: {
         height: "3.6rem",
 
@@ -93,13 +102,13 @@ export const tableHeaderStyle = recipe({
           position: "absolute",
           bottom: 0,
           left: 0,
+          zIndex: 0,
 
           width: "100%",
           height: "1px",
           backgroundColor: "#2D3239",
         },
       },
-      /** backgound color style */
       알림설정: {
         height: "4.1rem",
 
@@ -119,13 +128,13 @@ export const tableCellStyle = recipe({
     textAlign: "center",
   },
   variants: {
-    textAlign: {
+    align: {
       left: {
         textAlign: "left",
       },
       right: {
         textAlign: "right",
-        paddingRight: "1.5rem",
+        paddingRight: "1.2rem",
       },
     },
     type: {

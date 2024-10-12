@@ -1,49 +1,59 @@
 "use client";
 
-import { IcnBtnPin, IcnCalendarTable } from "@/asset/svg";
+import { IcnBtnPin, IcnBtnSort, IcnCalendarTable } from "@/asset/svg";
 import ToggleButton from "@/common/component/ToggleButton";
 import {
   tableCellTextStyle,
   withdrawTextStyle,
 } from "@/shared/component/Table/TableElements/index.css";
-import { pinStyle } from "@/shared/component/Table/index.css";
+import { pinStyle, sortIconStyle } from "@/shared/component/Table/index.css";
 import type {
   AlarmSettingsDataType,
   StudyListDataType,
   TableColumns,
 } from "@/shared/type/table";
+import StatusDropdonwMenu from "./component/StatusDropdownMenu";
 import StatusIcon from "./component/StatusIcon";
 
-export const STUDY_MANAGING_COLUMNS: TableColumns<StudyListDataType>[] = [
+export const STUDY_LIST_COLUMNS: TableColumns<StudyListDataType>[] = [
   {
     key: "pin",
     Header: () => (
-      <IcnBtnPin
-        width={20}
-        height={20}
-        className={pinStyle({ active: true })}
-      />
+      <>
+        <IcnBtnPin
+          aria-label="즐겨찾기"
+          width={20}
+          height={20}
+          className={pinStyle({ active: true })}
+        />
+        <IcnBtnSort className={sortIconStyle} width={20} height={20} />
+      </>
     ),
     Cell: ({ pin }) => (
-      <IcnBtnPin width={20} height={20} className={pinStyle({ active: pin })} />
+      <IcnBtnPin
+        aria-label="이 스터디를 즐겨찾기 설정"
+        width={20}
+        height={20}
+        className={pinStyle({ active: pin })}
+      />
     ),
     width: 30,
-    sort: true,
-    justify: "left",
+    align: "left",
   },
   {
     key: "groupName",
     Header: () => "그룹명",
     Cell: (data) => data.groupName,
     width: 60,
-    justify: "left",
+    align: "left",
   },
   {
     key: "duration",
     Header: () => (
       <>
         <IcnCalendarTable width={20} height={20} />
-        기간
+        <span>기간</span>
+        <IcnBtnSort className={sortIconStyle} width={20} height={20} />
       </>
     ),
     Cell: ({ startDate, endDate }) => {
@@ -51,18 +61,23 @@ export const STUDY_MANAGING_COLUMNS: TableColumns<StudyListDataType>[] = [
       const endDateStr = endDate.toLocaleDateString().replaceAll(" ", "");
       return (
         <>
-          <time className={tableCellTextStyle.스터디리스트} dateTime={startDateStr}>
+          <time
+            className={tableCellTextStyle.스터디리스트}
+            dateTime={startDateStr}
+          >
             {startDateStr}
           </time>{" "}
           ~{" "}
-          <time className={tableCellTextStyle.스터디리스트} dateTime={endDateStr}>
+          <time
+            className={tableCellTextStyle.스터디리스트}
+            dateTime={endDateStr}
+          >
             {endDateStr}
           </time>
         </>
       );
     },
     width: 60,
-    sort: true,
   },
   {
     key: "role",
@@ -78,21 +93,20 @@ export const STUDY_MANAGING_COLUMNS: TableColumns<StudyListDataType>[] = [
   },
   {
     key: "status",
-    Header: () => "상태",
+    Header: () => <StatusDropdonwMenu />,
     Cell: (data) => <StatusIcon status={data.status} />,
     width: 60,
-    dropdownFilter: true,
   },
   {
     key: "withdraw",
     Header: () => "회원탈퇴",
     Cell: () => <button className={withdrawTextStyle}>회원 탈퇴</button>,
     width: 60,
-    justify: "right",
+    align: "right",
   },
 ];
 
-export const ALERT_SETTINGS_COLUMNS: TableColumns<AlarmSettingsDataType>[] = [
+export const ALARM_SETTINGS_COLUMNS: TableColumns<AlarmSettingsDataType>[] = [
   {
     key: "alertSetting",
     Header: () => "알림 설정",

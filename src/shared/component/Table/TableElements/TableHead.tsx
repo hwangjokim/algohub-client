@@ -4,7 +4,7 @@ import type { ComponentProps } from "react";
 import { tableHeadStyle } from "./index.css";
 
 type TableHeadProps = {
-  textAlign?: "left" | "right";
+  align?: "left" | "right";
   type?: TableType;
   width?: number;
 } & ComponentProps<"th">;
@@ -12,13 +12,13 @@ type TableHeadProps = {
 const TableHead = ({
   className,
   type,
-  textAlign,
+  align,
   width,
   ...props
 }: TableHeadProps) => {
   return (
     <th
-      className={clsx(tableHeadStyle({ textAlign }), className)}
+      className={clsx(tableHeadStyle({ align }), className)}
       style={{ width: `${width}px` }}
       {...props}
     />

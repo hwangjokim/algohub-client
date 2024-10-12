@@ -1,4 +1,5 @@
 import { theme } from "@/styles/themes.css";
+import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 export const headWrapper = recipe({
@@ -14,7 +15,7 @@ export const headWrapper = recipe({
     color: theme.color.mg2,
   },
   variants: {
-    justifyContent: {
+    align: {
       left: {
         justifyContent: "left",
       },
@@ -44,4 +45,8 @@ export const pinStyle = recipe({
       },
     },
   },
+});
+
+export const sortIconStyle = style({
+  cursor: "pointer",
 });
