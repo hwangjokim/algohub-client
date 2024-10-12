@@ -2,11 +2,16 @@ import { theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
 
 export const userCardWrapper = style({
+  width: "100%",
+  padding: "4.4rem 2.4rem",
+});
+
+export const userCardContainer = style({
   display: "flex",
   flexDirection: "column",
 
   width: "100%",
-  padding: "4.45rem 2.4rem 2.4rem",
+  padding: "4.45rem 2.4rem",
 
   borderRadius: "8px",
   backgroundColor: theme.color.mg5,

@@ -5,7 +5,7 @@ import {
   bojNickStyle,
   descStyle,
   nicknameStyle,
-  userCardWrapper,
+  userCardContainer,
 } from "@/view/user/index/component/UserCard/index.css";
 
 const UserCard = () => {
@@ -17,7 +17,7 @@ const UserCard = () => {
   };
 
   return (
-    <article className={userCardWrapper}>
+    <article className={userCardContainer}>
       <div className={avatarStyle}>
         <Avatar
           src={dummyData.profileImage}
