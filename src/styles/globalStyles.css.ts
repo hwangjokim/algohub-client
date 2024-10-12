@@ -1,3 +1,4 @@
+import { theme } from "@/styles/themes.css";
 import { globalStyle } from "@vanilla-extract/css";
 
 globalStyle("*, *::before, *::after", {
@@ -36,4 +37,8 @@ globalStyle("textarea", {
 
 globalStyle("li", {
   listStyle: "none",
+});
+
+globalStyle("body", {
+  background: theme.color.bg,
 });

@@ -1,16 +1,15 @@
 import { IcnUser2 } from "@/asset/svg";
 import Avatar from "@/common/component/Avatar";
-import { iconStyle } from "@/shared/component/Header/index.css";
-import type { StaticImageData } from "next/image";
+import { iconStyle } from "@/view/group/index/component/MemberAvatar/index.css";
 
 interface MemberAvatarProps {
-  isLeader: boolean;
-  src: StaticImageData;
+  isLeader?: boolean;
+  src: string;
 }
-const MemberAvatar = ({ isLeader, src }: MemberAvatarProps) => {
+const MemberAvatar = ({ isLeader = false, src }: MemberAvatarProps) => {
   return (
     <Avatar src={src} size="small" hasShadow alt="멤버 프로필">
-      {isLeader && <IcnUser2 className={iconStyle} />}
+      {isLeader && <IcnUser2 className={iconStyle} width={9} height={13} />}
     </Avatar>
   );
 };
