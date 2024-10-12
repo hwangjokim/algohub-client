@@ -6,21 +6,25 @@ export const wrapperStyle = style({
   position: "relative",
   display: "flex",
   justifyContent: "center",
+
+  overflow: "auto",
+
   width: "100%",
   height: "100%",
-  overflow: "auto",
 });
 
 export const tableStyle = style({
   width: "100rem",
-  borderCollapse: "collapse",
+
   captionSide: "top",
-  padding: "1.6rem",
+  borderCollapse: "separate",
+  borderSpacing: "1.6rem",
 });
 
 export const tableCaptionStyle = style({
-  marginBottom: "2rem",
+  padding: "1.5rem 2rem",
 
+  color: theme.color.white,
   textAlign: "left",
   fontSize: "1.6rem",
   fontWeight: 600,
@@ -28,14 +32,25 @@ export const tableCaptionStyle = style({
 });
 
 export const tableHeaderStyle = recipe({
-  base: {},
+  base: {
+    position: "relative",
+  },
   variants: {
     type: {
       /** border bottom style */
       스터디관리: {
         height: "3.6rem",
+
         verticalAlign: "top",
-        borderBottom: "1px solid #2D3239",
+        ":after": {
+          content: "",
+          width: "100%",
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          height: "1px",
+          backgroundColor: "#2D3239",
+        },
       },
       /** backgound color style */
       알림설정: {
@@ -56,11 +71,6 @@ export const tableHeaderStyle = recipe({
 });
 
 export const tableBodyStyle = style({});
-
-export const tableFooterStyle = style({
-  backgroundColor: "rgba(128, 128, 128, 0.5)",
-  fontWeight: 500,
-});
 
 export const tableRowStyle = style({});
 
@@ -90,7 +100,7 @@ export const tableHeadStyle = recipe({
 
 export const tableCellStyle = recipe({
   base: {
-    padding: "2rem 0",
+    height: "4.6rem",
 
     verticalAlign: "middle",
     textAlign: "center",
