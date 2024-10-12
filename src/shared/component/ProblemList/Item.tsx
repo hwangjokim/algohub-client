@@ -11,9 +11,14 @@ import {
 import type { Problem } from "@/shared/type";
 import { format } from "date-fns";
 import Link from "next/link";
-import { match } from "ts-pattern";
 
 type ProblemListItemProps = Problem;
+
+const JSX_BY_STATUS = {
+  wrong: <input type="checkbox" disabled className={wrongCheckBoxStyle} />,
+  unsolved: <CheckBox checked={false} style={{ cursor: "default" }} />,
+  solved: <CheckBox checked={true} style={{ cursor: "default" }} />,
+};
 
 const ProblemListItem = ({
   id,
@@ -29,25 +34,17 @@ const ProblemListItem = ({
   const accuracy = ((solved / total) * 100).toFixed(0);
 
   return (
-    <li className={itemStyle}>
+    <li aria-label={`문제: ${title}`} className={itemStyle}>
       <Icon width={25} height={32} />
       <Link className={`${titleStyle} ${textStyle}`} href={`/problem/${id}`}>
         <span className={textStyle}>{title}</span>
       </Link>
-      <span className={textStyle}>{format(date, "yyyy.MM.dd")}</span>
+      <time dateTime={date} className={textStyle}>
+        {format(date, "yyyy.MM.dd")}
+      </time>
       <span className={textStyle}>{`${solved}/${total}`}</span>
       <span className={textStyle}>{`${accuracy}%`}</span>
-      {match(status)
-        .with("wrong", () => (
-          <input type="checkbox" disabled className={wrongCheckBoxStyle} />
-        ))
-        .with("unsolved", () => (
-          <CheckBox checked={false} style={{ cursor: "default" }} />
-        ))
-        .with("solved", () => (
-          <CheckBox checked={true} style={{ cursor: "default" }} />
-        ))
-        .exhaustive()}
+      {JSX_BY_STATUS[status]}
     </li>
   );
 };
