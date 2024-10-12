@@ -1,6 +1,7 @@
 import type { GroupInfoResponse } from "@/api/group/type";
 import { IcnCalenderCard } from "@/asset/svg";
 import Avatar from "@/common/component/Avatar";
+import RoleChip from "@/view/group/dashboard/component/GroupSidebar/GroupCard/RoleChip";
 import {
   dateStyle,
   descStyle,
@@ -12,7 +13,7 @@ type GroupCardProps = {
   info: GroupInfoResponse;
 };
 const GroupCard = ({ info }: GroupCardProps) => {
-  const { groupImage, name, startDate, endDate, introduction } = info;
+  const { groupImage, name, startDate, endDate, introduction, isOwner } = info;
 
   return (
     <article className={wrapper}>
@@ -25,6 +26,7 @@ const GroupCard = ({ info }: GroupCardProps) => {
         <p>{endDate}</p>
       </div>
       <p className={descStyle}>{introduction}</p>
+      <RoleChip isLeader={isOwner} />
     </article>
   );
 };

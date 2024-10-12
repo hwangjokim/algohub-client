@@ -22,6 +22,7 @@ export const nameStyle = style({
 
 export const dateStyle = style({
   display: "flex",
+  alignItems: "center",
   gap: "0.4rem",
 
   color: theme.color.mg1,
@@ -39,4 +40,24 @@ export const descStyle = style({
 
   color: theme.color.mg3,
   ...theme.font.Caption1_R_12,
+});
+
+export const chipWrapper = style({
+  display: "flex",
+  alignItems: "center",
+  alignSelf: "flex-start",
+  justifyContent: "center",
+  gap: "0.4rem",
+
+  marginTop: "2rem",
+  padding: "0.4rem 0.8rem",
+
+  borderRadius: "24px",
+  backgroundColor: theme.color.white,
+
+  // TODO: 타이포그래피 시스템 추가
+  fontSize: "10px",
+  fontWeight: "500",
+  lineHeight: "normal",
+  letterSpacing: "-0.25px",
 });

@@ -22,7 +22,7 @@ const GroupSidebar = ({ info }: GroupCardProps) => {
         <CircleNumber>3</CircleNumber>
       </div>
       <div className={memberWrapper}>
-        {[0, 1, 2, 3, 4].map((elem, idx) => (
+        {[0, 1, 2, 3, 4].map((_elem, idx) => (
           <MemberAvatar key={idx} src="" isLeader />
         ))}
       </div>
@@ -31,7 +31,7 @@ const GroupSidebar = ({ info }: GroupCardProps) => {
         <CircleNumber>10</CircleNumber>
       </div>
       <div className={memberWrapper}>
-        {[0, 1, 2].map((elem, idx) => (
+        {[0, 1, 2].map((_elem, idx) => (
           <MemberAvatar key={idx} src="" />
         ))}
       </div>
