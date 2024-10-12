@@ -1,7 +1,7 @@
 import Calendar from "@/common/component/Calendar";
 import Input from "@/common/component/Input";
 import Textarea from "@/common/component/Textarea";
-import type { getRevalidationOnServerHandlers } from "@/shared/util/form";
+import type { handleOnChangeMode } from "@/shared/util/form";
 import clsx from "clsx";
 import type { ComponentProps, ReactNode } from "react";
 import {
@@ -26,7 +26,7 @@ type FormFieldProps<
   descriptionPosition?: "top" | "bottom";
   showLabel?: boolean;
   showDescription?: boolean;
-  revalidationHandlers?: typeof getRevalidationOnServerHandlers;
+  revalidationHandlers?: typeof handleOnChangeMode;
   form: UseFormReturn<TFieldValues>;
   labelProps?: ComponentProps<typeof FormLabel>;
   descriptionProps?: ComponentProps<typeof FormDescription>;

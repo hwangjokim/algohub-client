@@ -82,3 +82,4 @@ export { default as IcnUser2 } from "./icn_user2.svg";
 export { default as IcnEditProfile } from "./icn_edit_profile.svg";
 export { default as IcnBtnDelete } from "./icn_btn_delete.svg";
 export { default as IcnGroupInfoCard } from "./group_info_card.svg";
+export { default as IcnCopyCheck } from "./icn_copy_check.svg";

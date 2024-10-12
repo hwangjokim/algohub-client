@@ -13,7 +13,7 @@ type ToastProps = PropsWithChildren<{
 
 const Toast = ({
   variant = "default",
-  duration = 2000,
+  duration = 1000,
   children,
 }: ToastProps) => {
   /** atom이 바로 null로 바뀌면서 생기는 렌더링 이슈를 제어할 ref */
