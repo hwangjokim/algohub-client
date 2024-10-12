@@ -6,3 +6,8 @@ export const sidebarWrapper = style({
 
   minHeight: "calc(100vh - 7.2rem)",
 });
+
+export const mainWrapper = style({
+  flexGrow: "1",
+  padding: "0 10rem 2rem 4.2rem",
+});

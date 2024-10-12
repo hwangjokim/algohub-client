@@ -1,5 +1,6 @@
 import Sidebar from "@/common/component/Sidebar";
-import { sidebarWrapper } from "@/styles/shared.css";
+import { mainWrapper, sidebarWrapper } from "@/styles/shared.css";
+import Ranking from "@/view/group/dashboard/component/Ranking";
 import UserCard from "@/view/user/index/component/UserCard";
 import { userCardWrapper } from "@/view/user/index/component/UserCard/index.css";
 
@@ -11,7 +12,9 @@ const UserDashboardPage = () => {
           <UserCard />
         </div>
       </Sidebar>
-      {/* children */}
+      <section className={mainWrapper}>
+        <Ranking />
+      </section>
     </div>
   );
 };
