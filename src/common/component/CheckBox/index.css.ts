@@ -3,13 +3,15 @@ import { style } from "@vanilla-extract/css";
 
 export const boxStyle = style({
   appearance: "none",
+  WebkitAppearance: "none",
+  MozAppearance: "none",
 
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
 
-  width: "14px",
-  height: "14px",
+  width: "1.4rem",
+  height: "1.4rem",
 
   border: "none",
   borderRadius: "1px",
