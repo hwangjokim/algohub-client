@@ -16,10 +16,9 @@ const TableHead = ({
   width,
   ...props
 }: TableHeadProps) => {
-  const padding = type === "내가푼문제" ? "dense" : undefined;
   return (
     <th
-      className={clsx(tableHeadStyle({ textAlign, padding }), className)}
+      className={clsx(tableHeadStyle({ textAlign }), className)}
       style={{ width: `${width}px` }}
       {...props}
     />
