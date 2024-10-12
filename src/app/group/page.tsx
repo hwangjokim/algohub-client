@@ -1,7 +1,8 @@
 import type { GroupInfoResponse } from "@/api/group/type";
 import Sidebar from "@/common/component/Sidebar";
-import { sidebarWrapper } from "@/styles/shared.css";
+import { mainWrapper, sidebarWrapper } from "@/styles/shared.css";
 import GroupSidebar from "@/view/group/dashboard/component/GroupSidebar";
+import Ranking from "@/view/group/dashboard/component/Ranking";
 
 export const tmpGroupData: GroupInfoResponse = {
   id: 0,
@@ -21,7 +22,9 @@ const GroupDashboardPage = () => {
       <Sidebar>
         <GroupSidebar info={tmpGroupData} />
       </Sidebar>
-      {/* children */}
+      <section className={mainWrapper}>
+        <Ranking />
+      </section>
     </div>
   );
 };

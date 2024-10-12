@@ -19,14 +19,14 @@ const Avatar = ({
   ...imageProps
 }: AvatarProps) => {
   return (
-    <div className={wrapperStyle}>
+    <div className={clsx(wrapperStyle, className)}>
       <Image
         {...imageProps}
         src={src || defaultImg}
         width="100"
         height="100"
         role="button"
-        className={clsx(avatarStyle({ size, hasShadow }), className)}
+        className={avatarStyle({ size, hasShadow })}
       />
       {children}
     </div>
