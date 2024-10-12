@@ -6,7 +6,8 @@ import {
   itemStyle,
 } from "@/shared/component/NavBar/index.css";
 import { motion } from "framer-motion";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { type HTMLAttributes, type ReactElement, cloneElement } from "react";
 
 interface NavBarItemProps extends HTMLAttributes<HTMLLIElement> {
@@ -18,7 +19,6 @@ interface NavBarItemProps extends HTMLAttributes<HTMLLIElement> {
 
 const NavBarItem = ({ href, icon, mode, children }: NavBarItemProps) => {
   const pathname = usePathname();
-  const router = useRouter();
 
   const isSelected = pathname === href;
 
@@ -26,27 +26,26 @@ const NavBarItem = ({ href, icon, mode, children }: NavBarItemProps) => {
     <li
       // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole:
       role="button"
-      className={itemStyle({ isSelected })}
-      tabIndex={0}
-      onClick={() => router.push(href)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter") {
-          router.push(href);
-        }
-      }}
+      tabIndex={-1}
     >
-      {icon &&
-        cloneElement(icon, {
-          className: iconStyle({
-            variant: isSelected
-              ? mode
-              : (`none${mode}` as NavBarItemProps["mode"]),
-          }),
-        })}
-      {children}
-      {isSelected && (
-        <motion.div layoutId="navbar-indicator" className={indicatorStyle} />
-      )}
+      <Link href={href} className={itemStyle({ isSelected })}>
+        {icon &&
+          cloneElement(icon, {
+            className: iconStyle({
+              variant: isSelected
+                ? mode
+                : (`none${mode}` as NavBarItemProps["mode"]),
+            }),
+          })}
+        {children}
+        {isSelected && (
+          <motion.div
+            tabIndex={-1}
+            layoutId="navbar-indicator"
+            className={indicatorStyle}
+          />
+        )}
+      </Link>
     </li>
   );
 };
