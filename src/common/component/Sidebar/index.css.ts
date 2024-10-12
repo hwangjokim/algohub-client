@@ -7,7 +7,5 @@ export const sidebarStyle = style({
 
   width: "20%",
 
-  padding: "4.2rem 2.4rem",
-
   backgroundColor: theme.color.mg6,
 });
