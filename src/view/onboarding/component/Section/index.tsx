@@ -1,11 +1,11 @@
 import type { PropsWithChildren } from "react";
 import Footer from "../Footer";
-import { onboardingStyle } from "./index.css";
+import { mainStyle, onboardingStyle } from "./index.css";
 
 const MainWithFooter = ({ children }: PropsWithChildren) => {
   return (
     <div className={onboardingStyle}>
-      <main>{children}</main>
+      <main className={mainStyle}>{children}</main>
       <Footer />
     </div>
   );
