@@ -1,6 +1,7 @@
 "use client";
 import UserDashboardPage from "@/app/user/page";
 import Modal from "@/common/component/Modal";
+import ToastProvider from "@/common/component/Toast";
 import { useToast } from "@/common/hook/useToast";
 import CreateGroupForm from "@/view/user/create-group/component/CreateGroupForm";
 import LinkWithCopy from "@/view/user/create-group/component/LinkWithCopy";
@@ -21,6 +22,7 @@ const CreateGroupPage = () => {
 
   return (
     <>
+      <ToastProvider />
       <UserDashboardPage />
       <Modal isOpen={true} onClose={() => router.push("/user")} hasCloseBtn>
         <div className={wrapper}>
