@@ -1,13 +1,13 @@
 import type { GroupInfoResponse } from "@/api/group/type";
 import CircleNumber from "@/view/group/dashboard/component/GroupSidebar/CircleNumber";
 import GroupCard from "@/view/group/dashboard/component/GroupSidebar/GroupCard";
-import ShadowAvatar from "@/view/group/dashboard/component/GroupSidebar/ShadowAvatar";
 import {
   labelStyle,
   labelWrapper,
   memberWrapper,
   sidebarWrapper,
 } from "@/view/group/dashboard/component/GroupSidebar/index.css";
+import MemberAvatar from "@/view/group/index/component/MemberAvatar";
 
 type GroupCardProps = {
   info: GroupInfoResponse;
@@ -23,7 +23,7 @@ const GroupSidebar = ({ info }: GroupCardProps) => {
       </div>
       <div className={memberWrapper}>
         {[0, 1, 2, 3, 4].map((elem, idx) => (
-          <ShadowAvatar key={idx} alt={`${elem} 프로필 사진`} />
+          <MemberAvatar key={idx} src="" isLeader />
         ))}
       </div>
       <div className={labelWrapper}>
@@ -32,7 +32,7 @@ const GroupSidebar = ({ info }: GroupCardProps) => {
       </div>
       <div className={memberWrapper}>
         {[0, 1, 2].map((elem, idx) => (
-          <ShadowAvatar key={idx} alt={`${elem} 프로필 사진`} />
+          <MemberAvatar key={idx} src="" />
         ))}
       </div>
     </div>
