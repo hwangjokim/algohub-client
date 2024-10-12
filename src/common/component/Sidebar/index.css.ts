@@ -5,8 +5,7 @@ export const sidebarStyle = style({
   position: "sticky",
   left: 0,
 
-  width: "27rem",
-  height: "100%",
+  width: "20%",
 
   padding: "4.2rem 2.4rem",
 
