@@ -1,12 +1,17 @@
 "use client";
 
 import { IcnBtnPin, IcnCalendarTable } from "@/asset/svg";
+import ToggleButton from "@/common/component/ToggleButton";
 import {
   tableCellTextStyle,
   withdrawTextStyle,
 } from "@/shared/component/Table/TableElements/index.css";
 import { pinStyle } from "@/shared/component/Table/index.css";
-import type { StudyListDataType, TableColumns } from "@/shared/type/table";
+import type {
+  AlarmSettingsDataType,
+  StudyListDataType,
+  TableColumns,
+} from "@/shared/type/table";
 import StatusIcon from "./component/StatusIcon";
 
 export const STUDY_MANAGING_COLUMNS: TableColumns<StudyListDataType>[] = [
@@ -30,7 +35,7 @@ export const STUDY_MANAGING_COLUMNS: TableColumns<StudyListDataType>[] = [
     key: "groupName",
     Header: () => "그룹명",
     Cell: (data) => data.groupName,
-    width: 100,
+    width: 60,
     justify: "left",
   },
   {
@@ -46,17 +51,17 @@ export const STUDY_MANAGING_COLUMNS: TableColumns<StudyListDataType>[] = [
       const endDateStr = endDate.toLocaleDateString().replaceAll(" ", "");
       return (
         <>
-          <time className={tableCellTextStyle} dateTime={startDateStr}>
+          <time className={tableCellTextStyle.스터디리스트} dateTime={startDateStr}>
             {startDateStr}
           </time>{" "}
           ~{" "}
-          <time className={tableCellTextStyle} dateTime={endDateStr}>
+          <time className={tableCellTextStyle.스터디리스트} dateTime={endDateStr}>
             {endDateStr}
           </time>
         </>
       );
     },
-    width: 100,
+    width: 60,
     sort: true,
   },
   {
@@ -84,5 +89,50 @@ export const STUDY_MANAGING_COLUMNS: TableColumns<StudyListDataType>[] = [
     Cell: () => <button className={withdrawTextStyle}>회원 탈퇴</button>,
     width: 60,
     justify: "right",
+  },
+];
+
+export const ALERT_SETTINGS_COLUMNS: TableColumns<AlarmSettingsDataType>[] = [
+  {
+    key: "alertSetting",
+    Header: () => "알림 설정",
+    Cell: () => <ToggleButton isSelected onChange={() => {}} />,
+    width: 80,
+  },
+  {
+    key: "groupName",
+    Header: () => "그룹명",
+    Cell: (data) => data.groupName,
+    width: 120,
+  },
+  {
+    key: "issueRegistration",
+    Header: () => "문제 등록",
+    Cell: (data) => (data.problemRegistration ? "ON" : "OFF"),
+    width: 100,
+  },
+  {
+    key: "solutionRegistration",
+    Header: () => "풀이 등록",
+    Cell: (data) => (data.solutionRegistration ? "ON" : "OFF"),
+    width: 100,
+  },
+  {
+    key: "commentRegistration",
+    Header: () => "코멘트 등록",
+    Cell: (data) => (data.commentRegistration ? "ON" : "OFF"),
+    width: 100,
+  },
+  {
+    key: "newMember",
+    Header: () => "신규 회원 가입",
+    Cell: (data) => (data.newMemberAllowed ? "ON" : "OFF"),
+    width: 100,
+  },
+  {
+    key: "leave",
+    Header: () => "마감 임박",
+    Cell: (data) => (data.endDateImminent ? "ON" : "OFF"),
+    width: 80,
   },
 ];

@@ -1,5 +1,5 @@
 "use client";
-import type { PageType, TableColumns } from "@/shared/type/table";
+import type { TableColumns, TableType } from "@/shared/type/table";
 import Body from "./Body";
 import Header from "./Header";
 import {
@@ -10,7 +10,7 @@ import {
 
 type DataTableProps<T> = {
   title: string;
-  type: PageType;
+  type: TableType;
   rows: T[];
   cols: TableColumns<T>[];
 };
@@ -21,14 +21,12 @@ export const DataTable = <T,>({
   rows,
   cols,
 }: DataTableProps<T>) => {
-  // 정렬 필터 검색 페이징 헤더 셀width
-
   return (
     <div className={wrapperStyle}>
-      <table className={tableStyle}>
-        <caption className={tableCaptionStyle}>{title}</caption>
+      <table className={tableStyle({ type })}>
+        {title && <caption className={tableCaptionStyle}>{title}</caption>}
         <Header columns={cols} type={type} />
-        <Body rows={rows} cols={cols} />
+        <Body rows={rows} cols={cols} type={type} />
       </table>
     </div>
   );

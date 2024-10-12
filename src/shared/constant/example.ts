@@ -1,5 +1,5 @@
 import IcnNew from "@/asset/svg/icn_new.svg?url";
-import type { StudyListDataType } from "../type/table";
+import type { AlarmSettingsDataType, StudyListDataType } from "../type/table";
 
 export const alarms = [
   {
@@ -116,5 +116,71 @@ export const testTableData: StudyListDataType[] = [
     role: "스터디장",
     isPublic: true,
     status: "Queued",
+  },
+];
+
+export const alarmSettingsData: AlarmSettingsDataType[] = [
+  {
+    alarm: true,
+    groupName: "숭실대학교 알고리즘 스터디",
+    problemRegistration: false,
+    solutionRegistration: false,
+    commentRegistration: false,
+    newMemberAllowed: false,
+    endDateImminent: false,
+  },
+  {
+    alarm: true,
+    groupName: "숭실대학교 알고리즘 스터디",
+    problemRegistration: false,
+    solutionRegistration: false,
+    commentRegistration: false,
+    newMemberAllowed: false,
+    endDateImminent: false,
+  },
+  {
+    alarm: true,
+    groupName: "숭실대학교 알고리즘 스터디",
+    problemRegistration: false,
+    solutionRegistration: false,
+    commentRegistration: false,
+    newMemberAllowed: false,
+    endDateImminent: false,
+  },
+  {
+    alarm: true,
+    groupName: "숭실대학교 알고리즘 스터디",
+    problemRegistration: false,
+    solutionRegistration: false,
+    commentRegistration: false,
+    newMemberAllowed: false,
+    endDateImminent: false,
+  },
+  {
+    alarm: true,
+    groupName: "숭실대학교 알고리즘 스터디",
+    problemRegistration: false,
+    solutionRegistration: false,
+    commentRegistration: false,
+    newMemberAllowed: false,
+    endDateImminent: false,
+  },
+  {
+    alarm: true,
+    groupName: "숭실대학교 알고리즘 스터디",
+    problemRegistration: false,
+    solutionRegistration: false,
+    commentRegistration: false,
+    newMemberAllowed: false,
+    endDateImminent: false,
+  },
+  {
+    alarm: true,
+    groupName: "숭실대학교 알고리즘 스터디",
+    problemRegistration: false,
+    solutionRegistration: false,
+    commentRegistration: false,
+    newMemberAllowed: false,
+    endDateImminent: false,
   },
 ];

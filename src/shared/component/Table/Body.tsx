@@ -1,20 +1,26 @@
-import type { TableColumns } from "@/shared/type/table";
+import type { TableColumns, TableType } from "@/shared/type/table";
 import TableCell from "./TableElements/TableCell";
-import { tableBodyStyle, tableRowStyle } from "./TableElements/index.css";
+import { tableCellTextStyle } from "./TableElements/index.css";
 
 type BodyProps<T> = {
+  type: TableType;
   rows: T[];
   cols: TableColumns<T>[];
 };
 
-const Body = <T,>({ rows, cols }: BodyProps<T>) => {
+const Body = <T,>({ rows, cols, type }: BodyProps<T>) => {
   return (
-    <tbody className={tableBodyStyle}>
+    <tbody>
       {rows.map((row, idx) => (
-        // api 연결 후, raw data에 고유 id값 추가 등의 방안으로 key 교체하기
-        <tr className={tableRowStyle} key={idx}>
+        // TODO: api 연결 후, raw data에 고유 id값 추가 등의 방안으로 key 교체하기
+        <tr key={idx}>
           {cols.map((col) => (
-            <TableCell key={col.key?.toString()} textAlign={col.justify}>
+            <TableCell
+              key={col.key?.toString()}
+              textAlign={col.justify}
+              type={type}
+              className={tableCellTextStyle[type]}
+            >
               {col.Cell(row)}
             </TableCell>
           ))}

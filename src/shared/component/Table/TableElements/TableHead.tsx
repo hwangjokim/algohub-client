@@ -1,11 +1,11 @@
-import type { PageType } from "@/shared/type/table";
+import type { TableType } from "@/shared/type/table";
 import clsx from "clsx";
 import type { ComponentProps } from "react";
 import { tableHeadStyle } from "./index.css";
 
 type TableHeadProps = {
   textAlign?: "left" | "right";
-  type?: PageType;
+  type?: TableType;
   width?: number;
 } & ComponentProps<"th">;
 

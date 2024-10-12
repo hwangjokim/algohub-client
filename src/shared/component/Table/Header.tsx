@@ -1,5 +1,5 @@
 import { IcnBtnArrowDown, IcnBtnSort } from "@/asset/svg";
-import type { PageType, TableColumns } from "@/shared/type/table";
+import type { TableColumns, TableType } from "@/shared/type/table";
 import { memo } from "react";
 import TableHead from "./TableElements/TableHead";
 import { tableHeaderStyle, tableRowStyle } from "./TableElements/index.css";
@@ -7,7 +7,7 @@ import { headWrapper } from "./index.css";
 
 type HeaderProps<T> = {
   columns: TableColumns<T>[];
-  type: PageType;
+  type: TableType;
 };
 
 const Header = <T,>({ columns, type }: HeaderProps<T>) => {

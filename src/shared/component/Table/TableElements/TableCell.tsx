@@ -1,12 +1,22 @@
+import type { TableType } from "@/shared/type/table";
 import clsx from "clsx";
 import type { ComponentProps } from "react";
-import { tableCellStyle, tableCellTextStyle } from "./index.css";
+import { tableCellStyle } from "./index.css";
 
 type TableCellProps = {
   textAlign?: "left" | "right";
+  type: TableType;
 } & ComponentProps<"td">;
 
-const TableCell = ({ className, textAlign, ...props }: TableCellProps) => (
-  <td className={clsx(tableCellStyle({ textAlign }), tableCellTextStyle, className)} {...props} />
+const TableCell = ({
+  className,
+  textAlign,
+  type,
+  ...props
+}: TableCellProps) => (
+  <td
+    className={clsx(tableCellStyle({ textAlign, type }), className)}
+    {...props}
+  />
 );
 export default TableCell;

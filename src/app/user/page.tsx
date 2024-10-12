@@ -1,14 +1,14 @@
 import { DataTable } from "@/shared/component/Table";
-import { testTableData } from "@/shared/constant/example";
-import { STUDY_MANAGING_COLUMNS } from "@/view/user/setting/constant";
+import { alarmSettingsData } from "@/shared/constant/example";
+import { ALERT_SETTINGS_COLUMNS } from "@/view/user/setting/constant";
 
 const UserDashboardPage = () => {
   return (
     <DataTable
-      title="스터디 리스트"
-      type="스터디관리"
-      rows={testTableData}
-      cols={STUDY_MANAGING_COLUMNS}
+      title=""
+      type="알림설정"
+      rows={alarmSettingsData}
+      cols={ALERT_SETTINGS_COLUMNS}
     />
   );
 };
