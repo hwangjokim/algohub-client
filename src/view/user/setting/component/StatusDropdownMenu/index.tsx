@@ -2,7 +2,11 @@ import { IcnBtnArrowDown } from "@/asset/svg";
 import Dropdown from "@/common/component/Dropdown";
 import Menu from "@/common/component/Menu/Menu";
 import StatusIcon from "../StatusIcon";
-import { dropdownStyle, storyArrowDownStyle, triggerButtonStyle } from "./index.css";
+import {
+  dropdownStyle,
+  storyArrowDownStyle,
+  triggerButtonStyle,
+} from "./index.css";
 
 const StatusDropdonwMenu = () => {
   return (
