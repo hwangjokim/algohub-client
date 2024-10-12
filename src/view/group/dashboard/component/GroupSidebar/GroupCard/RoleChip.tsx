@@ -7,7 +7,7 @@ type RoleChipProps = {
 const RoleChip = ({ isLeader }: RoleChipProps) => {
   return (
     <div className={chipWrapper}>
-      <IcnUser3 width={9} height={13}/>
+      <IcnUser3 width={9} height={13} />
       {isLeader ? "스터디장" : "스터디원"}
     </div>
   );
