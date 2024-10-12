@@ -1,11 +1,11 @@
-import type { TableColumns, TableType } from "@/shared/type/table";
-import TableCell from "./TableElements/TableCell";
-import { tableCellTextStyle } from "./TableElements/index.css";
+import type { TableDataType, TableType } from "@/shared/type/table";
+import TableCell from "./TableCell";
+import { tableCellTextStyle } from "./index.css";
 
 type BodyProps<T> = {
   type: TableType;
   rows: T[];
-  cols: TableColumns<T>[];
+  cols: TableDataType<T>[];
 };
 
 const Body = <T,>({ rows, cols, type }: BodyProps<T>) => {

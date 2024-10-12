@@ -1,11 +1,11 @@
-import type { TableColumns, TableType } from "@/shared/type/table";
+import type { TableDataType, TableType } from "@/shared/type/table";
 import { memo } from "react";
-import TableHead from "./TableElements/TableHead";
-import { tableHeaderStyle } from "./TableElements/index.css";
-import { headWrapper } from "./index.css";
+import { headWrapper } from "../index.css";
+import TableHead from "./TableHead";
+import { tableHeaderStyle } from "./index.css";
 
 type HeaderProps<T> = {
-  columns: TableColumns<T>[];
+  columns: TableDataType<T>[];
   type: TableType;
 };
 

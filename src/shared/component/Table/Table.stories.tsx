@@ -10,6 +10,12 @@ import { DataTable } from ".";
 const meta: Meta<typeof DataTable> = {
   title: "Shared/Table",
   component: DataTable,
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PBHmaVSKndAId6lY6G2qEb/AlgoHub?node-id=491-25321&t=kXe0v1ggMwRlTf9d-4",
+    },
+  },
   tags: ["autodocs"],
   decorators: (Story) => (
     <div style={{ backgroundColor: theme.color.bg }}>

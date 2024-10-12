@@ -1,7 +1,7 @@
 "use client";
-import type { TableColumns, TableType } from "@/shared/type/table";
-import Body from "./Body";
-import Header from "./Header";
+import type { TableDataType, TableType } from "@/shared/type/table";
+import Body from "./TableElements/Body";
+import Header from "./TableElements/Header";
 import {
   tableCaptionStyle,
   tableStyle,
@@ -16,7 +16,7 @@ type DataTableProps<T> = {
   /** 원본 데이터 배열 */
   rows: T[];
   /** 테이블 메타데이터(행, 열) 배열 */
-  cols: TableColumns<T>[];
+  cols: TableDataType<T>[];
 };
 
 export const DataTable = <T,>({

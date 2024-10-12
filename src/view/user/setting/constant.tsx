@@ -10,12 +10,12 @@ import { pinStyle, sortIconStyle } from "@/shared/component/Table/index.css";
 import type {
   AlarmSettingsDataType,
   StudyListDataType,
-  TableColumns,
+  TableDataType,
 } from "@/shared/type/table";
 import StatusDropdonwMenu from "./component/StatusDropdownMenu";
 import StatusIcon from "./component/StatusIcon";
 
-export const STUDY_LIST_COLUMNS: TableColumns<StudyListDataType>[] = [
+export const STUDY_LIST_COLUMNS: TableDataType<StudyListDataType>[] = [
   {
     key: "pin",
     Header: () => (
@@ -106,7 +106,7 @@ export const STUDY_LIST_COLUMNS: TableColumns<StudyListDataType>[] = [
   },
 ];
 
-export const ALARM_SETTINGS_COLUMNS: TableColumns<AlarmSettingsDataType>[] = [
+export const ALARM_SETTINGS_COLUMNS: TableDataType<AlarmSettingsDataType>[] = [
   {
     key: "alertSetting",
     Header: () => "알림 설정",
