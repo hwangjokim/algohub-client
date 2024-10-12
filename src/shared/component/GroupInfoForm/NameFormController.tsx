@@ -4,16 +4,15 @@ import {
   formLabelStyle,
   nameInputStyle,
 } from "@/shared/component/GroupInfoForm/index.css";
+import { handleOnChangeMode } from "@/shared/util/form";
 
 const NameFormController = ({ form, variant }: GroupFormProps) => {
-  const isError = !!form.formState.errors.name;
   return (
     <FormController
       form={form}
       name="name"
       type="input"
       showLabel
-      labelPosition="top"
       labelProps={{
         children: "스터디 이름",
         className: formLabelStyle({ variant }),
@@ -23,11 +22,7 @@ const NameFormController = ({ form, variant }: GroupFormProps) => {
         className: nameInputStyle({ variant }),
       }}
       showDescription
-      descriptionPosition="bottom"
-      descriptionProps={{
-        isError,
-        message: isError ? form.formState.errors.name?.message : undefined,
-      }}
+      revalidationHandlers={handleOnChangeMode}
     />
   );
 };

@@ -2,7 +2,7 @@ import Button from "@/common/component/Button";
 import { useCheckOnServer } from "@/shared/hook/useCheckOnServer";
 import {
   getMultipleRevalidationHandlers,
-  getRevalidationOnServerHandlers,
+  handleOnChangeMode,
 } from "@/shared/util/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -260,7 +260,7 @@ export const ValidateOnServer: Story = {
                 showLabel
                 showDescription
                 // 이 필드만 onChange로 검사하기 위해 custom handler 적용
-                revalidationHandlers={getRevalidationOnServerHandlers}
+                revalidationHandlers={handleOnChangeMode}
                 labelProps={{
                   className: itemStyle.label,
                   children: "닉네임(서버에서 검증)",
@@ -280,7 +280,7 @@ export const ValidateOnServer: Story = {
                 type="input"
                 showLabel
                 showDescription
-                revalidationHandlers={getRevalidationOnServerHandlers}
+                revalidationHandlers={handleOnChangeMode}
                 labelProps={{
                   className: itemStyle.label,
                   children: "백준 아이디(서버에서 검증)",

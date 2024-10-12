@@ -57,7 +57,7 @@ export const getMultipleRevalidationHandlers =
 /**
  * 매 입력마다 서버에서 결과를 받아야 하는 필드에 대해 * onChange로 유효성 검사하게 만드는 handler를 반환하는 함수
  */
-export const getRevalidationOnServerHandlers = (
+export const handleOnChangeMode = (
   form: UseFormReturn,
   field: ControllerRenderProps,
 ) => {

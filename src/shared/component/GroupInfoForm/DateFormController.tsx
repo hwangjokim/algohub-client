@@ -19,7 +19,6 @@ const DateFormController = ({
       name={dateType}
       type="date"
       showLabel
-      labelPosition="top"
       labelProps={{
         children: dateType === "startDate" ? "시작 일자" : "종료 일자",
         className: dateLabelStyle({ variant }),

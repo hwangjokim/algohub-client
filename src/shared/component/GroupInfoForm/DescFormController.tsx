@@ -12,7 +12,6 @@ const DescFormController = ({ form, variant }: GroupFormProps) => {
       name="desc"
       type="textarea"
       showLabel
-      labelPosition="top"
       labelProps={{
         children: "스터디 소개",
         className: formLabelStyle({ variant }),
