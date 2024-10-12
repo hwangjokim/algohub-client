@@ -44,7 +44,7 @@ export const alarms = [
   },
 ];
 
-export const testTableData: StudyListDataType[] = [
+export const StudyListData: StudyListDataType[] = [
   {
     pin: true,
     groupName: "soongsil univ algorithm",
