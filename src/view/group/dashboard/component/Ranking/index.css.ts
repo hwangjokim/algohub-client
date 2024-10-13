@@ -61,7 +61,7 @@ export const allRankingWrapper = style({
   flexDirection: "column",
   gap: "1.5rem",
 
-  paddingTop: "2.4rem",
+  padding: "2.4rem 0 1.6rem",
 });
 
 export const listWrapper = style({
