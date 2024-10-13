@@ -1,4 +1,5 @@
 import { globalStyle } from "@vanilla-extract/css";
+import { theme } from "./themes.css";
 
 globalStyle("*, *::before, *::after", {
   boxSizing: "border-box",
@@ -34,6 +35,6 @@ globalStyle("textarea", {
   resize: "none",
 });
 
-globalStyle("li", {
-  listStyle: "none",
+globalStyle("body", {
+  background: theme.color.bg,
 });
