@@ -1,6 +1,6 @@
 import Sidebar from "@/common/component/Sidebar";
 import { sidebarWrapper } from "@/styles/shared.css";
-import ProblemSidebar from "@/view/group/index/component/ProblemSidebar";
+import ProblemSidebar from "@/view/group/index/ProblemSidebar";
 
 const ProblemListPage = () => {
   const isOwner = true;

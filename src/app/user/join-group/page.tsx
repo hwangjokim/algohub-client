@@ -3,12 +3,9 @@ import type { GroupJoinResponse } from "@/api/group/type";
 import UserDashboardPage from "@/app/user/page";
 import Button from "@/common/component/Button";
 import Modal from "@/common/component/Modal";
-import DecisionPrompt from "@/view/user/join-group/component/DecisionPrompt";
-import GroupInfoCard from "@/view/user/join-group/component/GroupInfoCard";
-import {
-  btnWrapper,
-  wrapper,
-} from "@/view/user/join-group/component/index.css";
+import DecisionPrompt from "@/view/user/join-group/DecisionPrompt";
+import GroupInfoCard from "@/view/user/join-group/GroupInfoCard";
+import { btnWrapper, wrapper } from "@/view/user/join-group/index.css";
 import { useRouter } from "next/navigation";
 
 const JoinGroupPage = () => {
