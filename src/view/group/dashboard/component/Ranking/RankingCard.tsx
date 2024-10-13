@@ -12,8 +12,9 @@ import {
 } from "@/view/group/dashboard/component/Ranking/index.css";
 import { useState } from "react";
 
-const RankingCard = ({ info }: { info: GroupRankingResponse }) => {
-  const { profileImage, rank, solvedCount, userNickname } = info;
+const RankingCard = ({
+  info: { profileImage, rank, solvedCount, userNickname },
+}: { info: GroupRankingResponse }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const parseRank = ["1st", "2nd", "3rd"];
@@ -43,7 +44,7 @@ const RankingCard = ({ info }: { info: GroupRankingResponse }) => {
             {`${solvedCount} solved`}
           </span>
         </div>
-        <h1 className={nicknameStyle}>{userNickname}</h1>
+        <h2 className={nicknameStyle}>{userNickname}</h2>
       </div>
     </article>
   );
