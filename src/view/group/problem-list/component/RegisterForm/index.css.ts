@@ -23,7 +23,6 @@ export const formStyle = style({
   display: "flex",
   flexDirection: "column",
   gap: "1.6rem",
-  paddingBottom: "4.1rem",
 });
 
 export const labelStyle = style({
@@ -39,4 +38,8 @@ export const grayTextStyle = style({
 export const dateFormWrapper = style({
   display: "flex",
   gap: "2.6rem",
+});
+
+export const submitBtnStyle = style({
+  marginTop: "4.1rem",
 });

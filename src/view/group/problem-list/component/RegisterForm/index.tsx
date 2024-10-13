@@ -9,6 +9,7 @@ import {
   formStyle,
   labelStyle,
   registerWrapper,
+  submitBtnStyle,
   titleStyle,
 } from "@/view/group/problem-list/component/RegisterForm/index.css";
 import { registerProblemSchema } from "@/view/group/problem-list/component/RegisterForm/schema";
@@ -23,17 +24,18 @@ const RegisterForm = ({ variant = "default" }: RegisterFormProps) => {
   const { showToast } = useToast();
   const form = useForm<z.infer<typeof registerProblemSchema>>({
     resolver: zodResolver(registerProblemSchema),
-    mode: "onSubmit",
+    mode: "onTouched",
   });
 
   const handleSubmit = (values: z.infer<typeof registerProblemSchema>) => {
     console.log({ values });
     showToast("문제가 정상적으로 등록되었어요.", "success");
   };
+
   const title = variant === "default" ? "문제 등록하기" : "문제 수정하기";
   return (
     <div className={registerWrapper}>
-      <p className={titleStyle}>{title}</p>
+      <h2 className={titleStyle}>{title}</h2>
       <Form {...form}>
         <form className={formStyle} onSubmit={form.handleSubmit(handleSubmit)}>
           <LinkFormController form={form} />
@@ -51,15 +53,16 @@ const RegisterForm = ({ variant = "default" }: RegisterFormProps) => {
               />
             )}
           </div>
+          <Button
+            type="submit"
+            size="large"
+            className={submitBtnStyle}
+            disabled={!form.formState.isValid}
+            isActive={form.formState.isValid}
+          >
+            {title}
+          </Button>
         </form>
-        <Button
-          type="submit"
-          size="large"
-          disabled={!form.formState.isValid}
-          isActive={form.formState.isValid}
-        >
-          {title}
-        </Button>
       </Form>
     </div>
   );

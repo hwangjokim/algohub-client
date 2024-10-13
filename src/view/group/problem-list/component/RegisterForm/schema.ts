@@ -2,7 +2,9 @@ import { z } from "zod";
 
 export const registerProblemSchema = z
   .object({
-    link: z.string(),
+    link: z
+      .string({ message: "올바른 BOJ 링크를 입력해주시기 바랍니다." })
+      .min(1, { message: "올바른 BOJ 링크를 입력해주시기 바랍니다." }),
     startDate: z.date(),
     endDate: z.date(),
   })
