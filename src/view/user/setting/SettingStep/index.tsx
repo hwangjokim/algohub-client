@@ -2,89 +2,55 @@ import { IcnAlarm, IcnPencil, IcnSetting, IcnSquare } from "@/asset/svg";
 import { theme } from "@/styles/themes.css";
 import {
   barStyle,
+  btnStyle,
   itemStyle,
   texStyle,
   wrapper,
 } from "@/view/user/setting/SettingStep/index.css";
 import type { SettingSteps } from "@/view/user/setting/type";
 import type { Dispatch, SetStateAction } from "react";
+import { match } from "ts-pattern";
 
 type SettingStepProps = {
   step: SettingSteps;
   setStep: Dispatch<SetStateAction<SettingSteps>>;
 };
 const SettingStep = ({ step, setStep }: SettingStepProps) => {
-  const activeColor = theme.color.white;
-  const inactiveColor = theme.color.mg2;
-  const isMyProfile = step === "my-profile";
-  const isStudySetting = step === "study-setting";
-  const isAccountSetting = step === "account-setting";
-  const isAlarmSetting = step === "alarm-setting";
+  const steps = [
+    { type: "my-profile", label: "내 프로필", Icon: IcnSquare },
+    { type: "study-setting", label: "스터디 관리", Icon: IcnPencil },
+    { type: "account-setting", label: "계정 관리", Icon: IcnSetting },
+    { type: "alarm-setting", label: "알람 설정", Icon: IcnAlarm },
+  ];
 
-  const handleKeyUp = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "Enter" || e.key === " ") {
-    }
-  };
   return (
-    <div className={wrapper}>
-      <div
-        className={itemStyle}
-        role="button"
-        onClick={() => setStep("my-profile")}
-        onKeyDown={handleKeyUp}
-        tabIndex={0}
-      >
-        {isMyProfile && <div className={barStyle} />}
-        <IcnSquare
-          color={isMyProfile ? activeColor : inactiveColor}
-          width={16}
-          height={16}
-        />
-        <p className={texStyle({ isActive: isMyProfile })}>내 프로필</p>
-      </div>
-      <div
-        className={itemStyle}
-        role="button"
-        onClick={() => setStep("study-setting")}
-        onKeyUp={handleKeyUp}
-      >
-        {isStudySetting && <div className={barStyle} />}
-        <IcnPencil
-          color={isStudySetting ? activeColor : inactiveColor}
-          width={16}
-          height={16}
-        />
-        <p className={texStyle({ isActive: isStudySetting })}>스터디 관리</p>
-      </div>
-      <div
-        className={itemStyle}
-        role="button"
-        onClick={() => setStep("account-setting")}
-        onKeyUp={handleKeyUp}
-      >
-        {isAccountSetting && <div className={barStyle} />}
-        <IcnSetting
-          color={isAccountSetting ? activeColor : inactiveColor}
-          width={16}
-          height={16}
-        />
-        <p className={texStyle({ isActive: isAccountSetting })}>계정 관리</p>
-      </div>
-      <div
-        className={itemStyle}
-        role="button"
-        onClick={() => setStep("alarm-setting")}
-        onKeyUp={handleKeyUp}
-      >
-        {isAlarmSetting && <div className={barStyle} />}
-        <IcnAlarm
-          fill={isAlarmSetting ? activeColor : inactiveColor}
-          width={16}
-          height={16}
-        />
-        <p className={texStyle({ isActive: isAlarmSetting })}>알람 설정</p>
-      </div>
-    </div>
+    <ul className={wrapper}>
+      {steps.map(({ type, label, Icon }) => {
+        const isActive = step === type;
+        const color = match(isActive)
+          .with(true, () => theme.color.white)
+          .with(false, () => theme.color.mg2)
+          .run();
+        return (
+          // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
+          <li
+            key={type}
+            className={itemStyle}
+            onClick={() => setStep(type as SettingSteps)}
+          >
+            {isActive && <div className={barStyle} />}
+            <button className={btnStyle}>
+              {type === "alarm-setting" ? (
+                <Icon fill={color} width={16} height={16} />
+              ) : (
+                <Icon color={color} width={16} height={16} />
+              )}
+              <p className={texStyle({ isActive })}>{label}</p>
+            </button>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 

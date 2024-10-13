@@ -10,13 +10,16 @@ export const wrapper = style({
 });
 
 export const itemStyle = style({
-  display: "flex",
-  alignItems: "center",
   position: "relative",
-  gap: "1.6rem",
 
   padding: "1.4rem 3.2rem",
   cursor: "pointer",
+});
+
+export const btnStyle = style({
+  display: "flex",
+  alignItems: "center",
+  gap: "1.6rem",
 });
 
 export const texStyle = recipe({
