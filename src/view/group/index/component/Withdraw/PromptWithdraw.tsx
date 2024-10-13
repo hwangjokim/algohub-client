@@ -7,7 +7,7 @@ import {
 const PromptWithdraw = () => {
   return (
     <>
-      <p className={metaTextStyle}>스터디를 나가시겠어요?</p>
+      <h2 className={metaTextStyle}>스터디를 나가시겠어요?</h2>
       <div className={descWrapper}>
         <p className={descTextStyle}>
           나간 스터디를 다시 가입하려면 초대 코드가 필요해요.

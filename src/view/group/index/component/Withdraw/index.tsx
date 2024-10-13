@@ -5,21 +5,21 @@ import { withdrawWrapper } from "@/view/group/index/component/Withdraw/index.css
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const Widthdraw = () => {
-  const [click, setClick] = useState(false);
+const Withdraw = () => {
+  const [isLeaving, setIsLeaving] = useState(false);
   const router = useRouter();
 
   const handleBtnClick = () => {
-    if (click) router.push("/user");
-    setClick(true);
+    if (isLeaving) router.push("/user");
+    setIsLeaving(true);
   };
 
   return (
-    <div className={withdrawWrapper}>
-      {click ? <SuccessWithdraw /> : <PromptWithdraw />}
-      <Button onClick={handleBtnClick}>{click ? "확인" : "나가기"}</Button>
-    </div>
+    <article className={withdrawWrapper}>
+      {isLeaving ? <SuccessWithdraw /> : <PromptWithdraw />}
+      <Button onClick={handleBtnClick}>{isLeaving ? "확인" : "나가기"}</Button>
+    </article>
   );
 };
 
-export default Widthdraw;
+export default Withdraw;

@@ -2,7 +2,7 @@
 
 import {} from "@/asset/svg";
 import Modal from "@/common/component/Modal";
-import Widthdraw from "@/view/group/index/component/Withdraw";
+import Withdraw from "@/view/group/index/component/Withdraw";
 import { useState } from "react";
 
 const GroupDashboardPage = () => {
@@ -15,7 +15,7 @@ const GroupDashboardPage = () => {
       }}
       hasCloseBtn
     >
-      <Widthdraw />
+      <Withdraw />
     </Modal>
   );
 };
