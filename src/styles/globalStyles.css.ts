@@ -1,6 +1,5 @@
 import { theme } from "@/styles/themes.css";
 import { globalStyle } from "@vanilla-extract/css";
-import { theme } from "./themes.css";
 
 globalStyle("*, *::before, *::after", {
   boxSizing: "border-box",
@@ -34,10 +33,6 @@ globalStyle("button", {
 
 globalStyle("textarea", {
   resize: "none",
-});
-
-globalStyle("body", {
-  background: theme.color.bg,
 });
 
 globalStyle("body", {
