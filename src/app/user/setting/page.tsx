@@ -1,5 +1,20 @@
+"use client";
+import Sidebar from "@/common/component/Sidebar";
+import { sidebarWrapper } from "@/styles/shared.css";
+import SettingStep from "@/view/user/setting/SettingStep";
+import type { SettingSteps } from "@/view/user/setting/type";
+import { useState } from "react";
+
 const UserSettingPage = () => {
-  return <div>UserSettingPage</div>;
+  const [step, setStep] = useState<SettingSteps>("my-profile");
+  return (
+    <main className={sidebarWrapper}>
+      <Sidebar>
+        <SettingStep step={step} setStep={setStep} />
+      </Sidebar>
+      {/* children */}
+    </main>
+  );
 };
 
 export default UserSettingPage;
