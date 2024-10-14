@@ -3,6 +3,7 @@ import { style } from "@vanilla-extract/css";
 
 export const dropdownContainer = style({
   position: "absolute",
+  zIndex: theme.zIndex.top,
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
