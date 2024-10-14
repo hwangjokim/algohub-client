@@ -5,10 +5,7 @@ export const sidebarStyle = style({
   position: "sticky",
   left: 0,
 
-  width: "27rem",
-  height: "100%",
-
-  padding: "4.2rem 2.4rem",
+  width: "20%",
 
   backgroundColor: theme.color.mg6,
 });
