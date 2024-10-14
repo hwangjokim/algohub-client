@@ -24,10 +24,12 @@ const intro = { section: "intro" } as const;
 const Section1 = () => {
   const router = useRouter();
   const handleClick = () => {
-    const featureSection = document.querySelector("#feature-1");
-    featureSection?.scrollIntoView({
-      behavior: "smooth",
-    });
+    if (typeof document !== "undefined") {
+      const featureSection = document.querySelector("#feature-1");
+      featureSection?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   };
   const handleLoginClick = () => {
     router.push("/login");
