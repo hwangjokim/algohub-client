@@ -6,6 +6,10 @@ const breakpoints = {
   lg: "1366px",
 };
 
+export const mainStyle = style({
+  paddingBottom: "12rem",
+});
+
 export const onboardingStyle = style({
   overflowY: "scroll",
   scrollBehavior: "smooth",
@@ -57,8 +61,6 @@ export const contentsContainer = recipe({
         gridTemplateColumns: "47.5rem 72.5rem",
         gridTemplateRows: "30rem auto",
         gridAutoFlow: "column",
-
-        paddingTop: "5rem",
         "@media": {
           [`screen and (max-width: ${breakpoints.lg})`]: {
             gridTemplateColumns: "40rem 60rem",
@@ -73,7 +75,6 @@ export const contentsContainer = recipe({
 export const introContainer = style({
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
   gap: "6.4rem",
 });
 
