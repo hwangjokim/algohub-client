@@ -8,12 +8,12 @@ import { useState } from "react";
 const UserSettingPage = () => {
   const [step, setStep] = useState<SettingSteps>("my-profile");
   return (
-    <div className={sidebarWrapper}>
+    <main className={sidebarWrapper}>
       <Sidebar>
         <SettingStep step={step} setStep={setStep} />
       </Sidebar>
       {/* children */}
-    </div>
+    </main>
   );
 };
 

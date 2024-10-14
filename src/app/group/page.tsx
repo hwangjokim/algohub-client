@@ -5,12 +5,12 @@ import GroupSidebar from "@/view/group/dashboard/GroupSidebar";
 
 const GroupDashboardPage = () => {
   return (
-    <div className={sidebarWrapper}>
+    <main className={sidebarWrapper}>
       <Sidebar>
         <GroupSidebar info={tmpGroupData} />
       </Sidebar>
       {/* children */}
-    </div>
+    </main>
   );
 };
 

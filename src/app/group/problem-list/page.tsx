@@ -5,10 +5,10 @@ import ProblemSidebar from "@/view/group/index/ProblemSidebar";
 const ProblemListPage = () => {
   const isOwner = true;
   return (
-    <div className={sidebarWrapper}>
+    <main className={sidebarWrapper}>
       <Sidebar>{isOwner ? <ProblemSidebar /> : <></>}</Sidebar>
       {/* children */}
-    </div>
+    </main>
   );
 };
 

@@ -5,14 +5,14 @@ import { userCardWrapper } from "@/view/user/index/UserCard/index.css";
 
 const UserDashboardPage = () => {
   return (
-    <div className={sidebarWrapper}>
+    <main className={sidebarWrapper}>
       <Sidebar>
         <div className={userCardWrapper}>
           <UserCard />
         </div>
       </Sidebar>
       {/* children */}
-    </div>
+    </main>
   );
 };
 
