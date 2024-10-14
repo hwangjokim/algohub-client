@@ -35,6 +35,10 @@ globalStyle("textarea", {
   resize: "none",
 });
 
+globalStyle("li", {
+  listStyle: "none",
+});
+
 globalStyle("body", {
   background: theme.color.bg,
 });
