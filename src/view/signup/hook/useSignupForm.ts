@@ -24,7 +24,7 @@ const useSignupForm = () => {
     nickname,
     backjoonId,
   );
-  const { isValid: isActive, errors, dirtyFields } = form.formState;
+  const { isValid, errors, dirtyFields } = form.formState;
 
   const idMsg = "영문 소문자 또는 영문 대문자, 숫자 조합 6~12 자리";
 
@@ -50,11 +50,11 @@ const useSignupForm = () => {
       ? "정상적으로 연동되었어요."
       : errors.baekjoonId?.message;
 
+  const isActive = isValid && !isNicknameLoading && !isBaekjoonIdLoading;
+
   const handleSubmit = (_values: z.infer<typeof signupSchema>) => {
     // console.log({ values, profile });
   };
-
-  console.log({ isActive, errors });
 
   return {
     form,
