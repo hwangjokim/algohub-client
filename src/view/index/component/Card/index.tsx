@@ -2,7 +2,7 @@ import clsx from "clsx";
 import type { ComponentProps } from "react";
 import { cardStyle } from "./index.css";
 
-type CardProps = ComponentProps<"div">;
+type CardProps = ComponentProps<'div'>
 
 const Card = ({ className, children, ...props }: CardProps) => {
   return (
