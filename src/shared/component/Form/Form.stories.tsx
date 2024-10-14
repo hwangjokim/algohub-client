@@ -212,7 +212,7 @@ export const ValidateOnServer: Story = {
 
     const { errors, dirtyFields } = form.formState;
 
-    // 기본적으로 메세지 표시x, 
+    // 기본적으로 메세지 표시x,
     // 에러 발생 시 에러 & 에러 메세지 표시
     const nicknameValidationSuccess = !errors.nickname && dirtyFields.nickname;
     const nicknameMsg = nicknameValidationSuccess
