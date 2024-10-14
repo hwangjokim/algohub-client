@@ -4,7 +4,7 @@ import {
   IcnStatusProgress,
   IcnStatusQueued,
 } from "@/asset/svg";
-import type { Status } from "../../type";
+import type { Status } from "../../../index/type";
 
 type StatusIconProps = {
   status: Status;
