@@ -5,12 +5,10 @@ export const containerStyle = style({
   position: "relative",
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
   alignItems: "center",
-  gap: "2rem",
+  paddingTop: "2rem",
 
-  width: "110rem",
-  height: "62.4rem",
+  width: "80%",
   backgroundColor: theme.color.bg,
 });
 
@@ -25,13 +23,19 @@ export const textStyle = styleVariants({
   },
   footer: {
     padding: "0 .4rem",
-    
+
     ...theme.font.Body1_M_14,
     color: theme.color.mg2,
     textDecoration: "underline",
     cursor: "pointer",
     ":hover": {
-      backgroundColor: theme.color.mg5
-    }
+      backgroundColor: theme.color.mg5,
+    },
   },
+});
+
+export const editCardStyle = style({
+  justifyContent: "center",
+
+  padding: "2rem 3rem",
 });
