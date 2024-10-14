@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 const LoginMenu = () => {
   const route = useRouter();
   const handleProfileClick = () => {
-    route.push("/login");
+    route.push("/login", { scroll: false });
   };
 
   return (
