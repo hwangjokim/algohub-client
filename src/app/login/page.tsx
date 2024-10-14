@@ -1,9 +1,9 @@
 "use client";
 import Modal from "@/common/component/Modal";
 import ToastProvider from "@/common/component/Toast";
-import AuthHeader from "@/view/index/component/AuthHeader";
-import Card from "@/view/index/component/Card";
-import Footer from "@/view/index/component/Footer";
+import AuthHeader from "@/view/index/AuthHeader";
+import Card from "@/view/index/Card";
+import Footer from "@/view/index/Footer";
 import LoginForm from "@/view/login/component/LoginForm";
 import { containerStyle, headingStyle } from "@/view/login/component/index.css";
 import { useRouter } from "next/navigation";
