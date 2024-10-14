@@ -1,6 +1,6 @@
 import { Form, FormController } from "@/shared/component/Form";
-import SubmitButton from "@/view/index/component/SubmitButton";
-import useLoginForm from "../../hook/useLoginForm";
+import useLoginForm from "@/shared/hook/useLoginForm";
+import SubmitButton from "@/view/index/SubmitButton";
 import { contentStyle, fieldStyle, formStyle } from "./index.css";
 
 const LoginForm = () => {
