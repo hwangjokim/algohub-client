@@ -3,7 +3,7 @@ import type {
   ControllerRenderProps,
   FieldPath,
   FieldValues,
-  UseFormReturn
+  UseFormReturn,
 } from "react-hook-form";
 
 /**

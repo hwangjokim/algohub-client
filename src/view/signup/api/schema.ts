@@ -1,6 +1,8 @@
 import z from "zod";
 
 export const baseSignupSchema = z.object({
+  profile: z.string(),
+
   id: z
     .string()
     .min(6)

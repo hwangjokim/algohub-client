@@ -1,7 +1,7 @@
 import { Form, FormController } from "@/shared/component/Form";
 import SubmitButton from "@/view/index/component/SubmitButton";
 import useLoginForm from "../../hook/useLoginForm";
-import { contentStyle, fieldStyle, formStyle } from "./index.css";
+import { contentStyle, formStyle } from "./index.css";
 
 const LoginForm = () => {
   const { form, isError, message, isActive, handleSubmit, handleClick } =
@@ -16,7 +16,6 @@ const LoginForm = () => {
             type="input"
             fieldProps={{
               placeholder: "아이디",
-              className: fieldStyle,
             }}
             showDescription
             descriptionPosition="top"
@@ -31,7 +30,6 @@ const LoginForm = () => {
             type="input"
             fieldProps={{
               placeholder: "비밀번호",
-              className: fieldStyle,
             }}
           />
         </div>

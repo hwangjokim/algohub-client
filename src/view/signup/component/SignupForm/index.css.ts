@@ -23,8 +23,8 @@ export const formContainer = style({
   gap: "1rem",
 
   width: "100%",
-})
+});
 
 export const descriptionStyle = style({
-  paddingBottom: "0.5rem"
-})
+  paddingBottom: "0.5rem",
+});

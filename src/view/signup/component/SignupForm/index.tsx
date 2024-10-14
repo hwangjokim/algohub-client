@@ -1,19 +1,12 @@
 "use client";
 
-import defaultImg from "@/asset/img/img_userprofile.png";
-import EditAvatar from "@/shared/component/EditAvatar";
 import { Form, FormController } from "@/shared/component/Form";
-import { useCheckOnServer } from "@/shared/hook/useCheckOnServer";
 import {
   getMultipleRevalidationHandlers,
-  getRevalidationOnServerHandlers,
+  handleOnChangeMode,
 } from "@/shared/util/form";
 import SubmitButton from "@/view/index/component/SubmitButton";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import type { z } from "zod";
-import { type baseSignupSchema, signupSchema } from "../../api/schema";
+import useSignupForm from "../../hook/useSignupForm";
 import {
   contentStyle,
   descriptionStyle,
@@ -22,69 +15,29 @@ import {
 } from "./index.css";
 
 const SignupForm = () => {
-  const form = useForm<z.infer<typeof signupSchema>>({
-    resolver: zodResolver(signupSchema),
-    mode: "onTouched",
-    defaultValues: {
-      id: "",
-      password: "",
-      confirmPassword: "",
-      nickname: "",
-      baekjoonId: "",
-    },
-  });
-  const [profile, setProfile] = useState("");
-  const nickname = form.watch("nickname");
-  const backjoonId = form.watch("baekjoonId");
-  const { isNicknameLoading, isBaekjoonIdLoading } = useCheckOnServer(
+  const {
     form,
-    nickname,
-    backjoonId,
-  );
-  const { isValid, errors, dirtyFields } = form.formState;
-  const disabled = !isValid;
-
-  const idMsg = "영문 소문자 또는 영문 대문자, 숫자 조합 6~12 자리";
-
-  const passwordError =
-    !!errors.password || errors.confirmPassword?.type === "custom";
-  const passwordMsg =
-    errors.confirmPassword?.message ||
-    "영문, 숫자, 특수문자(~!@#$%^&*) 조합 8~15 자리";
-
-  const showNicknameMsg =
-    !(errors.nickname || isNicknameLoading) && dirtyFields.nickname;
-  const nicknameMsg = isNicknameLoading
-    ? "로딩중"
-    : showNicknameMsg
-      ? "사용가능한 닉네임이에요."
-      : errors.nickname?.message;
-
-  const showBjMsg =
-    !(errors.baekjoonId || isBaekjoonIdLoading) && dirtyFields.baekjoonId;
-  const bjMsg = isBaekjoonIdLoading
-    ? "로딩중"
-    : showBjMsg
-      ? "정상적으로 연동되었어요."
-      : errors.baekjoonId?.message;
-
-  const onSubmit = (_values: z.infer<typeof baseSignupSchema>) => {
-    // console.log({ values, profile });
-  };
+    handleSubmit,
+    idMsg,
+    passwordError,
+    passwordMsg,
+    nicknameMsg,
+    bjMsg,
+    isActive,
+  } = useSignupForm();
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className={formStyle}>
+      <form onSubmit={form.handleSubmit(handleSubmit)} className={formStyle}>
         <div className={contentStyle}>
-          <EditAvatar src={defaultImg} onImageChange={setProfile} />
-
+          <FormController form={form} name="profile" type="image" />
           <div className={formContainer}>
             <FormController
               form={form}
               name="id"
               type="input"
               showDescription
-              inputProps={{
+              fieldProps={{
                 placeholder: "아이디",
               }}
               descriptionProps={{
@@ -100,7 +53,7 @@ const SignupForm = () => {
               form={form}
               name="password"
               type="input"
-              inputProps={{
+              fieldProps={{
                 placeholder: "비밀번호",
                 "aria-describedby": "password-description",
               }}
@@ -111,7 +64,7 @@ const SignupForm = () => {
               type="input"
               showDescription
               revalidationHandlers={getMultipleRevalidationHandlers("password")}
-              inputProps={{
+              fieldProps={{
                 placeholder: "비밀번호 확인",
                 "aria-describedby": "password-description",
               }}
@@ -131,8 +84,8 @@ const SignupForm = () => {
               name="nickname"
               type="input"
               showDescription
-              revalidationHandlers={getRevalidationOnServerHandlers}
-              inputProps={{
+              revalidationHandlers={handleOnChangeMode}
+              fieldProps={{
                 placeholder: "닉네임",
               }}
               descriptionProps={{
@@ -146,8 +99,8 @@ const SignupForm = () => {
               name="baekjoonId"
               type="input"
               showDescription
-              revalidationHandlers={getRevalidationOnServerHandlers}
-              inputProps={{
+              revalidationHandlers={handleOnChangeMode}
+              fieldProps={{
                 placeholder: "백준 아이디",
               }}
               descriptionProps={{
@@ -158,7 +111,7 @@ const SignupForm = () => {
             />
           </div>
         </div>
-        <SubmitButton disabled={disabled}>가입하기</SubmitButton>
+        <SubmitButton isActive={isActive}>가입하기</SubmitButton>
       </form>
     </Form>
   );
