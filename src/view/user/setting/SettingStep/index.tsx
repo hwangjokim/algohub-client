@@ -32,14 +32,12 @@ const SettingStep = ({ step, setStep }: SettingStepProps) => {
           .with(false, () => theme.color.mg2)
           .run();
         return (
-          // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
-          <li
-            key={type}
-            className={itemStyle}
-            onClick={() => setStep(type as SettingSteps)}
-          >
+          <li key={type} className={itemStyle}>
             {isActive && <div className={barStyle} />}
-            <button className={btnStyle}>
+            <button
+              className={btnStyle}
+              onClick={() => setStep(type as SettingSteps)}
+            >
               {type === "alarm-setting" ? (
                 <Icon fill={color} width={16} height={16} />
               ) : (
