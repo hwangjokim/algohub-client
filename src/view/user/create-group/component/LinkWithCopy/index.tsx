@@ -4,7 +4,7 @@ import {
   icnCopyStyle,
   linkStyle,
   wrapper,
-} from "@/view/user/create-group/LinkWithCopy/index.css";
+} from "@/view/user/create-group/component/LinkWithCopy/index.css";
 import { useState } from "react";
 
 type LinkWithCopyProps = {
