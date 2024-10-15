@@ -1,5 +1,5 @@
-"use client";
 import { IcnInstagram, IcnLogo, IcnMail } from "@/asset/svg";
+import Link from "next/link";
 import {
   buttonContainer,
   footerStyle,
@@ -8,7 +8,6 @@ import {
   logoStyle,
   textStyle,
 } from "./index.css";
-import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -16,13 +15,16 @@ const Footer = () => {
       <div className={buttonContainer}>
         <IcnLogo className={logoStyle} aria-label="algoHub 로고" />
         <div className={iconContainer}>
-          <Link href="https://www.instagram.com/algohub.official/" target="_blank">
+          <Link
+            href="https://www.instagram.com/algohub.official/"
+            target="_blank"
+          >
             <IcnInstagram
               className={iconStyle}
               role="button"
               tabIndex={0}
               aria-label="instagram을 새 창에서 열기"
-              />
+            />
           </Link>
           <Link href="mailto:algohub0808@gmail.com" target="_blank">
             <IcnMail
@@ -30,7 +32,7 @@ const Footer = () => {
               role="button"
               tabIndex={0}
               aria-label="메일 보내기"
-              />
+            />
           </Link>
         </div>
       </div>
