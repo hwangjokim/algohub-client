@@ -76,3 +76,28 @@ export const ownerStyle = style([
     padding: "0.7rem 0 0 0.5rem",
   },
 ]);
+
+export const statusIconStyle = recipe({
+  base: {
+    width: "1.2rem",
+    height: "1.2rem",
+
+    borderRadius: "50%",
+  },
+  variants: {
+    status: {
+      bookmarked: {
+        background: theme.color.purple,
+      },
+      inProgress: {
+        background: theme.color.yellow,
+      },
+      queued: {
+        background: theme.color.mint,
+      },
+      done: {
+        background: theme.color.mg4,
+      },
+    },
+  },
+});

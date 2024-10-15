@@ -1,6 +1,7 @@
-import type { GroupListItem } from "@/api/group/type";
+import type { GroupListItem, GroupStatus } from "@/api/user/type";
 import defaultImg from "@/asset/img/alogohub_icon.png";
 import { IcnCalenderCard, IcnUser, IcnUser2 } from "@/asset/svg";
+import StatusIcon from "@/view/user/index/GroupCard/StatusIcon";
 // import StatusIcon from "@/view/user/index/GroupCard/StatusIcon";
 import {
   dateStyle,
@@ -10,7 +11,6 @@ import {
   nameWrapper,
   ownerStyle,
 } from "@/view/user/index/GroupCard/index.css";
-import type { GroupStatus } from "@/view/user/index/type";
 import Image from "next/image";
 import type { HTMLAttributes } from "react";
 
@@ -20,7 +20,7 @@ interface GroupCardProps extends HTMLAttributes<HTMLDivElement> {
 }
 const GroupCard = ({ item, status, ...divProps }: GroupCardProps) => {
   const { name, groupImage, startDate, endDate, ownerNickname } = item;
-  const isDone = status === "Done";
+  const isDone = status === "done";
 
   return (
     <article className={groupCardWrapper({ isDone })} {...divProps}>
