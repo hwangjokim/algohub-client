@@ -33,9 +33,9 @@ const GroupCard = ({ item, status, ...btnProps }: GroupCardProps) => {
         </div>
         <div className={dateStyle({ isDone })}>
           <IcnCalenderCard stroke="red" width={20} height={20} />
-          <p className={descStyle({ isDone })}>{startDate}</p>
+          <time className={descStyle({ isDone })}>{startDate}</time>
           <p className={descStyle({ isDone })}>~</p>
-          <p className={descStyle({ isDone })}>{endDate}</p>
+          <time className={descStyle({ isDone })}>{endDate}</time>
         </div>
         <div className={ownerStyle}>
           {isDone ? (

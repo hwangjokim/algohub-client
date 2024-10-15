@@ -9,6 +9,7 @@ export type UserResponse = {
 };
 
 export type GroupStatus = "bookmarked" | "done" | "inProgress" | "queued";
+export type GroupStatusLabel = "Favorites" | "Queued" | "Progress" | "Done";
 
 export type GroupListItem = GroupInfoResponse & { isBookmarked: boolean };
 export type GroupListResponse = {
