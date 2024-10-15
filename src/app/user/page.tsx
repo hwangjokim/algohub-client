@@ -1,4 +1,6 @@
+"use client";
 import type { GroupStatus } from "@/api/user/type";
+import Carousel from "@/common/component/Carousel";
 import Sidebar from "@/common/component/Sidebar";
 import { tmpUserGroupListData } from "@/shared/util/example";
 import { sidebarWrapper } from "@/styles/shared.css";
@@ -23,13 +25,20 @@ const UserDashboardPage = () => {
         {GROUP_STATUS_MAPPING.map((list) => (
           <section key={list.status}>
             <h2 className={groupLabelStyle}>{list.label}</h2>
-            {tmpUserGroupListData[list.status as GroupStatus].map((item) => (
-              <GroupCard
-                key={item.id}
-                item={item}
-                status={list.status as GroupStatus}
-              />
-            ))}
+            <Carousel
+              length={tmpUserGroupListData[list.status as GroupStatus].length}
+            >
+              {tmpUserGroupListData[list.status as GroupStatus].map(
+                (item, idx) => (
+                  <Carousel.Item key={item.id} index={idx}>
+                    <GroupCard
+                      item={item}
+                      status={list.status as GroupStatus}
+                    />
+                  </Carousel.Item>
+                ),
+              )}
+            </Carousel>
           </section>
         ))}
       </div>
