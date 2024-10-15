@@ -12,8 +12,8 @@ import type {
   StudyListDataType,
   TableDataType,
 } from "@/shared/type/table";
-import StatusDropdonwMenu from "./component/StatusDropdownMenu";
-import StatusIcon from "./component/StatusIcon";
+import StatusDropdonwMenu from "./StatusDropdownMenu";
+import StatusIcon from "./StatusIcon";
 
 export const STUDY_LIST_COLUMNS: TableDataType<StudyListDataType>[] = [
   {

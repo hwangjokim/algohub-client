@@ -1,11 +1,8 @@
 import { IcnCopy, IcnCopyCheck } from "@/asset/svg";
 import { handleLinkCopy } from "@/shared/util/handleLinkCopy";
-import {
-  icnCopyStyle,
-  linkStyle,
-  wrapper,
-} from "@/view/user/create-group/LinkWithCopy/index.css";
+
 import { useState } from "react";
+import { icnCopyStyle, linkStyle, wrapper } from "./index.css";
 
 type LinkWithCopyProps = {
   link: string;

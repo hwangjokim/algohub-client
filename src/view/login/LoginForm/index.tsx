@@ -1,5 +1,4 @@
 import { Form, FormController } from "@/shared/component/Form";
-import useLoginForm from "@/shared/hook/useLoginForm";
 import SubmitButton from "@/view/index/SubmitButton";
 import { contentStyle, formStyle } from "./index.css";
 
