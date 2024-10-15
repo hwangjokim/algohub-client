@@ -2,7 +2,7 @@ import { useToast } from "@/common/hook/useToast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
-import { loginSchema, loginSchemaMessage } from "../api/schema";
+import { loginSchema, loginSchemaMessage } from "./schema";
 
 const useLoginForm = () => {
   const form = useForm<z.infer<typeof loginSchema>>({
