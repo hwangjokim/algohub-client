@@ -14,6 +14,22 @@ export interface Problem {
   inProgress?: boolean;
 }
 
+export interface Solution {
+  solutionId: number;
+  title: string;
+  level: TierDetail;
+  nickname?: string;
+  profileImage?: string;
+  solvedDateTime?: string;
+  content?: string;
+  result?: string;
+  memoryUsage?: number;
+  executionTime?: number;
+  language: LanguageOption;
+  codeLength?: number;
+  commentCount?: number;
+}
+
 export type tier =
   | "bronze"
   | "silver"
