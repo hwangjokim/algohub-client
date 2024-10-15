@@ -1,7 +1,6 @@
 "use client";
 
 import CheckBox from "@/common/component/CheckBox";
-import { getTierImage } from "@/shared/component/ProblemList/img";
 import {
   itemStyle,
   textStyle,
@@ -9,6 +8,7 @@ import {
   wrongCheckBoxStyle,
 } from "@/shared/component/ProblemList/index.css";
 import type { Problem } from "@/shared/type";
+import { getTierImage } from "@/shared/util/img";
 
 import { format } from "date-fns";
 import Link from "next/link";
