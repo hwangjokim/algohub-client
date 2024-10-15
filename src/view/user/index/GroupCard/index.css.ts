@@ -2,29 +2,19 @@ import { theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
-export const groupCardWrapper = recipe({
-  base: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+export const groupCardWrapper = style({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
 
-    padding: "2rem 1.6rem",
+  padding: "2rem 1.6rem",
 
-    width: "100%",
+  width: "100%",
 
-    borderRadius: "8px",
-    background: theme.color.mg5,
+  borderRadius: "8px",
+  background: theme.color.mg5,
 
-    cursor: "pointer",
-  },
-
-  variants: {
-    isDone: {
-      true: {
-        opacity: 0.2,
-      },
-    },
-  },
+  cursor: "pointer",
 });
 
 export const flexCenterStyle = style({
@@ -46,31 +36,64 @@ export const imgStyle = style({
 export const nameWrapper = style([
   flexCenterStyle,
   {
+    gap: "0.8rem",
     paddingTop: "2rem",
   },
 ]);
 
-export const nameStyle = style({
-  color: theme.color.white,
-  ...theme.font.Title1_SB_16,
-});
-
-export const descStyle = style({
-  color: theme.color.mg2,
-  ...theme.font.Caption3_M_12,
-});
-
-export const dateStyle = style([
-  flexCenterStyle,
-  descStyle,
-  {
-    paddingTop: "1rem",
+export const nameStyle = recipe({
+  base: {
+    ...theme.font.Title1_SB_16,
   },
-]);
+  variants: {
+    isDone: {
+      true: {
+        color: theme.color.mg4,
+      },
+      false: {
+        color: theme.color.white,
+      },
+    },
+  },
+});
+
+export const descStyle = recipe({
+  base: {
+    ...theme.font.Caption3_M_12,
+  },
+  variants: {
+    isDone: {
+      true: {
+        color: theme.color.mg4,
+      },
+      false: {
+        color: theme.color.mg2,
+      },
+    },
+  },
+});
+
+export const dateStyle = recipe({
+  base: [
+    flexCenterStyle,
+    {
+      paddingTop: "1rem",
+    },
+  ],
+  variants: {
+    isDone: {
+      true: {
+        color: theme.color.mg4,
+      },
+      false: {
+        color: theme.color.mg2,
+      },
+    },
+  },
+});
 
 export const ownerStyle = style([
   flexCenterStyle,
-  descStyle,
   {
     gap: "0.9rem",
     padding: "0.7rem 0 0 0.5rem",
@@ -79,8 +102,8 @@ export const ownerStyle = style([
 
 export const statusIconStyle = recipe({
   base: {
-    width: "1.2rem",
-    height: "1.2rem",
+    width: "0.6rem",
+    height: "0.6rem",
 
     borderRadius: "50%",
   },

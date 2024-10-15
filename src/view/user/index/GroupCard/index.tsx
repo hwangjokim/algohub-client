@@ -5,6 +5,7 @@ import StatusIcon from "@/view/user/index/GroupCard/StatusIcon";
 // import StatusIcon from "@/view/user/index/GroupCard/StatusIcon";
 import {
   dateStyle,
+  descStyle,
   groupCardWrapper,
   imgStyle,
   nameStyle,
@@ -14,36 +15,38 @@ import {
 import Image from "next/image";
 import type { HTMLAttributes } from "react";
 
-interface GroupCardProps extends HTMLAttributes<HTMLDivElement> {
+interface GroupCardProps extends HTMLAttributes<HTMLButtonElement> {
   item: GroupListItem;
   status: GroupStatus;
 }
-const GroupCard = ({ item, status, ...divProps }: GroupCardProps) => {
+const GroupCard = ({ item, status, ...btnProps }: GroupCardProps) => {
   const { name, groupImage, startDate, endDate, ownerNickname } = item;
   const isDone = status === "done";
 
   return (
-    <article className={groupCardWrapper({ isDone })} {...divProps}>
-      <Image src={groupImage || defaultImg} alt={""} className={imgStyle} />
-      <div className={nameWrapper}>
-        <StatusIcon status={status} />
-        <h1 className={nameStyle}>{name}</h1>
-      </div>
-      <div className={dateStyle}>
-        <IcnCalenderCard width={20} height={20} />
-        <p>{startDate}</p>
-        <p>~</p>
-        <p>{endDate}</p>
-      </div>
-      <div className={ownerStyle}>
-        {isDone ? (
-          <IcnUser2 width={10} height={14.5} />
-        ) : (
-          <IcnUser width={10} height={14.5} />
-        )}
-        <p>{ownerNickname}</p>
-      </div>
-    </article>
+    <button className={groupCardWrapper} disabled={isDone} {...btnProps}>
+      <article>
+        <Image src={groupImage || defaultImg} alt={""} className={imgStyle} />
+        <div className={nameWrapper}>
+          <StatusIcon status={status} />
+          <h1 className={nameStyle({ isDone })}>{name}</h1>
+        </div>
+        <div className={dateStyle({ isDone })}>
+          <IcnCalenderCard stroke="red" width={20} height={20} />
+          <p className={descStyle({ isDone })}>{startDate}</p>
+          <p className={descStyle({ isDone })}>~</p>
+          <p className={descStyle({ isDone })}>{endDate}</p>
+        </div>
+        <div className={ownerStyle}>
+          {isDone ? (
+            <IcnUser2 width={10} height={14.5} />
+          ) : (
+            <IcnUser width={10} height={14.5} />
+          )}
+          <p className={descStyle({ isDone })}>{ownerNickname}</p>
+        </div>
+      </article>
+    </button>
   );
 };
 

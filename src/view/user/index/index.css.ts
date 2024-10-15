@@ -7,7 +7,7 @@ export const userDashboardWrapper = style({
   gap: "3rem",
 
   padding: "4.8rem 5rem 1.4rem 4.2rem",
-  width: "100%",
+  width: "80%",
 });
 
 export const groupLabelStyle = style({
