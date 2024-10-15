@@ -1,6 +1,6 @@
 import { useBooleanState } from "@/common/hook/useBooleanState";
 import type { Meta, StoryObj } from "@storybook/react";
-import Modal from ".";
+import Modal from "./Modal";
 
 const meta: Meta<typeof Modal> = {
   title: "Common/Modal",

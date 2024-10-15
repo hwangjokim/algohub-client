@@ -2,11 +2,11 @@ import { IcnPlus } from "@/asset/svg";
 import Button from "@/common/component/Button";
 import { groupSchema } from "@/shared/api/schema";
 import GroupInfoForm from "@/shared/component/GroupInfoForm";
-import { submitBtnStyle } from "@/view/user/create-group/component/CreateGroupForm/index.css";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Dispatch, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
+import { submitBtnStyle } from "./index.css";
 
 type CreateGroupFormProps = {
   setIsSuccess: Dispatch<SetStateAction<boolean>>;
