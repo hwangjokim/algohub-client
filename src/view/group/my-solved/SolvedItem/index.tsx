@@ -25,6 +25,8 @@ const SolvedItem = ({
 }: Solution) => {
   const LevelIcon = getTierImage(level);
 
+  const dataClassName = `${textStyle} ${textCommonStyle}`;
+
   return (
     <li className={itemStyle}>
       <LevelIcon style={{ placeSelf: "center" }} width={25} height={32} />
@@ -34,18 +36,12 @@ const SolvedItem = ({
       >
         {title}
       </Link>
-      <time className={`${textStyle} ${textCommonStyle}`}>
-        {solvedDateTime}
-      </time>
-      <p className={`${textStyle} ${textCommonStyle}`}>
-        {getFormattedMemory(memoryUsage)}
-      </p>
-      <p
-        className={`${textStyle} ${textCommonStyle}`}
-      >{`${executionTime}ms`}</p>
-      <p className={`${textStyle} ${textCommonStyle}`}>{language}</p>
-      <p className={`${textStyle} ${textCommonStyle}`}>{codeLength}</p>
-      <p className={`${textStyle} ${textCommonStyle}`}>{result}</p>
+      <time className={dataClassName}>{solvedDateTime}</time>
+      <p className={dataClassName}>{getFormattedMemory(memoryUsage)}</p>
+      <p className={dataClassName}>{`${executionTime}ms`}</p>
+      <p className={dataClassName}>{language}</p>
+      <p className={dataClassName}>{codeLength}</p>
+      <p className={dataClassName}>{result}</p>
 
       <div className={commentWrapperStyle}>
         {commentCount > 0 ? (
@@ -53,7 +49,7 @@ const SolvedItem = ({
         ) : (
           <IcnMessage width={24} height={24} />
         )}
-        <p>{commentCount}</p>
+        <p className={dataClassName}>{commentCount}</p>
       </div>
     </li>
   );
