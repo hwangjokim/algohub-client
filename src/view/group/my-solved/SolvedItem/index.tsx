@@ -28,7 +28,7 @@ const SolvedItem = ({
   const dataClassName = `${textStyle} ${textCommonStyle}`;
 
   return (
-    <li className={itemStyle}>
+    <li aria-label={`문제 ${solutionId}`} className={itemStyle}>
       <LevelIcon style={{ placeSelf: "center" }} width={25} height={32} />
       <Link
         className={`${titleStyle} ${textCommonStyle}`}
@@ -37,11 +37,18 @@ const SolvedItem = ({
         {title}
       </Link>
       <time className={dataClassName}>{solvedDateTime}</time>
-      <p className={dataClassName}>{getFormattedMemory(memoryUsage)}</p>
-      <p className={dataClassName}>{`${executionTime}ms`}</p>
-      <p className={dataClassName}>{language}</p>
-      <p className={dataClassName}>{codeLength}</p>
-      <p className={dataClassName}>{result}</p>
+
+      {[
+        getFormattedMemory(memoryUsage),
+        `${executionTime}ms`,
+        language,
+        codeLength,
+        result,
+      ].map((item, index) => (
+        <p key={index} className={dataClassName}>
+          {item}
+        </p>
+      ))}
 
       <div className={commentWrapperStyle}>
         {commentCount > 0 ? (
