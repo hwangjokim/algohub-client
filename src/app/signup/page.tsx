@@ -1,9 +1,10 @@
 "use client";
+
 import Modal from "@/common/component/Modal";
-import AuthHeader from "@/view/index/component/AuthHeader";
-import Footer from "@/view/index/component/Footer";
-import SignupForm from "@/view/signup/component/SignupForm";
-import { containerStyle } from "@/view/signup/component/index.css";
+import AuthHeader from "@/view/index/AuthHeader";
+import Footer from "@/view/index/Footer";
+import SignupForm from "@/view/signup/SignupForm";
+import { containerStyle } from "@/view/signup/index.css";
 import { useRouter } from "next/navigation";
 
 const SignupPage = () => {

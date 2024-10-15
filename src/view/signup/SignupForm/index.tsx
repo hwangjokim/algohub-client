@@ -5,14 +5,15 @@ import {
   getMultipleRevalidationHandlers,
   handleOnChangeMode,
 } from "@/shared/util/form";
-import SubmitButton from "@/view/index/component/SubmitButton";
-import useSignupForm from "../../hook/useSignupForm";
+
+import SubmitButton from "@/view/index/SubmitButton";
 import {
   contentStyle,
   descriptionStyle,
   formContainer,
   formStyle,
 } from "./index.css";
+import useSignupForm from "./useSignupForm";
 
 const SignupForm = () => {
   const {

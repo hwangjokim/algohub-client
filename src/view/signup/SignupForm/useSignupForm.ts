@@ -2,7 +2,7 @@ import { useCheckOnServer } from "@/shared/hook/useCheckOnServer";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
-import { signupSchema } from "../api/schema";
+import { signupSchema } from "./schema";
 
 const useSignupForm = () => {
   const form = useForm<z.infer<typeof signupSchema>>({
