@@ -4,7 +4,7 @@ import TopRanking from "@/view/group/dashboard/Ranking/TopRanking";
 
 const Ranking = () => {
   return (
-    <TabGroup.Tabs variant="secondary">
+    <TabGroup.Tabs tag="section" variant="secondary">
       <TabGroup.TabList>
         <TabGroup.Tab tabId="1">TOP 랭킹</TabGroup.Tab>
         <TabGroup.Tab tabId="2">전체</TabGroup.Tab>
