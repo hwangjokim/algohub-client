@@ -3,10 +3,10 @@ import { sidebarWrapper } from "@/styles/shared.css";
 
 const GroupSettingPage = () => {
   return (
-    <div className={sidebarWrapper}>
+    <main className={sidebarWrapper}>
       <Sidebar />
       {/* children */}
-    </div>
+    </main>
   );
 };
 

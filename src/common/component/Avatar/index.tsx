@@ -26,7 +26,7 @@ const Avatar = ({
         width="100"
         height="100"
         role="button"
-        className={avatarStyle({ size, hasShadow })}
+        className={clsx(avatarStyle({ size, hasShadow }), className)}
       />
       {children}
     </div>
