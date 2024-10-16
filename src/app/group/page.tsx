@@ -1,5 +1,5 @@
 import Sidebar from "@/common/component/Sidebar";
-import { tmpGroupData } from "@/shared/util/example";
+import { tmpGroupData } from "@/shared/constant/example";
 import { sidebarWrapper } from "@/styles/shared.css";
 import GroupSidebar from "@/view/group/dashboard/GroupSidebar";
 import Ranking from "@/view/group/dashboard/Ranking";
