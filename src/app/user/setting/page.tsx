@@ -2,6 +2,7 @@
 import Sidebar from "@/common/component/Sidebar";
 import ToastProvider from "@/common/component/Toast";
 import { sidebarWrapper } from "@/styles/shared.css";
+import AccountManagement from "@/view/user/setting/AccountManagement";
 import MyProfile from "@/view/user/setting/MyProfile";
 import SettingStep from "@/view/user/setting/SettingStep";
 import type { SettingSteps } from "@/view/user/setting/type";
@@ -19,7 +20,7 @@ const UserSettingPage = () => {
       {match(step)
         .with("my-profile", () => <MyProfile />)
         .with("study-setting", () => <></>)
-        .with("account-setting", () => <></>)
+        .with("account-setting", () => <AccountManagement />)
         .with("alarm-setting", () => <></>)
         .exhaustive()}
     </main>
