@@ -1,6 +1,6 @@
 import TabGroup from "@/common/component/Tab";
-import AllRanking from "@/view/group/dashboard/component/Ranking/AllRanking";
-import TopRanking from "@/view/group/dashboard/component/Ranking/TopRanking";
+import AllRanking from "@/view/group/dashboard/Ranking/AllRanking";
+import TopRanking from "@/view/group/dashboard/Ranking/TopRanking";
 
 const Ranking = () => {
   return (

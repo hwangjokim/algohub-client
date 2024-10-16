@@ -2,6 +2,7 @@ import Sidebar from "@/common/component/Sidebar";
 import { tmpGroupData } from "@/shared/util/example";
 import { sidebarWrapper } from "@/styles/shared.css";
 import GroupSidebar from "@/view/group/dashboard/GroupSidebar";
+import Ranking from "@/view/group/dashboard/Ranking";
 
 const GroupDashboardPage = () => {
   return (
@@ -9,7 +10,9 @@ const GroupDashboardPage = () => {
       <Sidebar>
         <GroupSidebar info={tmpGroupData} />
       </Sidebar>
-      {/* children */}
+      <div>
+        <Ranking />
+      </div>
     </main>
   );
 };

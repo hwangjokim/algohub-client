@@ -1,8 +1,8 @@
 "use client";
 import type { GroupRankingResponse } from "@/api/group/type";
 import Pagination from "@/shared/component/Pagination";
-import RankList from "@/view/group/dashboard/component/Ranking/RankList";
-import { allRankingWrapper } from "@/view/group/dashboard/component/Ranking/index.css";
+import RankList from "@/view/group/dashboard/Ranking/RankList";
+import { allRankingWrapper } from "@/view/group/dashboard/Ranking/index.css";
 import { useState } from "react";
 
 const AllRanking = () => {

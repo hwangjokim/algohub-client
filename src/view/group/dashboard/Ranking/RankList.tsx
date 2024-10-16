@@ -9,7 +9,7 @@ import {
   rankTextStyle,
   rankWrapper,
   solvedTextStyle,
-} from "@/view/group/dashboard/component/Ranking/index.css";
+} from "@/view/group/dashboard/Ranking/index.css";
 import Image from "next/image";
 
 const RankList = ({ info }: { info: GroupRankingResponse }) => {

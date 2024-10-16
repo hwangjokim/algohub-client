@@ -9,7 +9,7 @@ import {
   nicknameStyle,
   rankingCardStyle,
   rankingCardWrapper,
-} from "@/view/group/dashboard/component/Ranking/index.css";
+} from "@/view/group/dashboard/Ranking/index.css";
 import { useState } from "react";
 
 const RankingCard = ({
