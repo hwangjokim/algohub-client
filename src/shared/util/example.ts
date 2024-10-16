@@ -17,7 +17,7 @@ export const tmpUserGroupListData: GroupListResponse = {
   bookmarked: [
     {
       id: 0,
-      name: "숭실대학교 알고리즘 스터디",
+      name: "알알알알알알알알알알알알알알알",
       startDate: "2024.08.13",
       endDate: "2024.09.13",
       introduction:

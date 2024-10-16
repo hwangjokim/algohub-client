@@ -13,23 +13,23 @@ import {
   ownerStyle,
 } from "@/view/user/index/GroupCard/index.css";
 import Image from "next/image";
-import type { HTMLAttributes } from "react";
+import Link from "next/link";
 
-interface GroupCardProps extends HTMLAttributes<HTMLButtonElement> {
+interface GroupCardProps {
   item: GroupListItem;
   status: GroupStatus;
 }
-const GroupCard = ({ item, status, ...btnProps }: GroupCardProps) => {
+const GroupCard = ({ item, status }: GroupCardProps) => {
   const { name, groupImage, startDate, endDate, ownerNickname } = item;
   const isDone = status === "done";
 
   return (
-    <button className={groupCardWrapper} disabled={isDone} {...btnProps}>
-      <article>
+    <Link href="">
+      <article className={groupCardWrapper}>
         <Image src={groupImage || defaultImg} alt={""} className={imgStyle} />
         <div className={nameWrapper}>
           <StatusIcon status={status} />
-          <h1 className={nameStyle({ isDone })}>{name}</h1>
+          <h2 className={nameStyle({ isDone })}>{name}</h2>
         </div>
         <div className={dateStyle({ isDone })}>
           <IcnCalenderCard width={20} height={20} />
@@ -46,7 +46,7 @@ const GroupCard = ({ item, status, ...btnProps }: GroupCardProps) => {
           <p className={descStyle({ isDone })}>{ownerNickname}</p>
         </div>
       </article>
-    </button>
+    </Link>
   );
 };
 

@@ -43,6 +43,12 @@ export const nameWrapper = style([
 
 export const nameStyle = recipe({
   base: {
+    width: "20.4rem",
+
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+
     ...theme.font.Title1_SB_16,
   },
   variants: {
