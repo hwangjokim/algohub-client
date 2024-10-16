@@ -3,8 +3,9 @@ import Dropdown from "@/common/component/Dropdown";
 import Menu from "@/common/component/Menu/Menu";
 import StatusIcon from "../StatusIcon";
 import {
+  arrowDownStyle,
   dropdownStyle,
-  storyArrowDownStyle,
+  textStyle,
   triggerButtonStyle,
 } from "./index.css";
 
@@ -15,26 +16,26 @@ const StatusDropdonwMenu = () => {
       renderTriggerButton={
         <div className={triggerButtonStyle}>
           <IcnBtnArrowDown
-            className={storyArrowDownStyle}
+            className={arrowDownStyle}
             width={12}
             height={12}
           />
-          <span>상태</span>
+          <span className={textStyle}>상태</span>
         </div>
       }
       renderList={
         <Dropdown className={dropdownStyle}>
           <li>
-            <StatusIcon status="Favorites" />
+            <StatusIcon status="bookmarked" />
           </li>
           <li>
-            <StatusIcon status="Progress" />
+            <StatusIcon status="inProgress" />
           </li>
           <li>
-            <StatusIcon status="Queued" />
+            <StatusIcon status="queued" />
           </li>
           <li>
-            <StatusIcon status="Done" />
+            <StatusIcon status="done" />
           </li>
         </Dropdown>
       }

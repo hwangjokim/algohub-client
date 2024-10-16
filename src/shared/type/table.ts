@@ -1,3 +1,5 @@
+
+import type { StudyGroupResponse } from "@/api/group/type";
 import type { Status } from "@/view/user/index/type";
 import type { ComponentProps, FC } from "react";
 import type TableHead from "../component/Table/TableElements/TableHead";
@@ -13,15 +15,12 @@ export type TableDataType<T> = {
   width: number;
 };
 
-export type StudyListDataType = {
-  pin: boolean;
-  groupName: string;
-  startDate: Date;
-  endDate: Date;
-  role: string;
-  isPublic: boolean;
+export type StudyListType = {
   status: Status;
-};
+} & Omit<
+  StudyGroupResponse,
+  "introduction" | "groupImage" | "ownerNickname" | "id"
+>;
 
 export type AlarmSettingsDataType = {
   alarm: boolean;

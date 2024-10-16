@@ -12,7 +12,7 @@ type StatusIconProps = {
 
 const StatusIcon = ({ status }: StatusIconProps) => {
   switch (status) {
-    case "Favorites":
+    case "bookmarked":
       return (
         <IcnStatusFavorites
           aria-label={`상태: ${status}`}
@@ -20,7 +20,7 @@ const StatusIcon = ({ status }: StatusIconProps) => {
           height={"2.1rem"}
         />
       );
-    case "Queued":
+    case "queued":
       return (
         <IcnStatusQueued
           aria-label={`상태: ${status}`}
@@ -28,7 +28,7 @@ const StatusIcon = ({ status }: StatusIconProps) => {
           height={"2.1rem"}
         />
       );
-    case "Progress":
+    case "inProgress":
       return (
         <IcnStatusProgress
           aria-label={`상태: ${status}`}
@@ -36,7 +36,7 @@ const StatusIcon = ({ status }: StatusIconProps) => {
           height={"2.1rem"}
         />
       );
-    case "Done":
+    case "done":
       return (
         <IcnStatusDone
           aria-label={`상태: ${status}`}

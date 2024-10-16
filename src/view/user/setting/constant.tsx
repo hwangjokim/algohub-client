@@ -9,13 +9,14 @@ import {
 import { pinStyle, sortIconStyle } from "@/shared/component/Table/index.css";
 import type {
   AlarmSettingsDataType,
-  StudyListDataType,
+  StudyListType,
   TableDataType,
 } from "@/shared/type/table";
 import StatusDropdonwMenu from "./StatusDropdownMenu";
+import { textStyle } from "./StatusDropdownMenu/index.css";
 import StatusIcon from "./StatusIcon";
 
-export const STUDY_LIST_COLUMNS: TableDataType<StudyListDataType>[] = [
+export const STUDY_LIST_COLUMNS: TableDataType<StudyListType>[] = [
   {
     key: "pin",
     Header: () => (
@@ -29,12 +30,12 @@ export const STUDY_LIST_COLUMNS: TableDataType<StudyListDataType>[] = [
         <IcnBtnSort className={sortIconStyle} width={20} height={20} />
       </>
     ),
-    Cell: ({ pin }) => (
+    Cell: ({ isBookmarked }) => (
       <IcnBtnPin
         aria-label="이 스터디를 즐겨찾기 설정"
         width={20}
         height={20}
-        className={pinStyle({ active: pin })}
+        className={pinStyle({ active: isBookmarked })}
       />
     ),
     width: 30,
@@ -43,8 +44,8 @@ export const STUDY_LIST_COLUMNS: TableDataType<StudyListDataType>[] = [
   {
     key: "groupName",
     Header: () => "그룹명",
-    Cell: (data) => data.groupName,
-    width: 60,
+    Cell: (data) => data.name,
+    width: 100,
     align: "left",
   },
   {
@@ -52,56 +53,51 @@ export const STUDY_LIST_COLUMNS: TableDataType<StudyListDataType>[] = [
     Header: () => (
       <>
         <IcnCalendarTable width={20} height={20} />
-        <span>기간</span>
+        <span className={textStyle}>기간</span>
         <IcnBtnSort className={sortIconStyle} width={20} height={20} />
       </>
     ),
     Cell: ({ startDate, endDate }) => {
-      const startDateStr = startDate.toLocaleDateString().replaceAll(" ", "");
-      const endDateStr = endDate.toLocaleDateString().replaceAll(" ", "");
       return (
         <>
           <time
             className={tableCellTextStyle.스터디리스트}
-            dateTime={startDateStr}
+            dateTime={startDate}
           >
-            {startDateStr}
+            {startDate}
           </time>{" "}
           ~{" "}
-          <time
-            className={tableCellTextStyle.스터디리스트}
-            dateTime={endDateStr}
-          >
-            {endDateStr}
+          <time className={tableCellTextStyle.스터디리스트} dateTime={endDate}>
+            {endDate}
           </time>
         </>
       );
     },
-    width: 60,
+    width: 120,
   },
   {
     key: "role",
     Header: () => "역할",
-    Cell: (data) => data.role,
-    width: 60,
+    Cell: (data) => (data.isOwner ? "스터디장" : "스터디 멤버"),
+    width: 100,
   },
   {
     key: "isPublic",
     Header: () => "공개여부",
-    Cell: (data) => (data.isPublic ? "ON" : "OFF"),
-    width: 60,
+    Cell: (data) => (new Date(data.endDate) > new Date() ? "ON" : "OFF"),
+    width: 100,
   },
   {
     key: "status",
     Header: () => <StatusDropdonwMenu />,
     Cell: (data) => <StatusIcon status={data.status} />,
-    width: 60,
+    width: 100,
   },
   {
     key: "withdraw",
     Header: () => "회원탈퇴",
     Cell: () => <button className={withdrawTextStyle}>회원 탈퇴</button>,
-    width: 60,
+    width: 70,
     align: "right",
   },
 ];

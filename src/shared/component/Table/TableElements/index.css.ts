@@ -10,7 +10,9 @@ export const wrapperStyle = style({
   overflow: "auto",
 
   width: "100%",
-  height: "100%",
+  "::-webkit-scrollbar": {
+    width: 0,
+  },
 });
 
 export const tableHeadStyle = recipe({
@@ -49,7 +51,7 @@ export const withdrawTextStyle = style({
 
 export const tableStyle = recipe({
   base: {
-    width: "100rem",
+    width: "90%",
 
     captionSide: "top",
   },
@@ -77,7 +79,12 @@ export const tableCaptionStyle = recipe({
   variants: {
     type: {
       스터디리스트: {
+        position: "sticky",
+        top: 0,
+        zIndex: theme.zIndex.bottom,
+
         padding: "1.5rem 0",
+        background: theme.color.bg,
       },
       알림설정: {
         padding: "1.5rem 2rem",
@@ -93,8 +100,11 @@ export const tableHeaderStyle = recipe({
   variants: {
     type: {
       스터디리스트: {
+        position: "sticky",
+        top: "6.6rem",
+        zIndex: theme.zIndex.bottom,
+        
         height: "3.6rem",
-
         verticalAlign: "top",
         ":after": {
           content: "",
