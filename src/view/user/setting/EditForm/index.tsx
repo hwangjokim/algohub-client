@@ -62,7 +62,9 @@ const EditForm = () => {
           <SubmitButton isActive={isActive} disabled={!isActive}>
             수정하기
           </SubmitButton>
-          <p className={footerStyle}>회원 탈퇴하기</p>
+          <footer>
+            <p className={footerStyle}>회원 탈퇴하기</p>
+          </footer>
         </Card>
       </form>
     </Form>

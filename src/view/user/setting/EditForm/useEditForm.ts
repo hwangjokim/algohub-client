@@ -19,8 +19,7 @@ const useEditForm = () => {
   });
   const { showToast } = useToast();
   // TODO: api 연결 후 default values와 달라지면 true가 되게 하기
-  const isActive =
-    !!Object.keys(form.formState.dirtyFields).length && form.formState.isValid;
+  const isActive = form.formState.isDirty && form.formState.isValid;
 
   const handleSubmit = (_values: z.infer<typeof baseEditSchema>) => {
     showToast("정상적으로 수정이 되었어요", "success");
