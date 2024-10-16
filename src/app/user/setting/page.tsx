@@ -2,8 +2,8 @@
 import Sidebar from "@/common/component/Sidebar";
 import ToastProvider from "@/common/component/Toast";
 import { sidebarWrapper } from "@/styles/shared.css";
+import MyProfile from "@/view/user/setting/MyProfile";
 import SettingStep from "@/view/user/setting/SettingStep";
-import MyProfile from "@/view/user/setting/component/MyProfile";
 import type { SettingSteps } from "@/view/user/setting/type";
 import { useState } from "react";
 import { match } from "ts-pattern";

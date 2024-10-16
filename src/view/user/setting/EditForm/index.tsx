@@ -1,37 +1,15 @@
 "use client";
 
-import { useToast } from "@/common/hook/useToast";
 import { Form, FormController } from "@/shared/component/Form";
-import Card from "@/view/index/component/Card";
-import SubmitButton from "@/view/index/component/SubmitButton";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import type { z } from "zod";
-import { baseEditSchema } from "../../api/schema";
-import { editCardStyle, textStyle } from "../MyProfile/index.css";
+import { handleOnChangeMode } from "@/shared/util/form";
+import Card from "@/view/index/Card";
+import SubmitButton from "@/view/index/SubmitButton";
+import { editCardStyle, footerStyle } from "../MyProfile/index.css";
 import { contentStyle, formStyle, labelStyle } from "./index.css";
+import useEditForm from "./useEditForm";
 
 const EditForm = () => {
-  // TODO: API연결 후 defaultValues 적용하기
-  const form = useForm<z.infer<typeof baseEditSchema>>({
-    resolver: zodResolver(baseEditSchema),
-    mode: "onTouched",
-    defaultValues: {
-      profile: "",
-      nickname: "백예린",
-      baekjoonId: "yerin",
-      introduction: "프로필에 나타나요",
-    },
-  });
-  const { showToast } = useToast();
-  // TODO: api 연결 후 default values와 달라지면 true가 되게 하기
-  const isActive =
-    !!Object.keys(form.formState.touchedFields).length &&
-    form.formState.isValid;
-
-  const handleSubmit = (_values: z.infer<typeof baseEditSchema>) => {
-    showToast("정상적으로 수정이 되었어요", "success");
-  };
+  const { form, handleSubmit, isActive } = useEditForm();
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className={formStyle}>
@@ -70,6 +48,7 @@ const EditForm = () => {
               form={form}
               name="introduction"
               type="input"
+              revalidationHandlers={handleOnChangeMode}
               showLabel
               labelProps={{
                 className: labelStyle,
@@ -80,8 +59,8 @@ const EditForm = () => {
               }}
             />
           </div>
-          <SubmitButton isActive={isActive}>수정하기</SubmitButton>
-          <p className={textStyle.footer}>회원 탈퇴하기</p>
+          <SubmitButton isActive={isActive} disabled={!isActive}>수정하기</SubmitButton>
+          <p className={footerStyle}>회원 탈퇴하기</p>
         </Card>
       </form>
     </Form>

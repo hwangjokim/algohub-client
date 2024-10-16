@@ -1,10 +1,11 @@
 import EditForm from "../EditForm";
-import { containerStyle, textStyle } from "./index.css";
+import { headingStyle } from "../index.css";
+import { containerStyle } from "./index.css";
 
 const MyProfile = () => {
   return (
     <div className={containerStyle}>
-      <h1 className={textStyle.heading}>내 프로필</h1>
+      <h1 className={headingStyle}>내 프로필</h1>
       <EditForm />
     </div>
   );
