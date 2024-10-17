@@ -17,9 +17,11 @@ export type TableDataType<T> = {
 
 export type StudyListType = {
   status: Status;
+  startDate: Date;
+  endDate: Date;
 } & Omit<
   StudyGroupResponse,
-  "introduction" | "groupImage" | "ownerNickname" | "id"
+  "introduction" | "groupImage" | "ownerNickname" | "id" | "startDate" | "endDate"
 >;
 
 export type AlarmSettingsDataType = {

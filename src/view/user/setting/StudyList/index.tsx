@@ -1,7 +1,9 @@
-import { DataTable } from "@/shared/component/Table";
+"use client";
+
 import { StudyListData } from "@/shared/constant/example";
-import { STUDY_LIST_COLUMNS } from "../constant";
 import { headingStyle } from "../index.css";
+import { StudyListTableProvider } from "./StudyListProvider";
+import StudyListTable from "./StudyListTable";
 import { backPanelStyle, wrapperStyle } from "./index.css";
 
 const StudyList = () => {
@@ -9,12 +11,9 @@ const StudyList = () => {
     <article className={wrapperStyle}>
       <h1 className={headingStyle}>스터디 관리</h1>
       <div className={backPanelStyle} />
-      <DataTable
-        title="스터디 리스트"
-        type="스터디리스트"
-        rows={StudyListData}
-        cols={STUDY_LIST_COLUMNS}
-      />
+      <StudyListTableProvider data={StudyListData}>
+        <StudyListTable />
+      </StudyListTableProvider>
     </article>
   );
 };
