@@ -3,7 +3,7 @@ import Dropdown from "@/common/component/Dropdown";
 import Menu from "@/common/component/Menu/Menu";
 import { handleA11yClick } from "@/common/util/dom";
 import StatusIcon from "../StatusIcon";
-import { useTableDispatch } from "../StudyList/hook";
+import { useTableDispatch } from "../StudyList/StudyListTable/hook";
 import {
   arrowDownStyle,
   dropdownStyle,

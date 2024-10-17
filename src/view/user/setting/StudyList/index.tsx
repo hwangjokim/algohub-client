@@ -2,8 +2,8 @@
 
 import { StudyListData } from "@/shared/constant/example";
 import { headingStyle } from "../index.css";
-import { StudyListTableProvider } from "./StudyListProvider";
-import StudyListTable from "./StudyListTable";
+import { StudyListTableProvider } from "./StudyListTable/StudyListProvider";
+import StudyListTable from "./StudyListTable/StudyListTable";
 import { backPanelStyle, wrapperStyle } from "./index.css";
 
 const StudyList = () => {
