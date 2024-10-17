@@ -1,10 +1,7 @@
 "use client";
 
 import ToggleButton from "@/common/component/ToggleButton";
-import type {
-  AlarmSettingsDataType,
-  TableDataType
-} from "@/shared/type/table";
+import type { AlarmSettingsDataType, TableDataType } from "@/shared/type/table";
 
 export const ALARM_SETTINGS_COLUMNS: TableDataType<AlarmSettingsDataType>[] = [
   {

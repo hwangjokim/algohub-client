@@ -12,7 +12,7 @@ const SortIcon = ({ direction: isActive, onClick }: SortIconProps) => {
     case undefined:
       return (
         <IcnBtnSort
-          aria-label="북마크 기준으로 오름차순 정렬하기"
+          aria-label="오름차순 정렬하기"
           className={sortIconStyle}
           width={20}
           height={20}
@@ -24,7 +24,7 @@ const SortIcon = ({ direction: isActive, onClick }: SortIconProps) => {
     case "asc":
       return (
         <IcnBtnArrowDown
-          aria-label="북마크 기준으로 내림차순 정렬하기"
+          aria-label="내림차순 정렬하기"
           className={ascIconStyle}
           width={20}
           height={20}
@@ -36,7 +36,7 @@ const SortIcon = ({ direction: isActive, onClick }: SortIconProps) => {
     case "desc":
       return (
         <IcnBtnArrowDown
-          aria-label="북마크 기준 정렬 해제하기"
+          aria-label="정렬 해제하기"
           className={sortIconStyle}
           width={20}
           height={20}

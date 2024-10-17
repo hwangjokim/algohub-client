@@ -6,8 +6,8 @@ import {
 import { pinStyle } from "@/shared/component/Table/index.css";
 import type { StudyListType, TableDataType } from "@/shared/type/table";
 import { format } from "date-fns";
-import StatusDropdownMenu from "../../StatusDropdownMenu";
 import SortIcon from "../SortIcon";
+import StatusDropdownMenu from "../StatusDropdownMenu";
 import { textStyle } from "../StatusDropdownMenu/index.css";
 import StatusIcon from "../StatusIcon";
 import { useStudyListDispatch, useStudyListState } from "./hook";

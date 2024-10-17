@@ -4,7 +4,7 @@ import { style } from "@vanilla-extract/css";
 export const wrapperStyle = style({
   position: "relative",
   display: "flex",
-  
+
   width: "80%",
   height: "62.4rem",
   paddingTop: "9rem",
@@ -13,7 +13,7 @@ export const wrapperStyle = style({
 export const backPanelStyle = style({
   position: "absolute",
   zIndex: 1,
-  top: "9rem",
+  top: "rem",
   left: "4vw",
   display: "block",
 

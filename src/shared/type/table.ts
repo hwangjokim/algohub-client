@@ -1,4 +1,3 @@
-
 import type { StudyGroupResponse } from "@/api/group/type";
 import type { Status } from "@/view/user/index/type";
 import type { ComponentProps, FC } from "react";
@@ -21,7 +20,12 @@ export type StudyListType = {
   endDate: Date;
 } & Omit<
   StudyGroupResponse,
-  "introduction" | "groupImage" | "ownerNickname" | "id" | "startDate" | "endDate"
+  | "introduction"
+  | "groupImage"
+  | "ownerNickname"
+  | "id"
+  | "startDate"
+  | "endDate"
 >;
 
 export type AlarmSettingsDataType = {

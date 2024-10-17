@@ -66,7 +66,7 @@ const studyListTableReducer = (state: State, action: Actions): State => {
       return {
         ...state,
         sortCriteria: newSortCriteria.sort((a, b) => {
-          // boolean 타입인 isBookmarked를 맨 뒤로
+          // boolean 타입인 isBookmarked를 맨 앞으로
           if (a.key === "isBookmarked") return -1;
           if (b.key === "isBookmarked") return 1;
           return 0;

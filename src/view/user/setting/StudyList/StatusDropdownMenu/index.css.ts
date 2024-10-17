@@ -18,7 +18,7 @@ export const arrowDownStyle = style({
 
 export const dropdownStyle = style({
   transform: "translate(0, 8px)",
-  
+
   paddingTop: "1.6rem",
   paddingBottom: "1.6rem",
   ":hover": {

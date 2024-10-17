@@ -1,8 +1,6 @@
 import { DataTable } from "@/shared/component/Table";
 import { STUDY_LIST_COLUMNS } from "./constant";
-import {
-  useStudyListData
-} from "./hook";
+import { useStudyListData } from "./hook";
 
 const StudyListTable = () => {
   const data = useStudyListData();
