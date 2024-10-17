@@ -1,5 +1,4 @@
 import { IcnBtnArrowDown, IcnBtnSort } from "@/asset/svg";
-import { match } from "ts-pattern";
 import { ascIconStyle, sortIconStyle } from "./index.css";
 
 type SortIconProps = {
@@ -8,36 +7,37 @@ type SortIconProps = {
 };
 
 const SortIcon = ({ direction: isActive, onClick }: SortIconProps) => {
-  return (
-    <>
-      {match(isActive)
-        .with(undefined, () => (
-          <IcnBtnSort
-            className={sortIconStyle}
-            width={20}
-            height={20}
-            onClick={onClick}
-          />
-        ))
-        .with("asc", () => (
-          <IcnBtnArrowDown
-            className={ascIconStyle}
-            width={20}
-            height={20}
-            onClick={onClick}
-          />
-        ))
-        .with("desc", () => (
-          <IcnBtnArrowDown
-            className={sortIconStyle}
-            width={20}
-            height={20}
-            onClick={onClick}
-          />
-        ))
-        .exhaustive()}
-    </>
-  );
+  switch (isActive) {
+    case undefined:
+      return (
+        <IcnBtnSort
+          className={sortIconStyle}
+          width={20}
+          height={20}
+          onClick={onClick}
+        />
+      );
+    case "asc":
+      return (
+        <IcnBtnArrowDown
+          className={ascIconStyle}
+          width={20}
+          height={20}
+          onClick={onClick}
+        />
+      );
+    case "desc":
+      return (
+        <IcnBtnArrowDown
+          className={sortIconStyle}
+          width={20}
+          height={20}
+          onClick={onClick}
+        />
+      );
+    default:
+      return null;
+  }
 };
 
 export default SortIcon;

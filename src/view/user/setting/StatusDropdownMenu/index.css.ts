@@ -6,7 +6,7 @@ export const triggerButtonStyle = style({
   flexDirection: "row",
   alignItems: "center",
   gap: "0.4rem",
-  
+
   width: "100%",
   borderRadius: "0.4rem",
 });
@@ -17,6 +17,8 @@ export const arrowDownStyle = style({
 });
 
 export const dropdownStyle = style({
+  transform: "translate(0, 8px)",
+  
   paddingTop: "1.6rem",
   paddingBottom: "1.6rem",
   ":hover": {
@@ -27,4 +29,4 @@ export const dropdownStyle = style({
 export const textStyle = style({
   ...theme.font.Caption3_M_12,
   color: theme.color.mg2,
-})
+});

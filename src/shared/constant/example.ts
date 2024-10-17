@@ -67,7 +67,7 @@ export const StudyListData: StudyListType[] = [
     startDate: new Date("2024-03-10"),
     endDate: new Date("2024-09-10"),
     isOwner: true,
-    status: "queued",
+    status: "bookmarked",
   },
   {
     isBookmarked: true,
@@ -88,18 +88,18 @@ export const StudyListData: StudyListType[] = [
   {
     isBookmarked: false,
     name: "soongsil univ algorithm",
-    startDate: new Date("2024-09-10"),
+    startDate: new Date("2024-04-05"),
     endDate: new Date("2024-09-10"),
     isOwner: true,
-    status: "queued",
+    status: "inProgress",
   },
   {
     isBookmarked: true,
     name: "soongsil univ algorithm",
-    startDate: new Date("2024-08-10"),
+    startDate: new Date("2024-01-10"),
     endDate: new Date("2024-09-10"),
     isOwner: true,
-    status: "queued",
+    status: "inProgress",
   },
   {
     isBookmarked: false,

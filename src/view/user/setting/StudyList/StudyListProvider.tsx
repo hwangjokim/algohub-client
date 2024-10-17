@@ -77,7 +77,8 @@ const studyListTableReducer = (state: State, action: Actions): State => {
     case "SET_FILTER": {
       const { key, value } = action;
 
-      const isSameFilter = state.filterKey === key;
+      const isSameFilter =
+        state.filterKey === key && state.filterValue === value;
 
       return {
         ...state,
@@ -107,30 +108,34 @@ export const StudyListTableProvider = ({
   } as State);
 
   // 데이터 전처리 (정렬, 필터링)
-  const processedData = data.toSorted((a, b) => {
-    // 순차적으로 sortCriteria를 확인하며 정렬
-    for (const { key, order } of state.sortCriteria) {
-      let compareResult = 0;
+  const processedData = data
+    .filter((item) => {
+      // 필터가 적용되지 않은 경우 전체 데이터 반환
+      if (!state.filterKey) return true;
 
-      // 키 값이 boolean인 경우
-      if (typeof a[key] === "boolean" && typeof b[key] === "boolean") {
-        compareResult = a[key] === b[key] ? 0 : a[key] ? -1 : 1;
+      // 필터 조건에 맞는 항목만 반환
+      return item[state.filterKey] === state.filterValue;
+    })
+    .toSorted((a, b) => {
+      for (const { key, order } of state.sortCriteria) {
+        let compareResult = 0;
+
+        if (typeof a[key] === "boolean" && typeof b[key] === "boolean") {
+          compareResult = a[key] === b[key] ? 0 : a[key] ? -1 : 1;
+        } else if (a[key] instanceof Date && b[key] instanceof Date) {
+          compareResult = a[key].getTime() - b[key].getTime();
+        }
+
+        // 오름차순/내림차순 적용
+        if (compareResult !== 0) {
+          return order === "asc" ? compareResult : -compareResult;
+        }
       }
 
-      // 키 값이 날짜(Date 객체)인 경우
-      else if (a[key] instanceof Date && b[key] instanceof Date) {
-        compareResult = a[key].getTime() - b[key].getTime();
-      }
+      // 모든 조건이 동일한 경우
+      return 0;
+    });
 
-      // 오름차순/내림차순 적용
-      if (compareResult !== 0) {
-        return order === "asc" ? compareResult : -compareResult;
-      }
-    }
-
-    // 모든 조건이 동일한 경우
-    return 0;
-  });
   return (
     <TableDispatchContext.Provider value={dispatch}>
       <TableDataContext.Provider value={{ state, processedData }}>

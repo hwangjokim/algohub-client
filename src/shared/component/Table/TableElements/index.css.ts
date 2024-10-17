@@ -5,6 +5,7 @@ import { recipe } from "@vanilla-extract/recipes";
 export const wrapperStyle = style({
   position: "relative",
   display: "flex",
+  alignItems: "flex-start",
   justifyContent: "center",
 
   overflow: "auto",
@@ -103,7 +104,7 @@ export const tableHeaderStyle = recipe({
         position: "sticky",
         top: "6.6rem",
         zIndex: theme.zIndex.bottom,
-        
+
         height: "3.6rem",
         verticalAlign: "top",
         ":after": {
@@ -127,6 +128,13 @@ export const tableHeaderStyle = recipe({
         borderTopRightRadius: "4px",
       },
     },
+  },
+});
+
+export const tableRowStyle = style({
+  borderRadius: ".4rem",
+  ":hover": {
+    backgroundColor: theme.color.mg5,
   },
 });
 
