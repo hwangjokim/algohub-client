@@ -46,7 +46,7 @@ const Menu = ({ label, renderTriggerButton, renderList }: MenuProps) => {
       </Slot>
 
       {showMenu && (
-        <Slot id={menuId} aria-labelledby={triggerId}>
+        <Slot id={menuId} aria-labelledby={triggerId} onClick={handleClose}>
           {renderList}
         </Slot>
       )}

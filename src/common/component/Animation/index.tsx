@@ -1,31 +1,5 @@
-"use client";
-import Lottie from "lottie-react";
-import type { HTMLAttributes } from "react";
+import dynamic from "next/dynamic";
 
-interface LottiePlayerProps extends HTMLAttributes<HTMLDivElement> {
-  size: string;
-  animationJson: unknown;
-  loop?: boolean;
-}
+const Animation = dynamic(() => import("./Animation"), { ssr: false });
 
-/**
- * @param {string} size style={{ width: size, height: size }}
- * @param {boolean} loop default true
- */
-const Animation = ({
-  size,
-  animationJson,
-  loop = true,
-  ...props
-}: LottiePlayerProps) => {
-  return (
-    <Lottie
-      autoplay
-      loop={loop}
-      style={{ width: size, height: size }}
-      animationData={animationJson}
-      {...props}
-    />
-  );
-};
 export default Animation;

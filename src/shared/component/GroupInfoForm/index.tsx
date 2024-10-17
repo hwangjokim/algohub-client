@@ -24,8 +24,8 @@ const GroupInfoForm = ({
   form,
   variant = "create-group",
 }: GroupFormProps) => {
-  const handleSubmit = (values: z.infer<typeof groupSchema>) => {
-    console.log({ values });
+  const handleSubmit = (_values: z.infer<typeof groupSchema>) => {
+    // console.log({ values });
   };
 
   return (

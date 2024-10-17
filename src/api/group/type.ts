@@ -7,3 +7,14 @@ export interface GroupJoinResponse {
   description: string;
   owner: string;
 }
+
+export interface GroupInfoResponse {
+  id: number;
+  name: string;
+  startDate: string;
+  endDate: string;
+  introduction: string;
+  groupImage: string;
+  isOwner: boolean;
+  ownerNickname: string;
+}

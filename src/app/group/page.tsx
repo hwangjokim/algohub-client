@@ -1,20 +1,16 @@
-"use client";
-
-import {} from "@/asset/svg";
-import Modal from "@/common/component/Modal";
-import ToastProvider from "@/common/component/Toast";
-import RegisterForm from "@/view/group/problem-list/component/RegisterForm";
-import { useState } from "react";
+import Sidebar from "@/common/component/Sidebar";
+import { tmpGroupData } from "@/shared/util/example";
+import { sidebarWrapper } from "@/styles/shared.css";
+import GroupSidebar from "@/view/group/dashboard/GroupSidebar";
 
 const GroupDashboardPage = () => {
-  const [isOpen, setIsOpen] = useState(true);
   return (
-    <>
-      <ToastProvider />
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <RegisterForm />
-      </Modal>
-    </>
+    <main className={sidebarWrapper}>
+      <Sidebar>
+        <GroupSidebar info={tmpGroupData} />
+      </Sidebar>
+      {/* children */}
+    </main>
   );
 };
 
