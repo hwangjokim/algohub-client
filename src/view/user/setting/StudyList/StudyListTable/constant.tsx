@@ -6,18 +6,18 @@ import {
 import { pinStyle } from "@/shared/component/Table/index.css";
 import type { StudyListType, TableDataType } from "@/shared/type/table";
 import { format } from "date-fns";
-import SortIcon from "../../SortIcon";
 import StatusDropdownMenu from "../../StatusDropdownMenu";
-import { textStyle } from "../../StatusDropdownMenu/index.css";
-import StatusIcon from "../../StatusIcon";
-import { useTableDispatch, useTableState } from "./hook";
+import SortIcon from "../SortIcon";
+import { textStyle } from "../StatusDropdownMenu/index.css";
+import StatusIcon from "../StatusIcon";
+import { useStudyListDispatch, useStudyListState } from "./hook";
 
 export const STUDY_LIST_COLUMNS: TableDataType<StudyListType>[] = [
   {
     key: "isBookmarked",
     Header: () => {
-      const dispatch = useTableDispatch();
-      const state = useTableState();
+      const dispatch = useStudyListDispatch();
+      const state = useStudyListState();
       const direction = state.sortCriteria.find(
         (c) => c.key === "isBookmarked",
       )?.order;
@@ -57,8 +57,8 @@ export const STUDY_LIST_COLUMNS: TableDataType<StudyListType>[] = [
   {
     key: "startDate",
     Header: () => {
-      const dispatch = useTableDispatch();
-      const state = useTableState();
+      const dispatch = useStudyListDispatch();
+      const state = useStudyListState();
       const direction = state.sortCriteria.find(
         (c) => c.key === "startDate",
       )?.order;

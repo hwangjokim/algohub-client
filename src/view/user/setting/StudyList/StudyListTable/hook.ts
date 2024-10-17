@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { TableDataContext, TableDispatchContext } from "./StudyListProvider";
 
-export const useTableData = () => {
+export const useStudyListData = () => {
   const context = useContext(TableDataContext);
   if (!context) {
     throw new Error("useTableDataContext must be used within a TableProvider");
@@ -9,7 +9,7 @@ export const useTableData = () => {
   return context.processedData;
 };
 
-export const useTableState = () => {
+export const useStudyListState = () => {
   const context = useContext(TableDataContext);
   if (!context) {
     throw new Error("useTableDataContext must be used within a TableProvider");
@@ -17,7 +17,7 @@ export const useTableState = () => {
   return context.state;
 };
 
-export const useTableDispatch = () => {
+export const useStudyListDispatch = () => {
   const context = useContext(TableDispatchContext);
   if (!context) {
     throw new Error(

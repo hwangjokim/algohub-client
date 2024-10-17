@@ -2,14 +2,14 @@ import { IcnBtnArrowDown } from "@/asset/svg";
 import Dropdown from "@/common/component/Dropdown";
 import Menu from "@/common/component/Menu/Menu";
 import { handleA11yClick } from "@/common/util/dom";
+import StatusIcon from "../StatusIcon";
+import { useStudyListDispatch } from "../StudyListTable/hook";
 import {
   arrowDownStyle,
   dropdownStyle,
   textStyle,
   triggerButtonStyle,
-} from "../StudyList/StatusDropdownMenu/index.css";
-import StatusIcon from "../StudyList/StatusIcon";
-import { useStudyListDispatch } from "../StudyList/StudyListTable/hook";
+} from "./index.css";
 
 const statusOptions = [
   { label: "bookmarked", icon: <StatusIcon status="bookmarked" /> },
