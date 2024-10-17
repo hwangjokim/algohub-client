@@ -3,8 +3,8 @@ import {} from "@/shared/component/GroupInfoForm/index.css";
 import {
   grayTextStyle,
   labelStyle,
-} from "@/view/group/problem-list/component/RegisterForm/index.css";
-import type { registerProblemSchema } from "@/view/group/problem-list/component/RegisterForm/schema";
+} from "@/view/group/problem-list/RegisterForm/index.css";
+import type { registerProblemSchema } from "@/view/group/problem-list/RegisterForm/schema";
 import type { UseFormReturn } from "react-hook-form";
 import type { z } from "zod";
 

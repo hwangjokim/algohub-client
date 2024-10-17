@@ -2,8 +2,8 @@ import Button from "@/common/component/Button";
 import SupportingText from "@/common/component/SupportingText";
 import { useToast } from "@/common/hook/useToast";
 import { Form } from "@/shared/component/Form";
-import DateFormController from "@/view/group/problem-list/component/RegisterForm/DateFormController";
-import LinkFormController from "@/view/group/problem-list/component/RegisterForm/LinkFormController";
+import DateFormController from "@/view/group/problem-list/RegisterForm/DateFormController";
+import LinkFormController from "@/view/group/problem-list/RegisterForm/LinkFormController";
 import {
   dateFormWrapper,
   formStyle,
@@ -11,8 +11,8 @@ import {
   registerWrapper,
   submitBtnStyle,
   titleStyle,
-} from "@/view/group/problem-list/component/RegisterForm/index.css";
-import { registerProblemSchema } from "@/view/group/problem-list/component/RegisterForm/schema";
+} from "@/view/group/problem-list/RegisterForm/index.css";
+import { registerProblemSchema } from "@/view/group/problem-list/RegisterForm/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";

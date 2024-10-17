@@ -1,7 +1,7 @@
 import { FormController } from "@/shared/component/Form";
 import { dateInputStyle } from "@/shared/component/GroupInfoForm/index.css";
-import { grayTextStyle } from "@/view/group/problem-list/component/RegisterForm/index.css";
-import type { registerProblemSchema } from "@/view/group/problem-list/component/RegisterForm/schema";
+import { grayTextStyle } from "@/view/group/problem-list/RegisterForm/index.css";
+import type { registerProblemSchema } from "@/view/group/problem-list/RegisterForm/schema";
 import type { UseFormReturn } from "react-hook-form";
 import type { z } from "zod";
 
