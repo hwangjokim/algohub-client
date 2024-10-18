@@ -19,13 +19,13 @@ const page = () => {
       <div className={modalWrapper}>
         <Link href="https://www.acmicpc.net/problem/27969">
           <ProblemList.Item
-            id={1}
+            problemId={1}
             title="트리에서의 동적 계획법"
-            date="2024-01-01"
-            tier="bronze 1"
-            status="solved"
-            solved={50}
-            total={200}
+            startDate="2024-01-01"
+            endDate="2024-01-02"
+            level="bronze 1"
+            solved={true}
+            memberCount={200}
             className={solvedListStyle}
           />
         </Link>
