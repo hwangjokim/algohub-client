@@ -18,22 +18,3 @@ export interface GroupInfoResponse {
   isOwner: boolean;
   ownerNickname: string;
 }
-
-export type StudyGroupResponse = {
-  id: number;
-  name: string;
-  groupImage: string;
-  startDate: string;
-  endDate: string;
-  introduction: string;
-  ownerNickname: string;
-  isOwner: boolean;
-  isBookmarked: boolean;
-};
-
-export type StudyGroupListsResponse = {
-  bookmarked: StudyGroupResponse[];
-  done: StudyGroupResponse[];
-  inProgress: StudyGroupResponse[];
-  queued: StudyGroupResponse[];
-};
