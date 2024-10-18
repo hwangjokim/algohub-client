@@ -4,8 +4,8 @@ import ToastProvider from "@/common/component/Toast";
 import AuthHeader from "@/view/index/AuthHeader";
 import Card from "@/view/index/Card";
 import Footer from "@/view/index/Footer";
-import LoginForm from "@/view/login/component/LoginForm";
-import { containerStyle, headingStyle } from "@/view/login/component/index.css";
+import LoginForm from "@/view/login/LoginForm";
+import { containerStyle, headingStyle } from "@/view/login/index.css";
 import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
