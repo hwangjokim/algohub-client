@@ -40,6 +40,7 @@ export const texStyle = recipe({
 
 export const barStyle = style({
   position: "absolute",
+  top: "1.2rem",
   left: 0,
   width: "0.4rem",
   height: "2.4rem",
