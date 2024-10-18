@@ -1,5 +1,6 @@
 import Sidebar from "@/common/component/Sidebar";
 import { sidebarWrapper } from "@/styles/shared.css";
+import MemberList from "@/view/group/setting/MemberList";
 import SettingSidebar from "@/view/group/setting/SettingSidebar";
 
 const GroupSettingPage = () => {
@@ -8,7 +9,7 @@ const GroupSettingPage = () => {
       <Sidebar>
         <SettingSidebar />
       </Sidebar>
-      {/* children */}
+      <MemberList />
     </main>
   );
 };
