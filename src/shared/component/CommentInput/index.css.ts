@@ -1,5 +1,4 @@
 import { style } from "@vanilla-extract/css";
-import { recipe } from "@vanilla-extract/recipes";
 
 export const containerStyle = style({
   position: "relative",
@@ -24,15 +23,8 @@ export const profileStyle = style({
   cursor: "pointer",
 });
 
-export const inputStyle = recipe({
-  variants: {
-    variant: {
-      notice: {
-        paddingRight: "4rem",
-      },
-      detail: {},
-    },
-  },
+export const inputStyle = style({
+  paddingRight: "4rem",
 });
 
 export const sendIconStyle = style({

@@ -12,13 +12,12 @@ import Image from "next/image";
 import { type ForwardedRef, type KeyboardEvent, forwardRef } from "react";
 
 type CommentInputProps = InputProps & {
-  variant?: "notice" | "detail";
   profileUrl?: string;
   onSend?: () => void;
 };
 
 const CommentInput = (
-  { variant, profileUrl, onSend, ...props }: CommentInputProps,
+  { profileUrl, onSend, ...props }: CommentInputProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) => {
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -37,24 +36,22 @@ const CommentInput = (
       <Input
         placeholder="의견을 남겨주세요"
         ref={ref}
-        className={inputStyle({ variant })}
+        className={inputStyle}
         onKeyDown={handleKeyDown}
         {...props}
       />
 
-      {variant === "notice" && (
-        <IcnBtnSend
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") onSend?.();
-          }}
-          onClick={onSend}
-          className={sendIconStyle}
-          width={24}
-          height={24}
-        />
-      )}
+      <IcnBtnSend
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") onSend?.();
+        }}
+        onClick={onSend}
+        className={sendIconStyle}
+        width={24}
+        height={24}
+      />
     </div>
   );
 };

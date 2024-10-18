@@ -20,28 +20,12 @@ const meta: Meta<typeof CommentInput> = {
 } satisfies Meta<typeof CommentInput>;
 export default meta;
 
-export const NoticeInput = {
+export const Default = {
   render: () => {
     const [value, setValue] = useState("");
 
     return (
       <CommentInput
-        variant="notice"
-        profileUrl={LeeJin}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-    );
-  },
-};
-
-export const DetailInput = {
-  render: () => {
-    const [value, setValue] = useState("");
-
-    return (
-      <CommentInput
-        variant="detail"
         profileUrl={LeeJin}
         value={value}
         onChange={(e) => setValue(e.target.value)}
