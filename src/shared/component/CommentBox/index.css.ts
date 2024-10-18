@@ -31,15 +31,6 @@ export const containerStyle = recipe({
   },
 });
 
-export const profileStyle = style({
-  width: "3.9rem",
-  height: "3.9rem",
-
-  borderRadius: "50%",
-
-  objectFit: "cover",
-});
-
 export const writerStyle = style({
   ...theme.font.Caption2_SB_12,
   color: theme.color.white,

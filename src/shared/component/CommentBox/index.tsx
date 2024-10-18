@@ -1,7 +1,7 @@
 "use client";
 
-import tmp from "@/asset/img/leejin.png";
 import { IcnClose, IcnEdit } from "@/asset/svg";
+import Avatar from "@/common/component/Avatar";
 import {
   containerStyle,
   contentStyle,
@@ -9,14 +9,12 @@ import {
   createdAtStyle,
   iconContainerStyle,
   iconStyle,
-  profileStyle,
   topContentStyle,
   writerStyle,
 } from "@/shared/component/CommentBox/index.css";
 import useA11yHoverHandler from "@/shared/hook/useA11yHandler";
 import type { Comment } from "@/shared/type/comment";
 import { getFormattedCreatedAt } from "@/shared/util/time";
-import Image from "next/image";
 
 type CommentBox = Comment & {
   variant: "detail" | "notice";
@@ -46,10 +44,10 @@ const CommentBox = ({
       aria-label={`코멘트 ${commentId}`}
       className={containerStyle({ isActive })}
     >
-      <Image
-        className={profileStyle}
-        src={tmp ?? writerProfileImage} // 나중에 서버 이미지로 대체
+      <Avatar
+        src={writerProfileImage}
         alt={`${writerNickname} 프로필 이미지`}
+        size="small"
       />
       <div className={contentWrapperStyle({ variant })}>
         <div className={topContentStyle}>

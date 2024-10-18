@@ -12,17 +12,6 @@ export const containerStyle = style({
   padding: "0.8rem 0",
 });
 
-export const profileStyle = style({
-  width: "3.9rem",
-  height: "3.9rem",
-
-  borderRadius: "50%",
-
-  objectFit: "cover",
-
-  cursor: "pointer",
-});
-
 export const inputStyle = style({
   paddingRight: "4rem",
 });

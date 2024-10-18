@@ -1,14 +1,13 @@
 "use client";
 
 import { IcnBtnSend } from "@/asset/svg";
+import Avatar from "@/common/component/Avatar";
 import Input, { type InputProps } from "@/common/component/Input";
 import {
   containerStyle,
   inputStyle,
-  profileStyle,
   sendIconStyle,
 } from "@/shared/component/CommentInput/index.css";
-import Image from "next/image";
 import { type ForwardedRef, type KeyboardEvent, forwardRef } from "react";
 
 type CommentInputProps = InputProps & {
@@ -28,11 +27,7 @@ const CommentInput = (
 
   return (
     <div className={containerStyle}>
-      <Image
-        className={profileStyle}
-        src={profileUrl ?? ""}
-        alt="프로필 이미지"
-      />
+      <Avatar src={profileUrl} alt="프로필 이미지" size="small" />
       <Input
         placeholder="의견을 남겨주세요"
         ref={ref}
@@ -40,7 +35,6 @@ const CommentInput = (
         onKeyDown={handleKeyDown}
         {...props}
       />
-
       <IcnBtnSend
         role="button"
         tabIndex={0}
