@@ -12,7 +12,7 @@ export const contentStyle = style({
   alignItems: "center",
   gap: "1rem",
 
-  width: "33.5rem",
+  width: "34rem",
 
   color: "white",
 });

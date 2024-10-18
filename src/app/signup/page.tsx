@@ -1,5 +1,3 @@
-"use client";
-
 import AuthHeader from "@/shared/component/AuthHeader";
 import FormFooter from "@/shared/component/FormFooter";
 import { wrapper } from "@/view/login/index.css";
