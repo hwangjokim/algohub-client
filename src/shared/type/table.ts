@@ -1,5 +1,4 @@
-import type { StudyGroupResponse } from "@/api/group/type";
-import type { Status } from "@/view/user/index/type";
+import type { GroupListItem, GroupStatus } from "@/api/user/type";
 import type { ComponentProps, FC } from "react";
 import type TableHead from "../component/Table/TableElements/TableHead";
 
@@ -15,11 +14,11 @@ export type TableDataType<T> = {
 };
 
 export type StudyListType = {
-  status: Status;
+  status: GroupStatus;
   startDate: Date;
   endDate: Date;
 } & Omit<
-  StudyGroupResponse,
+  GroupListItem,
   | "introduction"
   | "groupImage"
   | "ownerNickname"
