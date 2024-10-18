@@ -5,9 +5,7 @@ import { getTierImage } from "@/shared/util/img";
 import {
   commentWrapperStyle,
   itemStyle,
-  textCommonStyle,
   textStyle,
-  titleStyle,
 } from "@/view/group/my-solved/SolvedItem/index.css";
 import Link from "next/link";
 
@@ -25,18 +23,13 @@ const SolvedItem = ({
 }: Solution) => {
   const LevelIcon = getTierImage(level);
 
-  const dataClassName = `${textStyle} ${textCommonStyle}`;
-
   return (
     <li aria-label={`${level}: ${solutionId}`} className={itemStyle}>
-      <LevelIcon style={{ placeSelf: "center" }} width={25} height={32} />
-      <Link
-        className={`${titleStyle} ${textCommonStyle}`}
-        href={`/problem/${solutionId}`}
-      >
+      <LevelIcon width={25} height={32} />
+      <Link className={textStyle} href={`/problem/${solutionId}`}>
         {title}
       </Link>
-      <time dateTime={solvedDateTime} className={dataClassName}>
+      <time dateTime={solvedDateTime} className={textStyle}>
         {solvedDateTime}
       </time>
 
@@ -47,7 +40,7 @@ const SolvedItem = ({
         codeLength,
         result,
       ].map((item, index) => (
-        <p key={index} className={dataClassName}>
+        <p key={index} className={textStyle}>
           {item}
         </p>
       ))}
@@ -58,7 +51,7 @@ const SolvedItem = ({
         ) : (
           <IcnMessage width={24} height={24} />
         )}
-        <p className={dataClassName}>{commentCount}</p>
+        <p className={textStyle}>{commentCount}</p>
       </div>
     </li>
   );

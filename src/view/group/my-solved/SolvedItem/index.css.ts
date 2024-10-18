@@ -9,9 +9,11 @@ export const itemStyle = style({
   gap: "0.4rem",
 
   width: "100%",
+
+  padding: "0.5rem 2rem",
 });
 
-export const textCommonStyle = style({
+export const textStyle = style({
   ...theme.font.Caption3_M_12,
   fontWeight: 500,
   color: theme.color.white,
@@ -19,18 +21,6 @@ export const textCommonStyle = style({
   overflow: "hidden",
   textOverflow: "ellipsis",
   whiteSpace: "nowrap",
-});
-
-export const titleStyle = style({
-  textAlign: "center",
-
-  textDecoration: "underline",
-  textDecorationColor: theme.color.white,
-  textUnderlineOffset: 2,
-});
-
-export const textStyle = style({
-  textAlign: "center",
 });
 
 export const commentWrapperStyle = style({

@@ -8,6 +8,8 @@ export const headerStyle = style({
   gap: "0.4rem",
   alignItems: "center",
 
+  padding: "0 2rem",
+
   width: "100%",
   height: "3.7rem",
 
@@ -15,7 +17,5 @@ export const headerStyle = style({
 });
 
 export const columnStyle = style({
-  textAlign: "center",
-
   ...theme.font.Caption3_M_12,
 });
