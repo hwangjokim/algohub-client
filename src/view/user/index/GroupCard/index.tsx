@@ -26,7 +26,12 @@ const GroupCard = ({ item, status }: GroupCardProps) => {
   return (
     <Link href="">
       <article className={groupCardWrapper}>
-        <Image src={groupImage || defaultImg} alt={""} className={imgStyle} />
+        <Image
+          src={groupImage || defaultImg}
+          alt={""}
+          className={imgStyle}
+          unoptimized
+        />
         <div className={nameWrapper}>
           <StatusIcon status={status} />
           <h2 className={nameStyle({ isDone })}>{name}</h2>
