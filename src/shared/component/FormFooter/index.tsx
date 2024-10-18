@@ -9,7 +9,7 @@ interface FooterProps {
   };
 }
 
-const Footer = ({ guideLabel, link: { label, href } }: FooterProps) => {
+const FormFooter = ({ guideLabel, link: { label, href } }: FooterProps) => {
   return (
     <footer className={labelContainer}>
       <p className={labelStyle.guide}>{guideLabel}</p>
@@ -20,4 +20,4 @@ const Footer = ({ guideLabel, link: { label, href } }: FooterProps) => {
   );
 };
 
-export default Footer;
+export default FormFooter;

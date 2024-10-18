@@ -1,5 +1,6 @@
+"use client";
 import { Form, FormController } from "@/shared/component/Form";
-import SubmitButton from "@/view/index/SubmitButton";
+import SubmitButton from "@/shared/component/SubmitButton";
 import { contentStyle, formStyle } from "./index.css";
 import useLoginForm from "./useLoginForm";
 

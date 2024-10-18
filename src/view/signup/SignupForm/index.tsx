@@ -6,7 +6,7 @@ import {
   handleOnChangeMode,
 } from "@/shared/util/form";
 
-import SubmitButton from "@/view/index/SubmitButton";
+import SubmitButton from "@/shared/component/SubmitButton";
 import {
   contentStyle,
   descriptionStyle,
