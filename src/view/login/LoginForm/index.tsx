@@ -31,6 +31,7 @@ const LoginForm = () => {
             type="input"
             fieldProps={{
               placeholder: "비밀번호",
+              type: "password"
             }}
           />
         </div>

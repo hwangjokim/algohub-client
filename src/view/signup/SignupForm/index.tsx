@@ -56,6 +56,7 @@ const SignupForm = () => {
               type="input"
               fieldProps={{
                 placeholder: "비밀번호",
+                type: "password",
                 "aria-describedby": "password-description",
               }}
             />
@@ -67,6 +68,7 @@ const SignupForm = () => {
               revalidationHandlers={getMultipleRevalidationHandlers("password")}
               fieldProps={{
                 placeholder: "비밀번호 확인",
+                type: "password",
                 "aria-describedby": "password-description",
               }}
               descriptionProps={{
