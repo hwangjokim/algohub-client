@@ -44,6 +44,11 @@ const CommentInput = (
 
       {variant === "notice" && (
         <IcnBtnSend
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") onSend?.();
+          }}
           onClick={onSend}
           className={sendIconStyle}
           width={24}
