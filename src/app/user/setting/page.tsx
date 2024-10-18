@@ -1,6 +1,7 @@
 "use client";
 import Sidebar from "@/common/component/Sidebar";
 import { sidebarWrapper } from "@/styles/shared.css";
+import AlarmSetting from "@/view/user/setting/AlarmSetting";
 import SettingStep from "@/view/user/setting/SettingStep";
 import StudyList from "@/view/user/setting/StudyList";
 import type { SettingSteps } from "@/view/user/setting/type";
@@ -18,7 +19,7 @@ const UserSettingPage = () => {
         .with("my-profile", () => <></>)
         .with("study-setting", () => <StudyList />)
         .with("account-setting", () => <></>)
-        .with("alarm-setting", () => <></>)
+        .with("alarm-setting", () => <AlarmSetting />)
         .exhaustive()}
     </main>
   );
