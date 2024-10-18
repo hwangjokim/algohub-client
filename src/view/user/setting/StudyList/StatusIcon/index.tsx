@@ -1,4 +1,4 @@
-import type { GroupStatusLabel } from "@/api/user/type";
+import type { GroupStatus } from "@/api/user/type";
 import {
   IcnStatusDone,
   IcnStatusFavorites,
@@ -7,12 +7,12 @@ import {
 } from "@/asset/svg";
 
 type StatusIconProps = {
-  status: GroupStatusLabel;
+  status: GroupStatus;
 };
 
 const StatusIcon = ({ status }: StatusIconProps) => {
   switch (status) {
-    case "Favorites":
+    case "bookmarked":
       return (
         <IcnStatusFavorites
           aria-label={`상태: ${status}`}
@@ -20,7 +20,7 @@ const StatusIcon = ({ status }: StatusIconProps) => {
           height={"2.1rem"}
         />
       );
-    case "Queued":
+    case "queued":
       return (
         <IcnStatusQueued
           aria-label={`상태: ${status}`}
@@ -28,7 +28,7 @@ const StatusIcon = ({ status }: StatusIconProps) => {
           height={"2.1rem"}
         />
       );
-    case "Progress":
+    case "inProgress":
       return (
         <IcnStatusProgress
           aria-label={`상태: ${status}`}
@@ -36,7 +36,7 @@ const StatusIcon = ({ status }: StatusIconProps) => {
           height={"2.1rem"}
         />
       );
-    case "Done":
+    case "done":
       return (
         <IcnStatusDone
           aria-label={`상태: ${status}`}

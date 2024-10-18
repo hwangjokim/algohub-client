@@ -5,6 +5,7 @@ import { sidebarWrapper } from "@/styles/shared.css";
 import AccountManagement from "@/view/user/setting/AccountManagement";
 import MyProfile from "@/view/user/setting/MyProfile";
 import SettingStep from "@/view/user/setting/SettingStep";
+import StudyList from "@/view/user/setting/StudyList";
 import type { SettingSteps } from "@/view/user/setting/type";
 import { useState } from "react";
 import { match } from "ts-pattern";
@@ -19,7 +20,7 @@ const UserSettingPage = () => {
       </Sidebar>
       {match(step)
         .with("my-profile", () => <MyProfile />)
-        .with("study-setting", () => <></>)
+        .with("study-setting", () => <StudyList />)
         .with("account-setting", () => <AccountManagement />)
         .with("alarm-setting", () => <></>)
         .exhaustive()}
