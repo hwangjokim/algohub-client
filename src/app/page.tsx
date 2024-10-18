@@ -1,4 +1,3 @@
-import CommentInput from "@/shared/component/CommentInput";
 import MainWithFooter from "@/view/onboarding/Section";
 import Section1 from "@/view/onboarding/Section/Section1";
 import Section2 from "@/view/onboarding/Section/Section2";
@@ -10,7 +9,6 @@ const OnboardingPage = () => {
       <Section1 />
       <Section2 />
       <Section3 />
-      <CommentInput />
     </MainWithFooter>
   );
 };
