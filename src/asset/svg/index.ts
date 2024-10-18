@@ -1,4 +1,3 @@
-export { default as GroupInfoCard } from "./group_info_card.svg";
 export { default as IcnActive } from "./icn_active.svg";
 export { default as IcnAlarm } from "./icn_alarm.svg";
 export { default as IcnBellHeader } from "./icn_bell_header.svg";

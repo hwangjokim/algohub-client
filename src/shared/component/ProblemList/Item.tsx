@@ -28,7 +28,6 @@ const ProblemListItem = ({
   endDate,
   level,
   solved,
-  total,
   className,
   accuracy,
   memberCount,
@@ -41,7 +40,10 @@ const ProblemListItem = ({
   const status = solved ? "solved" : isExpired ? "wrong" : "unsolved";
 
   return (
-    <li aria-label={`문제: ${title}`} className={clsx(itemStyle, className)}>
+    <li
+      aria-label={`${level}: ${title}`}
+      className={clsx(itemStyle, className)}
+    >
       <Icon width={25} height={32} />
       <Link
         className={`${titleStyle} ${textStyle}`}

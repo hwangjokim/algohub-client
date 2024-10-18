@@ -5,6 +5,7 @@ export const itemStyle = style({
   display: "grid",
   gridTemplateColumns: "0.6fr 2.7fr 2fr 2fr 2fr 2fr",
   alignItems: "center",
+  justifyContent: "space-between",
   gap: "2.4rem",
 
   width: "100%",

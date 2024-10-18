@@ -45,7 +45,7 @@ const GroupDashboardPage = () => {
         <GroupSidebar info={tmpGroupData} />
       </Sidebar>
       <section className={sectionStyle}>
-        <h1 className={titleStyle}>진행중인 문제</h1>
+        <h2 className={titleStyle}>진행중인 문제</h2>
         <Header />
         <ul className={listStyle}>
           {data.map((item) => (

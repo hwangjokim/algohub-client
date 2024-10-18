@@ -2,14 +2,16 @@ import { theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
 
 export const sectionStyle = style({
-  width: "100%",
+  width: "80%",
 
-  padding: "4.8rem 4.2rem",
+  padding: "4.8rem 2.4rem",
 });
 
 export const titleStyle = style({
   ...theme.font.Title1_SB_16,
   color: theme.color.white,
+
+  padding: "2rem",
 });
 
 export const listStyle = style({

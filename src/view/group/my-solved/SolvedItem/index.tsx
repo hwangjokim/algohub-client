@@ -28,7 +28,7 @@ const SolvedItem = ({
   const dataClassName = `${textStyle} ${textCommonStyle}`;
 
   return (
-    <li aria-label={`문제 ${solutionId}`} className={itemStyle}>
+    <li aria-label={`${level}: ${solutionId}`} className={itemStyle}>
       <LevelIcon style={{ placeSelf: "center" }} width={25} height={32} />
       <Link
         className={`${titleStyle} ${textCommonStyle}`}
@@ -36,7 +36,9 @@ const SolvedItem = ({
       >
         {title}
       </Link>
-      <time className={dataClassName}>{solvedDateTime}</time>
+      <time dateTime={solvedDateTime} className={dataClassName}>
+        {solvedDateTime}
+      </time>
 
       {[
         getFormattedMemory(memoryUsage),

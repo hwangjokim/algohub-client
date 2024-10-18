@@ -15,11 +15,14 @@ export const textCommonStyle = style({
   ...theme.font.Caption3_M_12,
   fontWeight: 500,
   color: theme.color.white,
+
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
 });
 
 export const titleStyle = style({
-  display: "flex",
-  justifyContent: "center",
+  textAlign: "center",
 
   textDecoration: "underline",
   textDecorationColor: theme.color.white,
