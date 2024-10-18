@@ -1,6 +1,5 @@
 "use client";
-// TODO: 현재 임시 defaultImg임 (확정 아직 X)
-import defaultImg from "@/asset/img/alogohub_icon.png";
+import defaultImg from "@/asset/img/img_card_profile.png";
 import { IcnEditProfile } from "@/asset/svg";
 import Avatar from "@/common/component/Avatar";
 import { iconStyle, inputStyle } from "@/shared/component/EditAvatar/index.css";
