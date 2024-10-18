@@ -1,3 +1,5 @@
+"use client";
+
 import tmp from "@/asset/img/leejin.png";
 import { IcnClose, IcnEdit } from "@/asset/svg";
 import {
@@ -11,10 +13,10 @@ import {
   topContentStyle,
   writerStyle,
 } from "@/shared/component/CommentBox/index.css";
+import useA11yHoverHandler from "@/shared/hook/useA11yHandler";
 import type { Comment } from "@/shared/type/comment";
 import { getFormattedCreatedAt } from "@/shared/util/time";
 import Image from "next/image";
-import { useState } from "react";
 
 type CommentBox = Comment & {
   variant: "detail" | "notice";
@@ -32,15 +34,17 @@ const CommentBox = ({
   onDelete,
   onEdit,
 }: CommentBox) => {
-  const [isHover, setIsHover] = useState(false);
+  const { isActive, handleFocus, handleBlur, handleMouseOver, handleMouseOut } =
+    useA11yHoverHandler();
 
   return (
     <li
-      // biome-ignore lint/a11y/useKeyWithMouseEvents:
-      onMouseOver={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onMouseOver={handleMouseOver}
+      onMouseLeave={handleMouseOut}
       aria-label={`코멘트 ${commentId}`}
-      className={containerStyle({ isHover })}
+      className={containerStyle({ isActive })}
     >
       <Image
         className={profileStyle}
@@ -56,10 +60,24 @@ const CommentBox = ({
       </div>
 
       <div className={iconContainerStyle}>
-        <div className={iconStyle({ variant: "edit", isHover })}>
+        <div
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") onEdit?.();
+          }}
+          className={iconStyle({ variant: "edit", isActive })}
+        >
           <IcnEdit onClick={onEdit} width={18} height={18} />
         </div>
-        <div className={iconStyle({ variant: "close", isHover })}>
+        <div
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") onDelete?.();
+          }}
+          className={iconStyle({ variant: "close", isActive })}
+        >
           <IcnClose onClick={onDelete} width={16} height={16} />
         </div>
       </div>

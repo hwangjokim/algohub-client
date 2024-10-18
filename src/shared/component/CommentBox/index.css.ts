@@ -20,7 +20,7 @@ export const containerStyle = recipe({
     transition: "all 0.3s ease",
   },
   variants: {
-    isHover: {
+    isActive: {
       true: {
         backgroundColor: "rgba(34, 39, 52, 1)",
       },
@@ -113,7 +113,7 @@ export const iconStyle = recipe({
         backgroundColor: theme.color.mg4,
       },
     },
-    isHover: {
+    isActive: {
       true: {
         opacity: 1,
       },

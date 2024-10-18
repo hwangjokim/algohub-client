@@ -28,7 +28,7 @@ export const inputStyle = recipe({
   variants: {
     variant: {
       notice: {
-        paddingRight: "4rem !important",
+        paddingRight: "4rem",
       },
       detail: {},
     },

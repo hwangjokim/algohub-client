@@ -1,3 +1,5 @@
+"use client";
+
 import { IcnBtnSend } from "@/asset/svg";
 import Input, { type InputProps } from "@/common/component/Input";
 import {
