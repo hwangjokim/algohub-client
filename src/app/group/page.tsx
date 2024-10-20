@@ -1,22 +1,20 @@
-"use client";
-
-import {} from "@/asset/svg";
-import Modal from "@/common/component/Modal";
-import Withdraw from "@/view/group/index/component/Withdraw";
-import { useState } from "react";
+import Sidebar from "@/common/component/Sidebar";
+import { tmpGroupData } from "@/shared/constant/example";
+import { sidebarWrapper } from "@/styles/shared.css";
+import GroupSidebar from "@/view/group/dashboard/GroupSidebar";
+import Ranking from "@/view/group/dashboard/Ranking";
+import { groupDashboardWrapper } from "@/view/group/dashboard/index.css";
 
 const GroupDashboardPage = () => {
-  const [isOpen, setIsOpen] = useState(true);
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={() => {
-        setIsOpen(false);
-      }}
-      hasCloseBtn
-    >
-      <Withdraw />
-    </Modal>
+    <main className={sidebarWrapper}>
+      <Sidebar>
+        <GroupSidebar info={tmpGroupData} />
+      </Sidebar>
+      <div className={groupDashboardWrapper}>
+        <Ranking />
+      </div>
+    </main>
   );
 };
 

@@ -1,5 +1,5 @@
+import type { groupSchema } from "@/api/group/schema";
 import SupportingText from "@/common/component/SupportingText";
-import type { groupSchema } from "@/shared/api/schema";
 import { Form } from "@/shared/component/Form";
 import DateFormController from "@/shared/component/GroupInfoForm/DateFormController";
 import DescFormController from "@/shared/component/GroupInfoForm/DescFormController";
@@ -24,8 +24,8 @@ const GroupInfoForm = ({
   form,
   variant = "create-group",
 }: GroupFormProps) => {
-  const handleSubmit = (values: z.infer<typeof groupSchema>) => {
-    console.log({ values });
+  const handleSubmit = (_values: z.infer<typeof groupSchema>) => {
+    // console.log({ values });
   };
 
   return (
