@@ -18,7 +18,7 @@ const Avatar = ({
   ...imageProps
 }: AvatarProps) => {
   return (
-    <div className={wrapperStyle}>
+    <div className={clsx(wrapperStyle, className)}>
       <Image
         {...imageProps}
         src={src || defaultImg}

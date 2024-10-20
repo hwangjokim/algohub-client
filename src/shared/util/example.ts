@@ -1,7 +1,6 @@
-import type { GroupInfoResponse } from "@/api/group/type";
-import type { GroupListResponse } from "@/api/user/type";
+import type { GroupListResponse, GroupResponse } from "@/api/group/type";
 
-export const tmpGroupData: GroupInfoResponse = {
+export const tmpGroupData: GroupResponse = {
   id: 0,
   name: "숭실대학교 알고리즘 스터디",
   startDate: "2024.08.13",
