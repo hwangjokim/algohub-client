@@ -1,4 +1,4 @@
-import type { Status } from "@/shared/type";
+import type { GroupListItem, GroupStatus } from "@/api/user/type";
 import type { ComponentProps, FC } from "react";
 import type TableHead from "../component/Table/TableElements/TableHead";
 
@@ -13,15 +13,19 @@ export type TableDataType<T> = {
   width: number;
 };
 
-export type StudyListDataType = {
-  pin: boolean;
-  groupName: string;
+export type StudyListType = {
+  status: GroupStatus;
   startDate: Date;
   endDate: Date;
-  role: string;
-  isPublic: boolean;
-  status: Status;
-};
+} & Omit<
+  GroupListItem,
+  | "introduction"
+  | "groupImage"
+  | "ownerNickname"
+  | "id"
+  | "startDate"
+  | "endDate"
+>;
 
 export type AlarmSettingsDataType = {
   alarm: boolean;
