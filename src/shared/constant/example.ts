@@ -1,8 +1,8 @@
-import type { GroupInfoResponse } from "@/api/group/type";
+import type { GroupResponse } from "@/api/group/type";
 import IcnNew from "@/asset/svg/icn_new.svg?url";
 import type { AlarmSettingsDataType, StudyListType } from "../type/table";
 
-export const tmpGroupData: GroupInfoResponse = {
+export const tmpGroupData: GroupResponse = {
   id: 0,
   name: "숭실대학교 알고리즘 스터디",
   startDate: "2024.08.13",

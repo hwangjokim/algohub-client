@@ -29,13 +29,13 @@ export interface GroupResponse extends GroupByCodeResponse {
   ownerNickname?: string;
 }
 
-export type RankingContent = {
+export type RankingResponse = {
   userNickname: string;
   profileImage: string;
   rank: number;
   solvedCount: number;
 };
-export type RankingResponse = RankingContent[];
+export type RankingListRespons = RankingResponse[];
 
 export type GroupStatus = "bookmarked" | "done" | "inProgress" | "queued";
 
