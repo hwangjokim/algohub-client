@@ -6,6 +6,7 @@ import { tmpGroupData } from "@/shared/util/example";
 import { sidebarWrapper } from "@/styles/shared.css";
 import GroupSidebar from "@/view/group/dashboard/GroupSidebar";
 import ProblemListHeader from "@/view/group/dashboard/ProblemListHeader";
+import Ranking from "@/view/group/dashboard/Ranking";
 
 const GroupDashboardPage = () => {
   const data: Problem[] = [
@@ -50,6 +51,7 @@ const GroupDashboardPage = () => {
         <GroupSidebar info={tmpGroupData} />
       </Sidebar>
       <section className={listSectionStyle}>
+        <Ranking />
         <h2 className={titleStyle}>풀어야 할 문제</h2>
         <div>
           <ProblemListHeader />
