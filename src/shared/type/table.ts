@@ -1,4 +1,4 @@
-import type { GroupListItem, GroupStatus } from "@/api/user/type";
+import type { GroupListItem, GroupStatus } from "@/api/group/type";
 import type { ComponentProps, FC } from "react";
 import type TableHead from "../component/Table/TableElements/TableHead";
 

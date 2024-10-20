@@ -1,4 +1,20 @@
-import type { GroupInfoResponse } from "@/api/group/type";
+export type SignInResponse = {
+  email: string;
+  password: string;
+};
+
+export type CheckEmailRequest = {
+  email: string;
+};
+
+export type DeleteUserRequest = {
+  password: string;
+};
+
+export type EditPasswordRequest = {
+  currentPassword: string;
+  newPassword: string;
+};
 
 export type UserResponse = {
   email?: string;
@@ -6,12 +22,4 @@ export type UserResponse = {
   profileImage?: string;
   bjNickname?: string;
   desc?: string;
-};
-
-export type GroupStatus = "bookmarked" | "done" | "inProgress" | "queued";
-export type GroupStatusLabel = "Favorites" | "Queued" | "Progress" | "Done";
-
-export type GroupListItem = GroupInfoResponse & { isBookmarked: boolean };
-export type GroupListResponse = {
-  [key in GroupStatus]: GroupListItem[];
 };

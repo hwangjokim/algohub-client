@@ -1,5 +1,5 @@
 "use client";
-import type { GroupStatus } from "@/api/user/type";
+import type { GroupListItem, GroupStatus } from "@/api/group/type";
 import Carousel from "@/common/component/Carousel";
 import Sidebar from "@/common/component/Sidebar";
 import { tmpUserGroupListData } from "@/shared/util/example";
@@ -29,7 +29,7 @@ const UserDashboardPage = () => {
               length={tmpUserGroupListData[list.status as GroupStatus].length}
             >
               {tmpUserGroupListData[list.status as GroupStatus].map(
-                (item, idx) => (
+                (item: GroupListItem, idx: number) => (
                   <Carousel.Item key={item.id} index={idx}>
                     <GroupCard
                       item={item}
