@@ -15,10 +15,10 @@ const Withdraw = () => {
   };
 
   return (
-    <article className={withdrawWrapper}>
+    <div className={withdrawWrapper}>
       {isLeaving ? <SuccessWithdraw /> : <PromptWithdraw />}
       <Button onClick={handleBtnClick}>{isLeaving ? "확인" : "나가기"}</Button>
-    </article>
+    </div>
   );
 };
 
