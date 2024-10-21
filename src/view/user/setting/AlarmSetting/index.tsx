@@ -1,4 +1,4 @@
-import { headingStyle, wrapperStyle } from "../index.css";
+import { headingStyle, wrapperStyle } from "@/view/user/setting/index.css";
 import AlarmSettingTable from "./AlarmSettingTable";
 
 const AlarmSetting = () => {

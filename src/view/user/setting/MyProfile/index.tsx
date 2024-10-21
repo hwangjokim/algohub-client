@@ -1,4 +1,4 @@
-import { headingStyle } from "../index.css";
+import { headingStyle } from "@/view/user/setting/index.css";
 import EditForm from "./EditForm";
 import { containerStyle } from "./index.css";
 

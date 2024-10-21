@@ -1,10 +1,10 @@
 "use client";
 
+import Card from "@/shared/component/Card";
 import { Form, FormController } from "@/shared/component/Form";
+import SubmitButton from "@/shared/component/SubmitButton";
 import { handleOnChangeMode } from "@/shared/util/form";
-import Card from "@/view/index/Card";
-import SubmitButton from "@/view/index/SubmitButton";
-import { editCardStyle, footerStyle } from "../index.css";
+import { editCardStyle, footerStyle } from "@/view/user/setting/MyProfile/index.css";
 import { contentStyle, formStyle, labelStyle } from "./index.css";
 import useEditForm from "./useEditForm";
 

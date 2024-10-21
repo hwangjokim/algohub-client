@@ -1,4 +1,4 @@
-import { headingStyle } from "../index.css";
+import { headingStyle } from "@/view/user/setting/index.css";
 import AccountManagementForm from "./AccountManagementForm";
 import { containerStyle } from "./index.css";
 
