@@ -4,7 +4,10 @@ import Card from "@/shared/component/Card";
 import { Form, FormController } from "@/shared/component/Form";
 import SubmitButton from "@/shared/component/SubmitButton";
 import { handleOnChangeMode } from "@/shared/util/form";
-import { editCardStyle, footerStyle } from "@/view/user/setting/MyProfile/index.css";
+import {
+  editCardStyle,
+  footerStyle,
+} from "@/view/user/setting/MyProfile/index.css";
 import { contentStyle, formStyle, labelStyle } from "./index.css";
 import useEditForm from "./useEditForm";
 

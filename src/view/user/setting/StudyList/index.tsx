@@ -1,9 +1,13 @@
 "use client";
 
 import { StudyListData } from "@/shared/constant/example";
-import { backPanelStyle, headingStyle, wrapperStyle } from "@/view/user/setting/index.css";
+import {
+  backPanelStyle,
+  headingStyle,
+  wrapperStyle,
+} from "@/view/user/setting/index.css";
+import StudyListTable from "./StudyListTable";
 import { StudyListTableProvider } from "./StudyListTable/StudyListProvider";
-import StudyListTable from "./StudyListTable/StudyListTable";
 
 const StudyList = () => {
   return (
