@@ -4,6 +4,7 @@ import defaultIcon from "@/asset/img/gray_small_icon.png";
 import { IcnNew, IcnNotifications } from "@/asset/svg";
 import { useBooleanState } from "@/common/hook/useBooleanState";
 import { getNoticeBannerCreateAt } from "@/shared/util/time";
+import { textStyle } from "@/view/group/dashboard/index.css";
 import Image from "next/image";
 import NoticeModal from "../NoticeModal";
 import { tmpData } from "./constant";
@@ -13,7 +14,6 @@ import {
   headerWrapper,
   notifyWrapper,
   overlayStyle,
-  textStyle,
 } from "./index.css";
 
 const NoticeBanner = () => {
@@ -52,11 +52,11 @@ const NoticeBanner = () => {
         </header>
 
         <div className={contentWrapper}>
-          <p className={textStyle.content}>{noticeContent}</p>
+          <p className={textStyle.bannerContent}>{noticeContent}</p>
           <time className={textStyle.time} dateTime={createAt}>
             {getNoticeBannerCreateAt(createAt)}
           </time>
-          {<IcnNew width={13} height={13} />}
+          {<IcnNew width={13} height={13} style={{ minWidth: 13 }} />}
         </div>
       </aside>
       <NoticeModal isOpen={isOpen} onClose={close} />
