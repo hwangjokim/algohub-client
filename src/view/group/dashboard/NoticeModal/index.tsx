@@ -1,16 +1,16 @@
 "use client";
 
-import defaultIcon from "@/asset/img/gray_small_icon.png";
 import { IcnBtnDeleteCircle, IcnNew } from "@/asset/svg";
+import Avatar from "@/common/component/Avatar";
 import Button from "@/common/component/Button";
 import Modal from "@/common/component/Modal";
 import Pagination from "@/shared/component/Pagination";
 import { getNoticeBannerCreateAt } from "@/shared/util/time";
 import { textStyle } from "@/view/group/dashboard/index.css";
-import Image from "next/image";
 import { type ComponentProps, useState } from "react";
 import { tmpData } from "../NoticeBanner/constant";
 import {
+  avatarStyle,
   buttonStyle,
   contentStyle,
   contentWrapper,
@@ -43,13 +43,7 @@ const NoticeModal = ({ isOpen, onClose }: ComponentProps<typeof Modal>) => {
               <li key={noticeId} aria-labelledby={`notice-title-${noticeId}`}>
                 <article className={itemStyle}>
                   <div className={contentWrapper}>
-                    <Image
-                      src={defaultIcon}
-                      alt="작성자 프로필 사진"
-                      width={40}
-                      height={40}
-                      style={{ width: "4rem", borderRadius: "4rem" }}
-                    />
+                    <Avatar className={avatarStyle} alt="작성자 프로필 사진" />
                     <div className={contentStyle}>
                       <h3
                         id={`notice-title-${noticeId}`}

@@ -1,14 +1,14 @@
 "use client";
 
-import defaultIcon from "@/asset/img/gray_small_icon.png";
 import { IcnNew, IcnNotifications } from "@/asset/svg";
+import Avatar from "@/common/component/Avatar";
 import { useBooleanState } from "@/common/hook/useBooleanState";
 import { getNoticeBannerCreateAt } from "@/shared/util/time";
 import { textStyle } from "@/view/group/dashboard/index.css";
-import Image from "next/image";
 import NoticeModal from "../NoticeModal";
 import { tmpData } from "./constant";
 import {
+  avatarStyle,
   bannerWrapper,
   contentWrapper,
   headerWrapper,
@@ -42,12 +42,7 @@ const NoticeBanner = () => {
             <IcnNotifications width={24} height={24} focusable="false" />
             <p className={textStyle.header}>공지</p>
           </div>
-          <Image
-            src={defaultIcon}
-            width={20}
-            height={20}
-            alt="방장 프로필 사진"
-          />
+          <Avatar className={avatarStyle} alt="방장 프로필 사진" />
           <h2 className={textStyle.head}>{noticeTitle}</h2>
         </header>
 

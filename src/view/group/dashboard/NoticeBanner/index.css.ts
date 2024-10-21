@@ -49,3 +49,8 @@ export const contentWrapper = style([
     maxWidth: "65%",
   },
 ]);
+
+export const avatarStyle = style({
+  width: "2rem",
+  height: "2rem",
+});

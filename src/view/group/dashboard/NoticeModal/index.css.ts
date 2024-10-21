@@ -65,6 +65,11 @@ export const infoWrapper = style({
   width: "76.5%",
 });
 
+export const avatarStyle = style({
+  width: "4rem",
+  height: "4rem",
+});
+
 export const buttonStyle = style({
   float: "right",
   transform: "translate(-2rem, 0)",
