@@ -13,7 +13,7 @@ const GroupDashboardPage = () => {
         <GroupSidebar info={tmpGroupData} />
       </Sidebar>
       <div className={groupDashboardWrapper}>
-        <NoticeBanner /> 
+        <NoticeBanner />
         <Ranking />
       </div>
     </main>
