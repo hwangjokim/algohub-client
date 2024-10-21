@@ -11,17 +11,7 @@ export const groupSchema = z
     endDate: z.date(),
     desc: z.string(),
   })
-  .superRefine((data, ctx) => {
-    if (data.endDate < data.startDate) {
-      ctx.addIssue({
-        path: ["endDate"],
-        message: "종료 일자는 시작 일자보다 나중이어야 합니다.",
-        code: "custom",
-      });
-      ctx.addIssue({
-        path: ["startDate"],
-        message: "종료 일자는 시작 일자보다 나중이어야 합니다.",
-        code: "custom",
-      });
-    }
+  .refine((data) => data.endDate >= data.startDate, {
+    message: "종료 일자는 시작 일자보다 나중이어야 합니다.",
+    path: ["endDate"],
   });
