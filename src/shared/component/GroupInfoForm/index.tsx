@@ -27,8 +27,7 @@ const GroupInfoForm = ({
   const handleSubmit = (_values: z.infer<typeof groupSchema>) => {
     // console.log({ values });
   };
-  const { startDate, endDate } = form.formState.errors;
-  const errors = startDate || endDate;
+  const error = form.formState.errors.endDate;
   return (
     <Form {...form}>
       <form
@@ -51,8 +50,8 @@ const GroupInfoForm = ({
               dateType="endDate"
             />
           </div>
-          {!!errors && (
-            <SupportingText isError hasErrorIcon message={errors.message} />
+          {error && (
+            <SupportingText isError hasErrorIcon message={error.message} />
           )}
         </div>
         <DescFormController form={form} variant={variant} />
