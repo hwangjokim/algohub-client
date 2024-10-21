@@ -1,5 +1,5 @@
 "use client";
-import { groupSchema } from "@/shared/api/schema";
+import { groupSchema } from "@/api/group/schema";
 import GroupInfoForm from "@/shared/component/GroupInfoForm";
 import {
   deleteTextStyle,

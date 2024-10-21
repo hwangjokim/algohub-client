@@ -14,3 +14,8 @@ export const labelStyle = style({
   color: theme.color.white,
   ...theme.font.Title1_SB_16,
 });
+
+export const textStyle = style({
+  color: theme.color.mg2,
+  ...theme.font.Caption3_M_12,
+});
