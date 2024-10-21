@@ -15,7 +15,7 @@ export const noticeHeaderStyle = style({
   justifyContent: "space-between",
 });
 
-export const sectionStyle = style({
+export const ulStyle = style({
   display: "flex",
   flexDirection: "column",
   gap: "1.2rem",

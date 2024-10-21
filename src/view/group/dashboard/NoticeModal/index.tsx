@@ -20,7 +20,7 @@ import {
   noticeInfoStyle,
   noticeModalWrapper,
   paginationStyle,
-  sectionStyle,
+  ulStyle,
 } from "./index.css";
 
 const NoticeModal = ({ isOpen, onClose }: ComponentProps<typeof Modal>) => {
@@ -37,42 +37,47 @@ const NoticeModal = ({ isOpen, onClose }: ComponentProps<typeof Modal>) => {
         </header>
 
         {/* 공지사항 목록 */}
-        <section aria-label="공지사항 목록" className={sectionStyle}>
-          {tmpData.map((notice, index) => (
-            <article
-              key={index}
-              className={itemStyle}
-              aria-labelledby={`notice-title-${index}`}
-            >
-              <div className={contentWrapper}>
-                <Image
-                  src={defaultIcon}
-                  alt="작성자 프로필 사진"
-                  width={40}
-                  height={40}
-                  style={{ width: "4rem", borderRadius: "4rem" }}
-                />
-                <div className={contentStyle}>
-                  <h3 id={`notice-title-${index}`} className={textStyle.head}>
-                    {notice.noticeTitle}
-                  </h3>
-                  <p className={textStyle.modalContent}>
-                    {notice.noticeContent}
-                  </p>
-                </div>
-              </div>
-              <div className={noticeInfoStyle}>
-                <div className={infoWrapper}>
-                  <span className={textStyle.author}>{notice.author}</span>
-                  <time dateTime={notice.createAt} className={textStyle.time}>
-                    {getNoticeBannerCreateAt(notice.createAt)}
-                  </time>
-                </div>
-                <IcnNew width={13} height={13} aria-hidden="true" />
-              </div>
-            </article>
-          ))}
-        </section>
+        <ul aria-label="공지사항 목록" className={ulStyle}>
+          {tmpData.map(
+            ({ noticeTitle, noticeContent, author, createAt, noticeId }) => (
+              <li key={noticeId} aria-labelledby={`notice-title-${noticeId}`}>
+                <article className={itemStyle}>
+                  <div className={contentWrapper}>
+                    <Image
+                      src={defaultIcon}
+                      alt="작성자 프로필 사진"
+                      width={40}
+                      height={40}
+                      style={{ width: "4rem", borderRadius: "4rem" }}
+                    />
+                    <div className={contentStyle}>
+                      <h3
+                        id={`notice-title-${noticeId}`}
+                        className={textStyle.head}
+                      >
+                        {noticeTitle}
+                      </h3>
+                      <p className={textStyle.modalContent}>{noticeContent}</p>
+                    </div>
+                  </div>
+                  <div className={noticeInfoStyle}>
+                    <div className={infoWrapper}>
+                      <span className={textStyle.author}>{author}</span>
+                      <time dateTime={createAt} className={textStyle.time}>
+                        {getNoticeBannerCreateAt(createAt)}
+                      </time>
+                    </div>
+                    <IcnNew
+                      width={13}
+                      height={13}
+                      aria-label="읽지 않은 공지"
+                    />
+                  </div>
+                </article>
+              </li>
+            ),
+          )}
+        </ul>
 
         {/* 모달 하단 */}
         <footer>
