@@ -1,5 +1,5 @@
 import Button from "@/common/component/Button";
-import { problemSidebarWrapper } from "@/view/group/index/ProblemSidebar/index.css";
+import { problemSidebarWrapper } from "@/view/group/problem-list/ProblemSidebar/index.css";
 
 const ProblemSidebar = () => {
   return (
