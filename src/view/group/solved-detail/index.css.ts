@@ -1,4 +1,4 @@
-import { theme } from "@/styles/themes.css";
+import { scrollTheme, theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
 
 export const modalWrapper = style({
@@ -6,10 +6,8 @@ export const modalWrapper = style({
   flexDirection: "column",
   gap: "3rem",
 
-  width: "calc(100vw-80%)",
-  minWidth: "109.2rem",
-  height: "calc(100vh-77%)",
-  minHeight: "60.7rem",
+  width: "109.2rem",
+  height: "60.7rem",
   padding: "5.7rem 5.6rem 2.5rem 7rem",
 
   borderRadius: "20px",
@@ -27,8 +25,17 @@ export const modalContainer = style({
   gap: "1rem",
 
   width: "100%",
+  height: "45rem",
 });
 
 export const sectionWrapper = style({
   flex: 1,
+  height: "38rem",
+});
+
+export const ulStyle = style({
+  height: "100%",
+
+  overflowY: "scroll",
+  ...scrollTheme.scrollbar,
 });
