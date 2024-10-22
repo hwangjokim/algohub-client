@@ -4,7 +4,11 @@ import { theme } from "@/styles/themes.css";
 import { ALARM_SETTINGS_COLUMNS } from "@/view/user/setting/AlarmSetting/AlarmSettingTable/constant";
 import { tdStyle } from "@/view/user/setting/AlarmSetting/AlarmSettingTable/index.css";
 import { STUDY_LIST_COLUMNS } from "@/view/user/setting/StudyList/StudyListTable/constant";
-import { tableCaptionStyle, tableStyle, theadStyle } from "@/view/user/setting/StudyList/StudyListTable/index.css";
+import {
+  tableCaptionStyle,
+  tableStyle,
+  theadStyle,
+} from "@/view/user/setting/StudyList/StudyListTable/index.css";
 import type { Meta } from "@storybook/react";
 import { DataTable } from ".";
 
