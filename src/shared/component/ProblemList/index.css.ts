@@ -1,7 +1,6 @@
 import { theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
-
 export const itemStyle = recipe({
   base: {
     position: "relative",
@@ -70,7 +69,6 @@ export const wrongCheckBoxStyle = style({
     color: theme.color.white,
   },
 });
-
 export const checkboxStyle = style({
   width: "1.4rem",
   height: "1.4rem",
@@ -79,11 +77,9 @@ export const checkboxStyle = style({
 
   cursor: "pointer",
 });
-
 export const editIconStyle = recipe({
   base: {
     position: "absolute",
-
     top: 0,
     bottom: 0,
     right: 20,

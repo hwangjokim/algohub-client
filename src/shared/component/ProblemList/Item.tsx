@@ -3,10 +3,10 @@
 import { IcnEdit } from "@/asset/svg";
 import CheckBox from "@/common/component/CheckBox";
 import {
-  commonStyle,
-  iconStyle,
   checkboxStyle,
+  commonStyle,
   editIconStyle,
+  iconStyle,
   itemStyle,
   titleStyle,
   wrongCheckBoxStyle,
