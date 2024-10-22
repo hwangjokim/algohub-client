@@ -11,14 +11,15 @@ import {
   titleStyle,
   wrongCheckBoxStyle,
 } from "@/shared/component/ProblemList/index.css";
+import useA11yHoverHandler from "@/shared/hook/useA11yHandler";
 import type { Problem } from "@/shared/type";
 import clsx from "clsx";
 import { format } from "date-fns";
 import Link from "next/link";
-import { useState } from "react";
 
 type ProblemListItemProps = Problem & {
   onEdit?: () => void;
+  isOwner?: boolean;
 };
 
 const JSX_BY_STATUS = {
@@ -42,20 +43,23 @@ const ProblemListItem = ({
   solved,
   total,
   onEdit,
+  isOwner,
 }: ProblemListItemProps) => {
-  const [isHover, setIsHover] = useState(false);
-
   const Icon = getTierImage(tier);
 
   const accuracy = ((solved / total) * 100).toFixed(0);
 
+  const { isActive, handleBlur, handleFocus, handleMouseOut, handleMouseOver } =
+    useA11yHoverHandler();
+
   return (
     <li
-      // biome-ignore lint/a11y/useKeyWithMouseEvents:
-      onMouseOver={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onMouseOver={handleMouseOver}
+      onMouseLeave={handleMouseOut}
       aria-label={`문제: ${title}`}
-      className={itemStyle({ isHover })}
+      className={itemStyle({ isActive: isOwner ? isActive : false })}
     >
       <Icon width={25} height={32} />
       <Link className={`${titleStyle} ${textStyle}`} href={`/problem/${id}`}>
@@ -68,12 +72,14 @@ const ProblemListItem = ({
       <span className={textStyle}>{`${accuracy}%`}</span>
       {JSX_BY_STATUS[status]}
 
-      <IcnEdit
-        onClick={onEdit}
-        className={editIconStyle({ isHover })}
-        width={24}
-        height={24}
-      />
+      {isOwner && (
+        <IcnEdit
+          onClick={onEdit}
+          className={editIconStyle({ isActive })}
+          width={24}
+          height={24}
+        />
+      )}
     </li>
   );
 };

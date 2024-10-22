@@ -18,7 +18,7 @@ export const itemStyle = recipe({
     transition: "all 0.3s ease",
   },
   variants: {
-    isHover: {
+    isActive: {
       true: {
         backgroundColor: "rgba(34, 39, 52, 1)",
       },
@@ -86,7 +86,7 @@ export const editIconStyle = recipe({
     transition: "all 0.3s ease",
   },
   variants: {
-    isHover: {
+    isActive: {
       true: {
         opacity: 1,
       },
