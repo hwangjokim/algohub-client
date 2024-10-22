@@ -1,6 +1,7 @@
 import { IcnBtnArrowLeft } from "@/asset/svg";
 import SolvedFilterForm from "@/shared/component/SolvedFilterForm";
 import ProblemInfo from "@/view/group/problem-list/SolvedList/ProblemInfo";
+import SolvedTable from "@/view/group/problem-list/SolvedList/SolvedTable";
 import {
   dividerStyle,
   headerContainer,
@@ -18,6 +19,7 @@ const SolvedList = () => {
       <ProblemInfo />
       <SolvedFilterForm />
       <div className={dividerStyle} />
+      <SolvedTable />
     </div>
   );
 };
