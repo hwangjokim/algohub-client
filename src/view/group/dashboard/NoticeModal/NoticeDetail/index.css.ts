@@ -1,5 +1,6 @@
 import { theme } from "@/styles/themes.css";
 import { style, styleVariants } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
 export const articleStyle = style({
   position: "relative",
@@ -54,6 +55,10 @@ export const avatarStyle = style({
   height: "4rem",
 });
 
+export const textareaWrapper = style({
+  position: "relative",
+});
+
 export const textareaStyle = style({
   height: "21.8rem",
 });
@@ -61,6 +66,54 @@ export const textareaStyle = style({
 export const inputStyle = style({
   position: "absolute",
   bottom: 0,
+
+  width: "100%",
+});
+
+export const iconContainerStyle = style({
+  position: "absolute",
+
+  display: "flex",
+
+  top: 5,
+  right: 5,
+});
+
+export const iconStyle = recipe({
+  base: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
+    width: "3.2rem",
+    height: "3.2rem",
+
+    backgroundColor: theme.color.mg4,
+
+    borderRadius: "4px",
+
+    cursor: "pointer",
+
+    opacity: 0,
+
+    transition: "all 0.3s ease",
+
+    ":hover": {
+      backgroundColor: theme.color.mg3,
+    },
+  },
+  variants: {
+    isEdit: {
+      true: {
+        backgroundColor: theme.color.mg3,
+      },
+    },
+    isActive: {
+      true: {
+        opacity: 1,
+      },
+    },
+  },
 });
 
 export const textStyle = styleVariants({

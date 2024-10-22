@@ -40,7 +40,7 @@ const NoticeModal = ({ isOpen, onClose }: ComponentProps<typeof Modal>) => {
         </header>
 
         {selectedNotice ? (
-          <NoticeDetail data={selectedNotice} />
+          <NoticeDetail data={selectedNotice} goBack={handleBackToList} />
         ) : (
           <NoticeList noticeList={tmpData} onClick={handleNoticeClick} />
         )}

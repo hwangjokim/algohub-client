@@ -1,23 +1,29 @@
 import type { NoticeResponse } from "@/api/notice/type";
-import { IcnNew } from "@/asset/svg";
+import { IcnClose, IcnEdit, IcnNew } from "@/asset/svg";
 import Avatar from "@/common/component/Avatar";
-import Input from "@/common/component/Input";
 import Textarea from "@/common/component/Textarea";
+import CommentInput from "@/shared/component/CommentInput";
+import useA11yHoverHandler from "@/shared/hook/useA11yHandler";
 import { getNoticeBannerCreateAt } from "@/shared/util/time";
+import { useRef, useState } from "react";
 import {
   articleStyle,
   avatarStyle,
   contentStyle,
   contentWrapper,
   headerStyle,
+  iconContainerStyle,
+  iconStyle,
   inputStyle,
   noticeInfoStyle,
   textStyle,
   textareaStyle,
+  textareaWrapper,
 } from "./index.css";
 
 type NoticeDetailProps = {
   data: NoticeResponse;
+  goBack: () => void;
 };
 
 const NoticeDetail = ({
@@ -29,7 +35,23 @@ const NoticeDetail = ({
     noticeId,
     noticeContent,
   },
+  goBack,
 }: NoticeDetailProps) => {
+  const { isActive, handleMouseOver, handleMouseOut, handleFocus, handleBlur } =
+    useA11yHoverHandler();
+  const [isEdit, setIsEdit] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleEditClick = () => {
+    setIsEdit(!isEdit);
+    // disabled 일땐 자동으로 focus 적용 안함
+    setTimeout(() => textareaRef.current?.focus());
+  };
+  const handleDeleteClick = () => {
+    // TODO: 삭제 api 추가
+    // TODO: 삭제 안내 창 띄우기
+    goBack();
+  };
   return (
     <article
       className={articleStyle}
@@ -57,15 +79,46 @@ const NoticeDetail = ({
       </header>
 
       {/* 상세보기 내용 */}
-      <Textarea value={noticeContent} disabled className={textareaStyle} />
+      <div
+        className={textareaWrapper}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      >
+        <Textarea
+          ref={textareaRef}
+          defaultValue={noticeContent}
+          disabled={!isEdit}
+          className={textareaStyle}
+        />
+        <div className={iconContainerStyle}>
+          <button
+            aria-label="공지 수정하기"
+            onClick={handleEditClick}
+            className={iconStyle({ isEdit, isActive })}
+          >
+            <IcnEdit width={18} height={18} />
+          </button>
+          <button
+            aria-label="공지 삭제하기"
+            onClick={handleDeleteClick}
+            className={iconStyle({ isActive })}
+          >
+            <IcnClose width={16} height={16} />
+          </button>
+        </div>
+      </div>
 
-      {/* 상세보기 댓글란 */}
+      {/* 댓글란 */}
       <ul>
         <></>
       </ul>
 
       {/* 댓글 입력란 */}
-      <Input className={inputStyle} />
+      <div className={inputStyle}>
+        <CommentInput />
+      </div>
     </article>
   );
 };
