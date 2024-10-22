@@ -25,6 +25,8 @@ export const commonTextStyle = style({
   textOverflow: "ellipsis",
 });
 
+export const commonStyle = style([textStyle, commonTextStyle]);
+
 export const titleStyle = style({
   whiteSpace: "nowrap",
 });

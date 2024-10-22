@@ -2,10 +2,9 @@
 
 import CheckBox from "@/common/component/CheckBox";
 import {
-  commonTextStyle,
+  commonStyle,
   iconStyle,
   itemStyle,
-  textStyle,
   titleStyle,
   wrongCheckBoxStyle,
 } from "@/shared/component/ProblemList/index.css";
@@ -40,8 +39,6 @@ const ProblemListItem = ({
   const isExpired = new Date(endDate).getTime() - new Date().getTime() <= 0;
 
   const status = solved ? "solved" : isExpired ? "wrong" : "unsolved";
-
-  const commonStyle = `${commonTextStyle} ${textStyle}`;
 
   return (
     <li

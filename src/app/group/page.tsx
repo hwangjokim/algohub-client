@@ -5,7 +5,6 @@ import type { Problem } from "@/shared/type";
 import { tmpGroupData } from "@/shared/util/example";
 import { sidebarWrapper } from "@/styles/shared.css";
 import GroupSidebar from "@/view/group/dashboard/GroupSidebar";
-import ProblemListHeader from "@/view/group/dashboard/ProblemListHeader";
 import Ranking from "@/view/group/dashboard/Ranking";
 
 const GroupDashboardPage = () => {
@@ -50,18 +49,18 @@ const GroupDashboardPage = () => {
       <Sidebar>
         <GroupSidebar info={tmpGroupData} />
       </Sidebar>
-      <section className={listSectionStyle}>
+      <div className={listSectionStyle}>
         <Ranking />
         <h2 className={titleStyle}>풀어야 할 문제</h2>
-        <div>
-          <ProblemListHeader />
+        <section>
+          <ProblemList.Header />
           <ProblemList>
             {data.map((item) => (
               <ProblemList.Item key={item.problemId} {...item} />
             ))}
           </ProblemList>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 };
