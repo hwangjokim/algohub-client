@@ -47,7 +47,7 @@ const ProblemListItem = ({
   memberCount,
   submitMemberCount,
   onEdit,
-  isOwner,
+  isOwner = false,
 }: ProblemListItemProps) => {
   const Icon = getTierImage(level);
 
@@ -65,7 +65,10 @@ const ProblemListItem = ({
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseOut}
       aria-label={`문제: ${title}`}
-      className={itemStyle({ isActive: isOwner ? isActive : false })}
+      className={clsx(
+        itemStyle({ isActive: isOwner ? isActive : false }),
+        className,
+      )}
     >
       <Icon width={25} height={32} />
       <Link
