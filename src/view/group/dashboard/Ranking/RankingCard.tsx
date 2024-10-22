@@ -1,5 +1,5 @@
 "use client";
-import type { GroupRankingResponse } from "@/api/group/type";
+import type { RankingResponse } from "@/api/group/type";
 import { IcnMiniLogo } from "@/asset/svg";
 import Avatar from "@/common/component/Avatar";
 import {
@@ -13,7 +13,7 @@ import {
 
 const RankingCard = ({
   info: { profileImage, rank, solvedCount, userNickname },
-}: { info: GroupRankingResponse }) => {
+}: { info: RankingResponse }) => {
   const parseRank = ["1st", "2nd", "3rd"];
   return (
     <article className={rankingCardWrapper}>

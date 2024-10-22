@@ -1,4 +1,4 @@
-import type { GroupRankingResponse } from "@/api/group/type";
+import type { RankingResponse } from "@/api/group/type";
 import defaultImg from "@/asset/img/gray_small_icon.png";
 import {
   allNicknameStyle,
@@ -12,7 +12,7 @@ import {
 } from "@/view/group/dashboard/Ranking/index.css";
 import Image from "next/image";
 
-const RankList = ({ info }: { info: GroupRankingResponse }) => {
+const RankList = ({ info }: { info: RankingResponse }) => {
   const { profileImage, rank, solvedCount, userNickname } = info;
   return (
     <li className={listWrapper}>
