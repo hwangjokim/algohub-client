@@ -1,5 +1,5 @@
 import { IcnBtnArrowLeft } from "@/asset/svg";
-import SolvedFilterForm from "@/shared/component/SolvedFilterBar";
+import SolvedFilterBar from "@/shared/component/SolvedFilterBar";
 import ProblemInfo from "@/view/group/problem-list/SolvedList/ProblemInfo";
 import SolvedTable from "@/view/group/problem-list/SolvedList/SolvedTable";
 import {
@@ -17,7 +17,7 @@ const SolvedList = () => {
         <h1 className={headerTextStyle}>트리에서의 동적 계획법</h1>
       </div>
       <ProblemInfo />
-      <SolvedFilterForm />
+      <SolvedFilterBar />
       <div className={dividerStyle} />
       <SolvedTable />
     </div>

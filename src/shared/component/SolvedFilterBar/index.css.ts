@@ -21,6 +21,19 @@ export const inputStyle = style({
   },
 });
 
+export const dropdownWrapper = style({
+  display: "flex",
+  alignItems: "center",
+  gap: "1.6rem",
+
+  width: "11rem",
+  padding: "0.8rem 1.6rem",
+
+  background: theme.color.mg2,
+  borderRadius: "4px",
+});
+
+export const dropdownTextStyle = style({});
 export const dividerStyle = style({
   width: "1px",
   height: "27px",
