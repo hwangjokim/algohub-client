@@ -2,7 +2,6 @@
 
 import { IcnEdit } from "@/asset/svg";
 import CheckBox from "@/common/component/CheckBox";
-import { getTierImage } from "@/shared/component/ProblemList/img";
 import {
   checkboxStyle,
   editIconStyle,
@@ -13,13 +12,16 @@ import {
 } from "@/shared/component/ProblemList/index.css";
 import useA11yHoverHandler from "@/shared/hook/useA11yHandler";
 import type { Problem } from "@/shared/type";
+import { getTierImage } from "@/shared/util/img";
 import clsx from "clsx";
+
 import { format } from "date-fns";
 import Link from "next/link";
 
 type ProblemListItemProps = Problem & {
   onEdit?: () => void;
   isOwner?: boolean;
+  className?: string;
 };
 
 const JSX_BY_STATUS = {
@@ -35,19 +37,23 @@ const JSX_BY_STATUS = {
 };
 
 const ProblemListItem = ({
-  id,
+  problemId,
   title,
-  date,
-  tier,
-  status,
+  endDate,
+  level,
   solved,
-  total,
+  className,
+  accuracy,
+  memberCount,
+  submitMemberCount,
   onEdit,
   isOwner,
 }: ProblemListItemProps) => {
-  const Icon = getTierImage(tier);
+  const Icon = getTierImage(level);
 
-  const accuracy = ((solved / total) * 100).toFixed(0);
+  const isExpired = new Date(endDate).getTime() - new Date().getTime() <= 0;
+
+  const status = solved ? "solved" : isExpired ? "wrong" : "unsolved";
 
   const { isActive, handleBlur, handleFocus, handleMouseOut, handleMouseOver } =
     useA11yHoverHandler();
@@ -62,14 +68,17 @@ const ProblemListItem = ({
       className={itemStyle({ isActive: isOwner ? isActive : false })}
     >
       <Icon width={25} height={32} />
-      <Link className={`${titleStyle} ${textStyle}`} href={`/problem/${id}`}>
+      <Link
+        className={`${titleStyle} ${textStyle}`}
+        href={`/problem/${problemId}`}
+      >
         <span className={textStyle}>{title}</span>
       </Link>
-      <time dateTime={date} className={textStyle}>
-        {format(date, "yyyy.MM.dd")}
+      <time dateTime={endDate} className={textStyle}>
+        {format(endDate, "yyyy.MM.dd")}
       </time>
-      <span className={textStyle}>{`${solved}/${total}`}</span>
-      <span className={textStyle}>{`${accuracy}%`}</span>
+      <span className={textStyle}>{`${submitMemberCount}/${memberCount}`}</span>
+      <span className={textStyle}>{accuracy}</span>
       {JSX_BY_STATUS[status]}
 
       {isOwner && (
