@@ -31,7 +31,12 @@ const NoticeBanner = () => {
   );
   return (
     <>
-      <aside className={bannerWrapper} aria-label="공지사항">
+      <section
+        role="status"
+        aria-live="polite"
+        className={bannerWrapper}
+        aria-label="공지사항"
+      >
         <button
           className={overlayStyle}
           aria-label="공지 모달 열기"
@@ -53,7 +58,7 @@ const NoticeBanner = () => {
           </time>
           {<IcnNew width={13} height={13} style={{ minWidth: 13 }} />}
         </div>
-      </aside>
+      </section>
       <NoticeModal isOpen={isOpen} onClose={close} />
     </>
   );
