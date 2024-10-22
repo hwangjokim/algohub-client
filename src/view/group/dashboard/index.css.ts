@@ -7,31 +7,41 @@ export const groupDashboardWrapper = style({
   borderTop: `1px solid ${theme.color.mg5}`,
 });
 
+export const overlayStyle = style({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  background: "transparent",
+  border: "none",
+});
+
 export const textStyle = styleVariants({
-  title: {
+  head: {
     ...theme.font.Title1_SB_16,
     color: theme.color.wg,
   },
-  header: {
+  notification: {
     ...theme.font.Body3_SB_14,
     color: theme.color.wg,
     whiteSpace: "nowrap",
   },
-  head: {
+  category: {
     ...theme.font.Body3_SB_14,
     color: theme.color.purple2,
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
   },
-  bannerContent: {
+  bannerTitle: {
     ...theme.font.Body2_R_14,
     color: theme.color.purple3,
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
   },
-  modalContent: {
+  modalTitle: {
     ...theme.font.Body2_R_14,
     color: theme.color.lg2,
     whiteSpace: "nowrap",

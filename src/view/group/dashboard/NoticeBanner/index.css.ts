@@ -19,16 +19,6 @@ export const bannerWrapper = style({
   },
 });
 
-export const overlayStyle = style({
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%",
-  background: "transparent",
-  border: "none",
-});
-
 export const headerWrapper = style({
   display: "flex",
   alignItems: "center",
