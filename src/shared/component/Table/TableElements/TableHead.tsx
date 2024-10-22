@@ -7,12 +7,7 @@ type TableHeadProps = {
   width?: number;
 } & ComponentProps<"th">;
 
-const TableHead = ({
-  className,
-  align,
-  width,
-  ...props
-}: TableHeadProps) => {
+const TableHead = ({ className, align, width, ...props }: TableHeadProps) => {
   return (
     <th
       className={clsx(tableHeadStyle({ align }), className)}
