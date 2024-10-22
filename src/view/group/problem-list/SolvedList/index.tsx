@@ -1,5 +1,5 @@
 import { IcnBtnArrowLeft } from "@/asset/svg";
-import SolvedFilterForm from "@/shared/component/SolvedFilterForm";
+import SolvedFilterForm from "@/shared/component/SolvedFilterBar";
 import ProblemInfo from "@/view/group/problem-list/SolvedList/ProblemInfo";
 import SolvedTable from "@/view/group/problem-list/SolvedList/SolvedTable";
 import {

@@ -9,11 +9,13 @@ export const solvedFilterWrapper = style({
   width: "100%",
 });
 
-export const filterTextStyle = style({
+export const inputStyle = style({
   padding: "0.8rem 1.6rem",
-  height: "3.3rem",
+  width: "15% !important",
+  height: "3.3rem !important",
   color: theme.color.white,
   ...theme.font.Caption3_M_12,
+
   "::placeholder": {
     color: theme.color.mg2,
   },
