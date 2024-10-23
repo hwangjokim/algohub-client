@@ -9,28 +9,24 @@ import {
 } from "@/common/component/SelectBox/index.css";
 import useA11yHoverHandler from "@/shared/hook/useA11yHandler";
 import clsx from "clsx";
-import {
-  type Dispatch,
-  type HTMLAttributes,
-  type SetStateAction,
-  useState,
-} from "react";
+import { type HTMLAttributes, useState } from "react";
 
-interface SelectBoxProps extends HTMLAttributes<HTMLDivElement> {
+interface SelectBoxProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
   label: string;
   options: readonly string[];
   selectCustomStyle?: string;
   align?: "left" | "right" | "center";
-  selectedOption: string;
-  setSelectedOption: Dispatch<SetStateAction<string>>;
+  value: string;
+  onChange: (value: string) => void;
 }
 const SelectBox = ({
   label,
   options,
   selectCustomStyle,
   align = "center",
-  selectedOption,
-  setSelectedOption,
+  value,
+  onChange,
   ...props
 }: SelectBoxProps) => {
   const [clicked, setClicked] = useState(false);
@@ -43,9 +39,7 @@ const SelectBox = ({
       aria-label={`${label} 선택하기`}
       {...props}
     >
-      <p className={textStyle({ isActive: !!selectedOption })}>
-        {selectedOption || label}
-      </p>
+      <p className={textStyle({ isActive: !!value })}>{value || label}</p>
       <IcnBtnArrowDown
         width={20}
         height={20}
@@ -56,7 +50,7 @@ const SelectBox = ({
         {options.map((option, idx) => (
           <li
             className={optionStyle}
-            onClick={() => setSelectedOption(option)}
+            onClick={() => onChange(option)}
             onKeyDown={useA11yHoverHandler}
             value={option}
             key={idx}
