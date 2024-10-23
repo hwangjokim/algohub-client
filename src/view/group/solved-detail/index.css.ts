@@ -1,4 +1,4 @@
-import { scrollTheme, theme } from "@/styles/themes.css";
+import { theme } from "@/styles/themes.css";
 import { style } from "@vanilla-extract/css";
 
 export const modalWrapper = style({
@@ -26,16 +26,4 @@ export const modalContainer = style({
 
   width: "100%",
   height: "45rem",
-});
-
-export const sectionWrapper = style({
-  flex: 1,
-  height: "38rem",
-});
-
-export const ulStyle = style({
-  height: "100%",
-
-  overflowY: "scroll",
-  ...scrollTheme.scrollbar,
 });

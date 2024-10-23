@@ -1,8 +1,7 @@
 import CommentBox from "@/shared/component/CommentBox";
 import CommentInput from "@/shared/component/CommentInput";
 import type { Comment } from "@/shared/type";
-import { sectionWrapper, ulStyle } from "../index.css";
-import { commentInputStyle } from "./index.css";
+import { commentInputStyle, sectionWrapper, ulStyle } from "./index.css";
 
 const CommentSection = () => {
   return (
