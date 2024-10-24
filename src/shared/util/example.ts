@@ -1,4 +1,8 @@
-import type { GroupListResponse, GroupResponse } from "@/api/group/type";
+import type {
+  GroupListResponse,
+  GroupResponse,
+  MemberListResponse,
+} from "@/api/group/type";
 import type { SolutionByIdResponse } from "@/api/solution/type";
 
 export const tmpGroupData: GroupResponse = {
@@ -812,5 +816,88 @@ export const tmpSolvedListData: SolutionByIdResponse[] = [
     language: "C++",
     codeLength: 21,
     commentCount: 13,
+  },
+];
+
+export const tmpMemberListData: MemberListResponse = [
+  {
+    nickname: "jnary",
+    joinDate: "2024.09.21",
+    achivement: "90%",
+    role: "스터디장",
+    profileImage: "",
+    memberId: 0,
+  },
+  {
+    nickname: "jnary",
+    joinDate: "2024.09.22",
+    achivement: "80%",
+    role: "스터디장",
+    profileImage: "",
+    memberId: 1,
+  },
+  {
+    nickname: "jnary",
+    joinDate: "2024.09.23",
+    achivement: "70%",
+    role: "스터디원",
+    profileImage: "",
+    memberId: 2,
+  },
+  {
+    nickname: "jnary",
+    joinDate: "2024.09.24",
+    achivement: "100%",
+    role: "스터디원",
+    profileImage: "",
+    memberId: 3,
+  },
+  {
+    nickname: "jnary",
+    joinDate: "2024.09.25",
+    achivement: "100%",
+    role: "스터디원",
+    profileImage: "",
+    memberId: 4,
+  },
+  {
+    nickname: "jnary",
+    joinDate: "2024.09.21",
+    achivement: "80%",
+    role: "스터디원",
+    profileImage: "",
+    memberId: 5,
+  },
+  {
+    nickname: "jnary",
+    joinDate: "2024.09.21",
+    achivement: "1%",
+    role: "스터디원",
+    profileImage: "",
+    memberId: 6,
+  },
+  {
+    nickname: "jnary",
+    joinDate: "2024.09.21",
+    achivement: "70%",
+    role: "스터디원",
+    profileImage: "",
+    memberId: 7,
+  },
+  {
+    nickname: "jnary",
+    joinDate: "2024.09.21",
+    achivement: "100%",
+    role: "스터디원",
+    profileImage: "",
+    memberId: 8,
+  },
+  {
+    nickname: "jnary",
+    joinDate: "2024.09.21",
+    achivement: "100%",
+    role: "스터디원",
+    profileImage: "",
+    memberId: 9,
   },
 ];
