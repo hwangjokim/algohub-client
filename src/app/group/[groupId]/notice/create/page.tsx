@@ -3,8 +3,7 @@ import GroupDashboardPage from "@/app/group/[groupId]/page";
 import { IcnBtnDeleteCircle } from "@/asset/svg";
 import Modal from "@/common/component/Modal";
 import useGetGroupId from "@/shared/hook/useGetGroupId";
-import { tmpData } from "@/view/group/dashboard/NoticeBanner/constant";
-import NoticeList from "@/view/group/dashboard/NoticeModal/NoticeList";
+import NoticeCreate from "@/view/group/dashboard/NoticeModal/NoticeCreate";
 import {
   noticeHeaderStyle,
   noticeModalWrapper,
@@ -12,11 +11,11 @@ import {
 import { textStyle } from "@/view/group/dashboard/index.css";
 import { useRouter } from "next/navigation";
 
-const NoticeModal = () => {
+const NoticeCreatePage = () => {
   const params = { groupId: useGetGroupId() };
   const router = useRouter();
   const groupId = useGetGroupId();
-  const handleClose = () => router.push(`/group/${groupId}`);
+  const handleClose = () => router.push(`/group/${groupId}/notice`);
 
   return (
     <>
@@ -24,16 +23,16 @@ const NoticeModal = () => {
       <Modal isOpen={true} onClose={handleClose}>
         <div className={noticeModalWrapper}>
           <header className={noticeHeaderStyle}>
-            <h2 className={textStyle.head}>NOTICE</h2>
+            <h2 className={textStyle.head}>공지 추가하기</h2>
             <button onClick={handleClose} aria-label="공지 모달 닫기">
               <IcnBtnDeleteCircle width={16} height={16} />
             </button>
           </header>
-          <NoticeList noticeList={tmpData} />
+          <NoticeCreate />
         </div>
       </Modal>
     </>
   );
 };
 
-export default NoticeModal;
+export default NoticeCreatePage;
