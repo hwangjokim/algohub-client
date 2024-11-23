@@ -1,5 +1,5 @@
 "use client";
-import type { NoticeResponse } from "@/api/notices/type";
+import { useNoticeByIdQuery } from "@/app/group/[groupId]/notice/query";
 import GroupDashboardPage from "@/app/group/[groupId]/page";
 import Modal from "@/common/component/Modal";
 import useGetGroupId from "@/shared/hook/useGetGroupId";
@@ -18,19 +18,17 @@ const NoticeDetailPage = ({
   const router = useRouter();
   const handleClose = () => router.push(`/group/${groupId}/notice`);
 
-  const selectedNotice: NoticeResponse = {
-    author: "j-nary",
-    noticeId: +noticeId,
-    content: "알고헙 사랑해",
-    title: "백준 풀고 알고헙 애용",
-    category: "test",
-    createAt: "2024-10-24",
-    isRead: false,
-  };
+  const { data: selectedNotice } = useNoticeByIdQuery(+noticeId);
+
   return (
     <>
       <GroupDashboardPage params={{ groupId }} />
-      <Modal isOpen={true} onClose={handleClose} closeBtnType="secondary">
+      <Modal
+        isOpen={true}
+        onClose={handleClose}
+        hasCloseBtn
+        closeBtnType="secondary"
+      >
         <div className={noticeModalWrapper}>
           <header className={noticeHeaderStyle}>
             <h2 className={textStyle.head}>NOTICE</h2>
