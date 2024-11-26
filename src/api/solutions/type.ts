@@ -21,7 +21,7 @@ export type SolutionContent = {
   result: string;
   memoryUsage: number;
   executionTime: number;
-  language: string;
+  language: SolutionLanguage;
   codeLength: number;
   commentCount: number;
 };
