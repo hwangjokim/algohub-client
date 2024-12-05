@@ -4,10 +4,10 @@ import {
   getInProgressProblems,
   getProblemInfo,
   getQueuedProblems,
+  patchProblem,
 } from "@/api/problems";
 import type { EditProblemRequest } from "@/api/problems/type";
 import {
-  patchProblemAction,
   postProblemAction,
   type problemActionRequest,
 } from "@/app/group/[groupId]/problem-list/action";
@@ -104,7 +104,7 @@ export const usePatchProblemMutation = (groupId: number, problemId: number) => {
 
   return useMutation({
     mutationFn: ({ startDate, endDate }: EditProblemRequest) =>
-      patchProblemAction({ problemId, startDate, endDate }),
+      patchProblem({ problemId, startDate, endDate }),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["queuedProblem", groupId, 0],
@@ -112,10 +112,9 @@ export const usePatchProblemMutation = (groupId: number, problemId: number) => {
       queryClient.invalidateQueries({
         queryKey: ["inProgressProblem", groupId, 0],
       });
-
       showToast("문제가 정상적으로 수정되었어요.", "success");
     },
-    onError: () => {
+    onError: (error: any) => {
       showToast("문제가 정상적으로 수정되지 않았어요.", "error");
     },
   });
