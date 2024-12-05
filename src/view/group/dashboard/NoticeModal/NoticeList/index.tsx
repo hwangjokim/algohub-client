@@ -1,13 +1,14 @@
 "use client";
-import { useNoticesQuery } from "@/app/group/[groupId]/notice/query";
+import { getNotices } from "@/api/notices";
 import defaultImage from "@/asset/img/img_card_profile.png";
 import { IcnNew } from "@/asset/svg";
 import Avatar from "@/common/component/Avatar";
 import Pagination from "@/shared/component/Pagination";
 import useGetGroupId from "@/shared/hook/useGetGroupId";
+import { usePaginationQuery } from "@/shared/hook/usePaginationQuery";
 import { overlayStyle, textStyle } from "@/view/group/dashboard/index.css";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import {} from "react";
 import {
   contentStyle,
   contentWrapper,
@@ -18,9 +19,6 @@ import {
   paginationStyle,
   ulStyle,
 } from "./index.css";
-import { useQueryClient } from "@tanstack/react-query";
-import { getNotices } from "@/api/notices";
-import { usePaginationQuery } from "@/shared/hook/usePaginationQuery";
 
 const NoticeList = () => {
   const router = useRouter();
@@ -29,11 +27,15 @@ const NoticeList = () => {
   const handleClick = (noticeId: number) =>
     router.push(`/group/${groupId}/notice/${noticeId}`);
 
-  const { data: noticeData, currentPage, totalPages, setCurrentPage } =
-    usePaginationQuery({
-      queryKey: ["notices", groupId],
-      queryFn: (page) => getNotices({ groupId: +groupId, page }),
-    });
+  const {
+    data: noticeData,
+    currentPage,
+    totalPages,
+    setCurrentPage,
+  } = usePaginationQuery({
+    queryKey: ["notices", groupId],
+    queryFn: (page) => getNotices({ groupId: +groupId, page }),
+  });
   const noticeList = noticeData?.content;
 
   return (

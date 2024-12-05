@@ -10,7 +10,9 @@ export const getTopRanking = async (groupId: number) => {
 };
 
 export const getAllRanking = async (groupId: number, page: number) => {
-  const response = await kyInstance.get<RankingResponse>(`api/groups/${groupId}/rankings?page=${page}&size=4`).json();
+  const response = await kyInstance
+    .get<RankingResponse>(`api/groups/${groupId}/rankings?page=${page}&size=4`)
+    .json();
 
   return response;
-}
+};

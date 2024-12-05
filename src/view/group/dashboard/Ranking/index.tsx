@@ -23,11 +23,7 @@ const Ranking = ({ rankingData }: { rankingData: RankingContent[] }) => {
         ) : (
           <EmptyRanking />
         )}
-        {isValid ? (
-          <AllRanking />
-        ) : (
-          <EmptyRanking />
-        )}
+        {isValid ? <AllRanking /> : <EmptyRanking />}
       </TabGroup.TabPanels>
     </TabGroup.Tabs>
   );
