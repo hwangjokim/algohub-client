@@ -19,12 +19,12 @@ const Ranking = ({ rankingData }: { rankingData: RankingContent[] }) => {
       </TabGroup.TabList>
       <TabGroup.TabPanels>
         {isValid ? (
-          <TopRanking topRankingData={rankingData.slice(0, 3)} />
+          <TopRanking topRankingData={rankingData} />
         ) : (
           <EmptyRanking />
         )}
         {isValid ? (
-          <AllRanking allRankingData={rankingData} />
+          <AllRanking />
         ) : (
           <EmptyRanking />
         )}

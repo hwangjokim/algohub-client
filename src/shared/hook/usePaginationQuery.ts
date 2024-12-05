@@ -11,7 +11,7 @@ export const usePaginationQuery = <T> ({queryKey, queryFn, initialPage = 1}: Use
   const [currentPage, setCurrentPage] = useState(initialPage);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [data, setData] = useState<T|null>(null);
-  
+  console.log({totalPages})
   const queryClient = useQueryClient();
 
   const fetchData = async () => {
