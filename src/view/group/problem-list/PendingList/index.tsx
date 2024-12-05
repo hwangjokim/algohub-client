@@ -25,6 +25,7 @@ const PendingList = ({ groupId }: { groupId: number }) => {
             problemId={item.problemId}
             title={item.title}
             startDate={item.startDate}
+            endDate={item.endDate}
             level={item.level}
           />
         ))}
