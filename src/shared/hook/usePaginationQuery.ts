@@ -27,13 +27,14 @@ export const usePaginationQuery = <T>({
 
   useEffect(() => {
     fetchData();
-    if (currentPage < totalPages) {
-      queryClient.prefetchQuery({
-        queryKey: [...queryKey, currentPage],
-        queryFn: () => queryFn(currentPage),
-      });
-    }
   }, [currentPage, queryFn, queryKey, queryClient, totalPages]);
+
+  if (currentPage < totalPages) {
+    queryClient.prefetchQuery({
+      queryKey: [...queryKey, currentPage],
+      queryFn: () => queryFn(currentPage),
+    });
+  }
 
   return { data, currentPage, setCurrentPage, totalPages };
 };
