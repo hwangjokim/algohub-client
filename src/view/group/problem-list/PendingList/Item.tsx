@@ -1,9 +1,13 @@
 "use client";
 
 import type { ProblemContent } from "@/api/problems/type";
+import { IcnEdit } from "@/asset/svg";
+import { editIconStyle } from "@/shared/component/ProblemList/index.css";
+import useA11yHoverHandler from "@/shared/hook/useA11yHandler";
 import useGetGroupId from "@/shared/hook/useGetGroupId";
 import { getTierImage } from "@/shared/util/img";
 import {
+  activeStyle,
   itemStyle,
   textStyle,
   titleStyle,
@@ -18,6 +22,7 @@ export type PendingListItemProps = Pick<
   "problemId" | "title" | "startDate" | "level"
 > & {
   className?: string;
+  onEdit: (id: number) => void;
 };
 
 const PendingListItem = ({
@@ -26,14 +31,21 @@ const PendingListItem = ({
   startDate,
   level,
   className,
+  onEdit,
 }: PendingListItemProps) => {
   const Icon = getTierImage(level);
   const groupId = useGetGroupId();
+  const { isActive, handleBlur, handleFocus, handleMouseOut, handleMouseOver } =
+    useA11yHoverHandler();
 
   return (
     <li
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onMouseOver={handleMouseOver}
+      onMouseLeave={handleMouseOut}
       aria-label={`${level}: ${title}`}
-      className={clsx(itemStyle, className)}
+      className={clsx(itemStyle, isActive && activeStyle, className)}
     >
       <Icon width={25} height={32} />
       <Link
@@ -45,6 +57,12 @@ const PendingListItem = ({
       <time dateTime={startDate} className={textStyle}>
         {format(startDate, "yyyy.MM.dd")}
       </time>
+      <IcnEdit
+        onClick={() => onEdit(problemId)}
+        className={editIconStyle({ isActive })}
+        width={24}
+        height={24}
+      />
     </li>
   );
 };

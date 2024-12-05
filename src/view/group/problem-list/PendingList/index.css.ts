@@ -19,6 +19,10 @@ export const itemStyle = style({
   padding: "0.8rem 1.6rem",
 });
 
+export const activeStyle = style({
+  backgroundColor: "rgba(34, 39, 52, 1)",
+});
+
 export const textStyle = style({
   ...theme.font.Caption3_M_12,
   color: theme.color.white,
