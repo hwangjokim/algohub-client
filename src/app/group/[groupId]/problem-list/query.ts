@@ -114,7 +114,7 @@ export const usePatchProblemMutation = (groupId: number, problemId: number) => {
       });
       showToast("문제가 정상적으로 수정되었어요.", "success");
     },
-    onError: (error: any) => {
+    onError: () => {
       showToast("문제가 정상적으로 수정되지 않았어요.", "error");
     },
   });
