@@ -7,7 +7,7 @@ import Pagination from "@/shared/component/Pagination";
 import useGetGroupId from "@/shared/hook/useGetGroupId";
 import { overlayStyle, textStyle } from "@/view/group/dashboard/index.css";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   contentStyle,
   contentWrapper,
@@ -18,18 +18,23 @@ import {
   paginationStyle,
   ulStyle,
 } from "./index.css";
+import { useQueryClient } from "@tanstack/react-query";
+import { getNotices } from "@/api/notices";
+import { usePaginationQuery } from "@/shared/hook/usePaginationQuery";
 
 const NoticeList = () => {
-  const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
   const groupId = useGetGroupId();
-  const { content: noticeList, totalPages } = useNoticesQuery({
-    groupId: +groupId,
-    page: currentPage - 1,
-  });
 
   const handleClick = (noticeId: number) =>
     router.push(`/group/${groupId}/notice/${noticeId}`);
+
+  const { data: noticeData, currentPage, totalPages, setCurrentPage } =
+    usePaginationQuery({
+      queryKey: ["notices", groupId],
+      queryFn: (page) => getNotices({ groupId: +groupId, page }),
+    });
+  const noticeList = noticeData?.content;
 
   return (
     <>
