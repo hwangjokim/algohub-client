@@ -1,8 +1,7 @@
 "use client";
 
 import type { ProblemContent } from "@/api/problems/type";
-import { IcnEdit } from "@/asset/svg";
-import { editIconStyle } from "@/shared/component/ProblemList/index.css";
+import ProblemEdit from "@/shared/component/ProblemList/ProblemEdit";
 import useA11yHoverHandler from "@/shared/hook/useA11yHandler";
 import useGetGroupId from "@/shared/hook/useGetGroupId";
 import { getTierImage } from "@/shared/util/img";
@@ -22,7 +21,6 @@ export type PendingListItemProps = Pick<
   "problemId" | "title" | "startDate" | "level"
 > & {
   className?: string;
-  onEdit: (id: number) => void;
 };
 
 const PendingListItem = ({
@@ -31,7 +29,6 @@ const PendingListItem = ({
   startDate,
   level,
   className,
-  onEdit,
 }: PendingListItemProps) => {
   const Icon = getTierImage(level);
   const groupId = useGetGroupId();
@@ -57,12 +54,7 @@ const PendingListItem = ({
       <time dateTime={startDate} className={textStyle}>
         {format(startDate, "yyyy.MM.dd")}
       </time>
-      <IcnEdit
-        onClick={() => onEdit(problemId)}
-        className={editIconStyle({ isActive })}
-        width={24}
-        height={24}
-      />
+      <ProblemEdit problemId={problemId} isActive={isActive} />
     </li>
   );
 };
