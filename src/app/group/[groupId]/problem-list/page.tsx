@@ -1,6 +1,6 @@
 "use client";
 
-import { getInProgressProblems } from "@/api/problems";
+import { getExpiredProblems, getInProgressProblems } from "@/api/problems";
 import { useGroupRoleQuery } from "@/app/group/[groupId]/query";
 import Sidebar from "@/common/component/Sidebar";
 import TabGroup from "@/common/component/Tab";
@@ -36,9 +36,8 @@ const ProblemListPage = ({
     totalPages: expiredTotalPages,
     setCurrentPage: setExpiredPage,
   } = usePaginationQuery({
-    queryKey: ["inProgressProblem", groupId],
-    queryFn: (page) =>
-      getInProgressProblems({ groupId: +groupId, page, size: 3 }),
+    queryKey: ["expiredProblem", groupId],
+    queryFn: (page) => getExpiredProblems({ groupId: +groupId, page, size: 3 }),
   });
   const expiredList = expiredData?.content;
 

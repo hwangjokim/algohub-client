@@ -1,6 +1,6 @@
 import type { PaginationResponse } from "@/api/type";
 import { useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 type UsePaginationQueryProps<T> = {
   queryKey: (string | number)[];
@@ -19,22 +19,21 @@ export const usePaginationQuery = <T>({
 
   const queryClient = useQueryClient();
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const result = await queryFn(currentPage - 1);
     setData(result);
     setTotalPages((result as PaginationResponse).totalPages || 0);
-  };
+  }, [currentPage]);
 
   useEffect(() => {
     fetchData();
-  }, [currentPage, queryFn, queryKey, queryClient, totalPages]);
-
-  if (currentPage < totalPages) {
-    queryClient.prefetchQuery({
-      queryKey: [...queryKey, currentPage],
-      queryFn: () => queryFn(currentPage),
-    });
-  }
+    if (currentPage < totalPages) {
+      queryClient.prefetchQuery({
+        queryKey: [...queryKey, currentPage],
+        queryFn: () => queryFn(currentPage),
+      });
+    }
+  }, [currentPage, totalPages]);
 
   return { data, currentPage, setCurrentPage, totalPages };
 };
