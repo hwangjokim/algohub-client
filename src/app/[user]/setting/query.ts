@@ -3,7 +3,10 @@ import {
   patchGroupVisibility,
   postGroupBookmark,
 } from "@/app/api/groups";
-import type { GroupSettingsContent } from "@/app/api/groups/type";
+import type {
+  GroupListResponse,
+  GroupSettingsContent,
+} from "@/app/api/groups/type";
 import {
   getNotificationsSettings,
   patchNotificationsSettings,
@@ -92,14 +95,32 @@ export const useVisibilityMutation = () => {
   return useMutation({
     mutationFn: ({ groupId, flag }: { groupId: number; flag: boolean }) =>
       patchGroupVisibility(groupId, flag),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["groupsSetting"],
-      });
-      queryClient.invalidateQueries({ queryKey: ["myGroups"] });
-      showToast("정상적으로 수정되었습니다.", "success");
+    onMutate: async ({ groupId, flag }: { groupId: number; flag: boolean }) => {
+      await queryClient.cancelQueries({ queryKey: ["groupsSetting"] });
+
+      const prevData = queryClient.getQueryData<GroupListResponse>([
+        "groupsSetting",
+      ]);
+
+      queryClient.setQueryData(
+        ["groupsSetting"],
+        (oldData: GroupSettingsContent[] | undefined) => {
+          if (!oldData) return [];
+
+          return oldData.map((group) =>
+            group.id === groupId ? { ...group, isVisible: flag } : group,
+          );
+        },
+      );
+
+      return { prevData };
     },
-    onError: (error: HTTPError) => {
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["groupsSetting"] });
+    },
+    onError: (error: HTTPError, _newData, context) => {
+      queryClient.setQueryData(["groupsSetting"], context?.prevData);
+
       if (!error.response) return;
 
       const { status } = error.response;

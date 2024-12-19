@@ -10,10 +10,7 @@ import {
 
 import { iconStyle } from "@/shared/component/Header/index.css";
 
-import {
-  useReadAllNotiMutation,
-  useReadNotiItemMutation,
-} from "@/shared/component/Header/query";
+import { useReadAllNotiMutation, useReadNotiItemMutation } from "@/app/query";
 import { useRouter } from "next/navigation";
 import type { HTMLAttributes } from "react";
 import NotificationListItem from "./NotificationItem";
@@ -65,11 +62,7 @@ interface TriggerButtonProps
 Notification.TriggerButton = ({ count, ...props }: TriggerButtonProps) => {
   return (
     <button {...props}>
-      {count > 0 && (
-        <div aria-live="polite" className={countStyle}>
-          {count}
-        </div>
-      )}
+      {count > 0 && <div aria-live="polite" className={countStyle} />}
       <IcnBellHeader className={iconStyle} />
     </button>
   );
