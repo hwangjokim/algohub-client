@@ -45,7 +45,7 @@ const Section1 = () => {
       <div className={contentsContainer(intro)}>
         <div className={introContainer}>
           <h1 id="introduction-heading" className={introTextContainer()}>
-            <Text>함께 도전하고 함께 성장하는</Text>
+            <Text>함께 도전하고 함께 성장하는 테스트</Text>
             <Text.Em>알고리즘 스터디 플랫폼</Text.Em>
           </h1>
           <div className={introButtonContainer}>
